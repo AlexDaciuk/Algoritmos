@@ -28,9 +28,15 @@
 int main(int argc, char **argv)
 {
 	int a ;
+	char s[5];
 	
-	printf('Ingrese un numero: ');
+	printf("Ingrese un numero menor a 10.000: ");
+	fgets(s, 5, stdin);
+	a = atoi(s);
 	
+	printf("Mientras la variable s es un vector de caracteres (string) \n");
+	printf("la variable a es un entero \n");
+	printf("Igual el numero que ingresaste es el %i. \n",a);
 	
 	return 0;
 }
