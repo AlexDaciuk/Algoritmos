@@ -55,10 +55,15 @@ void leerArchivo()
 
       if (! accionTemporal.empty()  )
 	{
-	  procesarLlamadas(accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal);
+	  if (accionTemporal == "Inicio" || accionTemporal == "Fin" )
+	    {
+	      procesarLlamadas(accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal);
+	    }
+	  else if (accionTemporal == "Enlace")
+	    {
+	      procesarEnlace(accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal);
+	    }
 	}
-
-
     }
 }
 
@@ -67,29 +72,24 @@ void leerArchivo()
 void procesarLlamadas(string accionTemporal, string centralATemporal, string internoATemporal, string centralBTemporal, string internoBTemporal, string horaTemporal)
 {
 
-
-  if (accionTemporal == "Enlace")
-    {
-
-      // Aca vamos a crear la clase y tambien las centrales si no existen
-      // Tener en cuenta que aca los parametros de la funcion van a ser otra cosa, por ser un enlace
-
-    }
-  else if ( accionTemporal == "Inicio")
+  if ( accionTemporal == "Inicio")
     {
       // Aca vamos a procesar los inicios de llamada, tambien se van a crear los internos si no existen en sus centrales
-      
-    
     }
   else if (accionTemporal == "Fin")
     {
       // Aca vamos a procesar los fines de llamadas
-
     }
-
+  
 }
 
 
+void procesarEnlace(string accionTemporal, string centralATemporal, string centralBTemporal, string distanciaKmTemporal, string precioMinutoTemporal, string cantidadCanalesTemporal)
+{
+
+  // Aca procesamos los enlaces por separado
+
+}
 
   
 
