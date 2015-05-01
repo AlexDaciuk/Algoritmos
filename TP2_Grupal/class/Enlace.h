@@ -10,7 +10,6 @@ private:
   int cantidadDeCanales, distanciaKm, costoPorMinuto, cantidadCanalesEnUso;
   Central* punteroCentralA, punteroCentralB;
 
-
 public:
 
   /**
