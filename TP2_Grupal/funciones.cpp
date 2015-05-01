@@ -52,5 +52,45 @@ void leerArchivo()
 
       cout << horaTemporal << "\n";
 					  
+
+      if (! accionTemporal.empty()  )
+	{
+	  procesarLlamadas(accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal);
+	}
+
+
     }
 }
+
+
+
+void procesarLlamadas(string accionTemporal, string centralATemporal, string internoATemporal, string centralBTemporal, string internoBTemporal, string horaTemporal)
+{
+
+
+  if (accionTemporal == "Enlace")
+    {
+
+      // Aca vamos a crear la clase y tambien las centrales si no existen
+      // Tener en cuenta que aca los parametros de la funcion van a ser otra cosa, por ser un enlace
+
+    }
+  else if ( accionTemporal == "Inicio")
+    {
+      // Aca vamos a procesar los inicios de llamada, tambien se van a crear los internos si no existen en sus centrales
+      
+    
+    }
+  else if (accionTemporal == "Fin")
+    {
+      // Aca vamos a procesar los fines de llamadas
+
+    }
+
+}
+
+
+
+  
+
+
