@@ -4,7 +4,7 @@ class Llamada
 {
 private:
 
-  int receptorLlamada, cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, horaInicioLlamadaEnCurso;
+  int receptorLlamada, cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso;
   bool ocupado;
   
 public:
