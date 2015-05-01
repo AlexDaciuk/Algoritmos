@@ -4,12 +4,17 @@ class Llamada
 {
 private:
 
-  int cantidadLlamadas, duracionLlamadas, cantidadOcupados, horaInicioLlamadaEnCurso;
+  int receptorLlamada, cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, horaInicioLlamadaEnCurso;
   bool ocupado;
   
 public:
 
-  Llamada (int duracionLlamadaTmp);
+  /**
+   * Constructor de la clase llamada
+   * Post: La llamada queda registrada
+   */
+  
+  Llamada ();
 
   void empezarLlamada(int horaInicioLlamadaEnCursoTmp);
 
