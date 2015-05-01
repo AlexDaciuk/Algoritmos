@@ -52,5 +52,45 @@ void leerArchivo()
 
       cout << horaTemporal << "\n";
 					  
+
+      if (! accionTemporal.empty()  )
+	{
+	  if (accionTemporal == "Inicio" || accionTemporal == "Fin" )
+	    {
+	      procesarLlamadas(accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal);
+	    }
+	  else if (accionTemporal == "Enlace")
+	    {
+	      procesarEnlace(accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal);
+	    }
+	}
     }
 }
+
+
+
+void procesarLlamadas(string accionTemporal, string centralATemporal, string internoATemporal, string centralBTemporal, string internoBTemporal, string horaTemporal)
+{
+
+  if ( accionTemporal == "Inicio")
+    {
+      // Aca vamos a procesar los inicios de llamada, tambien se van a crear los internos si no existen en sus centrales
+    }
+  else if (accionTemporal == "Fin")
+    {
+      // Aca vamos a procesar los fines de llamadas
+    }
+  
+}
+
+
+void procesarEnlace(string accionTemporal, string centralATemporal, string centralBTemporal, string distanciaKmTemporal, string precioMinutoTemporal, string cantidadCanalesTemporal)
+{
+
+  // Aca procesamos los enlaces por separado
+
+}
+
+  
+
+
