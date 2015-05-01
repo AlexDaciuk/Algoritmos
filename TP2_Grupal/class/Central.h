@@ -9,8 +9,10 @@
 class Central
 {
 private:
+  
   int numeroCentral;
 
+  // Puntero a la lista de enlaces general
   ListaEnlaces* listaEnlaces;
 
 public:
@@ -21,7 +23,7 @@ public:
    */
   
   Central(int numeroCentralTmp);
-
+  
 
   /**
    * Metodo que crea un interno dentro de la central, para usarse cuando entra una llamada de 
@@ -42,8 +44,8 @@ public:
    * Metodo que va a terminar una llamada
    * Post: La llamada va a terminarse y va a quedar registrado el tiempo en los internos
    */
-    void cortarLlamada(int numeroInterno, int numeroReceptorTmp, int centralReceptoraTmp, int horaFinTmp);
-
+  void cortarLlamada(int numeroInterno, int numeroReceptorTmp, int centralReceptoraTmp, int horaFinTmp);
+  
    
 
 
