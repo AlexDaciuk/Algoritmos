@@ -1,3 +1,5 @@
+#ifndef INTERNOS_H
+#define INTERNOS_H
 #include <iostream>
 
 
@@ -24,12 +26,12 @@ public:
 
   int agregarLlamada();
 
-}
-  
-
-
-
-
-}
 
   
+
+
+
+
+};
+
+#endif

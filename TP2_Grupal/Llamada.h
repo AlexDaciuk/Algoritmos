@@ -1,4 +1,5 @@
-
+#ifndef LLAMADA_H
+#define LLAMADA_H
 class Llamada
 {
 private:
@@ -15,4 +16,6 @@ public:
   void terminarLlamada(int horaFinLlamadaEnCursoTmp);
 
   
-}
+};
+
+#endif

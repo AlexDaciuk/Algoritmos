@@ -1,4 +1,5 @@
-
+#ifndef ENLACE_H
+#define ENLACE_H
 /**
  * Clase que define cada enlace entre 2 centrales
  */
@@ -32,7 +33,9 @@ public:
   Central* obtenerPunteroCentralA();
   Central* obtenerPunteroCentralB();
 
-}
+};
+
+#endif
 
   
 

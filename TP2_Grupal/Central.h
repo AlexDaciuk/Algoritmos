@@ -1,3 +1,6 @@
+#ifndef CENTRAL_H
+#define CENTRAL_h
+
 /**
  * Clase que maneja cada central 
  */
@@ -28,4 +31,6 @@ public:
    
 
 
-}
+};
+
+#endif
