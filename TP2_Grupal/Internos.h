@@ -1,7 +1,5 @@
 #ifndef INTERNOS_H
 #define INTERNOS_H
-#include <iostream>
-
 
 /**
  *Clase que define a cada interno de una central
