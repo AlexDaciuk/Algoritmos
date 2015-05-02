@@ -9,7 +9,7 @@ class Interno
 {
 private:
   int numeroInterno;
-  
+  Llamada* PunteroASusLlammadas;
 
 public:
 
