@@ -27,36 +27,55 @@ void leerArchivo()
   while (! archivo.eof() )
     {
       string accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal;
-
-      getline(archivo, accionTemporal,' ');
-
-      getline(archivo, centralATemporal,' ');
+	  string distanciaKmTemporal, precioMinutoTemporal, cantidadCanalesTemporal;
       
-      getline(archivo, internoATemporal,' ');
+      if (accionTemporal == "Enlace")
+      {
+		  getline(archivo, accionTemporal,' ');
 
-      getline(archivo, centralBTemporal,' ');
-          
-      getline(archivo, internoBTemporal,' ');
+		  getline(archivo, centralATemporal,' ');
+		  
+		  getline(archivo, centralBTemporal,' ');
+		  
+		  getline(archivo, distanciaKmTemporal,' ');
+			  
+		  getline(archivo, precioMinutoTemporal,' ');
 
-      getline(archivo, horaTemporal,'\n');
+		  getline(archivo, cantidadCanalesTemporal,'\n');
+		  
+		  if (! accionTemporal.empty()  )
+			{
+			procesarEnlace(accionTemporal, centralATemporal, centralBTemporal, distanciaKmTemporal, precioMinutoTemporal,
+						   cantidadCanalesTemporal);
+			}
+	  }
+	  if (accionTemporal != "Enlace")
+	  {
+		  getline(archivo, accionTemporal,' ');
 
-      if (! accionTemporal.empty()  )
-	{
-	  if (accionTemporal == "Inicio" || accionTemporal == "Fin" )
-	    {
-	      procesarLlamadas(accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal);
-	    }
-	  else if (accionTemporal == "Enlace")
-	    {
-	      procesarEnlace(accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal);
-	    }
-	}
+		  getline(archivo, centralATemporal,' ');
+		  
+		  getline(archivo, internoATemporal,' ');
+
+		  getline(archivo, centralBTemporal,' ');
+			  
+		  getline(archivo, internoBTemporal,' ');
+
+		  getline(archivo, horaTemporal,'\n');
+
+		  if (! accionTemporal.empty()  )
+			{
+			procesarLlamadas(accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal,
+							 horaTemporal);
+			}
+		}
     }
 }
 
 
 
-void procesarLlamadas(string accionTemporal, string centralATemporal, string internoATemporal, string centralBTemporal, string internoBTemporal, string horaTemporal)
+void procesarLlamadas(string accionTemporal, string centralATemporal, string internoATemporal, string centralBTemporal, 
+					  string internoBTemporal, string horaTemporal)
 {
 
   if ( accionTemporal == "Inicio")
