@@ -30,28 +30,15 @@ void leerArchivo()
 
       getline(archivo, accionTemporal,' ');
 
-      cout << accionTemporal << " , ";
-      
       getline(archivo, centralATemporal,' ');
-
-      cout << centralATemporal << " , " ;
       
       getline(archivo, internoATemporal,' ');
 
-      cout << internoATemporal << " , ";
-      
       getline(archivo, centralBTemporal,' ');
-
-      cout << centralBTemporal << " , ";
-            
+          
       getline(archivo, internoBTemporal,' ');
 
-      cout << internoBTemporal << " , ";
-      
       getline(archivo, horaTemporal,'\n');
-
-      cout << horaTemporal << "\n";
-					  
 
       if (! accionTemporal.empty()  )
 	{
