@@ -1,15 +1,12 @@
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <sstream>
-using namespace std;
+
 
 void leerArchivo();
-void procesarLlamadas(string accionTemporal, string centralATemporal, string internoATemporal, string centralBTemporal,
-						string internoBTemporal, string horaTemporal);
-void procesarEnlace(string accionTemporal, string centralATemporal, string centralBTemporal, string distanciaKmTemporal,
-					string precioMinutoTemporal, string cantidadCanalesTemporal);
+void procesarLlamadas(std::string accionTemporal, std::string centralATemporal, std::string internoATemporal, std::string centralBTemporal, std::string internoBTemporal, std::string horaTemporal);
+void procesarEnlace(std::string accionTemporal, std::string centralATemporal, std::string centralBTemporal, std::string distanciaKmTemporal, std::string precioMinutoTemporal, std::string cantidadCanalesTemporal);
+void menu();
 
 #endif
