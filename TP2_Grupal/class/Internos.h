@@ -1,5 +1,6 @@
 #ifndef INTERNOS_H
 #define INTERNOS_H
+#include "Llamada.h"
 #include <iostream>
 #include <cstddef> 
 /**
@@ -10,7 +11,7 @@ class Interno
 {
  private:
   int numeroInterno;
-  //*Llamada* punteroASusLlammadas;
+  Llamada* punteroASusLlammadas;
   Interno* internoSiguiente;
  public:
 
@@ -27,7 +28,7 @@ class Interno
 
   Interno* obtenerInternoSiguiente();
     
-  //*Llamada* agregarLlamada();
+  Llamada* agregarLlamada();
 };
 
 #endif
