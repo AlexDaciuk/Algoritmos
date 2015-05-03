@@ -1,4 +1,8 @@
 #include "Llamada.h"
+#include <cstddef>
+#include <string>
+#include <iostream>
+using namespace std;
 
 Llamada::Llamada (std::string receptorLlamadaTmp)
 {
@@ -10,22 +14,22 @@ Llamada::Llamada (std::string receptorLlamadaTmp)
   this->ocupado = false;
   this->receptorLlamada = "0000";
   
-  if (receptorLlamadaTmp > 0 && receptorLlamadaTmp < 10000)
-    {
-      this->receptorLlamada = receptorLlamadaTmp;
-    }
-}
+  //*if (receptorLlamadaTmp > 0 && receptorLlamadaTmp < 10000)
+    //*{
+      //*this->receptorLlamada = receptorLlamadaTmp;
+    //*}
+};
 
-Llamada::empezarLlamada(int horaInicioLlamadaEnCursoTmp)
+void Llamada::empezarLlamada(int horaInicioLlamadaEnCursoTmp)
 {
   this->cantidadLlamadas++;
   this->horaInicioLlamadaEnCurso = horaInicioLlamadaEnCursoTmp;
   this->ocupado = true;
-}
+};
 
-Llamada::terminarLlamada (int horaFinLlamadaEnCursoTmp)
+void Llamada::terminarLlamada (int horaFinLlamadaEnCursoTmp)
 {
   this->duracionLlamadas = horaFinLlamadaEnCursoTmp - this->horaInicioLlamadaEnCurso;
   this->ocupado = false;
   this->horaInicioLlamadaEnCurso = 0;
-}
+};

@@ -1,17 +1,18 @@
 #ifndef INTERNOS_H
 #define INTERNOS_H
-
+#include <iostream>
+#include <cstddef> 
 /**
  *Clase que define a cada interno de una central
  */
 
 class Interno
 {
-private:
+ private:
   int numeroInterno;
-  Llamada* PunteroASusLlammadas;
-
-public:
+  //*Llamada* punteroASusLlammadas;
+  Interno* internoSiguiente;
+ public:
 
   /**
    * Constructor de la clase Interno
@@ -21,15 +22,12 @@ public:
   Interno(int numeroInternoTmp);
 
   int obtenerNumeroInterno();
-
-  int agregarLlamada();
-
-
   
+  void cambiarInternoSiguiente(Interno* nuevoSiguiente);
 
-
-
-
+  Interno* obtenerInternoSiguiente();
+    
+  //*Llamada* agregarLlamada();
 };
 
 #endif
