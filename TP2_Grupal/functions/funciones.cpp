@@ -29,10 +29,10 @@ void leerArchivo()
       string accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal;
 	  string distanciaKmTemporal, precioMinutoTemporal, cantidadCanalesTemporal;
       
+	  getline(archivo, accionTemporal,' ');
+	  
       if (accionTemporal == "Enlace")
       {
-		  getline(archivo, accionTemporal,' ');
-
 		  getline(archivo, centralATemporal,' ');
 		  
 		  getline(archivo, centralBTemporal,' ');
@@ -51,8 +51,6 @@ void leerArchivo()
 	  }
 	  if (accionTemporal != "Enlace")
 	  {
-		  getline(archivo, accionTemporal,' ');
-
 		  getline(archivo, centralATemporal,' ');
 		  
 		  getline(archivo, internoATemporal,' ');
