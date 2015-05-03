@@ -3,7 +3,7 @@
 #include "functions/funciones.h"
 #include "class/Central.h"
 #include "class/Llamada.h"
-#include "class/Interno.h"
+#include "class/Internos.h"
 #include "class/Enlace.h"
 
 int main()
