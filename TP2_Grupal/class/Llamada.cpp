@@ -15,3 +15,17 @@ Llamada::Llamada (std::string receptorLlamadaTmp)
       this->receptorLlamada = receptorLlamadaTmp;
     }
 }
+
+Llamada::empezarLlamada(int horaInicioLlamadaEnCursoTmp)
+{
+  this->cantidadLlamadas++;
+  this->horaInicioLlamadaEnCurso = horaInicioLlamadaEnCursoTmp;
+  this->ocupado = true;
+}
+
+Llamada::terminarLlamada (int horaFinLlamadaEnCursoTmp)
+{
+  this->duracionLlamadas = horaFinLlamadaEnCursoTmp - this->horaInicioLlamadaEnCurso;
+  this->ocupado = false;
+  this->horaInicioLlamadaEnCurso = 0;
+}
