@@ -15,6 +15,7 @@ class Nodo<T>
  */
     Nodo<T>(T objeto);
     void cambiarNodoSiguiente(Nodo<T>* nodoSiguiente);
+    void cambiarObjeto(T objeto);
     Nodo<T>* obtenerSiguiente();
     T obtenerObjeto();
 };
@@ -43,4 +44,11 @@ T Nodo<T>::obtenerObjeto()
 {
   return objeto;
 };
+
+template <class T>
+void Nodo<T>::cambiarObjeto(T objeto)
+{
+  this->objeto=objeto;
+};
+
 #endif
