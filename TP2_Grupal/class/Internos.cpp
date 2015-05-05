@@ -1,3 +1,4 @@
+#define NULL 0
 #include "Llamada.h"
 #include "Internos.h"
 #include <cstddef>
@@ -8,23 +9,12 @@ using namespace std;
 Interno::Interno(int numeroInternoTmp)
 {
   numeroInterno=numeroInternoTmp;
-  punteroASusLlammadas=0;
-  internoSiguiente=0;
+  punteroASusLlammadas= NULL;
 };
 
 int Interno::obtenerNumeroInterno()
 {
   return numeroInterno;
-};
-
-void Interno::cambiarInternoSiguiente(Interno* nuevoSiguiente)
-{
-  internoSiguiente= nuevoSiguiente;
-};
-
-Interno* Interno::obtenerInternoSiguiente()
-{
-  return internoSiguiente;
 };
 
  Llamada* Interno::agregarLlamada()

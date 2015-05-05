@@ -12,7 +12,6 @@ class Interno
  private:
   int numeroInterno;
   Llamada* punteroASusLlammadas;
-  Interno* internoSiguiente;
  public:
 
   /**
@@ -23,11 +22,7 @@ class Interno
   Interno(int numeroInternoTmp);
 
   int obtenerNumeroInterno();
-  
-  void cambiarInternoSiguiente(Interno* nuevoSiguiente);
 
-  Interno* obtenerInternoSiguiente();
-    
   Llamada* agregarLlamada();
 };
 
