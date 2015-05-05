@@ -17,8 +17,7 @@ Llamada::Llamada (std::string receptorLlamadaTmp)
 	this->cantidadOcupadosDados = 0;
 	this->cantidadOcupadosRecibidos = 0;
 	this->horaInicioLlamadaEnCurso =0;
-	this->ocupado = false;
-	this->receptorLlamada = receptorLlamadaTmp;
+	this->receptorLlamada =receptorLlamadaTmp;
 	this->punteroProximaLlamada=null;
   
   
@@ -28,13 +27,11 @@ void Llamada::empezarLlamada(int horaInicioLlamadaEnCursoTmp)
 {
   this->cantidadLlamadas++;
   this->horaInicioLlamadaEnCurso = horaInicioLlamadaEnCursoTmp;
-  this->ocupado = true;
 };
 
 void Llamada::terminarLlamada (int horaFinLlamadaEnCursoTmp)
 {
   this->duracionLlamadas = horaFinLlamadaEnCursoTmp - this->horaInicioLlamadaEnCurso;
-  this->ocupado = false;
   this->horaInicioLlamadaEnCurso = 0;
 };
 
@@ -47,3 +44,8 @@ void Llamada::cambiarPunteroProximaLlamada(Llamada* nuevoPunteroALlamada)
 {
 	this->punteroProximaLLamada=nuevoPunteroALlamada;
 };
+
+string Llamada::obtenerReceptorLlamada()
+{
+	return (receptorLlamada);
+}; 

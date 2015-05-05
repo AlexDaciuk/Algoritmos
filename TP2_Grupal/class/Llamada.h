@@ -8,8 +8,7 @@ private:
 
   std::string receptorLlamada;
   int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos;
-   horaInicioLlamadaEnCurso;
-  /*bool ocupado: cambiarlo por un metodo en interno*/
+  horaInicioLlamadaEnCurso;
   Llamada* punteroProximaLlamada;
   
 public:
@@ -31,6 +30,8 @@ public:
   void cambiarPunteroProximaLlamada(Llamada* nuevoPunteroALlamada);
   
   int obtenerHoraInicioLlamadaEnCurso();
+  
+  string obtenerReceptorLlamada();
   
   /*int obtenerDuracionLlamadas();
   
