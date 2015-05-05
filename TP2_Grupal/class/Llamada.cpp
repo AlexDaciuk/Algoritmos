@@ -2,22 +2,26 @@
 #include <cstddef>
 #include <string>
 #include <iostream>
+#include "Llamada.h"
 using namespace std;
 
 Llamada::Llamada (std::string receptorLlamadaTmp)
 {
-  this->cantidadLlamadas = 0;
-  this->duracionLlamadas = 0;
-  this->cantidadOcupadosDados = 0;
-  this->cantidadOcupadosRecibidos = 0;
-  this->horaInicioLlamadaEnCurso =0;
-  this->ocupado = false;
-  this->receptorLlamada = "0000";
+	if (receptorLlamadaTmp < 0 || receptorLlamadaTmp > 9999)
+	{
+		throw string("Numero de interno fuera de rango");
+	}
+	
+	this->cantidadLlamadas = 0;
+	this->duracionLlamadas = 0;
+	this->cantidadOcupadosDados = 0;
+	this->cantidadOcupadosRecibidos = 0;
+	this->horaInicioLlamadaEnCurso =0;
+	this->ocupado = false;
+	this->receptorLlamada = receptorLlamadaTmp;
+	this->punteroProximaLlamada=null;
   
-  //*if (receptorLlamadaTmp > 0 && receptorLlamadaTmp < 10000)
-    //*{
-      //*this->receptorLlamada = receptorLlamadaTmp;
-    //*}
+  
 };
 
 void Llamada::empezarLlamada(int horaInicioLlamadaEnCursoTmp)
@@ -32,4 +36,14 @@ void Llamada::terminarLlamada (int horaFinLlamadaEnCursoTmp)
   this->duracionLlamadas = horaFinLlamadaEnCursoTmp - this->horaInicioLlamadaEnCurso;
   this->ocupado = false;
   this->horaInicioLlamadaEnCurso = 0;
+};
+
+Llamada* Llamada::obtenerPunteroProximaLlamada();
+{
+	return this->punteroProximaLlamada;
+};
+
+void Llamada::cambiarPunteroProximaLlamada(Llamada* nuevoPunteroALlamada)
+{
+	this->punteroProximaLLamada=nuevoPunteroALlamada;
 };

@@ -11,7 +11,7 @@ class Interno
 {
  private:
   int numeroInterno;
-  Llamada* punteroASusLlammadas;
+  Llamada* punteroASusLlammadas; //apunta siempre a la primer llamada
   Interno* internoSiguiente;
  public:
 
@@ -29,6 +29,10 @@ class Interno
   Interno* obtenerInternoSiguiente();
     
   Llamada* agregarLlamada();
+  
+  Lamada* obtenerPunteroASusLlamadas();
+  
+  bool internoOcupado();
 };
 
 #endif

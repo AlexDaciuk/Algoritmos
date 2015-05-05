@@ -7,8 +7,10 @@ class Llamada
 private:
 
   std::string receptorLlamada;
-  int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso;
-  bool ocupado;
+  int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos;
+   horaInicioLlamadaEnCurso;
+  /*bool ocupado: cambiarlo por un metodo en interno*/
+  Llamada* punteroProximaLlamada;
   
 public:
 
@@ -23,6 +25,22 @@ public:
   void empezarLlamada(int horaInicioLlamadaEnCursoTmp);
 
   void terminarLlamada(int horaFinLlamadaEnCursoTmp);
+  
+  Llamada* obtenerPunteroProximaLlamada();
+  
+  void cambiarPunteroProximaLlamada(Llamada* nuevoPunteroALlamada);
+  
+  int obtenerHoraInicioLlamadaEnCurso();
+  
+  /*int obtenerDuracionLlamadas();
+  
+  int obtenerCantidadOcupadosDados();
+  
+  int obtenerCantidadOcupadosRecibidos();
+  */
+  
+  
+  
 
   
 };
