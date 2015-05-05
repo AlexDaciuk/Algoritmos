@@ -7,8 +7,7 @@ class Llamada
 private:
 
   std::string receptorLlamada;
-  int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos;
-  horaInicioLlamadaEnCurso;
+  int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos,horaInicioLlamadaEnCurso;
   Llamada* punteroProximaLlamada;
   
 public:
@@ -31,7 +30,7 @@ public:
   
   int obtenerHoraInicioLlamadaEnCurso();
   
-  string obtenerReceptorLlamada();
+  std::string obtenerReceptorLlamada();
   
   /*int obtenerDuracionLlamadas();
   

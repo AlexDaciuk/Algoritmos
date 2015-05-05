@@ -7,11 +7,11 @@ using namespace std;
 
 Llamada::Llamada (std::string receptorLlamadaTmp)
 {
-	if (receptorLlamadaTmp < 0 || receptorLlamadaTmp > 9999)
+	/*if (receptorLlamadaTmp < 0 || receptorLlamadaTmp > 9999)
 	{
 		throw string("Numero de interno fuera de rango");
 	}
-	
+	*/
 	this->cantidadLlamadas = 0;
 	this->duracionLlamadas = 0;
 	this->cantidadOcupadosDados = 0;
@@ -35,14 +35,14 @@ void Llamada::terminarLlamada (int horaFinLlamadaEnCursoTmp)
   this->horaInicioLlamadaEnCurso = 0;
 };
 
-Llamada* Llamada::obtenerPunteroProximaLlamada();
+Llamada* Llamada::obtenerPunteroProximaLlamada()
 {
 	return this->punteroProximaLlamada;
 };
 
 void Llamada::cambiarPunteroProximaLlamada(Llamada* nuevoPunteroALlamada)
 {
-	this->punteroProximaLLamada=nuevoPunteroALlamada;
+	this->punteroProximaLlamada=nuevoPunteroALlamada;
 };
 
 string Llamada::obtenerReceptorLlamada()

@@ -11,9 +11,9 @@ class Interno
 {
  private:
   int numeroInterno;
-  Llamada* punteroASusLlammadas; //apunta siempre a la primer llamada
+  Llamada* punteroASusLlamadas; //apunta siempre a la primer llamada
   Interno* internoSiguiente;
-  Llamada* punteroASusLlammadas;
+  
 
  public:
 
@@ -26,13 +26,15 @@ class Interno
 
   int obtenerNumeroInterno();
 
-  void agregarLlamada(string receptorLlamadaTmp, int horaInicioLlamadaEnCursoTmp);
+  void agregarLlamada(std::string receptorLlamadaTmp, int horaInicioLlamadaEnCursoTmp);
   
-  Lamada* obtenerPunteroASusLlamadas();
+  Llamada* obtenerPunteroASusLlamadas();
   
   void cambiarPunteroASusLlamadas(Llamada* nuevoPuntero);
   
-  bool existeReceptor(string receptor);
+  void moverLlamadaAlFrente(std::string receptorLlamadaTmp);
+  
+  bool existeReceptor(std::string receptor);
   
   bool internoOcupado();
 };
