@@ -27,10 +27,11 @@ class Interno
   /*post: devuelve el numero del interno.*/
   int obtenerNumeroInterno();
   
-  /*post: agrega una nueva llamada a la lista de llamadas de el interno que 
+  /*post: agrega una nueva llamada a la lista de llamadas del interno que 
    * realiza la llamada y la ubica al principio de la lista.
-   * En el caso de que ya exista un nodo en la lista con el interno receptor se suman 
-   * los datos directamente ahi y no se crea ningun nodo.*/
+   * En el caso de que ya exista un nodo en la lista con el interno receptor se lleva
+   * ese nodo al principio y se suman 
+   * los datos directamente ahi, no se crea ningun nodo.*/
   void agregarLlamada(std::string receptorLlamadaTmp, int horaInicioLlamadaEnCursoTmp);
   
   /*post: devuelve el puntero a la lista de llamadas del interno*/
