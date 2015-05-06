@@ -49,3 +49,19 @@ string Llamada::obtenerReceptorLlamada()
 {
 	return (receptorLlamada);
 }; 
+
+int Llamada::obtenerDuracionLlamadas()
+{
+	return this->duracionLlamadas;
+};
+
+int Llamada::obtenerCantidadOcupadosDados()
+{
+	return this->cantidadOcupadosDados;
+};
+
+
+int Llamada::obtenerCantidadOcupadosRecibidos()
+{
+	return this->cantidadOcupadosRecibidos;
+};
