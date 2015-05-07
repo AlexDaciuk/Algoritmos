@@ -6,14 +6,13 @@
  * llamadas a procesar
  */
 
-
-
 class LectorArchivos
 {
 private:
   std::string rutaArchivo;
   DatosLlamada* datosLlamadaTmp;
   ifstream archivo;
+  boolean hayLlamadas;
   
   
 public:
