@@ -17,18 +17,19 @@ DatosLlamada* LectorArchivos::obtenerDatosLlamada()
 {
   if (! archivo.eof() )
     {
+      string accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal;
       
-      getline(archivo, this->datosLlamadaTmp.accionTemporal,' ');
+      getline(archivo, accionTemporal,' ');
+            
+      getline(archivo, centralATemporal,' ');
+            
+      getline(archivo, internoATemporal,' ');
+                  
+      getline(archivo, centralBTemporal,' ');
       
-      getline(archivo, this->datosLlamadaTmp.centralATemporal,' ');
+      getline(archivo, internoBTemporal,' ');
       
-      getline(archivo, this->datosLlamadaTmp.internoATemporal,' ');
-      
-      getline(archivo, this->datosLlamadaTmp.centralBTemporal,' ');
-      
-      getline(archivo, this->datosLlamadaTmp.internoBTemporal,' ');
-      
-      getline(archivo, this->datosLlamadaTmp.horaTemporal,'\n');
+      getline(archivo, horaTemporal,'\n');
     }
   else
     {
