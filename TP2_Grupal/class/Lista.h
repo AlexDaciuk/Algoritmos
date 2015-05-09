@@ -8,7 +8,7 @@ class Lista
   private:
   
     Nodo<T>* primerNodo;
-    Nodo<T>* segundoNodo;
+    Nodo<T>* ultimoNodo;
     
   public:
   
