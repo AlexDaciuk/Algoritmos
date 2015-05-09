@@ -1,4 +1,5 @@
 #include <string>
+#include <fstream>
 #include <sstream>
 
 /**
@@ -11,8 +12,8 @@ class LectorArchivos
 private:
   std::string rutaArchivo;
   DatosLlamada* datosLlamadaTmp;
-  ifstream archivo;
-  boolean hayLlamadas;
+  std::ifstream archivo;
+  bool hayLlamadas;
   
   
 public:
@@ -38,4 +39,4 @@ public:
   
   ~LectorArchivos();
   
-}
+};
