@@ -1,5 +1,5 @@
 #ifndef CENTRAL_H
-#define CENTRAL_h
+#define CENTRAL_H
 
 /**
  * Clase que maneja cada central 
