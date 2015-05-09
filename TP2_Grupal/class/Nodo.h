@@ -9,6 +9,7 @@ class Nodo<T>
   private:
     T objeto;
     Nodo<T>* nodoSiguiente;
+    Nodo<T>* nodoArnterior;
   public:
   /**
  *Clase que define a cada nodo de una lista simple
@@ -17,6 +18,7 @@ class Nodo<T>
     void cambiarNodoSiguiente(Nodo<T>* nodoSiguiente);
     void cambiarObjeto(T objeto);
     Nodo<T>* obtenerSiguiente();
+    Nodo<T>* obtenerAnterior();
     T obtenerObjeto();
 };
 
@@ -38,6 +40,13 @@ Nodo<T>* Nodo<T>::obtenerSiguiente()
 {
   return nodoSiguiente;
 };
+
+template <class T>
+Nodo<T>* Nodo<T>::obtenerAnterior()
+{
+  return nodoArnterior;
+};
+
 
 template <class T>
 T Nodo<T>::obtenerObjeto()
