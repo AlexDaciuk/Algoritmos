@@ -12,7 +12,7 @@ class DatosLlamada
 {
 private:
   std::string accion, centralA, internoA, centralB, internoB;
-  int horaInicio
+  int horaInicio;
 
 
 public:
