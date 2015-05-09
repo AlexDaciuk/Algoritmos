@@ -1,6 +1,6 @@
 #include <string>
 #include <sstream>
-
+#include "DatosLlamada.h"
 
 LectorArchivos::LectorArchivos (std::string rutaArchivoTemporal)
 {
