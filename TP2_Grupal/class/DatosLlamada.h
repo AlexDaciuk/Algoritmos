@@ -19,4 +19,4 @@ public:
 
   void cargarLlamada(std::string accionTmp, std::string centralATmp, std::string internoATmp, std::string centralBTmp, std::string internoBTmp, std::string horaInicioTmp);
 
-}
+};
