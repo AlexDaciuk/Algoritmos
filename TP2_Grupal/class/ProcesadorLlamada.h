@@ -9,7 +9,7 @@ class ProcesadorLlamada
 {
 private:
   DatosLlamada* punteroDatosTemporal;
-  DatosRecorrido* recorridoTemporal;
+  DatosRecorrido* punteroRecorridoTemporal;
   
 
 
