@@ -20,7 +20,7 @@ public:
    * Post: Queda creado el enlace entre 2 centrales
    */
   
-  Enlace(int centralATmp, int centralBTmp, int distanciaTmp, int cantidadEnlaceTmp);
+  Enlace(int centralATemporal, int centralBTemporal, int distanciaTemporal, int cantidadEnlaceTemporal);
 
   /**
    * Funciones varias que devuelven atributos del enlace
