@@ -47,7 +47,6 @@ Nodo<Llamada>* Interno::existeLlamadaAReceptor(int receptorLlamadaTemporal)
 
 void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
 {
- //preguntar si el receptor esta ocupado
   Nodo<Llamada>* punteroALlamadaTemporal = existeLlamadaAReceptor(receptorLlamadaTemporal);
   if (punteroALlamadaTemporal == NULL)
     {
@@ -58,8 +57,6 @@ void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaE
     {
         punteroALlamadaTemporal->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
     }
-  //exista o no siempre va a quedar al frente 
-  punteroASusLlamadas->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
 };
 
 
