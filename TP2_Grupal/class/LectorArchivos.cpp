@@ -6,7 +6,7 @@ LectorArchivos::LectorArchivos (std::string rutaArchivoTemporal)
 {
   this->archivo.open( ruta.c_str(rutaArchivoTemporal) );
   
-  this->datosLlamadasTmp = new DatosLlamada();
+  this->datosLlamadasTemporal = new DatosLlamada();
 
   this->hayLlamadas = true;
   
@@ -30,12 +30,15 @@ DatosLlamada* LectorArchivos::obtenerDatosLlamada()
       getline(archivo, internoBTemporal,' ');
       
       getline(archivo, horaTemporal,'\n');
+
+      datosLlamadasTemporal->cargarLlamada(accionTemporal, centralATemporal. InternoATemporal, centralBTemporal. internoBTemporal, horaTemporal);
     }
   else
     {
       this->hayLlamadas = false;
     }
 
+  return datosLlamadaTemporal;
 }
 
 
