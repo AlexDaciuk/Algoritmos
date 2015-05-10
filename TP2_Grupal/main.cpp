@@ -17,13 +17,13 @@ int main()
   std::string opcionAlgoritmo;
 
 
-  cout << "Quiere usar algoritmo de: \n";
-  cout << "1) Precio mas bajo \n";
-  cout << "2) Distancia mas corta \n";
+  std::cout << "Quiere usar algoritmo de: \n";
+  std::cout << "1) Precio mas bajo \n";
+  std::cout << "2) Distancia mas corta \n";
 
   int opcionTmp;
 
-  cin >> opcionTmp;
+  std::cin >> opcionTmp;
 
   
   if ( opcionTmp == 1)
