@@ -39,6 +39,12 @@ DatosLlamada* LectorArchivos::obtenerDatosLlamada()
 }
 
 
+bool LectorArchivos::hayLlamada()
+{
+  return (this->hayLlamada);
+}
+
+
 LectorArchivos::~LectorArchivos()
 {
   
