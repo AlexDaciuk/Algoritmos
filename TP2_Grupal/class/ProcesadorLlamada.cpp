@@ -3,9 +3,9 @@
 
 void ProcesadorLlamada::procesaLlamadas()
 {
-  while ( LectorArchivos.chequearLLamada() )
+  while ( LectorArchivos->chequearLLamada() )
     {
-      punteroDatosTmp = LectorArcnivos.obtenerDatosLlamada();
+      punteroDatosTmp = LectorArcnivos->obtenerDatosLlamada();
 
       //Agrego la centrales, si ya existen no hace nada
       Central->agregarCentral(string punteroDatosTmp->centralA, string punteroDatosTmp->centralB);
