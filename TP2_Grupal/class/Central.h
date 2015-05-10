@@ -36,23 +36,6 @@ public:
   
   void crearInterno(int numeroInterno);
   
-  /**
-   * Metodo que va a empezar una llamada entre 2 internos
-   * Va a crear un interno si no existe, o los 2 en el caso que no existan los 2
-   * Post: La llamada va a quedar registrada y en curso
-   */
-  void empezarLlamada(int numeroInterno, int numeroReceptorTmp, int centralReceptoraTmp, int horaInicioTmp);
-
-
-  /**
-   * Metodo que va a terminar una llamada
-   * Post: La llamada va a terminarse y va a quedar registrado el tiempo en los internos
-   */
-  void cortarLlamada(int numeroInterno, int numeroReceptorTmp, int centralReceptoraTmp, int horaFinTmp);
-  
-   
-
-
 };
 
 #endif
