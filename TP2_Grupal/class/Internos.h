@@ -12,7 +12,7 @@
 class Interno
 {
  private:
-  int numeroInterno;
+  int numero;
   Llamada* punteroASusLlamadas; //apunta siempre a la primer llamada
   Interno* internoSiguiente;
   

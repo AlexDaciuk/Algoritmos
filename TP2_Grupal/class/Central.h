@@ -13,7 +13,7 @@ class Central
 {
 private:
   
-  int numeroCentral;
+  int Central;
   
   ListaInternos* listaInternos;
   // Puntero a la lista de enlaces general
