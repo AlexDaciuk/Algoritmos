@@ -1,5 +1,6 @@
 #ifndef NODO_H
 #define NODO_H
+#ifndef NULL
 #define NULL 0
 #include <iostream>
 
@@ -68,4 +69,5 @@ void Nodo<T>::cambiarObjeto(T objeto)
   this->objeto=objeto;
 };
 
+#endif
 #endif

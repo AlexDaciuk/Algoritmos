@@ -1,5 +1,8 @@
 #ifndef ENLACE_H
 #define ENLACE_H
+#ifndef NULL
+#define NULL 0
+
 /**
  * Clase que define cada enlace entre 2 centrales
  */
@@ -35,7 +38,7 @@ public:
 };
 
 #endif
-
+#endif
   
 
 

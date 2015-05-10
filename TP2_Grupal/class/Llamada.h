@@ -1,5 +1,7 @@
 #ifndef LLAMADA_H
 #define LLAMADA_H
+#ifndef NULL
+#define NULL 0
 #include <string>
 
 class Llamada
@@ -54,4 +56,5 @@ public:
      
 };
 
+#endif
 #endif

@@ -1,8 +1,7 @@
 #ifndef DATOSLLAMADA_H
 #define DATOSLLAMADA_H
-
-
-
+#ifndef NULL
+#define NULL 0
 #include <string>
 #include <sstream>
 
@@ -26,4 +25,5 @@ public:
 
 };
 
+#endif
 #endif

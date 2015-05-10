@@ -1,6 +1,7 @@
 #ifndef LISTA_H
-#define LIsTA_H
-#define NULL=0
+#define LISTA_H
+#ifndef NULL
+#define NULL 0
 #include <iostream>
 
 template <class T>
@@ -44,4 +45,5 @@ void Lista::Insertar( T objeto)
 };
 
 
+#endif
 #endif

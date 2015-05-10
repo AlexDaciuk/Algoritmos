@@ -1,8 +1,10 @@
 #ifndef INTERNOS_H
 #define INTERNOS_H
+#ifndef NULL
+#define NULL 0
 #include "Llamada.h"
 #include <iostream>
-#include <cstddef> 
+ 
 /**
  *Clase que define a cada interno de una central
  */
@@ -56,4 +58,5 @@ class Interno
   bool internoOcupado();
 };
 
+#endif
 #endif

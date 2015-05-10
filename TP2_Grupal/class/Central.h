@@ -1,5 +1,8 @@
 #ifndef CENTRAL_H
 #define CENTRAL_H
+#ifndef NULL
+#define NULL 0
+
 
 /**
  * Clase que maneja cada central 
@@ -52,4 +55,5 @@ public:
 
 };
 
+#endif
 #endif
