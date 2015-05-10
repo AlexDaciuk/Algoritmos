@@ -11,13 +11,13 @@
 
 class Interno
 {
- private:
+private:
   int numero;
   Llamada* punteroASusLlamadas; //apunta siempre a la primer llamada
   Interno* internoSiguiente;
   
-
- public:
+  
+public:
 
   /**
    * Constructor de la clase Interno
