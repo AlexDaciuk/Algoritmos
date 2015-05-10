@@ -4,12 +4,13 @@
 
 Central::Central(int numeroCentralTemporal)
 {
+	
 	this->Central= numeroCentralTemporal;
 	this->listaInternos=NULL;
 	this->listaEnlaces=NULL;
 };
  
- void Central::crearInterno(int numeroCentral, int numeroInterno)
+ void Central::crearInterno(int numeroInterno)
  {
 	 Interno internoTemporal(numeroInterno);
 	 if (this->listaInternos==NULL)
@@ -25,3 +26,9 @@ Central::Central(int numeroCentralTemporal)
 	 }
 };
 		 
+Interno* Central::obtenerPunteroAInterno(int numeroInterno)
+{
+	return listaInternos->obtenerPunteroAlObjeto(numeroIterno);
+};
+
+		
