@@ -24,8 +24,10 @@ void ProcesadorLlamada::procesaLlamadas()
 	}
       else if ( DatosLlamada->accionTemporal == "Enlace")
 	{
-	  this->agregaEnlace();
+	  ListaEnlaces->agregaEnlace(DatosLlamada* punteroDatosLlamadas);
 	}
 
 
+    }
 }
+
