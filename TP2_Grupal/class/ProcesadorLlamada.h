@@ -5,7 +5,24 @@
 
 
 
+class ProcesadorLlamada
+{
+private:
+  
 
+
+
+public:
+
+  
+  buscaCentralMenorPrecio();
+
+  buscaCentralMenorDistancia();
+
+  void procesaLlamada();
+
+
+}
 
 #endif
 #endif
