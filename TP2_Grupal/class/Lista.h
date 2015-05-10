@@ -16,7 +16,7 @@ class Lista<T>
   
     Lista();
     void insertar( T objeto);
-    Nodo<T>* obtenerNumeroObjeto(int numeroDeObjeto);
+    Nodo<T>* obtenerPunteroAlObjeto(int numeroDeObjeto);
     void ponerPrimero(int numeroDeObjeto);
     ~Lista();
 };
@@ -46,7 +46,7 @@ void Lista<T>::insertar( T objeto)
 };
 
 template <class T>
-Nodo<T>* Lista<T>::obtenerNumeroObjeto(int numeroDeObjeto)
+Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
 {
   Nodo<T>* cursor=this->primerNodo;
   while((this->cursor->obtenerObjeto->obtenerNumero != numeroDeObjeto) && (cursor != NULL))
