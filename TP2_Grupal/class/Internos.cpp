@@ -11,7 +11,9 @@ using namespace std;
 Interno::Interno(int numeroInternoTemporal)
 {
   numeroInterno=numeroInternoTemporalTemporal;
-  punteroASusLlamadas= NULL;
+  Lista<Llamada>* punteroASusLlamadas= new Lista<Llamada>;
+  punteroASusLlamadas=NULL;
+  estaOcupado=false;
 };
 
 int Interno::obtenerNumero()
@@ -19,7 +21,7 @@ int Interno::obtenerNumero()
   return numeroInterno;
 };
 
-Llamada* Interno::obtenerPunteroASusLlamadas()
+Lista<Llamada>* Interno::obtenerPunteroASusLlamadas()
 {
   return this->punteroASusLlamadas;
 };
@@ -38,21 +40,21 @@ bool Interno::internoOcupado()
   return (LlamadaEnCurso !=0);
 };
 
-bool Interno::existeReceptor(int receptorLlamadaTemporal)
+Nodo<Llamada>* Interno::existeLlamadaAReceptor(int receptorLlamadaTemporal)
 {
-  Llamada* buscarReceptor=punteroASusLlamadas;
+  Lista<Llamada>* buscarReceptor= this->punteroASusLlamadas;
   int receptor=0;
   
-  while (receptor != receptorLlamadaTemporal && buscarReceptor != null)
+  while (receptor != receptorLlamadaTemporal && buscarReceptor != NULL)
     {
-      receptor=buscarReceptor->obtenerReceptorLlamada();
-      buscarReceptor=buscarReceptor->obtenerPunteroProximaLlamada();
+      receptor=buscarReceptor->obtenerNumero();
+      buscarReceptor=buscarReceptor->obtenerSiguiente;
     }
   
-  return (receptor==receptorLlamadaTemporal);
+  return (buscarReceptor);
 };
 
-void Interno::agregarLlamada(string receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
+void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
 {
   if (! existeReceptor(receptorLlamadaTemporal))
     {
