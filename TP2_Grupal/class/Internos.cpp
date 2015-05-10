@@ -28,16 +28,7 @@ Lista<Llamada>* Interno::obtenerPunteroASusLlamadas()
 
 bool Interno::internoOcupado()
 {
-  Llamada* buscarOcupado=punteroASusLlamadas;
-  int LlamadaEnCurso=0;
-  
-  while (LlamadaEnCurso=0 && buscarOcupado != NULL)
-    {
-      LlamadaEnCurso=buscarOcupado->obtenerHoraInicioLlamadaEnCurso();
-      buscarOcupado=buscarOcupado->obtenerPunteroProximaLlamada();
-    }
-  
-  return (LlamadaEnCurso !=0);
+ return estaOcupado;
 };
 
 Nodo<Llamada>* Interno::existeLlamadaAReceptor(int receptorLlamadaTemporal)
@@ -56,20 +47,16 @@ Nodo<Llamada>* Interno::existeLlamadaAReceptor(int receptorLlamadaTemporal)
 
 void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
 {
-  if (! existeReceptor(receptorLlamadaTemporal))
+ //preguntar si el receptor esta ocupado
+  Nodo<Llamada>* punteroALlamadaTemporal = existeLlamadaAReceptor(receptorLlamadaTemporal);
+  if (punteroALlamadaTemporal == NULL)
     {
-      Llamada* nuevaLlamada= new Llamada (receptorLlamadaTemporal);
-      nuevaLlamada->cambiarPunteroProximaLlamada(punteroASusLlamadas);
-      punteroASusLlamadas=nuevaLlamada;
-      delete nuevaLlamada;
+      this->punteroASusLlamadas->insertar(receptorLlamadaTemporal);
+      this->punteroASusLlamadas->obtenerPrimerNodo->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
     }
   else
     {
-      //verifico que no sea el primer nodo
-      if (this->punteroASusLlamadas->obtenerReceptorLlamada()!=receptorLlamadaTemporal)
-	{
-	  moverLlamadaAlFrente(receptorLlamadaTemporal);
-	}
+        punteroALlamadaTemporal->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
     }
   //exista o no siempre va a quedar al frente 
   punteroASusLlamadas->empezarLlamada(horaInicioLlamadaEnCursoTemporal);

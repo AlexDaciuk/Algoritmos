@@ -16,7 +16,6 @@ private:
   bool estaOcupado;
   Lista<Llamada>* punteroASusLlamadas; //apunta siempre a la primer llamada
   
-  
 public:
 
   /**
