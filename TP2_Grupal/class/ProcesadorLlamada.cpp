@@ -13,11 +13,11 @@ void ProcesadorLlamada::procesaLlamadas()
       
       if ( DatosLlamada->accionTemporal == "Inicio")
 	{
-	  DatosRecorrido* recorridoTmp;
-
 	  if ( opcionAlgoritmo == "Precio")
 	    {
 	      recorridoTmp = this->buscaCentralMenorPrecio;
+
+	      
 	      
 
 	    }
