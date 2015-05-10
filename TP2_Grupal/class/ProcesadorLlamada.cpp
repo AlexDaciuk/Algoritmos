@@ -13,7 +13,7 @@ void ProcesadorLlamada::procesaLlamadas()
       
       if ( DatosLlamada->accionTemporal == "Inicio")
 	{
-	  recorridoTemporal = this->buscaCentralMenorPrecio;
+	  recorridoTemporal = this->buscaCentral;
 	      
 	  this->iniciarLlamada();
 	    
@@ -31,3 +31,21 @@ void ProcesadorLlamada::procesaLlamadas()
     }
 }
 
+
+void ProcesadorLlamada::iniciarLlamada();
+{
+  // Veo si los internos existen o sino, los crea
+  Central->crearInterno(int DatosLlamada->centralA, int DatosLlamada->internoA);
+  Central->crearInterno(int DatosLlamada->centralB, int DatosLlamada->internoB);
+
+  //Obtengo punteros a cada interno
+  Internos* punteroInternoA, punteroInternoB;
+
+  punteroInternoA = Central->obtenerPunteroInterno(int DatosLlamada->centralA, int DatosLlamada->internoA);
+  punteroInternoB = Central->obtenerPunteroInterno(int DatosLlamada->centralB, int DatosLlamada->internoB);
+
+  
+  
+
+
+}
