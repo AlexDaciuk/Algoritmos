@@ -15,13 +15,14 @@
 class DatosLlamada
 {
 private:
-  std::string accion, centralA, internoA, centralB, internoB;
-  int horaInicio;
-
+  std::string accion;
+  int centralA, internoA, centralB, internoB, horaInicio;
+  
 
 public:
 
-  void cargarLlamada(std::string accionTmp, std::string centralATmp, std::string internoATmp, std::string centralBTmp, std::string internoBTmp, std::string horaInicioTmp);
+  void cargarLlamada(std::string accionTemporal, std::string centralATemporal, std::string internoATemporal,
+		     std::string centralBTemporal, std::string internoBTemporal, std::string horaInicioTemporal);
 
 };
 

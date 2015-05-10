@@ -7,17 +7,20 @@ void DatosLlamada::cargarLlamada(std::string accionTmp, std::string centralATmp,
     {
       this->accion = accionTmp;
       
-      this->centralA = centralATmp;
+      std::stringstream centralAStream(centralATemporal);
+      centralAStream >> this->centralA;      
 
-      this->internoA = internoATmp;
-
-      this->centralB = centralBTmp;
+      std::stringstream internoAStream(internoATemporal);
+      internoAStream >> this->internoA;
       
-      this->internoB = internoBTmp;
-      
+      std::stringstream centralBStream(centralBTemporal);
+      centralBstream >> this->centralB;
+    
+      std::stringstream internoBStream(internoBTemporal);
+      internoBStream >> this->internoB;  
+        
       std::stringstream horaInicioStreamTmp(horaInicioTmp);
-      
-      horaInicioStreamTmp >> this-> horaInicio;
+      horaInicioStreamTmp >> this->horaInicio;
       
     }
 }
