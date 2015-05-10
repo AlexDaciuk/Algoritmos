@@ -8,7 +8,7 @@ void ProcesadorLlamada::procesaLlamadas()
       punteroDatosTmp = LectorArcnivos.obtenerDatosLlamada();
 
       //Agrego la centrales, si ya existen no hace nada
-      Central.agregarCentral(string punteroDatosTmp->centralA, string punteroDatosTmp->centralB);
+      Central->agregarCentral(string punteroDatosTmp->centralA, string punteroDatosTmp->centralB);
 
       
       if ( DatosLlamada->accionTemporal == "Inicio")
