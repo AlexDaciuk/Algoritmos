@@ -1,11 +1,11 @@
 #include <string>
 #include <sstream>
 
-void DatosLlamada::cargarLlamada(std::string accionTmp, std::string centralATmp, std::string internoATmp, std::string centralBTmp, std::string internoBTmp, std::string horaInicioTmp)
+void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string centralATemporal, std::string internoATemporal, std::string centralBTemporal, std::string internoBTemporal, std::string horaInicioTemporal)
 {
-  if (! accionTmp.empty())
+  if (! accionTemporal.empty())
     {
-      this->accion = accionTmp;
+      this->accion = accionTemporal;
       
       std::stringstream centralAStream(centralATemporal);
       centralAStream >> this->centralA;      
@@ -19,8 +19,8 @@ void DatosLlamada::cargarLlamada(std::string accionTmp, std::string centralATmp,
       std::stringstream internoBStream(internoBTemporal);
       internoBStream >> this->internoB;  
         
-      std::stringstream horaInicioStreamTmp(horaInicioTmp);
-      horaInicioStreamTmp >> this->horaInicio;
+      std::stringstream horaInicioStreamTemporal(horaInicioTemporal);
+      horaInicioStreamTemporal >> this->horaInicio;
       
     }
 }
