@@ -5,36 +5,36 @@
 Central::Central(int numeroCentralTemporal)
 {
 	
-	this->Central= numeroCentralTemporal;
-	this->listaInternos=NULL;
-	this->listaEnlaces=NULL;
+  this->Central= numeroCentralTemporal;
+  this->listaInternos = new Lista<Interno>;
+  this->listaEnlaces = new Lista<Enlaces>;
 };
- 
- void Central::crearInterno(int numeroInterno)
- {
-	 Interno internoTemporal(numeroInterno);
-	 if (this->listaInternos==NULL)
-	 {
-		 Lista<Interno> listaTemporal;
-		 listaTemporal->Insertar(internoTemporal);
-		 listaInternos= &listaTemporal;
-		 		 
-	 }
-	 else
-	 {
-		 listaInternos->Insertar(internoTemporal);
-	 }
-};
-		 
+
+void Central::crearInterno(int numeroInterno)
+{
+  Interno internoTemporal(numeroInterno);
+  if (this->listaInternos->primerNodo == NULL)
+    {
+      listaInternos->Insertar(internoTemporal);
+    }
+  else if
+    {
+      if (this->listaInternos->obtenerPunteroAlObjeto(numeroInterno) == NULL)
+	{
+	  listaInternos->Insertar(internoTemporal); 
+	}
+    }
+}
+
 Interno* Central::obtenerPunteroAInterno(int numeroInterno)
 {
-	return listaInternos->obtenerPunteroAlObjeto(numeroIterno);
+  return listaInternos->obtenerPunteroAlObjeto(numeroIterno);
 };
 
 
- int Central::obtenerNumero()
- {
-	 return this->Central;
+int Central::obtenerNumero()
+{
+  return this->Central;
 };
 
 		
