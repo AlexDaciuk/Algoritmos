@@ -31,4 +31,10 @@ Interno* Central::obtenerPunteroAInterno(int numeroInterno)
 	return listaInternos->obtenerPunteroAlObjeto(numeroIterno);
 };
 
+
+ int Central::obtenerNumero()
+ {
+	 return this->Central;
+};
+
 		
