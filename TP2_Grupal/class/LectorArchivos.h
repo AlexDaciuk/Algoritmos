@@ -34,7 +34,7 @@ public:
  
   DatosLlamada* obtenerDatosLlamada();
 
-  bool hayLlamadas();
+  bool chequearLlamadas();
 
   /**
    * Destructor

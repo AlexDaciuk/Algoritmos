@@ -39,7 +39,7 @@ DatosLlamada* LectorArchivos::obtenerDatosLlamada()
 }
 
 
-bool LectorArchivos::hayLlamada()
+bool LectorArchivos::chequearLlamada()
 {
   return (this->hayLlamada);
 }
