@@ -4,12 +4,14 @@
 #include <cstddef>
 #include <string>
 #include <iostream>
+#ifndef NULL
+#define NULL 0
 using namespace std;
 
-Interno::Interno(int numeroInternoTmp)
+Interno::Interno(int numeroInternoTemporal)
 {
-  numeroInterno=numeroInternoTmp;
-  punteroASusLlamadas= null;
+  numeroInterno=numeroInternoTemporalTemporal;
+  punteroASusLlamadas= NULL;
 };
 
 int Interno::obtenerNumero()
@@ -36,46 +38,25 @@ bool Interno::internoOcupado()
   return (LlamadaEnCurso !=0);
 };
 
-void Interno::cambiarPunteroASusLlamadas(Llamada* nuevoPuntero)
-{
-  this->punteroASusLlamadas=nuevoPuntero;
-};
-
-bool Interno::existeReceptor(string receptorLlamadaTmp)
+bool Interno::existeReceptor(int receptorLlamadaTemporal)
 {
   Llamada* buscarReceptor=punteroASusLlamadas;
-  string receptor="0";
+  int receptor=0;
   
-  while (receptor != receptorLlamadaTmp && buscarReceptor != null)
+  while (receptor != receptorLlamadaTemporal && buscarReceptor != null)
     {
       receptor=buscarReceptor->obtenerReceptorLlamada();
       buscarReceptor=buscarReceptor->obtenerPunteroProximaLlamada();
     }
   
-  return (receptor==receptorLlamadaTmp);
+  return (receptor==receptorLlamadaTemporal);
 };
 
-void Interno::moverLlamadaAlFrente(string receptorLlamadaTmp)
+void Interno::agregarLlamada(string receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
 {
-  Llamada* llamadaAnterior=punteroASusLlamadas;
-  Llamada* llamadaAMover=llamadaAnterior->obtenerPunteroProximaLlamada() ;
-  
-  while (receptorLlamadaTmp != llamadaAMover->obtenerReceptorLlamada())
+  if (! existeReceptor(receptorLlamadaTemporal))
     {
-      llamadaAnterior=llamadaAMover;
-      llamadaAMover=llamadaAnterior->obtenerPunteroProximaLlamada();
-    }
-  llamadaAnterior->cambiarPunteroProximaLlamada(llamadaAMover->obtenerPunteroProximaLlamada());
-  llamadaAMover->cambiarPunteroProximaLlamada(punteroASusLlamadas);
-  punteroASusLlamadas=llamadaAMover;
-};
-
-
-void Interno::agregarLlamada(string receptorLlamadaTmp, int horaInicioLlamadaEnCursoTmp)
-{
-  if (! existeReceptor(receptorLlamadaTmp))
-    {
-      Llamada* nuevaLlamada= new Llamada (receptorLlamadaTmp);
+      Llamada* nuevaLlamada= new Llamada (receptorLlamadaTemporal);
       nuevaLlamada->cambiarPunteroProximaLlamada(punteroASusLlamadas);
       punteroASusLlamadas=nuevaLlamada;
       delete nuevaLlamada;
@@ -83,16 +64,17 @@ void Interno::agregarLlamada(string receptorLlamadaTmp, int horaInicioLlamadaEnC
   else
     {
       //verifico que no sea el primer nodo
-      if (this->punteroASusLlamadas->obtenerReceptorLlamada()!=receptorLlamadaTmp)
+      if (this->punteroASusLlamadas->obtenerReceptorLlamada()!=receptorLlamadaTemporal)
 	{
-	  moverLlamadaAlFrente(receptorLlamadaTmp);
+	  moverLlamadaAlFrente(receptorLlamadaTemporal);
 	}
     }
   //exista o no siempre va a quedar al frente 
-  punteroASusLlamadas->empezarLlamada(horaInicioLlamadaEnCursoTmp);
-}
+  punteroASusLlamadas->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
+};
 
 
+#endif
 
 
 
