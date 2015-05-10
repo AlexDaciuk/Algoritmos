@@ -15,9 +15,9 @@ class Lista<T>
   public:
   
     Lista();
-    void Insertar( T objeto);
-    void Borrar(int codigo);//El codigo con el que identificamos al objeto en la lista
-    void PonerPrimero(int codigo);
+    void insertar( T objeto);
+    Nodo<T>* buscarNodo(int numeroDeObjeto);
+    void ponerPrimero(int codigo);
 };
 
 template <class T>
@@ -28,7 +28,7 @@ Lista::Lista()
 };
 
 template <class T>
-void Lista::Insertar( T objeto)
+void Lista::insertar( T objeto)
 {
   Nodo<T>* nuevoNodo= new Nodo<T>(objeto);
   if (ultimoNodo!=NULL)
@@ -44,6 +44,12 @@ void Lista::Insertar( T objeto)
   }
 };
 
-
+template <class T>
+Nodo<T>* Lista::buscarNodo(int numeroDeObjeto)
+{
+  Nodo<T>* cursor=this->primerNodo;
+  while((this->cursor->obtenerObjeto->obtenerNumero != numeroDeObjeto) && (cursor != NULL))
+    cursor=cursor->obtenerSiguiente;
+};
 #endif
 #endif
