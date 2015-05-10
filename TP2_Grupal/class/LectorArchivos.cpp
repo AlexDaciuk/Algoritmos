@@ -51,6 +51,6 @@ bool LectorArchivos::chequearLlamada()
 LectorArchivos::~LectorArchivos()
 {
   
-  delete this->datosLlamadasTmp;
+  delete this->datosLlamadasTemporal;
   
 }

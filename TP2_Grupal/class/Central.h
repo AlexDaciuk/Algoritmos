@@ -26,7 +26,7 @@ public:
    * Post: Va a quedar creada el nodo en la lista de centrales 
    */
   
-  Central(int numeroCentralTmp);
+  Central(int numeroCentralTemporal);
   
 
   /**

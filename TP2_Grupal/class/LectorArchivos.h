@@ -18,7 +18,7 @@ class LectorArchivos
 {
 private:
   std::string rutaArchivo;
-  DatosLlamada* datosLlamadaTmp;
+  DatosLlamada* datosLlamadaTemporal;
   std::ifstream archivo;
   bool hayLlamadas;
   
