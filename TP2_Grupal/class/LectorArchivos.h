@@ -34,6 +34,7 @@ public:
  
   DatosLlamada* obtenerDatosLlamada();
 
+  bool hayLlamadas();
 
   /**
    * Destructor
