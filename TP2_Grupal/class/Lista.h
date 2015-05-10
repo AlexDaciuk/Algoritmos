@@ -16,19 +16,20 @@ class Lista<T>
   
     Lista();
     void insertar( T objeto);
-    Nodo<T>* buscarNodo(int numeroDeObjeto);
+    Nodo<T>* obtener(int numeroDeObjeto);
     void ponerPrimero(int codigo);
+    ~Lista();
 };
 
 template <class T>
-Lista::Lista()
+Lista<T>::Lista()
 {
   this->primerNodo=NULL;
   this->ultimoNodo=NULL;
 };
 
 template <class T>
-void Lista::insertar( T objeto)
+void Lista<T>::insertar( T objeto)
 {
   Nodo<T>* nuevoNodo= new Nodo<T>(objeto);
   if (ultimoNodo!=NULL)
@@ -45,11 +46,26 @@ void Lista::insertar( T objeto)
 };
 
 template <class T>
-Nodo<T>* Lista::buscarNodo(int numeroDeObjeto)
+Nodo<T>* Lista<T>::obtener(int numeroDeObjeto)
 {
   Nodo<T>* cursor=this->primerNodo;
   while((this->cursor->obtenerObjeto->obtenerNumero != numeroDeObjeto) && (cursor != NULL))
     cursor=cursor->obtenerSiguiente;
+    
+    return cursor;
 };
+
+template <class T>
+Lista<T>::~Lista() 
+{
+   while (this->primerNodo != NULL) {
+
+        Nodo<T>* aBorrar = this->primerNodo;
+        this->primerNodo = this->primerNodo->obtenerSiguiente();
+
+        delete aBorrar;
+    }
+};
+
 #endif
 #endif
