@@ -37,31 +37,31 @@ void Llamada::terminarLlamada (int horaFinLlamadaEnCursoTmp)
 
 Llamada* Llamada::obtenerPunteroProximaLlamada()
 {
-	return this->punteroProximaLlamada;
+  return this->punteroProximaLlamada;
 };
 
 void Llamada::cambiarPunteroProximaLlamada(Llamada* nuevoPunteroALlamada)
 {
-	this->punteroProximaLlamada=nuevoPunteroALlamada;
+  this->punteroProximaLlamada=nuevoPunteroALlamada;
 };
 
 string Llamada::obtenerReceptorLlamada()
 {
-	return (receptorLlamada);
+  return (receptorLlamada);
 }; 
 
 int Llamada::obtenerDuracionLlamadas()
 {
-	return this->duracionLlamadas;
+  return this->duracionLlamadas;
 };
 
 int Llamada::obtenerCantidadOcupadosDados()
 {
-	return this->cantidadOcupadosDados;
+  return this->cantidadOcupadosDados;
 };
 
 
 int Llamada::obtenerCantidadOcupadosRecibidos()
 {
-	return this->cantidadOcupadosRecibidos;
+  return this->cantidadOcupadosRecibidos;
 };
