@@ -39,7 +39,7 @@ void Nodo<T>::cambiarNodoSiguiente(Nodo<T>* nodoSiguiente)
 };
 
 template <class T>
-void cambiarNodoAnterior(Nodo<T>* nodoAnterior)
+void Nodo<T>::cambiarNodoAnterior(Nodo<T>* nodoAnterior)
 {
   this->nodoAnterior=nodoAnterior;
 };
