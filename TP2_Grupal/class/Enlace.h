@@ -21,7 +21,7 @@ public:
    */
   
 
-  Enlace(int centralATemporal, int centralBTemporal, int distanciaTemporal, int cantidadEnlaceTemporal, int costoPorMinutoTemporal);
+  Enlace(int centralATemporal, int centralBTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal);
 
 
   /**
