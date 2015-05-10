@@ -12,7 +12,7 @@ Interno::Interno(int numeroInternoTmp)
   punteroASusLlamadas= null;
 };
 
-int Interno::obtenerNumeroInterno()
+int Interno::obtenerNumero()
 {
   return numeroInterno;
 };

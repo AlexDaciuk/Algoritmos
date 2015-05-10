@@ -36,6 +36,15 @@ public:
   
   void crearInterno(int numeroInterno);
   
+
+  /**
+   * Metodo que devuelve el numero de la central
+   */
+
+  int obtenerNumero();
+  
+
+
 };
 
 #endif

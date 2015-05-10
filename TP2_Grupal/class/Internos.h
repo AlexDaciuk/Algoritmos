@@ -27,7 +27,7 @@ class Interno
   Interno(int numeroInternoTmp);
   
   /*post: devuelve el numero del interno.*/
-  int obtenerNumeroInterno();
+  int obtenerNumero();
   
   /*post: agrega una nueva llamada a la lista de llamadas del interno que 
    * realiza la llamada y la ubica al principio de la lista.
