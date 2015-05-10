@@ -19,12 +19,11 @@ void ProcesadorLlamada::procesaLlamadas()
 
 	      
 	      
-
 	    }
-	  else if (opcionAlgoritmo == "Distancia")
+	  else if ( opcionAlgoritmo == "Distancia")
 	    {
 	      recorridoTmp = this->buscaCentralMenorDistancia;
-
+	      
 	      
 
 	    }
