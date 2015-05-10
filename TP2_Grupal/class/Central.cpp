@@ -13,16 +13,9 @@ Central::Central(int numeroCentralTemporal)
 void Central::crearInterno(int numeroInterno)
 {
   Interno internoTemporal(numeroInterno);
-  if (this->listaInternos->primerNodo == NULL)
+  if ( (this->listaInternos->primerNodo == NULL) || (this->listaInternos->obtenerPunteroAlObjeto(numeroInterno) == NULL) )
     {
       listaInternos->Insertar(internoTemporal);
-    }
-  else if
-    {
-      if (this->listaInternos->obtenerPunteroAlObjeto(numeroInterno) == NULL)
-	{
-	  listaInternos->Insertar(internoTemporal); 
-	}
     }
 }
 
