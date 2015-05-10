@@ -23,7 +23,7 @@ public:
 
   /**
    * Constuctor de la clase
-   * Post: Va a quedar creada la central 
+   * Post: Va a quedar creada el nodo en la lista de centrales 
    */
   
   Central(int numeroCentralTmp);
@@ -34,7 +34,7 @@ public:
    * otra central y el interno en cuestion no existe
    */
   
-  void crearInterno(int numeroInterno);
+  void crearInterno(int numeroCentral, int numeroInterno);
   
 
   /**
