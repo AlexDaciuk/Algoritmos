@@ -29,7 +29,7 @@ bool Interno::internoOcupado()
   Llamada* buscarOcupado=punteroASusLlamadas;
   int LlamadaEnCurso=0;
   
-  while (LlamadaEnCurso=0 && buscarOcupado != null)
+  while (LlamadaEnCurso=0 && buscarOcupado != NULL)
     {
       LlamadaEnCurso=buscarOcupado->obtenerHoraInicioLlamadaEnCurso();
       buscarOcupado=buscarOcupado->obtenerPunteroProximaLlamada();
