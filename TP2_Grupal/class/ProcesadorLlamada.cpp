@@ -13,20 +13,10 @@ void ProcesadorLlamada::procesaLlamadas()
       
       if ( DatosLlamada->accionTemporal == "Inicio")
 	{
-	  if ( opcionAlgoritmo == "Precio")
-	    {
-	      recorridoTemporal = this->buscaCentralMenorPrecio;
+	  recorridoTemporal = this->buscaCentralMenorPrecio;
 	      
-	      this->iniciarLlamada();
-	      
-	    }
-	  else if ( opcionAlgoritmo == "Distancia")
-	    {
-	      recorridoTemporal = this->buscaCentralMenorDistancia;
-	      
-	      this->iniciarLlamada();
-
-	    }
+	  this->iniciarLlamada();
+	    
 	}
       else if ( DatosLlamada->accionTemporal == "Fin")
 	{
