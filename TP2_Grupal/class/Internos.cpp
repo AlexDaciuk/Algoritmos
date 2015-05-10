@@ -8,9 +8,9 @@
 #define NULL 0
 using namespace std;
 
-Interno::Interno(int numeroInternoTmp)
+Interno::Interno(int numeroInternoTemporal)
 {
-  numeroInterno=numeroInternoTmp;
+  numeroInterno=numeroInternoTemporalTemporal;
   punteroASusLlamadas= NULL;
 };
 
@@ -38,30 +38,25 @@ bool Interno::internoOcupado()
   return (LlamadaEnCurso !=0);
 };
 
-void Interno::cambiarPunteroASusLlamadas(Llamada* nuevoPuntero)
-{
-  this->punteroASusLlamadas=nuevoPuntero;
-};
-
-bool Interno::existeReceptor(int receptorLlamadaTmp)
+bool Interno::existeReceptor(int receptorLlamadaTemporal)
 {
   Llamada* buscarReceptor=punteroASusLlamadas;
   int receptor=0;
   
-  while (receptor != receptorLlamadaTmp && buscarReceptor != null)
+  while (receptor != receptorLlamadaTemporal && buscarReceptor != null)
     {
       receptor=buscarReceptor->obtenerReceptorLlamada();
       buscarReceptor=buscarReceptor->obtenerPunteroProximaLlamada();
     }
   
-  return (receptor==receptorLlamadaTmp);
+  return (receptor==receptorLlamadaTemporal);
 };
 
-void Interno::agregarLlamada(string receptorLlamadaTmp, int horaInicioLlamadaEnCursoTmp)
+void Interno::agregarLlamada(string receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
 {
-  if (! existeReceptor(receptorLlamadaTmp))
+  if (! existeReceptor(receptorLlamadaTemporal))
     {
-      Llamada* nuevaLlamada= new Llamada (receptorLlamadaTmp);
+      Llamada* nuevaLlamada= new Llamada (receptorLlamadaTemporal);
       nuevaLlamada->cambiarPunteroProximaLlamada(punteroASusLlamadas);
       punteroASusLlamadas=nuevaLlamada;
       delete nuevaLlamada;
@@ -69,13 +64,13 @@ void Interno::agregarLlamada(string receptorLlamadaTmp, int horaInicioLlamadaEnC
   else
     {
       //verifico que no sea el primer nodo
-      if (this->punteroASusLlamadas->obtenerReceptorLlamada()!=receptorLlamadaTmp)
+      if (this->punteroASusLlamadas->obtenerReceptorLlamada()!=receptorLlamadaTemporal)
 	{
-	  moverLlamadaAlFrente(receptorLlamadaTmp);
+	  moverLlamadaAlFrente(receptorLlamadaTemporal);
 	}
     }
   //exista o no siempre va a quedar al frente 
-  punteroASusLlamadas->empezarLlamada(horaInicioLlamadaEnCursoTmp);
+  punteroASusLlamadas->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
 };
 
 

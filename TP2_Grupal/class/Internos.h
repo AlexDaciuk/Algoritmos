@@ -23,7 +23,7 @@ public:
    * Post: Queda creado el interno con el numero asignado
    */
   
-  Interno(int numeroInternoTmp);
+  Interno(int numeroInternoTemporal);
   
   /*post: devuelve el numero del interno.*/
   int obtenerNumero();
@@ -33,13 +33,10 @@ public:
    * En el caso de que ya exista un nodo en la lista con el interno receptor se lleva
    * ese nodo al principio y se suman 
    * los datos directamente ahi, no se crea ningun nodo.*/
-  void agregarLlamada(std::string receptorLlamadaTmp, int horaInicioLlamadaEnCursoTmp);
+  void agregarLlamada(std::string receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal);
   
   /*post: devuelve el puntero a la lista de llamadas del interno*/
   Llamada* obtenerPunteroASusLlamadas();
-  
-  /*post: cambia la direccion del puntero a la lista de llamadas del interno.*/
-  void cambiarPunteroASusLlamadas(Llamada* nuevoPuntero);
   
    /*post: recorre la lista de llamadas del interno emisor y busca si ya existe un nodo
     * con datos pertenecientes a interacciones con el interno receptor. En ese caso devuele
