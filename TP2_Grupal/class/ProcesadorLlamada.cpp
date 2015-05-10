@@ -5,10 +5,12 @@ void ProcesadorLlamada::procesaLlamadas()
 {
   while ( LectorArchivos.chequearLLamada() )
     {
-      DatosLlamada* punteroDatosTmp;
-
       punteroDatosTmp = LectorArcnivos.obtenerDatosLlamada();
 
+      //Agrego la centrales, si ya existen no hace nada
+      Central.agregarCentral(string punteroDatosTmp->centralA, string punteroDatosTmp->centralB);
+
+      
       if ( DatosLlamada->accionTemporal == "Inicio")
 	{
 	  DatosRecorrido* recorridoTmp;
@@ -31,16 +33,11 @@ void ProcesadorLlamada::procesaLlamadas()
 	}
       else if ( DatosLlamada->accionTemporal == "Fin")
 	{
-
-
 	  
 	}
       else if ( DatosLlamada->accionTemporal == "Enlace")
 	{
-
-
-
-
+	  this->agregaEnlace();
 	}
 
 
