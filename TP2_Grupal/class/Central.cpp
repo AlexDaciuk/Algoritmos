@@ -15,13 +15,13 @@ void Central::crearInterno(int numeroInterno)
   Interno internoTemporal(numeroInterno);
   if ( (this->listaInternos->primerNodo == NULL) || (this->listaInternos->obtenerPunteroAlObjeto(numeroInterno) == NULL) )
     {
-      listaInternos->Insertar(internoTemporal);
+      this->listaInternos->Insertar(internoTemporal);
     }
 }
 
 Interno* Central::obtenerPunteroAInterno(int numeroInterno)
 {
-  return listaInternos->obtenerPunteroAlObjeto(numeroIterno);
+  return this->listaInternos->obtenerPunteroAlObjeto(numeroIterno);
 };
 
 
