@@ -15,9 +15,9 @@ private:
   
   int Central;
   
-  ListaInternos* listaInternos;
+  Lista<Internos>* listaInternos;
   // Puntero a la lista de enlaces general
-  ListaEnlaces* listaEnlaces;
+  Lista<Enlaces>* listaEnlaces;
 
 public:
 
