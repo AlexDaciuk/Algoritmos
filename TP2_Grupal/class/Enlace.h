@@ -37,13 +37,23 @@ public:
   Central* obtenerPunteroCentralA();
   Central* obtenerPunteroCentralB();
 
-  /**
-   * Metodos que van a cambiar la disponibilidad de cada enlace
-   * ya sea agregando una llamada o eliminandola
+   /**
+   * Metodo que devuelve true si se puede realizar una llamada mediante el enlace,
+   * en caso contrario, devuelve false
    */
+
+  bool chequearDisponibilidadCanales();
+
+  
+
+  /**                                                                                                                                                          * Metodos que van a cambiar la disponibilidad de cada enlace                                                                                             
+   * ya sea agregando una llamada o eliminandola                                                                                                               */   
+
   void agregarLlamadaEnCurso();
 
   void eliminarLlamadaEnCurso();
+
+
   
 };
 

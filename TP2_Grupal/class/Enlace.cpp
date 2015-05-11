@@ -45,3 +45,25 @@ Central* Enlace::obtenerPunteroCentralB()
 {
   return this->punteroCentralB;
 }
+
+bool Enlace::chequearDisponibilidadCanales()
+{
+  bool disponibleTemporal = false;
+  
+  if (this->cantidadCanalesEnUso < this->cantidadDeCanales)
+    {
+      disponibleTemporal = true;
+    }
+
+  return (disponibleTemporal);
+}
+
+
+void Enlace::agregarLlamadaEnCurso()
+{
+  if ( this->chequearDisponibilidad() )
+    {
+      this->cantidadCanalesEnUso++
+    }
+
+}
