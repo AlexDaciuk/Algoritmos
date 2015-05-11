@@ -10,3 +10,38 @@ Enlace::Enlace(int centralATemporal, int centralBTemporal, int distanciaTemporal
   this->punteroCentralA = ListaCentrales->obtenerPunteroAlObjeto(centralATemporal);
   this->punteroCentralB = ListaCentrales->obtenerPunteroAlObjeto(centralBTemporal);
 }
+
+int Enlace::obtenerCentralA()
+{
+  return (punteroCentralA->Central);
+}
+
+int Enlace::obtenerCentralB()
+{
+  return (punteroCentralB->Central);
+}
+
+int Enlace::obtenerDistancia()
+{
+  return this->distanciaKm;
+}
+
+int Enlace::obtenerPrecio()
+{
+  return this->costoPorMinuto;
+}
+
+int Enlace::obtenerCantidadEnlacesEnUso()
+{
+  return this->cantidadCanalesEnUso;
+}
+
+Central* Enlace::obtenerPunteroCentralA()
+{
+  return this->punteroCentralA;
+}
+
+Central* Enlace::obtenerPunteroCentralB()
+{
+  return this->punteroCentralB;
+}
