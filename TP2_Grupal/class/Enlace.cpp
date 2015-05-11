@@ -67,3 +67,11 @@ void Enlace::agregarLlamadaEnCurso()
     }
 
 }
+
+void Enlace::eliminarLlamadaEnCurso()
+{
+  if (this->cantidadCanalesEnUso > 0)
+    {
+      this->cantidadCanalesEnUso--;
+    }
+}
