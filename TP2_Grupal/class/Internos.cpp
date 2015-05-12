@@ -34,7 +34,7 @@ bool Interno::internoOcupado()
 Nodo<Llamada>* Interno::existeLlamadaAReceptor(int receptorLlamadaTemporal)
 {
   Lista<Llamada>* buscarReceptor= this->punteroASusLlamadas;
-  int receptor=0;
+  int receptor=buscarReceptor->obtenerNumero();
   
   while (receptor != receptorLlamadaTemporal && buscarReceptor != NULL)
     {
