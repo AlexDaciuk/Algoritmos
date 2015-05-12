@@ -41,15 +41,18 @@ void ProcesadorLlamada::iniciarLlamada();
   punteroInternoB->agregarLlamadaReceptor(DatosLlamada->obtenerInternoA(), DatosLlamada->obtenerHora(), DatosRecorrido* recorridoTemporal);
   
   //Cambio la disponibilidad de los enlaces
-  Enlace* punteroEnlaceTemporal = this->punteroRecorridoTemporal->ObtenerPunteroARuta
-    // Esto hay que cambiarlo, usar un cursor dentro de la lista
-    // u otro metodo inclusive
-    /* while ( recorridoTemporal->punteroARuta != NULL ) 
-    {
-      punteroEnlaceTemporal->agregarLlamadaEnCurso();
+  Enlace* punteroEnlaceTemporal = this->punteroRecorridoTemporal->ObtenerPunteroARuta;
 
-      punteroEnlaceTemporal = punteroEnlaceTemporal->obtenerSiguiente();
-      }*/
+  /**
+   *  Esto hay que cambiarlo, usar un cursor dentro de la lista
+   * u otro metodo inclusive
+   * while ( recorridoTemporal->punteroARuta != NULL ) 
+   *{
+   *punteroEnlaceTemporal->agregarLlamadaEnCurso();
+   *
+   *punteroEnlaceTemporal = punteroEnlaceTemporal->obtenerSiguiente();
+   *}
+   */
 }
 
 
