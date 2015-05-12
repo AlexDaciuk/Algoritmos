@@ -18,9 +18,9 @@ int Interno::obtenerNumero()
   return this->numeroInterno;
 };
 
-Lista<Llamada>* Interno::obtenerPunteroASusLlamadas()
+Lista<Llamada>* Interno::obtenerPunteroALlamadas()
 {
-  return this->punteroASusLlamadas;
+  return this->punteroALlamadas;
 };
 
 bool Interno::internoOcupado()
@@ -28,23 +28,36 @@ bool Interno::internoOcupado()
   return this->estaOcupado;
 };
 
-Nodo<Llamada>* Interno::existeLlamadaAReceptor(int receptorLlamadaTemporal)
+Nodo<Llamada>* Interno::existeReceptorLlamada(int receptorLlamadaTemporal)
 {
   Lista<Llamada>* buscarReceptor= this->punteroASusLlamadas;
   int receptor=buscarReceptor->obtenerNumero();
   
   /**
    * Esto hay que cambiarlo para que use el cursor
-    while (receptor != receptorLlamadaTemporal && buscarReceptor != NULL)
-    {
-    receptor=buscarReceptor->obtenerNumero();
-    buscarReceptor=buscarReceptor->obtenerSiguiente;
-    }
-    
-    return (buscarReceptor);
-  */
+   *while (receptor != receptorLlamadaTemporal && buscarReceptor != NULL)
+   *    {
+   * receptor=buscarReceptor->obtenerNumero();
+   *buscarReceptor=buscarReceptor->obtenerSiguiente;
+   *}
+   *
+   *return (buscarReceptor);
+   */
 };
 
+//agregarLlamadaEmisor(DatosLlamada->obtenerInternoB(), DatosLlamada->obtenerHora(), DatosRecorrido* recorridoTemporal)
+/**
+ * El internoB es el que recibe la llamada por ende, se lo paso al 
+ * emisor asi puede registrar a quien llamo
+ */
+
+void Interno::agregarLlamadaEmisor(int InternoBTemporal, int horaTemporal, DatosRecorrido* recorridoTemporal)
+{
+  // Obtengo el puntero al interno que emite la llamada
+  Internos* punteroEmisorTemporal = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->obtenerCentralA(), DatosLlamada->obtenerInternoA() );
+  
+
+}
 void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
 {
   Nodo<Llamada>* punteroALlamadaTemporal = existeLlamadaAReceptor(receptorLlamadaTemporal);
