@@ -12,8 +12,7 @@ void ProcesadorLlamada::procesaLlamadas()
       
       if ( DatosLlamada->accionTemporal == "Inicio")
 	{
-	  punteroRecorridoTemporal = this->buscaCentral;
-	      
+	  punteroRecorridoTemporal = this->buscaCentral; 
 	  this->iniciarLlamada();  
 	}
       else if ( DatosLlamada->accionTemporal == "Fin")
@@ -47,6 +46,7 @@ void ProcesadorLlamada::iniciarLlamada();
   //Cambio la disponibilidad de los enlaces
   Enlace* punteroEnlaceTemporal = this->punteroRecorridoTemporal->ObtenerPunteroARuta
     // Esto hay que cambiarlo, usar un cursor dentro de la lista
+    // u otro metodo inclusive
     /* while ( recorridoTemporal->punteroARuta != NULL ) 
     {
       punteroEnlaceTemporal->agregarLlamadaEnCurso();
