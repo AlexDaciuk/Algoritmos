@@ -20,7 +20,7 @@ public:
    * Si el receptor no esta en el rango, se deja en 0 el receptor de la llamada
    */
   
-  Llamada (int receptorLlamadaTemporal);
+  Llamada(int receptorLlamadaTemporal);
   
   /*post: guarda la hora de comienzo de la llamada y aumeta el numero de 
    * llamadas en uno.*/
