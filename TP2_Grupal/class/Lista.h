@@ -20,6 +20,9 @@ class Lista<T>
     void insertar( T objeto);
     Nodo<T>* obtenerPunteroAlObjeto(int numeroDeObjeto);
     void ponerPrimero(int numeroDeObjeto);
+    T obtenerCursorNodo();
+    bool avanzarCursorNodo();
+    void iniciarCursorNodo()
     ~Lista();
 };
 
