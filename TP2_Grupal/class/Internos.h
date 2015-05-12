@@ -13,7 +13,7 @@ class Interno
  private:
   int numeroInterno;
   bool estaOcupado;
-  Lista<Llamada>* punteroASusLlamadas; //apunta siempre a la primer llamada
+  Lista<Llamada>* punteroALlamadas; //apunta siempre a la primer llamada
   
  public:
   
@@ -40,14 +40,14 @@ class Interno
   /**
    *post: devuelve el puntero a la lista de llamadas del interno
    */
-  Lista<Llamada>* obtenerPunteroASusLlamadas();
+  Lista<Llamada>* obtenerPunteroALlamadas();
   
   /**
     *post: recorre la lista de llamadas del interno emisor y busca si ya existe un nodo
     * con datos pertenecientes a interacciones con el interno receptor. En ese caso devuele
     * verdadero, si no falso.
     */
-  Nodo<Llamada>* existeLlamadaAReceptor(int receptor);
+  Nodo<Llamada>* existeReceptorLlamada(int receptor);
     
   /**
    *post: recorre la lista de llamadas del interno y se fija si en algun nodo la hora
