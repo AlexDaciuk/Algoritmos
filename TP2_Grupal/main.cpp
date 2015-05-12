@@ -23,17 +23,17 @@ int main()
 
   int opcionTmp;
 
-  std::cin >> opcionTmp;
-
-  
-  if ( opcionTmp == 1)
-    {
+  std::cin >> opcionTemporal;
+  switch (opcionTemporal)
+  {
+    case 1:
       opcionAlgoritmo = "Precio";
-    }
-  else if ( opcionTmp == 2)
-    {
+      break;
+    case 2:
       opcionAlgoritmo = "Distancia";
-    }
+      break;
+  }
+  
 
   
   
