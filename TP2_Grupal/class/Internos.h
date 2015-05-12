@@ -35,7 +35,7 @@ class Interno
    * ese nodo al principio y se suman 
    * los datos directamente ahi, no se crea ningun nodo.
    */
-  void agregarLlamada(std::string receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal);
+  void agregarLlamadaEmisor(std::string receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal);
   
   /**
    *post: devuelve el puntero a la lista de llamadas del interno
@@ -45,7 +45,7 @@ class Interno
   /**
     *post: recorre la lista de llamadas del interno emisor y busca si ya existe un nodo
     * con datos pertenecientes a interacciones con el interno receptor. En ese caso devuele
-    * verdadero, si no falso.
+    * de que exista, devuelve el 
     */
   Nodo<Llamada>* existeReceptorLlamada(int receptor);
     
