@@ -9,37 +9,29 @@
 
 
 
-
-
 int main()
 {
-
+  
   std::string opcionAlgoritmo;
-
-
+  
+  
   std::cout << "Quiere usar algoritmo de: \n";
   std::cout << "1) Precio mas bajo \n";
   std::cout << "2) Distancia mas corta \n";
-
-  int opcionTmp;
-
+  
+  int opcionTemporal;
+  
   std::cin >> opcionTemporal;
   switch (opcionTemporal)
-  {
+    {
     case 1:
       opcionAlgoritmo = "Precio";
       break;
+      
     case 2:
       opcionAlgoritmo = "Distancia";
       break;
-  }
-  
-
-  
-  
-  
-
-
+    }
   
   return 0;
 }
