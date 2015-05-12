@@ -44,10 +44,10 @@ class Interno
   
   /**
     *post: recorre la lista de llamadas del interno emisor y busca si ya existe un nodo
-    * con datos pertenecientes a interacciones con el interno receptor. En ese caso devuele
-    * de que exista, devuelve el 
+    * con datos pertenecientes a interacciones con el interno receptor. En ese caso de no
+    * existir la llamada, la crea
     */
-  Nodo<Llamada>* existeReceptorLlamada(int receptor);
+  void creaReceptorLlamada(int receptor);
     
   /**
    *post: recorre la lista de llamadas del interno y se fija si en algun nodo la hora
