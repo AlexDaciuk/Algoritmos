@@ -1,24 +1,21 @@
 
 #include "Llamada.h"
 #include "Internos.h"
-#include <cstddef>
 #include <string>
-#include <iostream>
 #ifndef NULL
 #define NULL 0
-using namespace std;
+
 
 Interno::Interno(int numeroInternoTemporal)
 {
-  numeroInterno=numeroInternoTemporalTemporal;
+  this->numeroInterno = numeroInternoTemporal;
   Lista<Llamada>* punteroASusLlamadas= new Lista<Llamada>;
-  punteroASusLlamadas=NULL;
-  estaOcupado=false;
+  this->estaOcupado=false;
 };
 
 int Interno::obtenerNumero()
 {
-  return numeroInterno;
+  return this->numeroInterno;
 };
 
 Lista<Llamada>* Interno::obtenerPunteroASusLlamadas()
@@ -28,7 +25,7 @@ Lista<Llamada>* Interno::obtenerPunteroASusLlamadas()
 
 bool Interno::internoOcupado()
 {
- return estaOcupado;
+  return this->estaOcupado;
 };
 
 Nodo<Llamada>* Interno::existeLlamadaAReceptor(int receptorLlamadaTemporal)
@@ -36,13 +33,16 @@ Nodo<Llamada>* Interno::existeLlamadaAReceptor(int receptorLlamadaTemporal)
   Lista<Llamada>* buscarReceptor= this->punteroASusLlamadas;
   int receptor=buscarReceptor->obtenerNumero();
   
-  while (receptor != receptorLlamadaTemporal && buscarReceptor != NULL)
+  /**
+   * Esto hay que cambiarlo para que use el cursor
+    while (receptor != receptorLlamadaTemporal && buscarReceptor != NULL)
     {
-      receptor=buscarReceptor->obtenerNumero();
-      buscarReceptor=buscarReceptor->obtenerSiguiente;
+    receptor=buscarReceptor->obtenerNumero();
+    buscarReceptor=buscarReceptor->obtenerSiguiente;
     }
-  
-  return (buscarReceptor);
+    
+    return (buscarReceptor);
+  */
 };
 
 void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
@@ -55,7 +55,7 @@ void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaE
     }
   else
     {
-        punteroALlamadaTemporal->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
+      punteroALlamadaTemporal->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
     }
 };
 
