@@ -28,22 +28,27 @@ bool Interno::internoOcupado()
   return this->estaOcupado;
 };
 
-Nodo<Llamada>* Interno::existeReceptorLlamada(int receptorLlamadaTemporal)
+void Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 {
-  Nodo<Llamada>* punteroANodoLlamada = NULL;
-
   Lista<Llamada>* punteroLlamadasTemporal = this->punteroALlamadas;
   
-  punteroLlamadasTemporal->iniciarCursorLista();
+  bool existeLlamada = false;
   
-  // Esto hay que cambiarlo para que use el cursor
-  while ( punteroALlamada == NULL | )
+  cursorLlamadasTemporal->iniciarCursorNoto();
+  
+  while ( punteroLlamadasTemporal->avanzarCursorNodo() )
     {
-      
+      Nodo<Llamada> nodoLlamadaTemporal = punteroLlamadasTemporal->obtenerCursorNodo();
+      if (nodoLlamadaTemporal->obtenerReceptorLlamada() = receptorLlamadaTemporal)
+	{
+	  existeLlamada = true;
+	}
     }
   
-  return (punteroALlamada);
-  
+  if (! existeLlamada)
+    {
+      punteroLlamadasTemporal->insertar( Llamada(receptorLlamadaTemporal) );
+    }  
 };
 
 //agregarLlamadaEmisor(DatosLlamada->obtenerInternoB(), DatosLlamada->obtenerHora(), DatosRecorrido* recorridoTemporal)
