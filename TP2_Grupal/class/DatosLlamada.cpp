@@ -24,3 +24,32 @@ void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string central
       
     }
 }
+
+std::string DatosLlamada::obtenerAccion()
+{
+  return this->accion;
+}
+
+int DatosLlamada::obtenerCentralA()
+{
+  return this->centralA;
+}
+int DatosLlamada::obtenerCentralB()
+{
+  return this->centralB;
+}
+
+int DatosLlamada::obtenerInternoA()
+{
+  return this->internoA;
+}
+
+int DatosLlamada::obtenerInternoB()
+{
+  return this->internoB;
+}
+
+int DatosLlamada::obtenerHoraInicio()
+{
+  return this->horaInicio
+}
