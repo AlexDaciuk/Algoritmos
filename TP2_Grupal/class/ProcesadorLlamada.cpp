@@ -31,27 +31,28 @@ void ProcesadorLlamada::procesaLlamadas()
 void ProcesadorLlamada::iniciarLlamada();
 {
   // Veo si los internos existen o sino, los crea
-  punteroListaCentrales->crearInterno(DatosLlamada->centralA, DatosLlamada->internoA);
-  punteroListaCentrales->crearInterno(DatosLlamada->centralB, DatosLlamada->internoB);
+  punteroListaCentrales->crearInterno(DatosLlamada->obtenerCentralA, DatosLlamada->obtenerInternoA);
+  punteroListaCentrales->crearInterno(DatosLlamada->obtenerCentralB, DatosLlamada->obtenerInternoB);
 
   //Obtengo punteros a cada interno
   Internos* punteroInternoA, punteroInternoB;
 
-  punteroInternoA = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->centralA, DatosLlamada->internoA);
-  punteroInternoB = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->centralB, DatosLlamada->internoB);
+  punteroInternoA = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->obtenerCentralA, DatosLlamada->obtenerInternoA);
+  punteroInternoB = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->obtenerCentralB, DatosLlamada->obtenerInternoB);
 
   //Agrego la llamada a cada interno
-  punteroInternoA->agregarLlamadaEmisor(DatosLlamada->internoB, DatosLlamada->horaInicio, DatosRecorrido* recorridoTemporal);
-  punteroInternoB->agregarLlamadaReceptor(DatosLlamada->internoA, DatosLlamada->horaInicio, DatosRecorrido* recorridoTemporal);
+  punteroInternoA->agregarLlamadaEmisor(DatosLlamada->obtenerInternoB, DatosLlamada->obtenerHoraInicio, DatosRecorrido* recorridoTemporal);
+  punteroInternoB->agregarLlamadaReceptor(DatosLlamada->obtenerInternoA, DatosLlamada->obtenerHoraInicio, DatosRecorrido* recorridoTemporal);
   
   //Cambio la disponibilidad de los enlaces
-  Enlace* punteroEnlaceTemporal = this->punteroRecorridoTemporal->punteroARuta
-  while ( recorridoTemporal->punteroARuta != NULL ) 
+  Enlace* punteroEnlaceTemporal = this->punteroRecorridoTemporal->ObtenerPunteroARuta
+    // Esto hay que cambiarlo, usar un cursor dentro de la lista
+    /* while ( recorridoTemporal->punteroARuta != NULL ) 
     {
       punteroEnlaceTemporal->agregarLlamadaEnCurso();
 
       punteroEnlaceTemporal = punteroEnlaceTemporal->obtenerSiguiente();
-    }
+      }*/
 }
 
 
