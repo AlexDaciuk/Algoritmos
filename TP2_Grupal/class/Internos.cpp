@@ -30,19 +30,20 @@ bool Interno::internoOcupado()
 
 Nodo<Llamada>* Interno::existeReceptorLlamada(int receptorLlamadaTemporal)
 {
-  Nodo<Llamada>* buscarReceptor= this->punteroASusLlamadas;
-  int receptor=buscarReceptor->obtenerNumero();
+  Nodo<Llamada>* punteroANodoLlamada = NULL;
+
+  Lista<Llamada>* punteroLlamadasTemporal = this->punteroALlamadas;
   
-  /**
-   * Esto hay que cambiarlo para que use el cursor
-   *while (receptor != receptorLlamadaTemporal && buscarReceptor != NULL)
-   *    {
-   * receptor=buscarReceptor->obtenerNumero();
-   *buscarReceptor=buscarReceptor->obtenerSiguiente;
-   *}
-   *
-   *return (buscarReceptor);
-   */
+  punteroLlamadasTemporal->iniciarCursorLista();
+  
+  // Esto hay que cambiarlo para que use el cursor
+  while ( punteroALlamada == NULL | )
+    {
+      
+    }
+  
+  return (punteroALlamada);
+  
 };
 
 //agregarLlamadaEmisor(DatosLlamada->obtenerInternoB(), DatosLlamada->obtenerHora(), DatosRecorrido* recorridoTemporal)
@@ -53,11 +54,20 @@ Nodo<Llamada>* Interno::existeReceptorLlamada(int receptorLlamadaTemporal)
 
 void Interno::agregarLlamadaEmisor(int InternoBTemporal, int horaTemporal, DatosRecorrido* recorridoTemporal)
 {
-  // Obtengo el puntero al interno que emite la llamada
-  Internos* punteroEmisorTemporal = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->obtenerCentralA(), DatosLlamada->obtenerInternoA() );
+  /**
+   * Obtengo el puntero a la llamada correspondiende al receptor en la lista de llamadas del interno
+   */ 
+  Lista<Llamadas>* llamadaReceptorTemporal = this->existeReceptorLlamada(InternoBTemporal);
+
   
+  
+  if ( ! punteroEmisorTemporal->internoOcupado() )
+    {
+      punteroEmisorTemporal->
 
 }
+
+  
 void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
 {
   Nodo<Llamada>* punteroALlamadaTemporal = existeLlamadaAReceptor(receptorLlamadaTemporal);
