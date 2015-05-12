@@ -16,7 +16,7 @@ class DatosLlamada
 {
 private:
   std::string accion;
-  int centralA, internoA, centralB, internoB, horaInicio;
+  int centralA, internoA, centralB, internoB, hora;
   
 
 public:
@@ -39,7 +39,7 @@ public:
   int obtenerInternoA();
   int obtenerInternoB();
 
-  int obtenerHoraInicio();
+  int obtenerHora();
 };
 
 #endif
