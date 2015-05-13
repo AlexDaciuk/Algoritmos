@@ -34,10 +34,7 @@ int main()
     }
   
   cout<<"Menu de opciones:\n\n";
-  for (int i=0; i<menuOpciones.obtenerNumeroDeOpciones(), i++)
-  {
-    cout<<i")"menuOpciones.mostrarOpciones()"\n";
-  };
+  cout<<i")"menuOpciones.mostrarOpciones()"\n";
     
   
     
