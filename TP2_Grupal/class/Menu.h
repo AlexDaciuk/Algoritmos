@@ -6,7 +6,7 @@ class menu
   private:
   
   Lista<Opciones>* punteroOpciones;
-  int numeroDeOpciones;
+  int numeroDeOpciones; 
   
   public:
   
@@ -14,6 +14,7 @@ class menu
   void cambiarPunteroOpciones(Lista<Opciones>* nuevoPuntero);
   Lista<Opciones>* obtenerPunteroOpcion();
   int obtenerNumeroDeOpciones();
+  std::string mostrarOpciones();
   
   
 };  

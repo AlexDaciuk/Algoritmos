@@ -96,15 +96,15 @@ void Lista<T>::iniciarCursorNodo()
 template <class T>
 bool Lista<T>::avanzarCursorNodo()
 {
-  if (this->cursor==null)
+  if (this->cursorNodo==null)
   {
-    this->cursor=primerNodo;
+    this->cursorNodo=primerNodo;
   }
   else
   {
-    this->cursor=this->cursor->obtenerSiguiente();
+    this->cursorNodo=this->cursorNodo->obtenerSiguiente();
   }
-   return (this->cursor != NULL);
+   return (this->cursorNodo != NULL);
 };
 
 /*pre : el cursor está posicionado sobre un elemento de la Lista,

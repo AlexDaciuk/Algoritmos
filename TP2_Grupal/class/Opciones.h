@@ -18,7 +18,7 @@ class Opciones
   Opciones(int numeroDeOpcion, std::string descripcion);
   int obternerNumeroDeOpcion();
   void cambiarNumeroDeOpcion(int nuevoNumero)
-  std::string mostrarDescripcion();
+  std::string ObtenerDescripcion();
   void cambiarDescripcion(std::string nuevaDescripcion);
   //void cambiarResolucion(nuevo puntero a resolucion);
   //obtenerResolucion();

@@ -19,7 +19,7 @@ void Opciones::cambiarNumeroDeOpcion(int nuevoNumero)
   this->numeroDeOpcion=nuevoNumero;
 };
 
-std::string Opciones::mostrarDescripcion()
+std::string Opciones::obtenerDescripcion()
 {
   return this->descripcion;
 };

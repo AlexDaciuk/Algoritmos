@@ -1,4 +1,6 @@
 #include "Menu.h"
+#include "Lista.h"
+#include "Opciones.h"
 #ifndef NULL
 #define NULL 0
 
@@ -13,13 +15,21 @@ void Menu::cambiarPunteroOpciones(Lista<Opciones>* nuevoPuntero)
   this->punteroOpciones=nuevoPuntero;
 };
 
-Lista<Opciones>* Menu::obtenerPunteroOpcion()
+Lista<Opciones>* Menu::obtenerPunteroOpciones()
 {
   return this->punteroOpciones;
 };
 
-int obtenerNumeroDeOpciones()
+int Menu::obtenerNumeroDeOpciones()
 {
   return this->numeroDeOpciones;
 };
+
+std::string Menu::mostrarOpciones()
+{
+  std::string Descripcion;
+  iniciarCursorNodo();
+  while (this->avanzarCursorNodo());
+  {
+    obtenerCursorNodo()->
 
