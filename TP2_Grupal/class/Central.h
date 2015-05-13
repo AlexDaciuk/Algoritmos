@@ -2,6 +2,7 @@
 #define CENTRAL_H
 #ifndef NULL
 #define NULL 0
+#include "Internos.h"
 
 
 /**
@@ -15,7 +16,7 @@ private:
   
   int Central;
   
-  Lista<Interno>* listaInternos;
+  Lista<Internos>* listaInternos;
   // Puntero a la lista de enlaces general
   Lista<Enlaces>* listaEnlaces;
 
