@@ -25,11 +25,12 @@ int Menu::obtenerNumeroDeOpciones()
   return this->numeroDeOpciones;
 };
 
-std::string Menu::mostrarOpciones()
-{
-  std::string Descripcion;
+std::string Menu::mostrarOpciones(Lista<Opciones>* punteroAOpciones)
+{ 
   iniciarCursorNodo();
-  while (this->avanzarCursorNodo());
+  while (punteroAOpciones->avanzarCursorNodo());
   {
-    obtenerCursorNodo()->
+    return punteroAOpciones->obtenerCursorNodo()->obtenerDescripcion();
+  }
+};
 

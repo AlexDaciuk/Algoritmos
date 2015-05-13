@@ -6,14 +6,15 @@
 #include "class/Enlace.h"
 #include "class/LectorArchivos.h"
 #include "class/DatosLlamada.h"
-#include "menu.h"
+#include "class/Menu.h"
 
 
 int main()
 {
   
   std::string opcionAlgoritmo;
-  
+  Menu menuOpciones(17);
+  Lista<Opciones> listaOpciones;
   cout<< "Quiere usar algoritmo de: \n";
   cout<< "1) Precio mas bajo \n";
   cout<< "2) Distancia mas corta \n";
@@ -32,5 +33,13 @@ int main()
       break;
     }
   
+  cout<<"Menu de opciones:\n\n";
+  for (int i=0; i<menuOpciones.obtenerNumeroDeOpciones(), i++)
+  {
+    cout<<i")"menuOpciones.mostrarOpciones()"\n";
+  };
+    
+  
+    
   return 0;
 }
