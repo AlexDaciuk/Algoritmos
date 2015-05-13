@@ -44,6 +44,10 @@ public:
 
   int obtenerNumero();
   
+  /**
+   * destructor de Central
+   * */
+  ~Central();
 
 
 };

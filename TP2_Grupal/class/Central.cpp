@@ -30,4 +30,9 @@ int Central::obtenerNumero()
   return this->Central;
 };
 
+~Central()
+{
+  delete this->listaInternos;
+  delete this->listaInternos;
+};
 		
