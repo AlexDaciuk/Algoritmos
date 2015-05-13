@@ -13,10 +13,24 @@ int main()
 {
   
   std::string opcionAlgoritmo;
-  int opcion;
   
-  ElgirAlgoritmo(opcionAlgoritmo);
-  MostrarMenuYElegirOpcion (opcion);
-  TratarOpcion(opcion);
+  cout<< "Quiere usar algoritmo de: \n";
+  cout<< "1) Precio mas bajo \n";
+  cout<< "2) Distancia mas corta \n";
+
+  int opcionTemporal;
+  
+  cin >> opcionTemporal;
+  switch (opcionTemporal)
+    {
+    case 1:
+      opcionAlgoritmo = "Precio";
+      break;
+      
+    case 2:
+      opcionAlgoritmo = "Distancia";
+      break;
+    }
+  
   return 0;
 }
