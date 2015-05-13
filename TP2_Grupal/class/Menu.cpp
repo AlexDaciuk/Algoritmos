@@ -18,3 +18,8 @@ Lista<Opciones>* Menu::obtenerPunteroOpcion()
   return this->punteroOpciones;
 };
 
+int obtenerNumeroDeOpciones()
+{
+  return this->numeroDeOpciones;
+};
+

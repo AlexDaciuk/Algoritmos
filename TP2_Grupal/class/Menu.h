@@ -13,6 +13,7 @@ class menu
   Menu(int numeroDeOpciones);
   void cambiarPunteroOpciones(Lista<Opciones>* nuevoPuntero);
   Lista<Opciones>* obtenerPunteroOpcion();
+  int obtenerNumeroDeOpciones();
   
   
 };  
