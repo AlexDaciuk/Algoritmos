@@ -12,7 +12,7 @@ class menu
   
   Menu(int numeroDeOpciones);
   void cambiarPunteroOpciones(Lista<Opciones>* nuevoPuntero);
-  Lista<Opciones>* obtenerPunteroOpcion();
+  Lista<Opciones>* obtenerPunteroOpciones();
   int obtenerNumeroDeOpciones();
   std::string mostrarOpciones();
   

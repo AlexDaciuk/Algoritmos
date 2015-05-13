@@ -34,7 +34,7 @@ int main()
     }
   
   cout<<"Menu de opciones:\n\n";
-  cout<<i")"menuOpciones.mostrarOpciones()"\n";
+  cout<<i")"menuOpciones.mostrarOpciones(menuOpciones.obtenerPunteroOpciones())"\n";
     
   
     
