@@ -6,32 +6,17 @@
 #include "class/Enlace.h"
 #include "class/LectorArchivos.h"
 #include "class/DatosLlamada.h"
-
+#include "menu.h"
 
 
 int main()
 {
   
   std::string opcionAlgoritmo;
+  int opcion;
   
-  
-  std::cout << "Quiere usar algoritmo de: \n";
-  std::cout << "1) Precio mas bajo \n";
-  std::cout << "2) Distancia mas corta \n";
-  
-  int opcionTemporal;
-  
-  std::cin >> opcionTemporal;
-  switch (opcionTemporal)
-    {
-    case 1:
-      opcionAlgoritmo = "Precio";
-      break;
-      
-    case 2:
-      opcionAlgoritmo = "Distancia";
-      break;
-    }
-  
+  ElgirAlgoritmo(opcionAlgoritmo);
+  MostrarMenuYElegirOpcion (opcion);
+  TratarOpcion(opcion);
   return 0;
 }
