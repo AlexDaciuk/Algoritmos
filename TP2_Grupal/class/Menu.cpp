@@ -5,7 +5,7 @@
 Menu::Menu(int numeroDeOpciones)
 {
   this->numeroDeOpciones=numeroDeOpciones;
-  this->punteroOpciones=NULL;
+  this->punteroOpciones= new Lista<Opciones>;
 };
 
 void Menu::cambiarPunteroOpciones(Lista<Opciones>* nuevoPuntero)  
