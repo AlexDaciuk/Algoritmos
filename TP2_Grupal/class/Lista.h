@@ -8,22 +8,22 @@
 template <class T>
 class Lista<T>
 {
-  private:
+private:
   
-    Nodo<T>* primerNodo;
-    Nodo<T>* ultimoNodo;
-    Nodo>T>* cursorNodo;
-    
-  public:
+  Nodo<T>* primerNodo;
+  Nodo<T>* ultimoNodo;
+  Nodo>T>* cursorNodo;
   
-    Lista();
-    void insertar( T objeto);
-    Nodo<T>* obtenerPunteroAlObjeto(int numeroDeObjeto);
-    void ponerPrimero(int numeroDeObjeto);
-    T obtenerCursorNodo();
-    bool avanzarCursorNodo();
-    void iniciarCursorNodo()
-    ~Lista();
+public:
+  
+  Lista();
+  void insertar( T objeto);
+  Nodo<T>* obtenerPunteroAlObjeto(int numeroDeObjeto);
+  void ponerPrimero(int numeroDeObjeto);
+  T obtenerCursorNodo();
+  bool avanzarCursorNodo();
+  void iniciarCursorNodo();
+  ~Lista();
 };
 
 template <class T>
@@ -38,16 +38,16 @@ void Lista<T>::insertar( T objeto)
 {
   Nodo<T>* nuevoNodo= new Nodo<T>(objeto);
   if (ultimoNodo!=NULL)
-  {
-    nuevoNodo->cambiarNodoSiguiente(this->primerNodo);
-    this->primerNodo->cambiarNodoAnterior(nuevoNodo);
-    this->primerNodo=nuevoNodo;
-  }
+    {
+      nuevoNodo->cambiarNodoSiguiente(this->primerNodo);
+      this->primerNodo->cambiarNodoAnterior(nuevoNodo);
+      this->primerNodo=nuevoNodo;
+    }
   else
-  {
-    this->primerNodo=nuevoNodo;
-    this->ultimoNodo=nuevoNodo;
-  }
+    {
+      this->primerNodo=nuevoNodo;
+      this->ultimoNodo=nuevoNodo;
+    }
 };
 
 template <class T>
@@ -56,10 +56,10 @@ Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
   Nodo<T>* cursor=this->primerNodo;
   while((this->cursor->obtenerObjeto()->obtenerNumero() != numeroDeObjeto) && (cursor != NULL))
     cursor=cursor->obtenerSiguiente();
-    
-    return cursor;
+  
+  return cursor;
 };
- 
+
 template <class T>
 void Lista<T>::ponerPrimero(int numeroDeObjeto)
 {
@@ -73,9 +73,9 @@ void Lista<T>::ponerPrimero(int numeroDeObjeto)
   this->primerNodo->cambiarNodoAnterior(cursor);
 };
 
- /* post: deja el cursor de la Lista preparado para hacer un nuevo
-  * recorrido sobre sus elementos.
-  */
+/* post: deja el cursor de la Lista preparado para hacer un nuevo
+ * recorrido sobre sus elementos.
+ */
 template <class T>
 void Lista<T>::iniciarCursorNodo()
 {
@@ -83,28 +83,28 @@ void Lista<T>::iniciarCursorNodo()
 };
 
 
- /*
-  * pre : se ha iniciado un recorrido (invocando el método
-  *       iniciarCursor()) y desde entonces no se han agregado o
-  *       removido elementos de la Lista.
-  * post: mueve el cursor y lo posiciona en el siguiente elemento
-  *       del recorrido.
-  *       El valor de retorno indica si el cursor quedó posicionado
-  *       sobre un elemento o no (en caso de que la Lista esté vacía o
-  * no existan más elementos por recorrer.)
-  */
+/**
+ * pre : se ha iniciado un recorrido (invocando el método
+ *       iniciarCursor()) y desde entonces no se han agregado o
+ *       removido elementos de la Lista.
+ * post: mueve el cursor y lo posiciona en el siguiente elemento
+ *       del recorrido.
+ *       El valor de retorno indica si el cursor quedó posicionado
+ *       sobre un elemento o no (en caso de que la Lista esté vacía o
+ * no existan más elementos por recorrer.)
+ */
 template <class T>
 bool Lista<T>::avanzarCursorNodo()
 {
   if (this->cursorNodo==null)
-  {
-    this->cursorNodo=primerNodo;
-  }
+    {
+      this->cursorNodo=primerNodo;
+    }
   else
-  {
-    this->cursorNodo=this->cursorNodo->obtenerSiguiente();
-  }
-   return (this->cursorNodo != NULL);
+    {
+      this->cursorNodo=this->cursorNodo->obtenerSiguiente();
+    }
+  return (this->cursorNodo != NULL);
 };
 
 /*pre : el cursor está posicionado sobre un elemento de la Lista,
@@ -116,23 +116,22 @@ T Lista<T>::obtenerCursorNodo()
 {
   T elemento;
   if (this->cursor != NULL) 
-  {
-    elemento = this->cursor->obtenerObjeto();
-  }
+    {
+      elemento = this->cursor->obtenerObjeto();
+    }
   return elemento;
 };
 
 template <class T>
 Lista<T>::~Lista() 
 {
-   while (this->primerNodo != NULL) {
-
-        Nodo<T>* aBorrar = this->primerNodo;
-        this->primerNodo = this->primerNodo->obtenerSiguiente();
-
-        delete aBorrar;
-    }
+  while (this->primerNodo != NULL) {
+    
+    Nodo<T>* aBorrar = this->primerNodo;
+    this->primerNodo = this->primerNodo->obtenerSiguiente();
+    
+    delete aBorrar;
+  }
 };
 
-#endif
 #endif
