@@ -1,5 +1,6 @@
 #ifndef LISTA_H
 #define LISTA_H
+
 #ifndef NULL
 #define NULL 0
 #include <iostream>
@@ -12,7 +13,7 @@ private:
   
   Nodo<T>* primerNodo;
   Nodo<T>* ultimoNodo;
-  Nodo>T>* cursorNodo;
+  Nodo<T>* cursorNodo;
   
 public:
   
@@ -135,3 +136,5 @@ Lista<T>::~Lista()
 };
 
 #endif
+#endif
+
