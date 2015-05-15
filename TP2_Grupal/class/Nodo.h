@@ -1,91 +1,120 @@
-#ifndef NODO_H
-#define NODO_H
+#ifndef NODO_H_
+#define NODO_H_
 #ifndef NULL
 #define NULL 0
-#include <iostream>
 
-template <class T>
-class Nodo<T>
-{
-  private:
-    T objeto;
-    Nodo<T>* nodoSiguiente;
-    Nodo<T>* nodoAnterior;
-  public:
-  /**
- *Clase que define a cada nodo de una lista simple
- */
-    Nodo<T>(T objeto);
-    void cambiarNodoSiguiente(Nodo<T>* nodoSiguiente);
-    void cambiarNodoAnterior(Nodo<T>* nodoAnterior);
-    void cambiarObjeto(T objeto);
-    Nodo<T>* obtenerSiguiente();
-    Nodo<T>* obtenerAnterior();
-    T obtenerObjeto();
-};
 
 /**
- * pre: se le debe pasar un objeto del tipo correspondiente al tipo que guarda el nodo.
- * post: el nodo se crea con un dato almacenado y sus punteros apuntando a null
+ * Clase que define a cada nodo de una lista simple
+ *
  */
+
+
+
 template <class T>
-Nodo<T>::Nodo(T objeto)
+class Nodo
+{
+private:
+
+  T objeto;
+  Nodo<T>* nodoSiguiente;
+  Nodo<T>* nodoAnterior;
+  
+public:
+
+  /**                                                                                                                                                                                                                                           * Pre: Se le debe pasar un objeto del tipo correspondiente al tipo que guarda el nodo.                                                                                                                                                       * Post: El nodo se crea con un dato almacenado y sus punteros apuntando a null                                                                                                                                                               */ 
+  
+  Nodo<T>(T objeto);
+
+
+  /**
+   * Post: Cambia la dierccion del puntero que apunta al siguente nodo
+   */
+  
+  void cambiarNodoSiguiente(Nodo<T>* nodoSiguiente);
+
+
+  /**
+   * Post: Cambia la direccion del puntero que apunta al nodo anterior
+   */
+  
+  void cambiarNodoAnterior(Nodo<T>* nodoAnterior);
+
+  
+  /**
+   * Pre: El objeto que se pasa tiene que ser el mismo que el del noto
+   * Post: El objeto original queda reemplazado por el nuevo
+   */
+  
+  void cambiarObjeto(T objeto);
+
+
+  /**
+   * Post: Devuelve la direccion de memoria del proximo nodo en la lista
+   */
+  
+  Nodo<T>* obtenerSiguiente();
+
+  
+  /**
+   * Post: Devuelve la direccion de memoria del nodo anterior en la lista
+   */
+  
+  Nodo<T>* obtenerAnterior();
+
+  
+  /**
+   * Post: Devuelve el objeto guardado en el nodo
+   */
+  
+  T obtenerObjeto();
+
+};
+
+
+
+template <class T> Nodo<T>::Nodo(T objeto)
 {
   this-> objeto= objeto;
   this-> nodoSiguiente= NULL;
   this-> nodoAnterior= NULL;
-};
-/**
- * post: se cambia la direccion del puntero del nodo que apuntaria al siguinete nodo*/
-template <class T>
-void Nodo<T>::cambiarNodoSiguiente(Nodo<T>* nodoSiguiente)
+}
+
+
+template <class T> void Nodo<T>::cambiarNodoSiguiente(Nodo<T>* nodoSiguiente)
 {
   this->nodoSiguiente=nodoSiguiente;
-};
-/**
- * post: se cambia la direccion del puntero del nodo que apuntaria al nodo anterior*/
-template <class T>
-void Nodo<T>::cambiarNodoAnterior(Nodo<T>* nodoAnterior)
+}
+
+
+template <class T> void Nodo<T>::cambiarNodoAnterior(Nodo<T>* nodoAnterior)
 {
   this->nodoAnterior=nodoAnterior;
-};
-/**
- * post: devuelve la direccion de memoria del proximo nodo en la lista.
- * si no existe devuelve null.
- * */
-template <class T>
-Nodo<T>* Nodo<T>::obtenerSiguiente()
-{
-  return nodoSiguiente;
-};
-/**
- * post: devuelve la direccion de memoria del nodo anterior en la lista.
- * si no existe devuelve null.
- * */
-template <class T>
-Nodo<T>* Nodo<T>::obtenerAnterior()
-{
-  return nodoAnterior;
-};
+}
 
-/**
- * post: devuelve el objeto guardado en el nodo.
- * */
-template <class T>
-T Nodo<T>::obtenerObjeto()
-{
-  return objeto;
-};
 
-/**
- * pre: el objeto debe ser del mismo tipo del que acepta el nodo.
- * post: devuelve una copia del objeto guardado.
- * */
-template <class T>
-void Nodo<T>::cambiarObjeto(T objeto)
+template <class T> Nodo<T>* Nodo<T>::obtenerSiguiente()
+{
+  return this->nodoSiguiente;
+}
+
+
+template <class T> Nodo<T>* Nodo<T>::obtenerAnterior()
+{
+  return this->nodoAnterior;
+}
+
+
+template <class T> T Nodo<T>::obtenerObjeto()
+{
+  return this->objeto;
+}
+
+
+template <class T> void Nodo<T>::cambiarObjeto(T objeto)
 {
   this->objeto=objeto;
-};
+}
 
 #endif
 #endif
