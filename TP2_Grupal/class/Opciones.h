@@ -1,5 +1,7 @@
 #ifndef OPCIONES_H
 #define OPCIONES_H
+#include <string>
+
 
 class Opciones
 {
@@ -17,7 +19,7 @@ class Opciones
    * */
   Opciones(int numeroDeOpcion, std::string descripcion);
   int obternerNumeroDeOpcion();
-  void cambiarNumeroDeOpcion(int nuevoNumero)
+  void cambiarNumeroDeOpcion(int nuevoNumero);
   std::string ObtenerDescripcion();
   void cambiarDescripcion(std::string nuevaDescripcion);
   //void cambiarResolucion(nuevo puntero a resolucion);
