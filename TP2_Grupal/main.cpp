@@ -10,21 +10,19 @@
 #include "class/Menu.h"
 #include "class/Opciones.h"
 
-using namespace std;
-
 int main()
 {
   
-  string opcionAlgoritmo;
+  std::string opcionAlgoritmo;
   Menu menuOpciones(17);
   Lista<Opciones> listaOpciones;
-  cout<< "Quiere usar algoritmo de: \n";
-  cout<< "1) Precio mas bajo \n";
-  cout<< "2) Distancia mas corta \n";
+  std::cout<< "Quiere usar algoritmo de: \n";
+  std::cout<< "1) Precio mas bajo \n";
+  std::cout<< "2) Distancia mas corta \n";
 
   int opcionTemporal;
   
-  cin >> opcionTemporal;
+  std::cin >> opcionTemporal;
   switch (opcionTemporal)
     {
     case 1:
@@ -36,8 +34,8 @@ int main()
       break;
     }
   
-  cout<<"Menu de opciones:\n\n";
-  cout<< "i)" <<  menuOpciones.mostrarOpciones(menuOpciones.obtenerPunteroOpciones()) <<"\n";
+  std::cout<<"Menu de opciones:\n\n";
+  std::cout<< "i)" <<  menuOpciones.mostrarOpciones(menuOpciones.obtenerPunteroOpciones()) <<"\n";
     
   
     
