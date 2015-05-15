@@ -1,21 +1,24 @@
 #ifndef LISTA_H_
 #define LISTA_H_
+
 #ifndef NULL
 #define NULL 0
+#endif
+
 #include <iostream>
 #include "Nodo.h"
 
 template <class T>
 class Lista
 {
-private:
+ private:
   
   Nodo<T>* primerNodo;
   Nodo<T>* ultimoNodo;
   Nodo<T>* cursorNodo;
   
 public:
-
+  
   /**
    * Constructor de la clase Lista
    * Post: Queda creada la lista con los punteros correspondientes al primer y 
@@ -80,6 +83,7 @@ template <class T> Lista<T>::Lista()
   this->ultimoNodo=NULL;
 }
 
+
 template <class T> void Lista<T>::insertar( T objeto)
 {
   Nodo<T>* nuevoNodo= new Nodo<T>(objeto);
@@ -96,22 +100,26 @@ template <class T> void Lista<T>::insertar( T objeto)
     }
 }
 
+
 template <class T> Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
 {
   Nodo<T>* cursor=this->primerNodo;
+
   while((this->cursor->obtenerObjeto()->obtenerNumero() != numeroDeObjeto) && (cursor != NULL))
     cursor=cursor->obtenerSiguiente();
   
   return cursor;
 }
 
+
+
 template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
 {
-  Nodo<T>* cursor=obtenerNumeroObjeto(int numeroDeObjeto);
+  Nodo<T>* cursor = obtenerNumeroObjeto(int numeroDeObjeto);
 
-  Nodo<T>* cursorAnterior=cursor->obtenerAnterior();
+  Nodo<T>* cursorAnterior= cursor->obtenerAnterior();
 
-  Nodo<T>* cursorSiguiente=cursor->obtenerSiguiente();
+  Nodo<T>* cursorSiguiente= cursor->obtenerSiguiente();
 
   
   cursorAnterior->cambiarNodoSiguiente(cursorSiguiente);
@@ -120,6 +128,7 @@ template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
   cursor->cambiarNodoSiguiente(this->primerNodo);
   this->primerNodo->cambiarNodoAnterior(cursor);
 }
+
 
 
 template <class T> void Lista<T>::iniciarCursorNodo()
@@ -143,6 +152,8 @@ template <class T> bool Lista<T>::avanzarCursorNodo()
 }
 
 
+
+
 template<class T> T Lista<T>::obtenerCursorNodo() 
 {
   T elemento;
@@ -152,6 +163,8 @@ template<class T> T Lista<T>::obtenerCursorNodo()
     }
   return elemento;
 }
+
+
 
 template <class T> Lista<T>::~Lista() 
 {
@@ -164,6 +177,5 @@ template <class T> Lista<T>::~Lista()
     }
 }
 
-#endif
 #endif
 
