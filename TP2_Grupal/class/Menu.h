@@ -8,14 +8,14 @@ class Menu
 {
 private:
   
-  Lista<Opciones>*::Lista punteroOpciones;
+  Lista<Opciones>* punteroOpciones;
   int numeroDeOpciones; 
   
 public:
   
   Menu(int numeroDeOpciones);
-  void cambiarPunteroOpciones(Lista::Lista<Opciones>* nuevoPuntero);
-  Lista<Opciones>*::Lista obtenerPunteroOpciones();
+  void cambiarPunteroOpciones(Lista<Opciones>* nuevoPuntero);
+  Lista<Opciones>* obtenerPunteroOpciones();
   int obtenerNumeroDeOpciones();
   std::string mostrarOpciones();
  
