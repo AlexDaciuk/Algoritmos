@@ -1,13 +1,12 @@
-#ifndef LISTA_H
-#define LISTA_H
-
+#ifndef LISTA_H_
+#define LISTA_H_
 #ifndef NULL
 #define NULL 0
 #include <iostream>
 #include "Nodo.h"
 
 template <class T>
-class Lista<T>
+class Lista
 {
 private:
   
@@ -32,7 +31,7 @@ Lista<T>::Lista()
 {
   this->primerNodo=NULL;
   this->ultimoNodo=NULL;
-};
+}
 
 template <class T>
 void Lista<T>::insertar( T objeto)
@@ -49,7 +48,7 @@ void Lista<T>::insertar( T objeto)
       this->primerNodo=nuevoNodo;
       this->ultimoNodo=nuevoNodo;
     }
-};
+}
 
 template <class T>
 Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
@@ -59,7 +58,7 @@ Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
     cursor=cursor->obtenerSiguiente();
   
   return cursor;
-};
+}
 
 template <class T>
 void Lista<T>::ponerPrimero(int numeroDeObjeto)
@@ -72,7 +71,7 @@ void Lista<T>::ponerPrimero(int numeroDeObjeto)
   cursor->cambiarNodoAnterior(NULL);
   cursor->cambiarNodoSiguiente(this->primerNodo);
   this->primerNodo->cambiarNodoAnterior(cursor);
-};
+}
 
 /* post: deja el cursor de la Lista preparado para hacer un nuevo
  * recorrido sobre sus elementos.
@@ -81,7 +80,7 @@ template <class T>
 void Lista<T>::iniciarCursorNodo()
 {
   this->cursor = NULL;
-};
+}
 
 
 /**
@@ -106,7 +105,7 @@ bool Lista<T>::avanzarCursorNodo()
       this->cursorNodo=this->cursorNodo->obtenerSiguiente();
     }
   return (this->cursorNodo != NULL);
-};
+}
 
 /*pre : el cursor está posicionado sobre un elemento de la Lista,
  *       (fue invocado el método avanzarCursor() y devolvió true)
@@ -121,7 +120,7 @@ T Lista<T>::obtenerCursorNodo()
       elemento = this->cursor->obtenerObjeto();
     }
   return elemento;
-};
+}
 
 template <class T>
 Lista<T>::~Lista() 
@@ -133,7 +132,7 @@ Lista<T>::~Lista()
     
     delete aBorrar;
   }
-};
+}
 
 #endif
 #endif
