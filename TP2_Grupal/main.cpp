@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "class/Lista.h"
 #include "class/Central.h"
 #include "class/Llamada.h"
 #include "class/Internos.h"
@@ -7,12 +8,14 @@
 #include "class/LectorArchivos.h"
 #include "class/DatosLlamada.h"
 #include "class/Menu.h"
+#include "class/Opciones.h"
 
+using namespace std;
 
 int main()
 {
   
-  std::string opcionAlgoritmo;
+  string opcionAlgoritmo;
   Menu menuOpciones(17);
   Lista<Opciones> listaOpciones;
   cout<< "Quiere usar algoritmo de: \n";
@@ -34,7 +37,7 @@ int main()
     }
   
   cout<<"Menu de opciones:\n\n";
-  cout<<i")"menuOpciones.mostrarOpciones(menuOpciones.obtenerPunteroOpciones())"\n";
+  cout<< "i)" <<  menuOpciones.mostrarOpciones(menuOpciones.obtenerPunteroOpciones()) <<"\n";
     
   
     
