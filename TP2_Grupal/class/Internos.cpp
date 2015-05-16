@@ -77,7 +77,7 @@ void Interno::agregarLlamadaEmisor(int InternoBTemporal, int horaTemporal, Datos
     {
       punteroEmisorTemporal->
 
-}
+};
 
   
 void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
