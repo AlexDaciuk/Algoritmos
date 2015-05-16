@@ -104,7 +104,7 @@ void ProcesadorLlamada::agregarCentralA(int numeroCentral)
   bool encontro=false;
   while ((punteroCentrales->avanzarCursorNodo()) && (! encontro))
   {
-    if (numeroCentral = punteroCentrales->obtenerCursorNodo()->obtenerNumero())
+    if (numeroCentral == punteroCentrales->obtenerCursorNodo()->obtenerNumero())
     {
       encontro=true;
     }
@@ -125,7 +125,7 @@ void ProcesadorLlamada::agregarCentralB(int numeroCentral)
   bool encontro=false;
   while ((punteroCentrales->avanzarCursorNodo()) && (! encontro))
   {
-    if (numeroCentral = punteroCentrales->obtenerCursorNodo()->obtenerNumero())
+    if (numeroCentral == punteroCentrales->obtenerCursorNodo()->obtenerNumero())
     {
       encontro=true;
     }
