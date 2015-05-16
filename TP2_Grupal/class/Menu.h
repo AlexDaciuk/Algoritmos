@@ -1,5 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
+#ifndef NULL
+#define NULL 0
 #include "Lista.h"
 
 #include "Opciones.h"
@@ -21,4 +23,5 @@ public:
  
 };
 
+#endif
 #endif

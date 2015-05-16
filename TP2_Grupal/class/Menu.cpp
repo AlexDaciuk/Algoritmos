@@ -1,9 +1,8 @@
 #include "Menu.h"
 #include "Opciones.h"
-#ifndef NULL
-#define NULL 0
 
-Menu::Menu(int numeroDeOpciones)
+
+  Menu::Menu(int numeroDeOpciones)
 {
   this->numeroDeOpciones=numeroDeOpciones;
   this->punteroOpciones= new Lista<Opciones>;
