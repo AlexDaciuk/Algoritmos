@@ -17,7 +17,7 @@ public:
   void cambiarPunteroOpciones(Lista<Opciones>* nuevoPuntero);
   Lista<Opciones>* obtenerPunteroOpciones();
   int obtenerNumeroDeOpciones();
-  std::string mostrarOpciones();
+  std::string mostrarOpciones(Lista<Opciones>* punteroAOpciones);
  
 };
 
