@@ -13,20 +13,27 @@ Interno::Interno(int numeroInternoTemporal)
   this->estaOcupado=false;
 };
 
+
 int Interno::obtenerNumero()
 {
   return this->numeroInterno;
 };
+
+
 
 Lista<Llamada>* Interno::obtenerPunteroALlamadas()
 {
   return this->punteroALlamadas;
 };
 
+
+
 bool Interno::internoOcupado()
 {
   return this->estaOcupado;
 };
+
+
 
 void Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 {
@@ -34,7 +41,7 @@ void Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
   
   bool existeLlamada = false;
   
-  cursorLlamadasTemporal->iniciarCursorNoto();
+  cursorLlamadasTemporal->iniciarCursorNodo();
   
   while ( punteroLlamadasTemporal->avanzarCursorNodo() )
     {

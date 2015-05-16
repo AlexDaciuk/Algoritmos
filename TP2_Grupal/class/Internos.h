@@ -35,7 +35,7 @@ class Interno
    * ese nodo al principio y se suman 
    * los datos directamente ahi, no se crea ningun nodo.
    */
-  void agregarLlamadaEmisor(std::string receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal);
+  void agregarLlamadaEmisor(int InternoBTemporal, int horaTemporal, DatosRecorrido* recorridoTemporal);
   
   /**
    *post: devuelve el puntero a la lista de llamadas del interno

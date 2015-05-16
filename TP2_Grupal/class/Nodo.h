@@ -14,7 +14,7 @@ template <class T> class Nodo {
 
  private:
   
-  T objeto;
+  T* objeto;
   Nodo<T>* nodoSiguiente;
   Nodo<T>* nodoAnterior;
   
@@ -62,7 +62,7 @@ public:
 };
   
   
-  template <class T> Nodo<T>::Nodo(T objeto)  {
+  template <class T> Nodo<T>::Nodo( T* objeto)  {
 
     this->objeto= objeto;
     this->nodoSiguiente= NULL;
@@ -79,7 +79,7 @@ public:
     this->nodoAnterior=nodoAnterior;
   } 
   
-  template <class T> void Nodo<T>::cambiarObjeto(T objeto){
+  template <class T> void Nodo<T>::cambiarObjeto( T* objeto){
     this->objeto=objeto;
   }
   

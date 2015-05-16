@@ -29,7 +29,7 @@ void Llamada::empezarLlamada(int horaInicioLlamadaEnCursoTemporal)
 
 void Llamada::terminarLlamada (int horaFinLlamadaEnCursoTemporal)
 {
-  this->duracionLlamadas = horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso;
+  this->duracionLlamadas = (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) + this-> duracionLlamadas;
   this->horaInicioLlamadaEnCurso = 0;
 };
 
