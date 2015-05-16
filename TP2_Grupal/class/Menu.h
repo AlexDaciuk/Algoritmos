@@ -1,7 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 #include "Lista.h"
-#include <string>
+
 #include "Opciones.h"
 
 class Menu
