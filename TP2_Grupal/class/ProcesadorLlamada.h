@@ -17,11 +17,11 @@ public:
 
   ProcesadorLlamada(std:: rutaArchivoLlamadas);
   
-  buscaCentralMenorPrecio();
+  buscaCentralMenorPrecio():
 
   buscaCentralMenorDistancia();
 
-  void procesaLlamada();
+  void procesarLlamada();
 
 
 }

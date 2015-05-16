@@ -1,16 +1,16 @@
-#include "ProcesadorLlmada.h"
+#include "ProcesadorLlamada.h"
 #include "LectorArchivos.h"
 #ifndef NULL
 #define NULL 0
 
 
-  ProcesadorLlamdas::ProcesadorLlamada(std:: rutaArchivoLlamadas)
+  ProcesadorLlamdas::ProcesadorLlamada()
   {
-    punteroDatosTemporal= LectorArchivos(rutaArchivoLlamadas)->obtenerDatosLlamada();
+    punteroDatosTemporal= NULL;
     punteroRecorridoTemporal= NULL;
   }
   
-void ProcesadorLlamada::procesarLlamadas()
+void ProcesadorLlamada::procesarLlamadas(std:: rutaArchivoLlamadas)
 {
   while ( LectorArchivos->chequearLLamada() )
     {
