@@ -48,7 +48,7 @@ int main()
   int i=0;
   while (OpcionesDelMenu->avanzarCursorNodo();
   {
-    std::cout<<i<<")"<<->OpcionesDelMenu->obtenerCursorNodo()->obtenerDescripcion()<<"\n";
+    std::cout<<i<<")"<<OpcionesDelMenu->obtenerCursorNodo()->obtenerDescripcion()<<"\n";
     i++;
   }
   
