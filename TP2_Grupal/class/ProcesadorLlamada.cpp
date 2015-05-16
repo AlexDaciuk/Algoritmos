@@ -1,7 +1,15 @@
 #include "ProcesadorLlmada.h"
 #include "LectorArchivos.h"
+#ifndef NULL
+#define NULL 0
 
 
+  ProcesadorLlamdas::ProcesadorLlamada()
+  {
+    punteroDatosTemporal= NULL;
+    punteroRecorridoTemporal= NULL;
+  }
+  
 void ProcesadorLlamada::procesarLlamadas()
 {
   while ( LectorArchivos->chequearLLamada() )

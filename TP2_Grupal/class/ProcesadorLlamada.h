@@ -15,6 +15,7 @@ private:
 
 public:
 
+  ProcesadorLlamada();
   
   buscaCentralMenorPrecio();
 
