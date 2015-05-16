@@ -16,6 +16,7 @@ int main()
   const int numeroDeOpciones = 17;
   std::string opcionAlgoritmo;
   Menu menuOpciones(numeroDeOpciones);
+
   std::cout<< "Quiere usar algoritmo de: \n";
   std::cout<< "1) Precio mas bajo \n";
   std::cout<< "2) Distancia mas corta \n";
@@ -33,9 +34,15 @@ int main()
       opcionAlgoritmo = "Distancia";
       break;
     }
+
+  /**
+   * Proceso el archivo
+   */
+
   std::cout<<"Ingrese la ruta del archivo de llamadas.\n";
   std::string ruta;
-  ProcesadorLlamada procesadorDeLlamadas;
+
+  // ProcesadorLlamada procesadorDeLlamadas;
   procesadorDeLlamadas.procesarLlamadas(ruta);
   
   /**
