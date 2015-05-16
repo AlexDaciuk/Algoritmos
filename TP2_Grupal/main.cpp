@@ -12,9 +12,9 @@
 
 int main()
 {
-  
+  const int numeroDeOpciones = 17;
   std::string opcionAlgoritmo;
-  Menu menuOpciones(17);
+  Menu menuOpciones(numeroDeOpciones);
   Lista<Opciones> listaOpciones;
   std::cout<< "Quiere usar algoritmo de: \n";
   std::cout<< "1) Precio mas bajo \n";
