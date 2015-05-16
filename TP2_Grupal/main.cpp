@@ -15,7 +15,8 @@ int main()
   const int numeroDeOpciones = 17;
   std::string opcionAlgoritmo;
   Menu menuOpciones(numeroDeOpciones);
-  Lista<Opciones> listaOpciones;
+  LectorArchivos leerArchivo;
+  Lista<Opciones> ListaDeOpciones;
   std::cout<< "Quiere usar algoritmo de: \n";
   std::cout<< "1) Precio mas bajo \n";
   std::cout<< "2) Distancia mas corta \n";
@@ -33,9 +34,24 @@ int main()
       opcionAlgoritmo = "Distancia";
       break;
     }
+  std::cout<<"Ingrese la ruta del archivo de llamadas."
+  std::string ruta;
+  LectorArchivos Archivo(ruta);
+  /**
+   * proceso de llamadas.
+   * 
+   * */
   
   std::cout<<"Menu de opciones:\n\n";
-  std::cout<< "i)" <<  menuOpciones.mostrarOpciones(menuOpciones.obtenerPunteroOpciones()) <<"\n";
+  ListaDeOpciones* OpcionesDelMenu = menuOpciones.obtenerPunteroOpciones;
+  OpcionesDelMenu->iniciarCursorNodo();
+  int i=0;
+  while (OpcionesDelMenu->avanzarCursorNodo();
+  {
+    std::cout<<i<<")"<<->OpcionesDelMenu->obtenerCursorNodo()->obtenerDescripcion()<<"\n";
+    i++;
+  }
+  
     
   
     
