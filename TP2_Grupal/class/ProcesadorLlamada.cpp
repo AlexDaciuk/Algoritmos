@@ -4,9 +4,9 @@
 #define NULL 0
 
 
-  ProcesadorLlamdas::ProcesadorLlamada()
+  ProcesadorLlamdas::ProcesadorLlamada(std:: rutaArchivoLlamadas)
   {
-    punteroDatosTemporal= NULL;
+    punteroDatosTemporal= LectorArchivos(rutaArchivoLlamadas)->obtenerDatosLlamada();
     punteroRecorridoTemporal= NULL;
   }
   

@@ -15,7 +15,7 @@ private:
 
 public:
 
-  ProcesadorLlamada();
+  ProcesadorLlamada(std:: rutaArchivoLlamadas);
   
   buscaCentralMenorPrecio();
 
