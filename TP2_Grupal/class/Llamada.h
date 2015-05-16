@@ -10,7 +10,6 @@ private:
 
   
   int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos,horaInicioLlamadaEnCurso, receptorLlamada;
-  Llamada* punteroProximaLlamada;
   
 public:
 
