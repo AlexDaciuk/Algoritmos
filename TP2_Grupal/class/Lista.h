@@ -43,10 +43,18 @@ public:
   Nodo<T>* obtenerPunteroAlObjeto(int numeroDeObjeto);
 
   /**
-   * Pone primero en la lista al objeto indicado en el parametro
+   * pre: numeroDeObjeto pertenece a la Lista en la que se busca.
+   * post: Pone primero en la lista al objeto indicado en el parametro
    */
   
   void ponerPrimero(int numeroDeObjeto);
+  
+  /**
+   * pre : numeroDeObjeto pertenece a la Lista en la que se busca.
+   * post: remueve de la Lista el elemento en la posición indicada.
+   */
+   
+  void remover(int numeroDeObjeto);
 
   /**
    * Devuelve el objeto al cual esta apuntando el cursor siempre y cuando 
@@ -112,7 +120,6 @@ template <class T> Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
 }
 
 
-
 template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
 {
   Nodo<T>* cursor = obtenerPunteroAlObjeto(numeroDeObjeto);
@@ -129,6 +136,21 @@ template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
   this->primerNodo->cambiarNodoAnterior(cursor);
 }
 
+
+template<class T> void Lista<T>::remover(int numeroDeObjeto) {
+
+  Nodo<T>* removido;
+  removido = obtenerPunteroAlObjeto(int numeroDeObjeto);
+  Nodo<T>* anterior = removido->obtenerAnterior();
+  Nodo<T>* siguiente = removido->obtenerSiguiente();
+  anterior->cambiarNodoSiguiente(siguiente);
+  siguiente->cambiarNodoAnterior(anterior);
+
+  delete removido;
+  /* cualquier recorrido actual queda invalidado */
+  this->iniciarCursor();
+
+}
 
 
 template <class T> void Lista<T>::iniciarCursorNodo()
