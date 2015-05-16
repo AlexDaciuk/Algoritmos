@@ -10,14 +10,19 @@ class ProcesadorLlamada
 private:
   DatosLlamada* punteroDatosTemporal;
   DatosRecorrido* punteroRecorridoTemporal;
-  
+  Lista<Enlace>* punteroEnlaces;
+  Lista<Central>* punteroCentrales;
 
 
 public:
 
   ProcesadorLlamada();
   
-  buscaCentralMenorPrecio():
+  void agregarCentralA(int numeroCentral);
+  
+  void agregarCentralB(int numeroCentral);
+  
+  buscaCentralMenorPrecio();
 
   buscaCentralMenorDistancia();
 
