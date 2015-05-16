@@ -26,21 +26,26 @@ void ProcesadorLlamada::procesarLlamadas(std:: rutaArchivoLlamadas)
       agregarCentralB(punteroDatosTemporal->obtenerCentralB);
       
       if ( punteroDatosTemporal->accionTemporal == "Inicio")
-	{
-	  punteroRecorridoTemporal = this->buscaCentral; 
-	  this->iniciarLlamada();  
-	}
-      else if ( punteroDatosTemporal->accionTemporal == "Fin")
-	{
-	  this->finalizarLlamada();
-	}
-      else if ( punteroDatosTemporal->accionTemporal == "Enlace")
-	{
-	  ListaEnlaces->Insertar(punteroDatosLlamadas.obtenerCentralA());
-    ListaEnlaces->Insertar(punteroDatosLlamadas.obtenerCentralB());
-	}
+      {
+        punteroRecorridoTemporal = this->buscaCentral; 
+        this->iniciarLlamada();  
+      }
+      else
+      { 
+        if ( punteroDatosTemporal->accionTemporal == "Fin")
+        {
+          this->finalizarLlamada();
+        }
+        else
+        { 
+          if ( punteroDatosTemporal->accionTemporal == "Enlace")
+          {
+            
+          }
+        }
+      }
     }
-}
+}     
 
 void ProcesadorLlamada::iniciarLlamada();
 {
@@ -109,8 +114,9 @@ void ProcesadorLlamada::agregarCentralA(int numeroCentral)
     Central* nuevaCentral= new Central(numeroCentral) 
     punteroCentrales->insertar(*punteroNuevaCentral)
     punteroCentrales->obtenerPunteroAlObjeto(numeroCentral)->crearInterno(punteroDatosTemporal->obtenerInternoA());
+    delete nuevaCentral;
   {
-  delete nuevaCentral;
+  
 };
 
 void ProcesadorLlamada::agregarCentralB(int numeroCentral)
@@ -129,6 +135,7 @@ void ProcesadorLlamada::agregarCentralB(int numeroCentral)
     Central* nuevaCentral= new Central(numeroCentral) 
     punteroCentrales->insertar(*punteroNuevaCentral)
     punteroCentrales->obtenerPunteroAlObjeto(numeroCentral)->crearInterno(punteroDatosTemporal->obtenerInternoB());
+    delete nuevaCentral;  
   {
-  delete nuevaCentral;
+  
 };
