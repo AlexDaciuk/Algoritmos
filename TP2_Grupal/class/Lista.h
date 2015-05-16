@@ -133,7 +133,7 @@ template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
 
 template <class T> void Lista<T>::iniciarCursorNodo()
 {
-  this->cursor = NULL;
+  this->cursorNodo = NULL;
 }
 
 
