@@ -21,7 +21,7 @@ void ProcesadorLlamada::procesarLlamadas(std:: rutaArchivoLlamadas)
     {
       punteroDatosTemporal = archivoLlamadas->obtenerDatosLlamada();
       
-      //Agrego la centrales, si ya existen no hace nada
+      
       agregarCentralA(punteroDatosTemporal->obtenerCentralA);
       agregarCentralB(punteroDatosTemporal->obtenerCentralB);
       
@@ -40,7 +40,7 @@ void ProcesadorLlamada::procesarLlamadas(std:: rutaArchivoLlamadas)
         { 
           if ( punteroDatosTemporal->accionTemporal == "Enlace")
           {
-            
+            //agregar enlace.
           }
         }
       }
@@ -50,18 +50,18 @@ void ProcesadorLlamada::procesarLlamadas(std:: rutaArchivoLlamadas)
 void ProcesadorLlamada::iniciarLlamada();
 {
   // Veo si los internos existen o sino, los crea
-  punteroListaCentrales->crearInterno(DatosLlamada->obtenerCentralA(), DatosLlamada->obtenerInternoA());
-  punteroListaCentrales->crearInterno(DatosLlamada->obtenerCentralB(), DatosLlamada->obtenerInternoB());
+  punteroListaCentrales->crearInterno(punteroDatosTemporal->obtenerCentralA(), punteroDatosTemporal->obtenerInternoA());
+  punteroListaCentrales->crearInterno(punteroDatosTemporal->obtenerCentralB(), punteroDatosTemporal->obtenerInternoB());
 
   //Obtengo punteros a cada interno
   Internos* punteroInternoA, punteroInternoB;
 
-  punteroInternoA = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->obtenerCentralA(), DatosLlamada->obtenerInternoA() );
-  punteroInternoB = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->obtenerCentralB(), DatosLlamada->obtenerInternoB() );
+  punteroInternoA = punteroListaCentrales->obtenerPunteroInterno(punteroDatosTemporal->obtenerCentralA(), punteroDatosTemporal->obtenerInternoA() );
+  punteroInternoB = punteroListaCentrales->obtenerPunteroInterno(punteroDatosTemporal->obtenerCentralB(), punteroDatosTemporal->obtenerInternoB() );
 
   //Agrego la llamada a cada interno
-  punteroInternoA->agregarLlamadaEmisor(DatosLlamada->obtenerInternoB(), DatosLlamada->obtenerHora(), DatosRecorrido* recorridoTemporal);
-  punteroInternoB->agregarLlamadaReceptor(DatosLlamada->obtenerInternoA(), DatosLlamada->obtenerHora(), DatosRecorrido* recorridoTemporal);
+  punteroInternoA->agregarLlamadaEmisor(punteroDatosTemporal->obtenerInternoB(), punteroDatosTemporal->obtenerHora(), DatosRecorrido* recorridoTemporal);
+  punteroInternoB->agregarLlamadaReceptor(punteroDatosTemporal->obtenerInternoA(), punteroDatosTemporal->obtenerHora(), DatosRecorrido* recorridoTemporal);
   
   //Cambio la disponibilidad de los enlaces
   Enlace* punteroEnlaceTemporal = this->punteroRecorridoTemporal->ObtenerPunteroARuta;
@@ -84,13 +84,13 @@ void ProcesadorLlamada::finalizarLlamada()
   //Obtengo punteros a cada interno
   Internos* punteroInternoA, punteroInternoB;
 
-  punteroInternoA = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->obtenerCentralA(), DatosLlamada->obtenerInternoA());
-  punteroInternoB = punteroListaCentrales->obtenerPunteroInterno(DatosLlamada->obtenerCentralB(), DatosLlamada->obtenerInternoB());
+  punteroInternoA = punteroListaCentrales->obtenerPunteroInterno(punteroDatosTemporal->obtenerCentralA(), punteroDatosTemporal->obtenerInternoA());
+  punteroInternoB = punteroListaCentrales->obtenerPunteroInterno(punteroDatosTemporal->obtenerCentralB(), punteroDatosTemporal->obtenerInternoB());
 
 
   // Termino la llamada en cada interno
-  punteroInternoA->terminarLlamadaEmisor(DatosLlamada->obtenerInternoA(), DatosLlamada->obtenerHora() );
-  punteroInternoB->terminarLlamadaReceptor(DatosLlamadas->obtenerInternoB(), DatosLlamada->obtenerHora() );
+  punteroInternoA->terminarLlamadaEmisor(punteroDatosTemporal->obtenerInternoA(), punteroDatosTemporal->obtenerHora() );
+  punteroInternoB->terminarLlamadaReceptor(punteroDatosTemporals->obtenerInternoB(), punteroDatosTemporal->obtenerHora() );
 
 
   //Cambio disponibilidad de enlaces
