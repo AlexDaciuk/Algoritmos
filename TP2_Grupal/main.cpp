@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "class/ProcesadorLlamada.h"
 #include "class/Lista.h"
 #include "class/Central.h"
 #include "class/Llamada.h"
@@ -32,14 +33,17 @@ int main()
       opcionAlgoritmo = "Distancia";
       break;
     }
-  std::cout<<"Ingrese la ruta del archivo de llamadas."
+  std::cout<<"Ingrese la ruta del archivo de llamadas.\n";
   std::string ruta;
-  ProcesadorLlamada procesadorDeLlamadas(ruta);
-  procesadorDeLlamadas.procesarLlamadas();
+  ProcesadorLlamada procesadorDeLlamadas;
+  procesadorDeLlamadas.procesarLlamadas(ruta);
   
-  
+  /**
+   * Agregar las opciones en la lista.
+   * 
+   * */
   std::cout<<"Menu de opciones:\n\n";
-  ListaDeOpciones* OpcionesDelMenu = menuOpciones.obtenerPunteroOpciones;
+  Lista<Opciones>* OpcionesDelMenu = menuOpciones.obtenerPunteroOpciones();
   OpcionesDelMenu->iniciarCursorNodo();
   int i=0;
   while (OpcionesDelMenu->avanzarCursorNodo())
