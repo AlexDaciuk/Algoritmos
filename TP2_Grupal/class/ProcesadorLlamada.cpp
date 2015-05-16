@@ -1,5 +1,8 @@
+#include "ProcesadorLlmada.h"
+#include "LectorArchivos.h"
 
-void ProcesadorLlamada::procesaLlamadas()
+
+void ProcesadorLlamada::procesarLlamadas()
 {
   while ( LectorArchivos->chequearLLamada() )
     {
