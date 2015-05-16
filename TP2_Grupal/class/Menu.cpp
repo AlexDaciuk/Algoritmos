@@ -1,5 +1,4 @@
 #include "Menu.h"
-#include "Lista.h"
 #include "Opciones.h"
 #ifndef NULL
 #define NULL 0
