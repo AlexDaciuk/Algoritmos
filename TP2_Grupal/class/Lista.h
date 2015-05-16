@@ -115,7 +115,7 @@ template <class T> Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
 
 template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
 {
-  Nodo<T>* cursor = obtenerNumeroObjeto(int numeroDeObjeto);
+  Nodo<T>* cursor = obtenerPunteroAlObjeto(numeroDeObjeto);
 
   Nodo<T>* cursorAnterior= cursor->obtenerAnterior();
 

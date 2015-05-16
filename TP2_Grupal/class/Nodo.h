@@ -62,11 +62,11 @@ public:
 };
   
   
-  template <class T> Nodo(T objeto)  {
+  template <class T> Nodo<T>::Nodo(T objeto)  {
 
-    this-> objeto= objeto;
-    this-> nodoSiguiente= NULL;
-    this-> nodoAnterior= NULL;
+    this->objeto= objeto;
+    this->nodoSiguiente= NULL;
+    this->nodoAnterior= NULL;
   }
   
    template <class T> void Nodo<T>::cambiarNodoSiguiente(Nodo<T>* nodoSiguiente)  {
