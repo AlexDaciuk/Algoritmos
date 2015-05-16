@@ -15,13 +15,13 @@ private:
 
 public:
 
-  ProcesadorLlamada(std:: rutaArchivoLlamadas);
+  ProcesadorLlamada();
   
   buscaCentralMenorPrecio():
 
   buscaCentralMenorDistancia();
 
-  void procesarLlamada();
+  void procesarLlamada(std:: rutaArchivoLlamadas);
 
 
 }
