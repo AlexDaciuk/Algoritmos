@@ -46,7 +46,7 @@ int main()
   ListaDeOpciones* OpcionesDelMenu = menuOpciones.obtenerPunteroOpciones;
   OpcionesDelMenu->iniciarCursorNodo();
   int i=0;
-  while (OpcionesDelMenu->avanzarCursorNodo();
+  while (OpcionesDelMenu->avanzarCursorNodo())
   {
     std::cout<<i<<")"<<OpcionesDelMenu->obtenerCursorNodo()->obtenerDescripcion()<<"\n";
     i++;
