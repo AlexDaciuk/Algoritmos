@@ -44,7 +44,7 @@ int main()
 
   std::cout<<"Bienvenido al sistema de informacion de la central telefonica.\n \n";
 	std::cout<<"A continuacion de detalla el menu, elija la que desee.\n\n";
-  menuopciones.mostrarOpciones();
+  menuOpciones.mostrarOpciones();
   int opcionMenu;
   std::cout<<"Opcion: \n\n";
   cin>>opcionMenu;
