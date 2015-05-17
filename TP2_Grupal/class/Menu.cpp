@@ -23,12 +23,6 @@ int Menu::obtenerNumeroDeOpciones()
   return this->numeroDeOpciones;
 };
 
-std::string Menu::mostrarOpciones(Lista<Opciones>* punteroAOpciones)
-{ 
-  punteroaOpciones->iniciarCursorNodo();
-  while (punteroAOpciones->avanzarCursorNodo());
-  {
-    return punteroAOpciones->obtenerCursorNodo()->obtenerDescripcion();
-  }
-};
+
+
 
