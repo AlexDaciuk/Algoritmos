@@ -36,6 +36,7 @@ public:
   buscaCentralMenorDistancia();
 
   void procesarLlamada(std:: rutaArchivoLlamadas);
+  void agregarEnlace(int numeroCentralA, int numeroCentralB)
 
 
 };
