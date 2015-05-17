@@ -8,7 +8,6 @@ class Opciones
   private:
   
   int numeroDeOpcion;
-  std::string descripcion;
   //puntero a resolucion
 
 
