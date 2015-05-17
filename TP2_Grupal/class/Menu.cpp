@@ -2,25 +2,25 @@
 #include "Opciones.h"
 
 
-  Menu::Menu(int numeroDeOpciones)
+  Menu::Menu(int cantidadDeOpciones)
 {
-  this->numeroDeOpciones=numeroDeOpciones;
-  this->punteroOpciones= new Lista<Opciones>;
+  this->cantidadDeOpciones=cantidadDeOpciones;
+  this->punteroListaOpciones= new Lista<Opciones>;
 };
 
-void Menu::cambiarPunteroOpciones(Lista<Opciones>* nuevoPuntero)  
+void Menu::cambiarPunteroListaOpciones(Lista<Opciones>* nuevoPuntero)  
 {
   this->punteroOpciones=nuevoPuntero;
 };
 
-Lista<Opciones>* Menu::obtenerPunteroOpciones()
+Lista<Opciones>* Menu::obtenerPunteroListaOpciones()
 {
   return this->punteroOpciones;
 };
 
-int Menu::obtenerNumeroDeOpciones()
+int Menu::obtenerCantidadDeOpciones()
 {
-  return this->numeroDeOpciones;
+  return this->cantidadDeOpciones;
 };
 
 
