@@ -140,7 +140,7 @@ template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
 template<class T> void Lista<T>::remover(int numeroDeObjeto) {
 
   Nodo<T>* removido;
-  removido = obtenerPunteroAlObjeto(int numeroDeObjeto);
+  removido = obtenerPunteroAlObjeto(numeroDeObjeto);
   Nodo<T>* anterior = removido->obtenerAnterior();
   Nodo<T>* siguiente = removido->obtenerSiguiente();
   anterior->cambiarNodoSiguiente(siguiente);
