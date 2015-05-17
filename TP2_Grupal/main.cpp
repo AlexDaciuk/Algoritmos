@@ -36,7 +36,7 @@ int main()
     }
 
 
-  std::std::cout<<"Ingrese la ruta del archivo de llamadas.\n";
+  std::cout<<"Ingrese la ruta del archivo de llamadas.\n";
   std::string ruta;
 
   ProcesadorLlamada procesadorDeLlamadas;
@@ -47,8 +47,11 @@ int main()
   std::cout<<menuOpciones.mostrarOpciones();
   int opcionMenu;
   std::cout<<"Opcion: \n\n";
-  cin>>opcionMenu;
+  std::cin>>opcionMenu;
   
+  /**
+   * resolucion de opciones
+   * */
 
     
   return 0;

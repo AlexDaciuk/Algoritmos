@@ -2,11 +2,12 @@
 #include "LectorArchivos.h"
 #include "Enlaces.h"
 #include "Lista.h"
+#include <string>
 #ifndef NULL
 #define NULL 0
 
 
-ProcesadorLlamadas::ProcesadorLlamada()
+ProcesadorLlamada::ProcesadorLlamada()
 {
   punteroDatosTemporal= NULL;
   punteroRecorridoTemporal= NULL;
@@ -14,7 +15,7 @@ ProcesadorLlamadas::ProcesadorLlamada()
   punteroListaEnlaces = new Lista<Enlace>;
 }
 
-void ProcesadorLlamada::procesarLlamadas(std:: rutaArchivoLlamadas)
+void ProcesadorLlamada::procesarLlamadas(std::string rutaArchivoLlamadas)
 {
   LectorArchivos archivoLlamadas(rutaArchivoLlamadas)
   while ( archivoLlamadas->chequearLLamada() )
