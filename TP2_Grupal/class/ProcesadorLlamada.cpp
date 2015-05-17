@@ -10,8 +10,8 @@ ProcesadorLlamadas::ProcesadorLlamada()
 {
   punteroDatosTemporal= NULL;
   punteroRecorridoTemporal= NULL;
-  punteroCentrales = new Lista<Central>;
-  punteroEnlaces = new Lista<Enlace>;
+  punteroListaCentrales = new Lista<Central>;
+  punteroListaEnlaces = new Lista<Enlace>;
 }
 
 void ProcesadorLlamada::procesarLlamadas(std:: rutaArchivoLlamadas)
@@ -47,8 +47,6 @@ void ProcesadorLlamada::procesarLlamadas(std:: rutaArchivoLlamadas)
 
 void ProcesadorLlamada::iniciarLlamada();
 {
-
-
   // Veo si los internos existen o sino, los crea
   punteroListaCentrales->crearInterno(punteroDatosTemporal->obtenerCentralA(), punteroDatosTemporal->obtenerInternoA());
   punteroListaCentrales->crearInterno(punteroDatosTemporal->obtenerCentralB(), punteroDatosTemporal->obtenerInternoB());
@@ -100,11 +98,11 @@ void ProcesadorLlamada::finalizarLlamada()
 
 void ProcesadorLlamada::agregarCentral(int numeroCentral)
 {
-  punteroCentrales->iniciarCursorNodo();
+  punteroListaCentrales->iniciarCursorNodo();
   bool encontro=false;
-  while ((punteroCentrales->avanzarCursorNodo()) && (! encontro))
+  while ((punteroListaCentrales->avanzarCursorNodo()) && (! encontro))
     {
-      if (numeroCentral == punteroCentrales->obtenerCursorNodo()->obtenerNumero())
+      if (numeroCentral == punteroListaCentrales->obtenerCursorNodo()->obtenerNumero())
 	{
 	  encontro=true;
 	}
@@ -112,20 +110,20 @@ void ProcesadorLlamada::agregarCentral(int numeroCentral)
   if (! encontro)
     {
       Central* nuevaCentral= new Central(numeroCentral) ;
-      punteroCentrales->insertar(*punteroNuevaCentral);
+      punteroListaCentrales->insertar(*punteroNuevaCentral);
            
     }
 }
 
 void ProcesadorLlamada::agregarEnlace(int numeroCentralA, int numeroCentralB)
 {
-  punteroEnlaces->inicarCursorNodo();
+  punteroListaEnlaces->inicarCursorNodo();
   bool encontro=false;
-  while ((punteroEnlaces->avanzarCursorNodo()) && (! encontro)))
+  while ((punteroListaEnlaces->avanzarCursorNodo()) && (! encontro)))
   {
-    if ((numeroCentralA==punteroEnlaces->obtenerCursorNodo()->obtenerCentralA()) 
+    if ((numeroCentralA==punteroListaEnlaces->obtenerCursorNodo()->obtenerCentralA()) 
     &&
-     numeroCentralB==punteroEnlaces->obtenerCursorNodo()->obtenerCentralB())
+     numeroCentralB==punteroListaEnlaces->obtenerCursorNodo()->obtenerCentralB())
     {
       encontro=true;
     }
@@ -134,7 +132,7 @@ void ProcesadorLlamada::agregarEnlace(int numeroCentralA, int numeroCentralB)
   {
     Enlace* nuevoEnlace = new Enlace( numeroCentralA, numeroCentralB, punteroDatosTemporal->obtenerCentralB(), 
      punteroDatosTemporal->obtenerInternoB(), punteroDatosTemporal->obtenerHora());
-    punteroEnlaces()->insertar(*nuevoEnlace);
+    punteroListaEnlaces()->insertar(*nuevoEnlace);
   }
 }
 

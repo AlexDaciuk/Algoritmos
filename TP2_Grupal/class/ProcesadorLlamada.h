@@ -10,8 +10,8 @@ class ProcesadorLlamada
 private:
   DatosLlamada* punteroDatosTemporal;
   DatosRecorrido* punteroRecorridoTemporal;
-  Lista<Enlace>* punteroEnlaces;
-  Lista<Central>* punteroCentrales;
+  Lista<Enlace>* punteroListaEnlaces;
+  Lista<Central>* punteroListaCentrales;
 
 
 public:
