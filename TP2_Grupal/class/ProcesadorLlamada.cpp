@@ -20,8 +20,7 @@ void ProcesadorLlamada::procesarLlamadas(std:: rutaArchivoLlamadas)
     while ( archivoLlamadas->chequearLLamada() )
       {
 	punteroDatosTemporal = archivoLlamadas->obtenerDatosLlamada();
-	
-	
+
 	agregarCentralA(punteroDatosTemporal->obtenerCentralA);
 	agregarCentralB(punteroDatosTemporal->obtenerCentralB);
 	
