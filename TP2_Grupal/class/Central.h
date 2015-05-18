@@ -7,7 +7,7 @@
 
 #include "Internos.h"
 #include "Lista.h"
-#include "Enlaces.h"
+#include "Enlace.h"
 
 /**
  * Clase que maneja cada central 
