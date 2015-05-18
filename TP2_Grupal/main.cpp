@@ -1,13 +1,8 @@
 #include <iostream>
 #include <string>
+
 #include "class/ProcesadorLlamada.h"
-#include "class/Lista.h"
-#include "class/Central.h"
-#include "class/Llamada.h"
-#include "class/Internos.h"
-#include "class/Enlace.h"
 #include "class/LectorArchivos.h"
-#include "class/DatosLlamada.h"
 #include "class/Menu.h"
 #include "class/Opciones.h"
 
