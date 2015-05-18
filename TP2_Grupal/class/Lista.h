@@ -9,7 +9,7 @@
 
 template<class T> class Lista
 {
- private:
+private:
   
   Nodo<T>* primerNodo;
   Nodo<T>* ultimoNodo;

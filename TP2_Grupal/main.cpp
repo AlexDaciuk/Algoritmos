@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
+#include "class/Menu.h"
 #include "class/ProcesadorLlamada.h"
 #include "class/LectorArchivos.h"
-#include "class/Menu.h"
 #include "class/Opciones.h"
 
 int main()
@@ -33,13 +33,14 @@ int main()
 
   std::cout<<"Ingrese la ruta del archivo de llamadas.\n";
   std::string ruta;
-
-  ProcesadorLlamada* procesadorDeLlamadas = new ProcesadorLlamadas();
-  procesadorDeLlamadas.procesarLlamadas(ruta);
+  std::cin >> ruta;
+  
+  ProcesadorLlamada* procesadorDeLlamadas = new ProcesadorLlamada::ProcesadorLlamada();
+  procesadorDeLlamadas->procesarLlamadas(ruta);
 
   std::cout<<"Bienvenido al sistema de informacion de la central telefonica.\n \n";
 	std::cout<<"A continuacion de detalla el menu, elija la que desee.\n\n";
-  std::cout<<menuOpciones.mostrarOpciones();
+  std::cout<<menuOpciones->mostrarOpciones();
   int opcionMenu;
   std::cout<<"Opcion: \n\n";
   std::cin>>opcionMenu;

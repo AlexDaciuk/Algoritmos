@@ -7,7 +7,7 @@
 #include "Lista.h"
 #include "Enlace.h"
 #include "Central.h"
-
+#include <string>
 
 class ProcesadorLlamada
 {

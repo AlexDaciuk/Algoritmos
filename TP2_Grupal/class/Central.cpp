@@ -1,11 +1,9 @@
 #include "Central.h"
-#include "Internos.h"
-#include "Lista.h"
 
 Central::Central(int numeroCentralTemporal)
 {
 	
-  this->Central= numeroCentralTemporal;
+  this->NumeroCentral= numeroCentralTemporal;
   this->listaInternos = new Lista<Internos>;
   this->listaEnlaces = new Lista<Enlaces>;
 };
@@ -27,7 +25,7 @@ Interno* Central::obtenerPunteroAInterno(int numeroInterno)
 
 int Central::obtenerNumero()
 {
-  return this->Central;
+  return this->NumeroCentral;
 };
 
 ~Central()

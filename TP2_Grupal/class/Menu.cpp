@@ -2,7 +2,7 @@
 #include "Opciones.h"
 
 
-  Menu::Menu(int cantidadDeOpciones)
+Menu::Menu(int cantidadDeOpciones)
 {
   this->cantidadDeOpciones=cantidadDeOpciones;
   this->punteroListaOpciones= new Lista<Opciones>;
@@ -45,6 +45,7 @@ std::string Menu::mostrarOpciones()
   
   std::string opcionTotal = opcion1 + opcion2 + opcion3 + opcion4 + opcion5 + opcion6 + opcion7 + opcion8 + opcion9 + 
   opcion10 + opcion11 + opcion12 + opcion13 + opcion14 + opcion15 + opcion16 + opcion17;
+
   return opcionTotal;
 }
 

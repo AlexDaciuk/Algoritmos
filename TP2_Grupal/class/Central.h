@@ -5,8 +5,8 @@
 #define NULL 0
 #endif
 
-#include "Internos.h"
 #include "Lista.h"
+#include "Internos.h"
 #include "Enlace.h"
 
 /**
@@ -18,7 +18,7 @@ class Central
 {
 private:
   
-  int Central;
+  int NumeroCentral;
   
   Lista<Internos>* listaInternos;
   // Puntero a la lista de enlaces general
