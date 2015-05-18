@@ -1,10 +1,9 @@
-
-#include "Llamada.h"
 #include "Internos.h"
 #include <string>
+
 #ifndef NULL
 #define NULL 0
-
+#endif
 
 Interno::Interno(int numeroInternoTemporal)
 {
@@ -95,7 +94,6 @@ void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaE
 };
 
 
-#endif
 
 
 

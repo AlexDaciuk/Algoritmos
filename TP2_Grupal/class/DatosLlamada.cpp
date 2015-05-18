@@ -1,5 +1,17 @@
+#include "DatosLlamada.h"
 #include <string>
 #include <sstream>
+
+DatosLlamada::DatosLlamada()
+{
+  this->accion = " ";
+  this->centralA = 0;
+  this->centralB = 0;
+  this->internoA = 0;
+  this->internoB = 0;
+  this->hora = 0;
+}
+
 
 void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string centralATemporal, std::string internoATemporal, std::string centralBTemporal, std::string internoBTemporal, std::string horTaemporal)
 {

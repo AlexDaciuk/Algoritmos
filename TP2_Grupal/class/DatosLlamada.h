@@ -1,7 +1,9 @@
-#ifndef DATOSLLAMADA_H
-#define DATOSLLAMADA_H
+#ifndef DATOSLLAMADA_H_
+#define DATOSLLAMADA_H_
+
 #ifndef NULL
 #define NULL 0
+
 #include <string>
 #include <sstream>
 
@@ -20,6 +22,13 @@ private:
   
 
 public:
+  /**
+   * Constructor
+   * Inicializa los enteros en 0 y el string en un espacio
+   */
+  DatosLlamada();
+  
+
   /**
    * Metodo que carga datos a los atributos, si ya tuviera datos, los sobre escribe
    * 

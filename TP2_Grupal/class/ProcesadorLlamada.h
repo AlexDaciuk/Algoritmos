@@ -3,6 +3,10 @@
 #ifndef NULL
 #define NULL 0
 
+#include "DatosLlamada.h"
+#include "Lista.h"
+#include "Enlace.h"
+#include "Central.h"
 
 
 class ProcesadorLlamada
@@ -12,7 +16,7 @@ private:
   DatosRecorrido* punteroRecorridoTemporal;
   Lista<Enlace>* punteroListaEnlaces;
   Lista<Central>* punteroListaCentrales;
-
+  std::string rutaArchivosLlamadas;
 
 public:
   /**
@@ -33,21 +37,23 @@ public:
    * */
   void agregarCentralB(int numeroCentral);
   
-  buscaCentralMenorPrecio();
+  DatosRecorrido* buscaCentralMenorPrecio();
 
-  buscaCentralMenorDistancia();
+  DatosRecorrido* buscaCentralMenorDistancia();
   
   /** 
    * Pre: la ruta donde se encuentra el archivo con los datos de llamadas debe existir.
    * Post: carga los datos de cada linea del txt de llamadas ya sea datos de enlaces como de inicio
    * y fin de llamadas
    * */
-  void procesarLlamada(std:: rutaArchivoLlamadas);
-   /** 
+  void procesarLlamada(std::string rutaArchivoLlamadasTemporal);
+
+
+  /** 
    * post:si no existe agrega la enlace a la lista de centrales 
    * si ya existe la enlace no hace nada.
    * */
-  void agregarEnlace(int numeroCentralA, int numeroCentralB)
+  void agregarEnlace(int numeroCentralA, int numeroCentralB);
 
 
 };

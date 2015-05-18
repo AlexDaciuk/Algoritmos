@@ -5,11 +5,9 @@
 #define NULL 0
 #endif
 
-#include <iostream>
 #include "Nodo.h"
 
-template <class T>
-class Lista
+template<class T> class Lista
 {
  private:
   
@@ -33,7 +31,7 @@ public:
    * Post: Queda creado y posicionado el nodo
    */
   
-  void insertar( T objeto);
+  void insertar(T objeto);
 
   /**
    * Devuelve el puntero a un objeto en especial dentro de la lista
@@ -85,7 +83,7 @@ public:
   ~Lista();
 };
 
-template <class T> Lista<T>::Lista()
+template<class T> Lista<T>::Lista()
 {
   this->primerNodo=NULL;
   this->ultimoNodo=NULL;

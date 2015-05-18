@@ -39,7 +39,7 @@ int main()
   std::cout<<"Ingrese la ruta del archivo de llamadas.\n";
   std::string ruta;
 
-  ProcesadorLlamada procesadorDeLlamadas;
+  ProcesadorLlamada* procesadorDeLlamadas = new ProcesadorLlamadas();
   procesadorDeLlamadas.procesarLlamadas(ruta);
 
   std::cout<<"Bienvenido al sistema de informacion de la central telefonica.\n \n";

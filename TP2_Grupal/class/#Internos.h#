@@ -4,8 +4,7 @@
 #define NULL 0
 
 #include "Llamada.h"
-#include "Lista.h"
-
+ 
 /**
  *Clase que define a cada interno de una central
  */

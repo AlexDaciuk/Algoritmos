@@ -1,7 +1,12 @@
-#ifndef ENLACE_H
-#define ENLACE_H
+#ifndef ENLACE_H_
+#define ENLACE_H_
+
 #ifndef NULL
 #define NULL 0
+#endif
+
+#include "Central.h"
+
 
 /**
  * Clase que define cada enlace entre 2 centrales
@@ -58,7 +63,7 @@ public:
 };
 
 #endif
-#endif
+
   
 
 

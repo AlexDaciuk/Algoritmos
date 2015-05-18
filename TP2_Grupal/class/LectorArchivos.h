@@ -1,7 +1,10 @@
 #ifndef LECTORARCHIVOS_H
 #define LECTORARCHIVOS_H
+
 #ifndef NULL
 #define NULL 0
+#endif
+
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -49,5 +52,4 @@ public:
   
 };
 
-#endif
 #endif

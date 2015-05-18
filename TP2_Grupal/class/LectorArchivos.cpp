@@ -2,6 +2,7 @@
 #include <sstream>
 #include "DatosLlamada.h"
 
+
 LectorArchivos::LectorArchivos (std::string rutaArchivoTemporal)
 {
   this->archivo.open( ruta.c_str(rutaArchivoTemporal) );

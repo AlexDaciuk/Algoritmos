@@ -12,7 +12,7 @@
 
 template <class T> class Nodo {
 
- private:
+private:
   
   T* objeto;
   Nodo<T>* nodoSiguiente;

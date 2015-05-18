@@ -1,9 +1,13 @@
-#ifndef CENTRAL_H
-#define CENTRAL_H
+#ifndef CENTRAL_H_
+#define CENTRAL_H_
+
 #ifndef NULL
 #define NULL 0
-#include "Internos.h"
+#endif
 
+#include "Internos.h"
+#include "Lista.h"
+#include "Enlaces.h"
 
 /**
  * Clase que maneja cada central 
@@ -53,5 +57,5 @@ public:
 };
 
 
-#endif
+
 #endif
