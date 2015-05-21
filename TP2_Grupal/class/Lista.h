@@ -73,6 +73,11 @@ public:
   
   bool avanzarCursorNodo();
 
+  /**
+   * Idem avanzarCursorNodo pero recorre la lista al revez
+   */
+
+  bool avanzarCursorPorElFinal()
   
   /**
    * Crea un cursor y lo apunta a NULL para poder hacer un recorrido de la lista
