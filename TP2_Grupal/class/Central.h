@@ -18,11 +18,11 @@ class Central
 {
 private:
   
-  int NumeroCentral;
+  int numeroCentral;
   
-  Lista<Internos>* listaInternos;
+  Lista<Internos>* internos;
   // Puntero a la lista de enlaces general
-  Lista<Enlaces*>* enlacesDisponibles;
+  Lista<Enlaces>* enlaces;
 
 public:
 
@@ -39,7 +39,7 @@ public:
    * otra central y el interno en cuestion no existe
    */
   
-  void crearInterno(int numeroCentral, int numeroInterno);
+  void crearInterno(int numeroInterno);
   
 
   /**
