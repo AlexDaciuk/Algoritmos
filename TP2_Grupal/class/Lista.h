@@ -173,6 +173,21 @@ template <class T> bool Lista<T>::avanzarCursorNodo()
 
 
 
+template <class T> bool Lista<T>::avanzarCursorPorElFinal()
+{
+  if (this->cursorNodo == NULL)
+    {
+      this->cursorNodo = ultimoNodo;
+    }
+  else
+    {
+      this->cursorNodo=this->cursorNodo->obtenerAnterior();
+    }
+  return (this->cursorNodo != NULL);
+}
+
+
+
 
 template<class T> T Lista<T>::obtenerCursorNodo() 
 {
