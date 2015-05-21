@@ -6,6 +6,7 @@
 
 #include "Lista.h"
 #include "Enlace.h"
+#include "Internos.h"
 #include "Central.h"
 #include "Spot.h"
 
@@ -48,9 +49,9 @@ public:
 	 */
 	  int obtenerValorDelCamino();
 	  
-	  Central* obtenerCentralReceptora(int centralReceptora);
+	  Central* obtenerCentralReceptora(int receptor);
 	  
-	  Central* obtenerCentralEmisora(int centralEmisora);
+	  Central* obtenerCentralEmisora( int emisor);
 	  
 	/**
 	 * Post: hace el algoritmo de busqueda por mejor precio
@@ -72,7 +73,7 @@ private:
 	 * Pre: se le da la lista de centrales y la central de donde sale la llamada
 	 * Post: encuentra el puntero a esa central
 	 */
-	  Central* encontrarCentralDeEmision(Lista<Central>* centrales, int salida );
+	  Central* encontrarCentralDeEmision(Lista<Central>* centrales, int centralEmisora );
 	  
     /**
 	 * Post: indica si ya visite a la central en el camino ya hecho
@@ -82,7 +83,9 @@ private:
 	/**
 	 * Post: indica si La llamada es entre dos numeros de la misma central
 	 */
-	  bool esLlamadaInterna( int salida, int llegada);
+	  bool esLlamadaInterna( int centralEmisora, int centralReceptora);
+	  
+	  Interno* encontrarInternoEnLa(Central* central, int numeroDeInterno);
 	
 	  
 	  

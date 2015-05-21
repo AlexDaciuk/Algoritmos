@@ -5,6 +5,7 @@
 #define NULL 0
 #endif
 
+#include "Internos.h"
 #include "Buscador.h"
 #include "Lista.h"
 #include "Enlace.h"
@@ -29,15 +30,57 @@ int Buscador::obtenerValorDelCamino()
 	return (this->valorDelCamino);
 }
 
-Central* Buscador::obtenerCentralEmisora(int centralEmisora)
+Central* Buscador::obtenerCentralEmisora( int emisor)
 {
-	this->mejorCamino->
+	this->mejorCamino->iniciarCursorNodo();
+	this->mejorCamino->avanzarCursorNodo();
+	Enlace* enlace = this->mejorCamino->obtenerCursorNodo();
+	if(enlace->obtenerDestino()->obtenerNumero() == emisor)
+		return (enlace->obtenerDestino());
+	else	
+	    return (enlace->obtenerOrigen());
 }
-obtenerPunteroAlObjeto(centralEmisora)
-Central* Buscador::obtenerCentralReceptora()
+
+Central* Buscador::obtenerCentralReceptora(int receptor)
 {
-	
+	this->mejorCamino->iniciarCursorNodo();
+	this->mejorCamino->avanzarCursorPorElFinal();
+	Enlace* enlace = this->mejorCamino->obtenerCursorNodo();
+	if(enlace->obtenerDestino()->obtenerNumero() == receptor)
+		return (enlace->obtenerDestino());
+	else	
+	    return (enlace->obtenerOrigen());
 } 
 
+void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora, int emisor, int receptor)
+{
+	if (this->esLlamadaInterna(centralEmisora, centralReceptora))
+		//pongo valordecamino 0, punteros a NULL
+}
+
+void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralReceptora, int emisor, int receptor)
+{
+	
+}
+
+Central* Buscador::encontrarCentralDeEmision(Lista<Central>* centrales, int centralEmisora)
+{
+	
+}
+
+bool Buscador::indicaSiPasePorLaCentral(Central* central)
+{
+	
+}
+
+bool Buscador::esLlamadaInterna(int centralEmisora, int centralReceptora)
+{
+	
+}
+
+Interno* Buscador::encontrarInternoEnLa(Central* central, int numeroDeInterno)
+{
+	
+}
 
 #endif
