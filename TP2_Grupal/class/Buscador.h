@@ -37,12 +37,33 @@ public:
 	  Buscador(Lista<Central>* centrales, int salida, int llegada);
 	  
 	/**
+	 * Post: te otorga la ruta que encontro.
+	 * Sera nula cuando la llamada fue interna de una central
+	 */
+	  Lista<Enlaces*>* obtenerRuta();
+	
+	/**
+	 * Post: devuelve la distancia o el precio de la llamada segun corresponda.
+	 */
+	  int obtenerValorDelCamino();
+
+	/**
 	 * Pre: se le da la lista de centrales y la central de donde sale la llamada
 	 * Post: encuentra el puntero a esa central
 	 */
 	  Central* encontrarCentralDeSalida(Lista<Central>* centrales, int salida );
 	  
+    /**
+	 * Post: indica si ya visite a la central en el camino ya hecho
+	 */
 	  bool indicaSiPasePorLaCentral(Central* central);
+	  
+	/**
+	 * Post: indica si La llamada es entre dos numeros de la misma central
+	 */
+	  bool esLlamadaInterna( int salida, int llegada);
+	  
+	  
   //Buscar central de salida en la lista de centrales
   //iniciar camino:
       //me fijo si la llamada es interna en la misma central
