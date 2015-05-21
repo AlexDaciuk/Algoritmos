@@ -22,7 +22,7 @@ private:
   
   Lista<Internos>* listaInternos;
   // Puntero a la lista de enlaces general
-  Lista<Enlaces>* listaEnlaces;
+  Lista<Enlaces*>* enlacesDisponibles;
 
 public:
 
