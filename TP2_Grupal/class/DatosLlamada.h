@@ -18,7 +18,7 @@ class DatosLlamada
 {
 private:
   std::string accion;
-  int centralA, internoA, centralB, internoB, hora;
+  int origen, emisor, destino, receptor, hora;
   
 
 public:
@@ -34,19 +34,19 @@ public:
    * 
    */
   
-  void cargarLlamada(std::string accionTemporal, std::string centralATemporal, std::string internoATemporal,
-		     std::string centralBTemporal, std::string internoBTemporal, std::string horaInicioTemporal);
+  void cargarLlamada(std::string accionTemporal, std::string origenTemporal, std::string emisorTemporal,
+		     std::string destinoTemporal, std::string receptorTemporal, std::string horaInicioTemporal);
 
   /**
    * Metodos que devuelven los valores de los atributos de la clase
    */
   std::string obtenerAccion();
 
-  int obtenerCentralA();
-  int obtenerCentralB();
+  int obtenerOrigen();
+  int obtenerDestino();
   
-  int obtenerInternoA();
-  int obtenerInternoB();
+  int obtenerEmisor();
+  int obtenerReceptor();
 
   int obtenerHora();
 };

@@ -5,31 +5,31 @@
 DatosLlamada::DatosLlamada()
 {
   this->accion = " ";
-  this->centralA = 0;
-  this->centralB = 0;
-  this->internoA = 0;
-  this->internoB = 0;
+  this->origen = 0;
+  this->destino = 0;
+  this->emisor = 0;
+  this->receptor = 0;
   this->hora = 0;
 }
 
 
-void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string centralATemporal, std::string internoATemporal, std::string centralBTemporal, std::string internoBTemporal, std::string horTaemporal)
+void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string origenTemporal, std::string emisorTemporal, std::string destinoTemporal, std::string receptorTemporal, std::string horaTemporal)
 {
   if (! accionTemporal.empty())
     {
       this->accion = accionTemporal;
       
-      std::stringstream centralAStream(centralATemporal);
-      centralAStream >> this->centralA;      
+      std::stringstream origenStream(origenTemporal);
+      origenStream >> this->origen;      
 
-      std::stringstream internoAStream(internoATemporal);
-      internoAStream >> this->internoA;
+      std::stringstream emisorStream(emisorTemporal);
+      emisorStream >> this->emisor;
       
-      std::stringstream centralBStream(centralBTemporal);
-      centralBstream >> this->centralB;
+      std::stringstream destinoStream(destinoTemporal);
+      destinostream >> this->destino;
     
-      std::stringstream internoBStream(internoBTemporal);
-      internoBStream >> this->internoB;  
+      std::stringstream receptorStream(receptorTemporal);
+      receptorStream >> this->receptor;  
         
       std::stringstream horaInicioStreamTemporal(horaTemporal);
       horaStreamTemporal >> this->hora;
@@ -42,23 +42,23 @@ std::string DatosLlamada::obtenerAccion()
   return this->accion;
 }
 
-int DatosLlamada::obtenerCentralA()
+int DatosLlamada::obtenerOrigen()
 {
-  return this->centralA;
+  return this->origen;
 }
-int DatosLlamada::obtenerCentralB()
+int DatosLlamada::obtenerDestino()
 {
-  return this->centralB;
-}
-
-int DatosLlamada::obtenerInternoA()
-{
-  return this->internoA;
+  return this->destino;
 }
 
-int DatosLlamada::obtenerInternoB()
+int DatosLlamada::obtenerEmisor()
 {
-  return this->internoB;
+  return this->emisor;
+}
+
+int DatosLlamada::obtenerReceptor()
+{
+  return this->emisor;
 }
 
 int DatosLlamada::obtenerHora()
