@@ -16,7 +16,7 @@ class Enlace
 {
 private:
   int cantidadDeCanales, distanciaKm, costoPorMinuto, cantidadCanalesEnUso;
-  Central* punteroCentralA, punteroCentralB;
+  Central* Origen, CentralB;
 
 public:
 
@@ -26,7 +26,7 @@ public:
    */
   
 
-  Enlace(int centralATemporal, int centralBTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal);
+  Enlace(int OrigenTemporal, int centralBTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal);
 
 
   /**
@@ -34,13 +34,13 @@ public:
    * Post: se devuelve el dato del tipo correspondiente
    */
 
-  int obtenerCentralA();
+  int obtenerOrigen();
   int obtenerCentralB();
   int obtenerDistancia();
   int obtenerPrecio();
   int obtenerCantidadEnlacesEnUso();
-  Central* obtenerPunteroCentralA();
-  Central* obtenerPunteroCentralB();
+  Central* obtenerOrigen();
+  Central* obtenerCentralB();
 
    /**
    * Metodo que devuelve true si se puede realizar una llamada mediante el enlace,
