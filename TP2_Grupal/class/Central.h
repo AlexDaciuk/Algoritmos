@@ -40,7 +40,12 @@ public:
    */
   
   void crearInterno(int numeroInterno);
-  
+
+  /**
+   * Metodo que devuelve el numero de la central
+   */
+  Interno* obtenerPunteroAInterno(int numeroInterno);
+
 
   /**
    * Metodo que devuelve el numero de la central
