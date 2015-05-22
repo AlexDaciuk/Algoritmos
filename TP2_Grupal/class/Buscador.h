@@ -49,9 +49,11 @@ public:
 	 */
 	  int obtenerValorDelCamino();
 	  
-	  Central* obtenerCentralReceptora(int receptor);
-	  
-	  Central* obtenerCentralEmisora( int emisor);
+	/**
+	 * Pre: se le da la lista de centrales y la central que desea buscar
+	 * Post: encuentra el puntero a esa central
+	 */
+	  Central* encontrarLaCentral(int central);
 	  
 	/**
 	 * Post: hace el algoritmo de busqueda por mejor precio
@@ -69,11 +71,6 @@ public:
 	  ~Buscador();
 
 private:
-	/**
-	 * Pre: se le da la lista de centrales y la central de donde sale la llamada
-	 * Post: encuentra el puntero a esa central
-	 */
-	  Central* encontrarCentralDeEmision(Lista<Central>* centrales, int centralEmisora );
 	  
     /**
 	 * Post: indica si ya visite a la central en el camino ya hecho

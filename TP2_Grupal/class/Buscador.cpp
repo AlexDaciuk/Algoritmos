@@ -30,31 +30,15 @@ int Buscador::obtenerValorDelCamino()
 	return (this->valorDelCamino);
 }
 
-Central* Buscador::obtenerCentralEmisora( int emisor)
-{
-	this->mejorCamino->iniciarCursorNodo();
-	this->mejorCamino->avanzarCursorNodo();
-	Enlace* enlace = this->mejorCamino->obtenerCursorNodo();
-	if(enlace->obtenerDestino()->obtenerNumero() == emisor)
-		return (enlace->obtenerDestino());
-	else	
-	    return (enlace->obtenerOrigen());
-}
-
-Central* Buscador::obtenerCentralReceptora(int receptor)
-{
-	this->mejorCamino->iniciarCursorNodo();
-	this->mejorCamino->avanzarCursorPorElFinal();
-	Enlace* enlace = this->mejorCamino->obtenerCursorNodo();
-	if(enlace->obtenerDestino()->obtenerNumero() == receptor)
-		return (enlace->obtenerDestino());
-	else	
-	    return (enlace->obtenerOrigen());
-} 
-
 void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora, int emisor, int receptor)
 {
 	if (this->esLlamadaInterna(centralEmisora, centralReceptora))
+	{
+		this->valorDelCamino = 0;
+		this->rutaActual = NULL;
+		this->mejorCamino = NULL;
+		this->
+	}
 		//pongo valordecamino 0, punteros a NULL
 }
 
@@ -63,9 +47,14 @@ void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralRecept
 	
 }
 
-Central* Buscador::encontrarCentralDeEmision(Lista<Central>* centrales, int centralEmisora)
+Central* Buscador::encontrarLaCentral(int central)
 {
-	
+	this->centralesTotales->iniciarCursorNodo();
+	while(this->centralesTotales->avanzarCursorNodo())
+	{
+		if(this->centralesTotales->obtenerCursorNodo()->obtenerNumero == central)
+			return(this->centralesTotales->obtenerCursorNodo());
+	}
 }
 
 bool Buscador::indicaSiPasePorLaCentral(Central* central)
@@ -75,7 +64,7 @@ bool Buscador::indicaSiPasePorLaCentral(Central* central)
 
 bool Buscador::esLlamadaInterna(int centralEmisora, int centralReceptora)
 {
-	
+	return(centralEmisora == centralReceptora);
 }
 
 Interno* Buscador::encontrarInternoEnLa(Central* central, int numeroDeInterno)
