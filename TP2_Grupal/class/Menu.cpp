@@ -26,7 +26,7 @@ int Menu::obtenerCantidadDeOpciones()
 std::string Menu::mostrarOpciones()
 {
   std::string opcion1="1)Imprimir detalle de internos, nombres y números.\n";
-  std::string opcion2="2)Imprimir detalle de internos, nombres y números.\n";
+  std::string opcion2="2)Imprimir detalle de centrales con su numeración.\n";
   std::string opcion3="3)Imprimir detalle de enlaces (origen, destino, canales). \n";
   std::string opcion4="4)Detalle de llamadas entre el interno 'X' de la central 'A' al interno 'Y' de la central 'B'.\n";
   std::string opcion5="5)Interno que mas hablo de todos y de cada central.\n";
@@ -56,4 +56,13 @@ std::string Menu::pedirRuta()
 	std::cin >> ruta;
 	return ruta;
 }
+
+bool Menu::realizarOtraConsulta()
+{
+	char respuesta;
+	std::cout<<"Desea ralizar otra consulta? [s/n]:";
+	std::cin>>respuesta;
+	return (respuesta==s);
+}
+
 

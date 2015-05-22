@@ -14,6 +14,7 @@ private:
   
   Lista<Opciones>* punteroOpciones;
   int numeroDeOpciones; 
+	
   
 public:
   
@@ -23,6 +24,9 @@ public:
   int obtenerNumeroDeOpciones();
   std::string mostrarOpciones();
   std::string pedirRuta();
+	bool realizarOtraConsulta();
+	void resolucionOpcion1();
+	
  
 };
 
