@@ -30,14 +30,9 @@ int main()
       opcionAlgoritmo = "Distancia";
       break;
     }
-
-
-  std::cout<<"Ingrese la ruta del archivo de llamadas.\n";
-  std::string ruta;
-  std::cin >> ruta;
   
   ProcesadorLlamada* procesadorDeLlamadas = new ProcesadorLlamada::ProcesadorLlamada();
-  procesadorDeLlamadas->procesarLlamadas(ruta);
+  procesadorDeLlamadas->procesarLlamadas(menuOpciones.pedirRuta());
 
   std::cout<<"Bienvenido al sistema de informacion de la central telefonica.\n \n";
 	std::cout<<"A continuacion de detalla el menu, elija la que desee.\n\n";

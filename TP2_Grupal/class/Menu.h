@@ -22,6 +22,7 @@ public:
   Lista<Opciones>* obtenerPunteroOpciones();
   int obtenerNumeroDeOpciones();
   std::string mostrarOpciones();
+  std::string pedirRuta();
  
 };
 

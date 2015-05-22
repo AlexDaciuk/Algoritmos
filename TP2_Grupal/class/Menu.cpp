@@ -49,4 +49,11 @@ std::string Menu::mostrarOpciones()
   return opcionTotal;
 }
 
+std::string Menu::pedirRuta()
+{
+	std::cout<<"Ingrese la ruta del archivo de llamadas.\n";
+	std::string ruta;
+	std::cin >> ruta;
+	return ruta;
+}
 
