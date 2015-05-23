@@ -47,8 +47,9 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 		this->rutaActual->iniciarCursorNodo();
 		this->rutaActual->avanzarCursorNodo();
 		int mejorPrecio = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot;
-		while((this->precioDeLaLlamada > mejorPrecio) || (this->precioDeLaLlamada == 0))
+		while(this->hayMasCaminos())
 		{
+			//(this->precioDeLaLlamada > mejorPrecio) || (this->precioDeLaLlamada == 0)
 			Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
 		}
 	}
@@ -102,6 +103,7 @@ void Buscador::definirEstePrecioYDistancia()
 
 bool Buscador::hayMasCaminos()
 {
+	bool hayMasCaminos = true;
 	this->rutaActual->iniciarCursorNodo();
 	this->rutaActual->avanzarCursorNodo();
 	Spot primerSpot = this->rutaActual->obtenerCursorNodo();
@@ -109,10 +111,11 @@ bool Buscador::hayMasCaminos()
 	this->rutaActual->avanzarCursorPorElFinal();
 	Spot ultimoSpot = this->rutaActual->obtenerCursorNodo();
 	
-	if(ultimoSpot == primerSpot)
+	if((ultimoSpot == primerSpot) && (primerSpot->recorriTodosLosEnlaces()))
 	{
-		if(this->primerSpot)
+		hayMasCaminos = false;
 	}
+	return (hayMasCaminos);
 }	  
 
 #endif
