@@ -1,7 +1,9 @@
-#ifndef PROCESADORLLAMADA_H
-#define PROCESADORLLAMADA_H
+#ifndef PROCESADORLLAMADA_H_
+#define PROCESADORLLAMADA_H_
+
 #ifndef NULL
 #define NULL 0
+#endif
 
 #include "DatosLlamada.h"
 #include "Lista.h"
@@ -12,17 +14,15 @@
 class ProcesadorLlamada
 {
 private:
-  DatosLlamada* punteroDatosTemporal;
-  DatosRecorrido* punteroRecorridoTemporal;
-  Lista<Enlace>* punteroListaEnlaces;
-  Lista<Central>* punteroListaCentrales;
-  std::string rutaArchivosLlamadas;
+  DatosLlamada* DatosTemporal;
+  DatosRecorrido* RecorridoTemporal;
+  Lista<Enlace>* ListaEnlaces;
+  Lista<Central>* ListaCentrales;
 
 public:
-  /**
-   * Se crea el procesador de llamadas con sus punteros apuntando a null
-   * 
-   * */
+	/**
+	* Se crea el procesador de llamadas con sus punteros apuntando a null
+	*/
   ProcesadorLlamada();
   
   /** 
@@ -30,12 +30,12 @@ public:
    * el interno a la lista de internos de la respectiva central
    * si ya existe la central no hace nada.
    * */
-  void agregarCentralA(int numeroCentral);
+  void agregarOrigen(int numeroCentral);
   /** 
    * post:si no existe agrega la central a la lista de centrales 
    * si ya existe la central no hace nada.
    * */
-  void agregarCentralB(int numeroCentral);
+  void agregarDestino(int numeroCentral);
   
   DatosRecorrido* buscaCentralMenorPrecio();
 
@@ -46,17 +46,17 @@ public:
    * Post: carga los datos de cada linea del txt de llamadas ya sea datos de enlaces como de inicio
    * y fin de llamadas
    * */
-  void procesarLlamada(std::string rutaArchivoLlamadasTemporal);
+  void procesarLlamada();
 
 
   /** 
    * post:si no existe agrega la enlace a la lista de centrales 
    * si ya existe la enlace no hace nada.
    * */
-  void agregarEnlace(int numeroCentralA, int numeroCentralB);
+  void agregarEnlace(int numeroOrigen, int numeroOrigen);
 
 
 };
 
 #endif
-#endif
+
