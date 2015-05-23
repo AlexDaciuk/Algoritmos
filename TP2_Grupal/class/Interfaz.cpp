@@ -2,6 +2,25 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include "DatosLlamada.h"
+#include "Menu.h"
+#include "ProcesadorLlamada.h"
+#include "LectorArchivos.h"
+#include "Opciones.h"
+#include "Lista.h"
+#include "Enlace"
+#include "Central"
+
+Interfaz::Interfaz()
+{
+  this->punteroAEnlaces= new Listas<Enlace>;
+  this->punteroACentrales= new Lista<Central>;
+}
+
+Interfaz::~Interfaz()
+{
+  delete this->punteroACentral;
+  delete this->punteroAENlace;
 
 void Interfaz::mostrarMenu()
 {
@@ -55,4 +74,4 @@ std::string Interfaz::pedirAlgoritmoDeBusqueda()
   }
   return opcionAlgoritmo;
 }
-
+void Interfaz::mostrarNumerosDeInternos()
