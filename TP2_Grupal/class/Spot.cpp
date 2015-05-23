@@ -9,9 +9,9 @@
 #include "Enlace.h"
 #include "Central.h"
 
-Spot::Spot(Central* posicion, int valorDelCamino)
+Spot::Spot(Central* posicion, int valorHastaSpot)
 {
-	this->valorDelCamino = valorDelCamino;
+	this->valorHastaSpot = valorHastaSpot;
 	this->posicion = posicion;
 	this->enlaceRecorrido = NULL;
 	this->centralesVisitadas= new Lista<Central*>*;

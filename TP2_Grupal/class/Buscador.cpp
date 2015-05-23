@@ -17,7 +17,7 @@ Buscador::Buscador(Lista<Central>* centrales)
 	this->centralesTotales = centrales;
 	this->mejorCamino = new Lista<Enlace*>*;
 	this->rutaActual = new Lista<Spot>*;
-	this->valorDelCamino= 0;
+	this->valorDelCamino= -1;
 }
 
 Lista<Enlace*>* Buscador::obtenerRuta()
@@ -41,7 +41,8 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 	else
 	{
 		Central* centralActual = this->encontrarLaCentral(centralEmisora);
-		centralActual->//obtener lista de enlaces e ir recorriendola
+		while(this->valorDelCamino )
+		Enlace* enlacesActuales = centralActual->obtenerEnlaces();
 		
 	}
 }
