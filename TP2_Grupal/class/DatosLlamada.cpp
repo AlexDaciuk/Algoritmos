@@ -1,6 +1,4 @@
 #include "DatosLlamada.h"
-#include <string>
-#include <sstream>
 
 DatosLlamada::DatosLlamada()
 {
