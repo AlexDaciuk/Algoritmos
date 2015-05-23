@@ -23,11 +23,11 @@ private:
 	
 	/**
 	 * La posicion es la central en donde estoy.
-	 * el valorDelCamino es la distancia recorrida o el 
+	 * el valorHastaSpot es la distancia recorrida o el 
 	 * precio acumulado.
 	 *
 	 */
-	int valorDelCamino;
+	int valorHastaSpot;
 	
 	Central* posicion;
 	
@@ -40,10 +40,10 @@ public:
 	 *Constructor de la clase Ruta.
 	 * Pre: debo indicarle el puntero de la central correspondiente 
 	 * a la posicion y el valor total del camino recorrido.
-	 * En caso de ser la primer central valorDelCamino valdra 0.
+	 * En caso de ser la primer central valorHastaSpot valdra 0.
 	 * Post: Guardara la informacion de lo indicado en las precondiciones.
 	 */
-	Spot(Central* posicion, int valorDelCamino);
+	Spot(Central* posicion, int valorHastaSpot);
 	
 	/**
 	 * Pre: debo indicarle el puntero de la central a la que me dirijo y el puntero
