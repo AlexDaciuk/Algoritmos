@@ -26,13 +26,13 @@ void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string origenT
       emisorStream >> this->emisor;
       
       std::stringstream destinoStream(destinoTemporal);
-      destinostream >> this->destino;
+      destinoStream >> this->destino;
     
       std::stringstream receptorStream(receptorTemporal);
       receptorStream >> this->receptor;  
         
       std::stringstream horaInicioStreamTemporal(horaTemporal);
-      horaStreamTemporal >> this->hora;
+      horaInicioStreamTemporal >> this->hora;
       
     }
 }
@@ -63,5 +63,5 @@ int DatosLlamada::obtenerReceptor()
 
 int DatosLlamada::obtenerHora()
 {
-  return this->hora
+  return this->hora;
 }
