@@ -27,7 +27,7 @@ private:
 	 * precio acumulado.
 	 *
 	 */
-	int precioHastaSpot;
+	int precioHastaSpot, distanciaHastaSpot;
 	
 	Central* posicion;
 	
@@ -43,7 +43,7 @@ public:
 	 * En caso de ser la primer central precioHastaSpot valdra 0.
 	 * Post: Guardara la informacion de lo indicado en las precondiciones.
 	 */
-	Spot(Central* posicion, int precioHastaSpot);
+	Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpot);
 	
 	/**
 	 * Pre: debo indicarle el puntero de la central a la que me dirijo y el puntero
@@ -59,9 +59,14 @@ public:
 	bool visitasteLacentral(Central* CentralAVisitar);
 	
 	/**
-	* Post: indica el valor del recorrido hasta este spot
+	* Post: indica el precio del recorrido hasta este spot
 	*/
-	int precioHastaSpot();
+	int obtenerPrecioHastaSpot();
+	
+	/**
+	* Post: indica la distancia recorrida hasta el spot
+	*/
+	int obtenerDistanciaRecorrida();
 	
 	/**
 	 * Post: destruye toda la lista de caminos recorridos desde esta central

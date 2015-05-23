@@ -20,17 +20,15 @@ class Buscador{
   
 private:
   
-	Lista<Enlace*>* mejorCamino;
+	Lista<Enlace>* mejorCamino;
 	
 	Lista<Spot>* rutaActual;
 	
 	Lista<Central>* centralesTotales;
 	
-	/**
-	* En esta variable guardare la distancia que  recorre el mejor camino
-	* o el precio del camino mas barato segun lo pedido por el usuario.
-	*/
 	int precioDeLaLlamada;
+	
+	int distanciaDeLaLlamada;
 	
 public:
 
@@ -47,9 +45,14 @@ public:
 	  Lista<Enlace*>* obtenerRuta();
 	
 	/**
-	 * Post: devuelve la distancia o el precio de la llamada segun corresponda.
+	 * Post: devuelve el precio de la llamada segun corresponda.
 	 */
-	  int obtenerprecioDeLaLlamada();
+	  int obtenerPrecioDeLaLlamada();
+	  
+	/**
+	 * Post: devuelve la distancia de la llamada segun corresponda.
+	 */
+	  int obtenerDistanciaDeLaLlamada();
 	  
 	/**
 	 * Pre: se le da la lista de centrales y la central que desea buscar
@@ -86,7 +89,7 @@ private:
 	  
 	  Interno* encontrarInternoEnLa(Central* central, int numeroDeInterno);
 	
-	  
+	  void definirEstePrecioYDistancia();
 	  
   //Buscar central de salida en la lista de centrales
   //iniciar camino:

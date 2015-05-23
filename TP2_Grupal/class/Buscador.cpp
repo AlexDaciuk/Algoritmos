@@ -10,9 +10,10 @@
 Buscador::Buscador(Lista<Central>* centrales)
 {
 	this->centralesTotales = centrales;
-	this->mejorCamino = new Lista<Enlace*>*;
+	this->mejorCamino = new Lista<Enlace>*;
 	this->rutaActual = new Lista<Spot>*;
-	this->precioDeLaLlamada= -1;
+	this->precioDeLaLlamada= 0;
+	this->distanciaDeLaLlamada = 0;
 }
 
 Lista<Enlace*>* Buscador::obtenerRuta()
@@ -20,27 +21,33 @@ Lista<Enlace*>* Buscador::obtenerRuta()
 	return (this->mejorCamino);
 }
 
-int Buscador::obtenerprecioDeLaLlamada()
+int Buscador::obtenerPrecioDeLaLlamada()
 {
 	return (this->precioDeLaLlamada);
+}
+
+int Buscador::obtenerDistanciaDeLaLlamada()
+{
+	return (this->distanciaDeLaLlamada);
 }
 
 void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora, int emisor, int receptor)
 {
 	
 	Central* centralActual = this->encontrarLaCentral(centralEmisora);
-	this->rutaActual->insertar(Spot spot(centralActual->obtenerNumero(), 0));
+	this->rutaActual->insertar(Spot spot(centralActual, 0, 0));
 	if (this->esLlamadaInterna(centralEmisora, centralReceptora))
 	{
-		this->precioDeLaLlamada = 0;
+		this->definirEstePrecioYDistancia();
 		this->rutaActual = NULL;
 		this->mejorCamino = NULL;
 	}
 	else
 	{
-		while(this->precioDeLaLlamada > )
-		Enlace* enlacesActuales = centralActual->obtenerEnlaces();
-		
+		this->rutaActual->iniciarCursorNodo();
+		int mejorPrecio = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot;
+		while(this->precioDeLaLlamada > mejorPrecio)
+		Lista<Enlace>* enlacesActuales = centralActual->obtenerEnlaces();
 	}
 }
 
@@ -78,7 +85,16 @@ bool Buscador::esLlamadaInterna(int centralEmisora, int centralReceptora)
 
 Interno* Buscador::encontrarInternoEnLa(Central* central, int numeroDeInterno)
 {
-	return(central->obtenerPunteroAInterno(numeroDeInterno));
+	return(central->obtenerInterno(numeroDeInterno));
 }
+
+void Buscador::definirEstePrecioYDistancia()
+{
+	this->rutaActual->iniciarCursorNodo();
+	this->rutaActual->avanzarCursorPorElFinal();
+	this->precioDeLaLlamada = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
+	this->distanciaDeLaLlamada = this->rutaActual->obtenerCursorNodo()->obtenerDistanciaRecorrida();
+}
+	  
 
 #endif

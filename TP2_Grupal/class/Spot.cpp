@@ -7,9 +7,10 @@
 
 #include "Spot.h"
 
-Spot::Spot(Central* posicion, int precioHastaSpot)
+Spot::Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpot)
 {
 	this->precioHastaSpot = precioHastaSpot;
+	this->distanciaHastaSpot = distanciaHastaSpot;
 	this->posicion = posicion;
 	this->enlaceRecorrido = NULL;
 	this->centralesVisitadas= new Lista<Central*>*;
@@ -34,9 +35,14 @@ bool Spot::visitasteLacentral(Central* centralAVisitar)
 	return(laEncontre);
 }
 
-int Spot::precioHastaSpot()
+int Spot::obtenerPrecioHastaSpot()
 {
 	return(this->precioHastaSpot);
+}
+
+int Spot::obtenerDistanciaRecorrida()
+{
+	return(this->distanciaHastaSpot);
 }
 
 Spot::~Spot()
