@@ -14,15 +14,31 @@
 
 Interfaz::Interfaz()
 {
-  this->punteroAEnlaces= new Listas<Enlace>;
-  this->punteroACentrales= new Lista<Central>;
+  this->enlaces= new Listas<Enlace>;
+  this->centrales= new Lista<Central>;
+  this->LectorDeArchivos=NULL;
 }
 
-Interfaz::~Interfaz()
+void Interfaz::cambiarPunteroPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero)
 {
-  delete this->punteroACentrales;
-  delete this->punteroAENlaces;
+  this->punteroALectorDeArchivos=nuevoPuntero;
 }
+
+std::string Interfaz::pedirRuta()
+{
+  std::string ruta;
+  std::cout<<"Ingrese la ruta del archivo de llamadas:";
+  std::cin>>ruta;
+  return ruta;
+}
+void Interfaz::iniciarPrograma()
+{
+  LectorArchivos* lectorDeArchivos = new LectorArchivos (pedirRuta())
+  this->cambiarPunteroALectorDeArchivos(lectorDeArchivos);
+  
+  
+  
+  
 
 void Interfaz::mostrarMenu()
 {
@@ -77,27 +93,42 @@ std::string Interfaz::pedirAlgoritmoDeBusqueda()
   return opcionAlgoritmo;
 }
 
-Lista<Enlace>* Interfaz::obtenerPunteroAEnlaces()
+Lista<Enlace>* Interfaz::obtenerenlaces()
 {
-   return this->punteroAEnlaces;
+   return this->enlaces;
 }
-Lista<Central>* Interfaz::obtenerPunteroACentrales()
+Lista<Central>* Interfaz::obtenercentrales()
 {
-  return this->punteroACentrales;
+  return this->centrales;
 }
 
 void Interfaz::mostrarDetallesDeInternos()
 {
-  this->punteroACentrales->iniciarCursorNodo();
-  while (this->punteroACentrales->avanzarCursorNodo())
+  this->centrales->iniciarCursorNodo();
+  while (this->centrales->avanzarCursorNodo())
   {
-    std:cout<<"Internos de la central:"<<this->punteroACentrales->obtenerCursorNodo->obtenerNumero()<<": \n";
-    Lista<Internos>* punteroAInternos= this->punteroACentrales->obtenercursorNodo()->obtenerInternos();
+    std:cout<<"Internos de la central:"<<this->centrales->obtenerCursorNodo->obtenerNumero()<<": \n";
+    Lista<Internos>* punteroAInternos= this->centrales->obtenercursorNodo()->obtenerInternos();
     punteroAInternos->iniciarCursorNodo();
     while (this->punteroAInternos->avanzarCursorNodo())
     {
       std::cout<<"Interno:"<<punteroAInternos->obternerCursorNodo()->obtenerNumero()<<". \n";
     }
     std::cout>>endl;
+  }
 }
 
+
+
+
+
+
+
+
+
+
+Interfaz::~Interfaz()
+{
+  delete this->centrales;
+  delete this->enlaces;
+}

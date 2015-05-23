@@ -6,6 +6,8 @@
 #include "Lista.h"
 #include "Enlace"
 #include "Central"
+#include "LectorAchivos.h"
+
 
 
 /**
@@ -18,8 +20,9 @@
 class Interfaz {
 private:
 	
-	Lista<Enlace>* punteroAEnlaces;
-  Lista<Central>* punteroACentrales;
+	Lista<Enlace>* enlaces;
+  Lista<Central>* centrales;
+  LectorArchivos* punteroALectorDeArchivos;
 	
 	
 public:
@@ -30,11 +33,11 @@ public:
   /**
    * Deuelve el puntero a la lista donde se guardan los enlaces para su uso.
    * */ 
-  Lista<Enlace>* obtenerPunteroAEnlaces();
+  Lista<Enlace>* obtenerenlaces();
 	/**
    * Deuelve el puntero a la lista donde se guardan las centrales para su uso.
    * */
-  Lista<Central>* obtenerPunteroACentrales();
+  Lista<Central>* obtenercentrales();
 	/**
 	 * Metodo que va a iniciar el programa
 	 */
@@ -54,6 +57,11 @@ public:
 	 * Metodo que va a pedir numero de central al usuario
 	 */
 	int pedirCentral();
+  
+  /**
+   * Metodo que pide la ruta donde esta hubicado el archivo de llamadas.
+   * */
+  std::string pedirRuta();
 	
 	/**
 	 * Metodo que va a pedir numero de interno al usuario 
@@ -69,6 +77,15 @@ public:
    * discriminados por central.
    * */
   void mostrarDetallesDeInternos();
+  /**
+   * Devuleve el puntero a la clase que lee el archivo de llamadas.
+   * */
+  LectorArchivos* obtenerPunteroALectorDeArchivos();
+  
+  /**
+   * Cambia la direccion donde apunta el puntero.
+   * */
+  void cambiarPunteroPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero);
   
   
   
