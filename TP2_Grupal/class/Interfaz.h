@@ -4,8 +4,8 @@
 #include <string>
 #include <iostream>
 #include "Lista.h"
-#include "Enlace"
-#include "Central"
+#include "Enlace.h"
+#include "Central.h"
 #include "LectorAchivos.h"
 
 
@@ -42,7 +42,17 @@ public:
 	 * Metodo que va a iniciar el programa
 	 */
 	void iniciarPrograma();
-	
+  
+  /**
+   * Inicializa el puntero a la lista de centrales con la direcion de la lista creada al procesar el archivo
+   * de llamadas.
+   * */
+  void iniciarlizarPunteroACentrales(ProcesadorLlamada* procesadorDeLlamadas);
+  /**
+   * Inicializa el puntero a la lista de enlaces con la direcion de la lista creada al procesar el archivo
+   * de llamadas.
+   * */
+	void iniciarlizarPunteroAEnlaces(ProcesadorLlamada* procesadorDeLlamadas);
 	/**
 	 * Metodo que va a mostrar el menu al usuario
 	 */

@@ -20,7 +20,7 @@ class Buscador{
   
 private:
   
-	Lista<Enlace>* mejorCamino;
+	Lista<Enlace*>* mejorCamino;
 	
 	Lista<Spot>* rutaActual;
 	
