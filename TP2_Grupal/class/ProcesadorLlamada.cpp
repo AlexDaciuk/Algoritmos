@@ -1,10 +1,5 @@
 #include "ProcesadorLlamada.h"
 
-#ifndef NULL
-#define NULL 0
-#endif
-
-
 ProcesadorLlamada::ProcesadorLlamada()
 {
   this->datosTemporal= NULL;
