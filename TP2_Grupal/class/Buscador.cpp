@@ -10,7 +10,7 @@
 Buscador::Buscador(Lista<Central>* centrales)
 {
 	this->centralesTotales = centrales;
-	this->mejorCamino = new Lista<Enlace>*;
+	this->mejorCamino = new Lista<Enlace*>*;
 	this->rutaActual = new Lista<Spot>*;
 	this->precioDeLaLlamada= 0;
 	this->distanciaDeLaLlamada = 0;
@@ -45,9 +45,12 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 	else
 	{
 		this->rutaActual->iniciarCursorNodo();
+		this->rutaActual->avanzarCursorNodo();
 		int mejorPrecio = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot;
-		while(this->precioDeLaLlamada > mejorPrecio)
-		Lista<Enlace>* enlacesActuales = centralActual->obtenerEnlaces();
+		while((this->precioDeLaLlamada > mejorPrecio) || (this->precioDeLaLlamada == 0))
+		{
+			Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
+		}
 	}
 }
 

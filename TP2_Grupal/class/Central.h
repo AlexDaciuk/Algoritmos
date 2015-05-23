@@ -22,7 +22,7 @@ private:
   
   Lista<Internos>* internos;
   // Puntero a la lista de enlaces general
-  Lista<Enlaces>* enlaces;
+  Lista<Enlaces*>* enlaces;
 
 public:
 
@@ -57,7 +57,7 @@ public:
    * Metodo que devuelve la lista de enlaces
    */
    
-  Lista<Enlaces>* obtenerEnlaces();
+  Lista<Enlaces*>* obtenerEnlaces();
   
   /**
    * Metodo que devuelve el numero de la central
