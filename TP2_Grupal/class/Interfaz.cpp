@@ -1,4 +1,4 @@
-#include "Intefaz.h"
+#include "Interfaz.h"
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -19,8 +19,9 @@ Interfaz::Interfaz()
 
 Interfaz::~Interfaz()
 {
-  delete this->punteroACentral;
-  delete this->punteroAENlace;
+  delete this->punteroACentrales;
+  delete this->punteroAENlaces;
+}
 
 void Interfaz::mostrarMenu()
 {
@@ -79,7 +80,9 @@ Lista<Enlace>* Interfaz::obtenerPunteroAEnlaces()
 {
    return this->punteroAEnlaces;
 }
- Lista<Central>* Interfaz::obtenerPunteroACentrales
- {
-   return this->punteroACentrales;
+Lista<Central>* Interfaz::obtenerPunteroACentrales()
+{
+  return this->punteroACentrales;
+}
+
 void Interfaz::mostrarNumerosDeInternos()

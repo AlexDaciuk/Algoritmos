@@ -1,5 +1,7 @@
 #ifndef INTERFAZ_H
 #define INTERFAZ_H
+#ifndef NULL
+#define NULL 0
 #include <string>
 #include <iostream>
 #include "Lista.h"
@@ -81,4 +83,5 @@ public:
  
   ~Interfaz();
 }
+#endif
 #endif
