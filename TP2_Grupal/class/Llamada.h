@@ -1,15 +1,16 @@
-#ifndef LLAMADA_H
-#define LLAMADA_H
+#ifndef LLAMADA_H_
+#define LLAMADA_H_
+
 #ifndef NULL
 #define NULL 0
-#include <string>
+#endif
+
 
 class Llamada
 {
 private:
 
-  
-  int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos,horaInicioLlamadaEnCurso, receptorLlamada;
+    int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada;
   
 public:
 
@@ -49,4 +50,4 @@ public:
 };
 
 #endif
-#endif
+

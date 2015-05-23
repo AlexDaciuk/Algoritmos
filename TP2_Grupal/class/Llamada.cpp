@@ -1,21 +1,21 @@
 #ifndef LLAMADA_H_
 #define LLAMADA_H_
 
-#include <string>
+
 #include "Llamada.h"
 
-using namespace std;
+
 
 Llamada::Llamada (int receptorLlamadaTemporal)
 {
-  if (receptorLlamadaTemporal > 0 || receptorLlamadaTemporal =< 9999)
+  if (receptorLlamadaTemporal > 0 && receptorLlamadaTemporal =< 9999)
     {
       this->cantidadLlamadas = 0;
       this->duracionLlamadas = 0;
       this->cantidadOcupadosDados = 0;
       this->cantidadOcupadosRecibidos = 0;
       this->horaInicioLlamadaEnCurso =0;
-      this->receptorLlamada =receptorLlamadaTemporal;
+      this->receptorLlamada = receptorLlamadaTemporal;
     }
   
 }
@@ -34,7 +34,7 @@ void Llamada::terminarLlamada (int horaFinLlamadaEnCursoTemporal)
 
 int Llamada::obtenerReceptorLlamada()
 {
-  return (receptorLlamada);
+  return this->receptorLlamada;
 } 
 
 int Llamada::obtenerDuracionLlamadas()
