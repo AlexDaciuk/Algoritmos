@@ -45,6 +45,28 @@ int Spot::obtenerDistanciaRecorrida()
 	return(this->distanciaHastaSpot);
 }
 
+bool Spot::recorriTodosLosEnlaces()
+{
+	losRecorri = true;
+	Lista<Enlace*>* enlacesDisponibles = this->posicion->obtenerEnlaces();
+	enlacesDisponibles->iniciarCursorNodo();
+	while((enlacesDisponibles->avanzarCursorNodo())&& (losRecorri))
+	{
+		Enlace* enlaceActual = enlacesDisponibles->obtenerCursorNodo();
+		if (enlaceActual->obtenerDestino()->obtenerNumero() != this->posicion->obtenerNumero())
+		{
+			if(!this->visitasteLacentral(enlaceActual->obtenerDestino()))
+				losRecorri = false;
+		}
+		else
+		{
+			if(!this->visitasteLacentral(enlaceActual->obtenerOrigen()))
+				losRecorri = false;
+		}
+	}
+	return (losRecorri);
+}
+
 Spot::~Spot()
 {
 	delete centralesVisitadas;

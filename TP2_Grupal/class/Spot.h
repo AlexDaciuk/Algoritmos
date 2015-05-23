@@ -69,6 +69,11 @@ public:
 	int obtenerDistanciaRecorrida();
 	
 	/**
+	* Post: indica si desde la central del spot uso ya todos los enlaces
+	*/
+	bool recorriTodosLosEnlaces();
+	
+	/**
 	 * Post: destruye toda la lista de caminos recorridos desde esta central
 	 */
 	 ~Spot();
