@@ -14,10 +14,10 @@
 class ProcesadorLlamada
 {
 private:
-  DatosLlamada* DatosTemporal;
-  DatosRecorrido* RecorridoTemporal;
-  Lista<Enlace>* ListaEnlaces;
-  Lista<Central>* ListaCentrales;
+  DatosLlamada* datosTemporal;
+  DatosRecorrido* recorridoTemporal;
+  Lista<Enlace>* enlaces;
+  Lista<Central>* centrales;
 
 public:
 	/**

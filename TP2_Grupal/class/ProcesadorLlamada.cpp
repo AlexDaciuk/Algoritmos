@@ -7,36 +7,36 @@
 
 ProcesadorLlamada::ProcesadorLlamada()
 {
-  DatosTemporal= NULL;
-  RecorridoTemporal= NULL;
-  ListaCentrales = new Lista<Central>;
-  ListaEnlaces = new Lista<Enlace>;
+  datosTemporal= NULL;
+  recorridoTemporal= NULL;
+  centrales = new Lista<Central>;
+  Listaenlaces = new Lista<Enlace>;
 }
 
 void ProcesadorLlamada::procesarLlamadas(std::string rutaArchivoLlamadas)
 {
   while ( archivoLlamadas->chequearLLamada() )
     {
-      DatosTemporal = archivoLlamadas->obtenerDatosLlamada();
-      agregarCentral(punteroDatosTemporal->obtenerOrigen);
-      agregarCentral(punteroDatosTemporal->obtenerDestino);
+      datosTemporal = archivoLlamadas->obtenerDatosLlamada();
+      agregarCentral(punterodatosTemporal->obtenerOrigen);
+      agregarCentral(punterodatosTemporal->obtenerDestino);
 	
-      if ( DatosTemporal->accionTemporal == "Inicio")
+      if ( datosTemporal->accionTemporal == "Inicio")
       {
-        RecorridoTemporal = this->buscaCentral; 
+        recorridoTemporal = this->buscaCentral; 
         this->iniciarLlamada();  
       }
       else
       { 
-        if ( DatosTemporal->accionTemporal == "Fin")
+        if ( datosTemporal->accionTemporal == "Fin")
         {
           this->finalizarLlamada();
         }
         else
           {    
-            if ( DatosTemporal->accionTemporal == "Enlace")
+            if ( datosTemporal->accionTemporal == "Enlace")
             {
-             agregarEnlace(DatosTemporal->obtenerOrigen(), DatosTemporal->obtenerDestino());
+             agregarEnlace(datosTemporal->obtenerOrigen(), datosTemporal->obtenerDestino());
             }
           }
       }
@@ -46,21 +46,21 @@ void ProcesadorLlamada::procesarLlamadas(std::string rutaArchivoLlamadas)
 void ProcesadorLlamada::iniciarLlamada();
 {
   // Veo si los internos existen o sino, los crea
-  ListaCentrales->crearInterno(DatosTemporal->obtenerOrigen(), DatosTemporal->obtenerEmisor());
-  ListaCentrales->crearInterno(DatosTemporal->obtenerDestino(), DatosTemporal->obtenerReceptor());
+  centrales->crearInterno(datosTemporal->obtenerOrigen(), datosTemporal->obtenerEmisor());
+  centrales->crearInterno(datosTemporal->obtenerDestino(), datosTemporal->obtenerReceptor());
   
   //Obtengo punteros a cada interno
   Internos* Emisor, Receptor;
   
-  Emisor = ListaCentrales->obtenerInterno(DatosTemporal->obtenerOrigen(), DatosTemporal->obtenerEmisor() );
-  Receptor = ListaCentrales->obtenerInterno(DatosTemporal->obtenerDestino(), DatosTemporal->obtenerReceptor() );
+  Emisor = centrales->obtenerInterno(datosTemporal->obtenerOrigen(), datosTemporal->obtenerEmisor() );
+  Receptor = centrales->obtenerInterno(datosTemporal->obtenerDestino(), datosTemporal->obtenerReceptor() );
   
   //Agrego la llamada a cada interno
-  Emisor->agregarLlamadaEmisor(DatosTemporal->obtenerReceptor(), DatosTemporal->obtenerHora(), recorridoTemporal);
-  Receptor->agregarLlamadaReceptor(DatosTemporal->obtenerEmisor(), DatosTemporal->obtenerHora(), recorridoTemporal);
+  Emisor->agregarLlamadaEmisor(datosTemporal->obtenerReceptor(), datosTemporal->obtenerHora(), recorridoTemporal);
+  Receptor->agregarLlamadaReceptor(datosTemporal->obtenerEmisor(), datosTemporal->obtenerHora(), recorridoTemporal);
   
   //Cambio la disponibilidad de los enlaces
-  Enlace* EnlaceTemporal = this->RecorridoTemporal->obtenerRuta;
+  Enlace* EnlaceTemporal = this->recorridoTemporal->obtenerRuta;
   
   /**
    *  Esto hay que cambiarlo, usar un cursor dentro de la lista
@@ -78,15 +78,15 @@ void ProcesadorLlamada::iniciarLlamada();
 void ProcesadorLlamada::finalizarLlamada()
 {
   //Obtengo punteros a cada interno
-  Internos* punteroEmisor, punteroReceptor;
+  Internos* Emisor, Receptor;
   
-  punteroEmisor = punteroListaCentrales->obtenerPunteroInterno(punteroDatosTemporal->obtenerOrigen(), punteroDatosTemporal->obtenerEmisor());
-  punteroReceptor = punteroListaCentrales->obtenerPunteroInterno(punteroDatosTemporal->obtenerDestino(), punteroDatosTemporal->obtenerReceptor());
+  Emisor = centrales->obtenerInterno(datosTemporal->obtenerOrigen(), datosTemporal->obtenerEmisor());
+  Receptor = centrales->obtenerInterno(datosTemporal->obtenerDestino(), datosTemporal->obtenerReceptor());
   
   
   // Termino la llamada en cada interno
-  punteroEmisor->terminarLlamadaEmisor(punteroDatosTemporal->obtenerEmisor(), punteroDatosTemporal->obtenerHora() );
-  punteroReceptor->terminarLlamadaReceptor(punteroDatosTemporals->obtenerReceptor(), punteroDatosTemporal->obtenerHora() );
+  Emisor->terminarLlamadaEmisor(datosTemporal->obtenerEmisor(), datosTemporal->obtenerHora() );
+  Receptor->terminarLlamadaReceptor(datosTemporals->obtenerReceptor(), datosTemporal->obtenerHora() );
   
   
   //Cambio disponibilidad de enlaces
@@ -96,11 +96,11 @@ void ProcesadorLlamada::finalizarLlamada()
 
 void ProcesadorLlamada::agregarCentral(int numeroCentral)
 {
-  punteroListaCentrales->iniciarCursorNodo();
+  centrales->iniciarCursorNodo();
   bool encontro=false;
-  while ((punteroListaCentrales->avanzarCursorNodo()) && (! encontro))
+  while ((punterocentrales->avanzarCursorNodo()) && (! encontro))
     {
-      if (numeroCentral == punteroListaCentrales->obtenerCursorNodo()->obtenerNumero())
+      if (numeroCentral == punterocentrales->obtenerCursorNodo()->obtenerNumero())
 	{
 	  encontro=true;
 	}
@@ -108,29 +108,29 @@ void ProcesadorLlamada::agregarCentral(int numeroCentral)
   if (! encontro)
     {
       Central* nuevaCentral= new Central(numeroCentral) ;
-      punteroListaCentrales->insertar(*punteroNuevaCentral);
+      punterocentrales->insertar(*punteroNuevaCentral);
            
     }
 }
 
 void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 {
-  punteroListaEnlaces->inicarCursorNodo();
+  punteroListaenlaces->inicarCursorNodo();
   bool encontro=false;
-  while ((punteroListaEnlaces->avanzarCursorNodo()) && (! encontro)))
+  while ((punteroListaenlaces->avanzarCursorNodo()) && (! encontro)))
   {
-    if ((numeroOrigen==punteroListaEnlaces->obtenerCursorNodo()->obtenerOrigen()) 
+    if ((numeroOrigen==punteroListaenlaces->obtenerCursorNodo()->obtenerOrigen()) 
     &&
-     numeroDestino==punteroListaEnlaces->obtenerCursorNodo()->obtenerDestino())
+     numeroDestino==punteroListaenlaces->obtenerCursorNodo()->obtenerDestino())
     {
       encontro=true;
     }
   }
   if (! encontro)
   {
-    Enlace* nuevoEnlace = new Enlace( numeroOrigen, numeroDestino, punteroDatosTemporal->obtenerDestino(), 
-     punteroDatosTemporal->obtenerReceptor(), punteroDatosTemporal->obtenerHora());
-    punteroListaEnlaces()->insertar(*nuevoEnlace);
+    Enlace* nuevoEnlace = new Enlace( numeroOrigen, numeroDestino, punterodatosTemporal->obtenerDestino(), 
+     punterodatosTemporal->obtenerReceptor(), punterodatosTemporal->obtenerHora());
+    punteroListaenlaces()->insertar(*nuevoEnlace);
   }
 }
 
