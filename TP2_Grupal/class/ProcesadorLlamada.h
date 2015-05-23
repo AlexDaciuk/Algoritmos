@@ -9,13 +9,16 @@
 #include "Lista.h"
 #include "Enlace.h"
 #include "Central.h"
+#include "LectorArchivos.h"
+#include "Buscador.h"
 #include <string>
 
 class ProcesadorLlamada
 {
 private:
   DatosLlamada* datosTemporal;
-  DatosRecorrido* recorridoTemporal;
+  Buscador* recorridoTemporal;
+  LectorArchivos* archivoLlamadas;
   Lista<Enlace>* enlaces;
   Lista<Central>* centrales;
 
@@ -37,9 +40,9 @@ public:
    * */
   void agregarDestino(int numeroCentral);
   
-  DatosRecorrido* buscaCentralMenorPrecio();
+  Buscador* buscaCentralMenorPrecio();
 
-  DatosRecorrido* buscaCentralMenorDistancia();
+  Buscador* buscaCentralMenorDistancia();
   
   /** 
    * Pre: la ruta donde se encuentra el archivo con los datos de llamadas debe existir.
