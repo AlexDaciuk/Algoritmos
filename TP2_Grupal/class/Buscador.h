@@ -13,6 +13,8 @@
 /**
  * Esta clase se ocupará de encontrar el camino con la menor distacia
  * o con el precio mas bajo de una central a otra.
+ * Modo de uso: Luego de crear el buscador, lo primero que se debe hacer es buscar el 
+ * camino, ya sea por precio o distancia, antes de pedirle cualquiera de las operaciones.
  */
 class Buscador{
   
