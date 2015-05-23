@@ -13,6 +13,7 @@ void ProcesadorLlamada::procesarLlamadas()
   while ( archivoLlamadas->chequearLLamada() )
     {
       this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
+	  
       agregarCentral(this->datosTemporal->obtenerOrigen);
       agregarCentral(this->datosTemporal->obtenerDestino);
 	

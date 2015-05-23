@@ -21,7 +21,7 @@ private:
   int numeroCentral;
   
   Lista<Internos>* internos;
-  // Puntero a la lista de enlaces general
+  // Puntero a la lista de punteros a los enlaces de la central
   Lista<Enlaces*>* enlaces;
 
 public:
