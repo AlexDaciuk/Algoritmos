@@ -98,9 +98,9 @@ void ProcesadorLlamada::agregarCentral(int numeroCentral)
 {
   centrales->iniciarCursorNodo();
   bool encontro=false;
-  while ((punterocentrales->avanzarCursorNodo()) && (! encontro))
+  while ((centrales->avanzarCursorNodo()) && (! encontro))
     {
-      if (numeroCentral == punterocentrales->obtenerCursorNodo()->obtenerNumero())
+      if (numeroCentral == centrales->obtenerCursorNodo()->obtenerNumero())
 	{
 	  encontro=true;
 	}
@@ -108,30 +108,32 @@ void ProcesadorLlamada::agregarCentral(int numeroCentral)
   if (! encontro)
     {
       Central* nuevaCentral= new Central(numeroCentral) ;
-      punterocentrales->insertar(*punteroNuevaCentral);
+      centrales->insertar(nuevaCentral);
            
     }
 }
 
 void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 {
-  punteroListaenlaces->inicarCursorNodo();
+  this->enlaces->inicarCursorNodo();
   bool encontro=false;
-  while ((punteroListaenlaces->avanzarCursorNodo()) && (! encontro)))
+  while ((this->enlaces->avanzarCursorNodo()) && (! encontro)))
   {
-    if ((numeroOrigen==punteroListaenlaces->obtenerCursorNodo()->obtenerOrigen()) 
+    if ((numeroOrigen==this->enlaces->obtenerCursorNodo()->obtenerOrigen()) 
     &&
-     numeroDestino==punteroListaenlaces->obtenerCursorNodo()->obtenerDestino())
+     numeroDestino==this->enlaces->obtenerCursorNodo()->obtenerDestino())
     {
       encontro=true;
     }
   }
   if (! encontro)
   {
-    Enlace* nuevoEnlace = new Enlace( numeroOrigen, numeroDestino, punterodatosTemporal->obtenerDestino(), 
-     punterodatosTemporal->obtenerReceptor(), punterodatosTemporal->obtenerHora());
-    punteroListaenlaces()->insertar(*nuevoEnlace);
+	// Aca tener en cuenta que los atributos de datosTemporal siguen con los nombres como si fuera
+	// una llamada, pero realmente es para una central y estan ordenados
+	Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->datosTemporal->obtenerDestino(), 
+						  this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora());
+    this->enlaces->insertar(nuevoEnlace);
   }
 }
 
-    punteroEnlces
+
