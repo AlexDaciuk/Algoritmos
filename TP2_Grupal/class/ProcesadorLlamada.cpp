@@ -97,7 +97,7 @@ void ProcesadorLlamada::agregarCentral(int numeroCentral)
   bool encontro=false;
   while ((this->centrales->avanzarCursorNodo()) && (! encontro))
     {
-  	  encontro= numeroCentral == this->centrales->obtenerCursorNodo()->obtenerNumero() ;
+  	  encontro= (numeroCentral == this->centrales->obtenerCursorNodo()->obtenerNumero()) ;
 	}
   if (! encontro)
     {
@@ -121,8 +121,8 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
   {
 	// Aca tener en cuenta que los atributos de this->datosTemporal siguen con los nombres como si fuera
 	// una llamada, pero realmente es para una central y estan ordenados
-	Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->this->datosTemporal->obtenerDestino(), 
-						  this->this->datosTemporal->obtenerReceptor(), this->this->datosTemporal->obtenerHora());
+	Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->datosTemporal->obtenerDestino(), 
+						  this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora());
     this->enlaces->insertar(nuevoEnlace);
 	
 	// Tengo que agregar a la lista de puntero de enlaces de cada central el puntero que corresponde
