@@ -45,7 +45,7 @@ public:
    * Metodo que devuelve el numero de la central
    */
    
-  Interno* obtenerPunteroAInterno(int numeroInterno);
+  Interno* obtenerInterno(int numeroInterno);
 
   /**
    * Metodo que devuelve la lista de internos
