@@ -30,7 +30,7 @@ public:
    * Constuctor de la clase
    * Post: Va a quedar creada el nodo en la lista de centrales 
    */
-  
+   
   Central(int numeroCentralTemporal);
   
 
@@ -38,15 +38,27 @@ public:
    * Metodo que crea un interno dentro de la central, para usarse cuando entra una llamada de 
    * otra central y el interno en cuestion no existe
    */
-  
+   
   void crearInterno(int numeroInterno);
 
   /**
    * Metodo que devuelve el numero de la central
    */
+   
   Interno* obtenerPunteroAInterno(int numeroInterno);
 
-
+  /**
+   * Metodo que devuelve la lista de internos
+   */
+  
+  Lista<Internos>* obtenerInternos();
+  
+  /**
+   * Metodo que devuelve la lista de enlaces
+   */
+   
+  Lista<Enlaces>* obtenerEnlaces();
+  
   /**
    * Metodo que devuelve el numero de la central
    */
