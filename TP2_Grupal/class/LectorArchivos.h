@@ -1,5 +1,5 @@
-#ifndef LECTORARCHIVOS_H
-#define LECTORARCHIVOS_H
+#ifndef LECTORARCHIVOS_H_
+#define LECTORARCHIVOS_H_
 
 #ifndef NULL
 #define NULL 0
