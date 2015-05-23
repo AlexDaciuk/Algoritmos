@@ -21,7 +21,7 @@ private:
   int numeroCentral;
   
   Lista<Internos>* internos;
-  // Puntero a la lista de enlaces general
+  // Puntero a la lista de punteros a los enlaces de la central
   Lista<Enlaces*>* enlaces;
 
 public:
@@ -51,6 +51,7 @@ public:
    * Metodo que devuelve la lista de internos
    */
   
+<<<<<<< Updated upstream
   Lista<Internos>* obtenerInternos();
   
   /**
@@ -58,6 +59,9 @@ public:
    */
    
   Lista<Enlaces*>* obtenerEnlaces();
+=======
+  void crearInterno(int numeroInterno);
+>>>>>>> Stashed changes
   
   /**
    * Metodo que devuelve el numero de la central

@@ -13,12 +13,14 @@ void ProcesadorLlamada::procesarLlamadas()
   while ( archivoLlamadas->chequearLLamada() )
     {
       this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
-      agregarCentral(punterothis->datosTemporal->obtenerOrigen);
-      agregarCentral(punterothis->datosTemporal->obtenerDestino);
+	  
+      agregarCentral(this->datosTemporal->obtenerOrigen);
+      agregarCentral(this->datosTemporal->obtenerDestino);
 	
       if ( this->datosTemporal->accionTemporal == "Inicio")
       {
-        recorridoTemporal = this->buscaCentral; 
+		  // Aca va el tema con el buscador de caminos
+       // recorridoTemporal = this->buscaCentral; 
         this->iniciarLlamada();  
       }
       else
@@ -95,11 +97,8 @@ void ProcesadorLlamada::agregarCentral(int numeroCentral)
   bool encontro=false;
   while ((this->centrales->avanzarCursorNodo()) && (! encontro))
     {
-      if (numeroCentral == this->centrales->obtenerCursorNodo()->obtenerNumero())
-	{
-	  encontro=true;
+  	  encontro= (numeroCentral == this->centrales->obtenerCursorNodo()->obtenerNumero()) ;
 	}
-    }
   if (! encontro)
     {
       Central* nuevaCentral= new Central(numeroCentral) ;
@@ -114,20 +113,19 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
   bool encontro=false;
   while ((this->enlaces->avanzarCursorNodo()) && (! encontro)))
   {
-    if ((numeroOrigen==this->enlaces->obtenerCursorNodo()->obtenerOrigen()) 
-    &&
-     numeroDestino==this->enlaces->obtenerCursorNodo()->obtenerDestino())
-    {
-      encontro=true;
-    }
+	encontro= (numeroOrigen==this->enlaces->obtenerCursorNodo()->obtenerOrigen()) 
+				&&
+			  (numeroDestino==this->enlaces->obtenerCursorNodo()->obtenerDestino()) ;
   }
   if (! encontro)
   {
 	// Aca tener en cuenta que los atributos de this->datosTemporal siguen con los nombres como si fuera
 	// una llamada, pero realmente es para una central y estan ordenados
-	Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->this->datosTemporal->obtenerDestino(), 
-						  this->this->datosTemporal->obtenerReceptor(), this->this->datosTemporal->obtenerHora());
+	Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->datosTemporal->obtenerDestino(), 
+						  this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora());
     this->enlaces->insertar(nuevoEnlace);
+	
+	// Tengo que agregar a la lista de puntero de enlaces de cada central el puntero que corresponde
   }
 }
 
