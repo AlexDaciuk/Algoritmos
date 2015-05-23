@@ -8,14 +8,14 @@
 #include "LectorArchivos.h"
 #include "Opciones.h"
 #include "Lista.h"
-#include "Enlace"
-#include "Central"
+#include "Enlace.h"
+#include "Central.h"
 #include "Internos.h"
 
 Interfaz::Interfaz()
 {
-  this->enlaces= new Listas<Enlace>;
-  this->centrales= new Lista<Central>;
+  this->enlaces= NULL;
+  this->centrales= NULL;
   this->LectorDeArchivos=NULL;
 }
 
@@ -39,7 +39,7 @@ void Interfaz::iniciarPrograma()
   
   
   
-
+}
 void Interfaz::mostrarMenu()
 {
   std::cout<<"Bienvenido al sistema de informacion de la central telefonica.\n \n";
@@ -100,6 +100,14 @@ Lista<Enlace>* Interfaz::obtenerenlaces()
 Lista<Central>* Interfaz::obtenercentrales()
 {
   return this->centrales;
+}
+void Interfaz::iniciarlizarPunteroAEnlaces(ProcesadorLlamada* procesadorDeLlamadas)
+{
+  this->enlaces= procesadorDeLlamadas->obternerEnlaces();
+}
+void Interfaz::iniciarlizarPunteroACentrales(ProcesadorLlamada* procesadorDeLlamadas)
+{
+  this->centrales= procesadorDeLlamadas->obtenerCentrales();
 }
 
 void Interfaz::mostrarDetallesDeInternos()
