@@ -91,6 +91,8 @@ private:
 	
 	  void definirEstePrecioYDistancia();
 	  
+	  bool hayMasCaminos();
+	  
   //Buscar central de salida en la lista de centrales
   //iniciar camino:
       //me fijo si la llamada es interna en la misma central

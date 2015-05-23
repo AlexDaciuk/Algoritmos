@@ -98,6 +98,21 @@ void Buscador::definirEstePrecioYDistancia()
 	this->precioDeLaLlamada = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
 	this->distanciaDeLaLlamada = this->rutaActual->obtenerCursorNodo()->obtenerDistanciaRecorrida();
 }
-	  
+
+
+bool Buscador::hayMasCaminos()
+{
+	this->rutaActual->iniciarCursorNodo();
+	this->rutaActual->avanzarCursorNodo();
+	Spot primerSpot = this->rutaActual->obtenerCursorNodo();
+	this->rutaActual->iniciarCursorNodo();
+	this->rutaActual->avanzarCursorPorElFinal();
+	Spot ultimoSpot = this->rutaActual->obtenerCursorNodo();
+	
+	if(ultimoSpot == primerSpot)
+	{
+		if(this->primerSpot)
+	}
+}	  
 
 #endif
