@@ -1,7 +1,9 @@
-#ifndef INTERNOS_H
-#define INTERNOS_H
+#ifndef INTERNOS_H_
+#define INTERNOS_H_
+
 #ifndef NULL
 #define NULL 0
+#endif
 
 #include "Llamada.h"
 #include "Lista.h"
@@ -10,12 +12,12 @@
  *Clase que define a cada interno de una central
  */
 
-class Interno
+class Internos
 {
  private:
   int numeroInterno;
   bool estaOcupado;
-  Lista<Llamada>* punteroALlamadas; //apunta siempre a la primer llamada
+  Lista<Llamada>* llamadas; //apunta siempre a la primer llamada
   
  public:
   
@@ -42,7 +44,8 @@ class Interno
   /**
    *post: devuelve el puntero a la lista de llamadas del interno
    */
-  Lista<Llamada>* obtenerPunteroALlamadas();
+   
+  Lista<Llamada>* obtenerLlamadas();
   
   /**
     *post: recorre la lista de llamadas del interno emisor y busca si ya existe un nodo
@@ -60,5 +63,5 @@ class Interno
   
 };
 
-#endif
+
 #endif

@@ -20,9 +20,9 @@ int Interno::obtenerNumero()
 
 
 
-Lista<Llamada>* Interno::obtenerPunteroALlamadas()
+Lista<Llamada>* Interno::obtenerLlamadas()
 {
-  return this->punteroALlamadas;
+  return this->llamadas;
 };
 
 
@@ -36,7 +36,7 @@ bool Interno::internoOcupado()
 
 void Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 {
-  Lista<Llamada>* punteroLlamadasTemporal = this->punteroALlamadas;
+  Lista<Llamada>* punteroLlamadasTemporal = this->llamadas;
   
   bool existeLlamada = false;
   
