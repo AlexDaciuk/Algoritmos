@@ -5,19 +5,14 @@
 #define NULL 0
 #endif
 
-#include "Internos.h"
 #include "Buscador.h"
-#include "Lista.h"
-#include "Enlace.h"
-#include "Central.h"
-#include "Spot.h"
 
 Buscador::Buscador(Lista<Central>* centrales)
 {
 	this->centralesTotales = centrales;
 	this->mejorCamino = new Lista<Enlace*>*;
 	this->rutaActual = new Lista<Spot>*;
-	this->valorDelCamino= -1;
+	this->precioDeLaLlamada= -1;
 }
 
 Lista<Enlace*>* Buscador::obtenerRuta()
@@ -25,23 +20,25 @@ Lista<Enlace*>* Buscador::obtenerRuta()
 	return (this->mejorCamino);
 }
 
-int Buscador::obtenerValorDelCamino()
+int Buscador::obtenerprecioDeLaLlamada()
 {
-	return (this->valorDelCamino);
+	return (this->precioDeLaLlamada);
 }
 
 void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora, int emisor, int receptor)
 {
+	
+	Central* centralActual = this->encontrarLaCentral(centralEmisora);
+	this->rutaActual->insertar(Spot spot(centralActual->obtenerNumero(), 0));
 	if (this->esLlamadaInterna(centralEmisora, centralReceptora))
 	{
-		this->valorDelCamino = 0;
+		this->precioDeLaLlamada = 0;
 		this->rutaActual = NULL;
 		this->mejorCamino = NULL;
 	}
 	else
 	{
-		Central* centralActual = this->encontrarLaCentral(centralEmisora);
-		while(this->valorDelCamino )
+		while(this->precioDeLaLlamada > )
 		Enlace* enlacesActuales = centralActual->obtenerEnlaces();
 		
 	}

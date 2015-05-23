@@ -30,7 +30,7 @@ private:
 	* En esta variable guardare la distancia que  recorre el mejor camino
 	* o el precio del camino mas barato segun lo pedido por el usuario.
 	*/
-	int valorDelCamino;
+	int precioDeLaLlamada;
 	
 public:
 
@@ -49,7 +49,7 @@ public:
 	/**
 	 * Post: devuelve la distancia o el precio de la llamada segun corresponda.
 	 */
-	  int obtenerValorDelCamino();
+	  int obtenerprecioDeLaLlamada();
 	  
 	/**
 	 * Pre: se le da la lista de centrales y la central que desea buscar

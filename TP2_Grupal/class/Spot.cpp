@@ -6,12 +6,10 @@
 #endif
 
 #include "Spot.h"
-#include "Enlace.h"
-#include "Central.h"
 
-Spot::Spot(Central* posicion, int valorHastaSpot)
+Spot::Spot(Central* posicion, int precioHastaSpot)
 {
-	this->valorHastaSpot = valorHastaSpot;
+	this->precioHastaSpot = precioHastaSpot;
 	this->posicion = posicion;
 	this->enlaceRecorrido = NULL;
 	this->centralesVisitadas= new Lista<Central*>*;
@@ -34,6 +32,11 @@ bool Spot::visitasteLacentral(Central* centralAVisitar)
 			laEncontre=true;
 	}
 	return(laEncontre);
+}
+
+int Spot::precioHastaSpot()
+{
+	return(this->precioHastaSpot);
 }
 
 Spot::~Spot()
