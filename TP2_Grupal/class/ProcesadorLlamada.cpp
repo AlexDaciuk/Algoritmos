@@ -13,8 +13,8 @@ void ProcesadorLlamada::procesarLlamadas()
   while ( archivoLlamadas->chequearLLamada() )
     {
       this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
-      agregarCentral(punterothis->datosTemporal->obtenerOrigen);
-      agregarCentral(punterothis->datosTemporal->obtenerDestino);
+      agregarCentral(this->datosTemporal->obtenerOrigen);
+      agregarCentral(this->datosTemporal->obtenerDestino);
 	
       if ( this->datosTemporal->accionTemporal == "Inicio")
       {
