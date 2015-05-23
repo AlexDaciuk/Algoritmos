@@ -51,7 +51,6 @@ public:
    * Metodo que devuelve la lista de internos
    */
   
-<<<<<<< Updated upstream
   Lista<Internos>* obtenerInternos();
   
   /**
@@ -59,9 +58,8 @@ public:
    */
    
   Lista<Enlaces*>* obtenerEnlaces();
-=======
-  void crearInterno(int numeroInterno);
->>>>>>> Stashed changes
+
+
   
   /**
    * Metodo que devuelve el numero de la central
