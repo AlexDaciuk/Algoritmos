@@ -18,7 +18,8 @@ void ProcesadorLlamada::procesarLlamadas()
 	
       if ( this->datosTemporal->accionTemporal == "Inicio")
       {
-        recorridoTemporal = this->buscaCentral; 
+		  // Aca va el tema con el buscador de caminos
+       // recorridoTemporal = this->buscaCentral; 
         this->iniciarLlamada();  
       }
       else
@@ -95,11 +96,8 @@ void ProcesadorLlamada::agregarCentral(int numeroCentral)
   bool encontro=false;
   while ((this->centrales->avanzarCursorNodo()) && (! encontro))
     {
-      if (numeroCentral == this->centrales->obtenerCursorNodo()->obtenerNumero())
-	{
-	  encontro=true;
+  	  encontro= numeroCentral == this->centrales->obtenerCursorNodo()->obtenerNumero() ;
 	}
-    }
   if (! encontro)
     {
       Central* nuevaCentral= new Central(numeroCentral) ;
@@ -114,12 +112,9 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
   bool encontro=false;
   while ((this->enlaces->avanzarCursorNodo()) && (! encontro)))
   {
-    if ((numeroOrigen==this->enlaces->obtenerCursorNodo()->obtenerOrigen()) 
-    &&
-     numeroDestino==this->enlaces->obtenerCursorNodo()->obtenerDestino())
-    {
-      encontro=true;
-    }
+	encontro= (numeroOrigen==this->enlaces->obtenerCursorNodo()->obtenerOrigen()) 
+				&&
+			  (numeroDestino==this->enlaces->obtenerCursorNodo()->obtenerDestino()) ;
   }
   if (! encontro)
   {
