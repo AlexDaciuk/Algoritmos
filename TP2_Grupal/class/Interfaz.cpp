@@ -10,6 +10,7 @@
 #include "Lista.h"
 #include "Enlace"
 #include "Central"
+#include "Internos.h"
 
 Interfaz::Interfaz()
 {
@@ -85,4 +86,18 @@ Lista<Central>* Interfaz::obtenerPunteroACentrales()
   return this->punteroACentrales;
 }
 
-void Interfaz::mostrarNumerosDeInternos()
+void Interfaz::mostrarDetallesDeInternos()
+{
+  this->punteroACentrales->iniciarCursorNodo();
+  while (this->punteroACentrales->avanzarCursorNodo())
+  {
+    std:cout<<"Internos de la central:"<<this->punteroACentrales->obtenerCursorNodo->obtenerNumero()<<": \n";
+    Lista<Internos>* punteroAInternos= this->punteroACentrales->obtenercursorNodo()->obtenerInternos();
+    punteroAInternos->iniciarCursorNodo();
+    while (this->punteroAInternos->avanzarCursorNodo())
+    {
+      std::cout<<"Interno:"<<punteroAInternos->obternerCursorNodo()->obtenerNumero()<<". \n";
+    }
+    std::cout>>endl;
+}
+
