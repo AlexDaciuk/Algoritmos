@@ -128,6 +128,8 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 	Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->this->datosTemporal->obtenerDestino(), 
 						  this->this->datosTemporal->obtenerReceptor(), this->this->datosTemporal->obtenerHora());
     this->enlaces->insertar(nuevoEnlace);
+	
+	// Tengo que agregar a la lista de puntero de enlaces de cada central el puntero que corresponde
   }
 }
 
