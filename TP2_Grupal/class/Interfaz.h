@@ -1,7 +1,6 @@
 #ifndef INTERFAZ_H
 #define INTERFAZ_H
-#ifndef NULL
-#define NULL 0
+
 #include <string>
 #include <iostream>
 #include "Lista.h"
@@ -69,7 +68,7 @@ public:
    * Metodo que devuelve todos los numeros de los internos que aparecen en los datos de las llamadas 
    * discriminados por central.
    * */
-  void mostrarNumerosDeInternos();
+  void mostrarDetallesDeInternos();
   
   
   
@@ -84,4 +83,4 @@ public:
   ~Interfaz();
 }
 #endif
-#endif
+
