@@ -26,7 +26,14 @@ public:
    * Constructor de la clase. Inicializa los punteros.
    * */
   Ineterfaz();
-	
+  /**
+   * Deuelve el puntero a la lista donde se guardan los enlaces para su uso.
+   * */ 
+  Lista<Enlace>* obtenerPunteroAEnlaces();
+	/**
+   * Deuelve el puntero a la lista donde se guardan las centrales para su uso.
+   * */
+  Lista<Central>* obtenerPunteroACentrales();
 	/**
 	 * Metodo que va a iniciar el programa
 	 */

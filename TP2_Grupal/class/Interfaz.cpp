@@ -74,4 +74,12 @@ std::string Interfaz::pedirAlgoritmoDeBusqueda()
   }
   return opcionAlgoritmo;
 }
+
+Lista<Enlace>* Interfaz::obtenerPunteroAEnlaces()
+{
+   return this->punteroAEnlaces;
+}
+ Lista<Central>* Interfaz::obtenerPunteroACentrales
+ {
+   return this->punteroACentrales;
 void Interfaz::mostrarNumerosDeInternos()
