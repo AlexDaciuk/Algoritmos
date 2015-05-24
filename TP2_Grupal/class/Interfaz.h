@@ -94,6 +94,12 @@ class Interfaz
    * 								los enlaces leidos en el archivo de llamadas.
 * */
   void mostrarDetallesDeEnlaces();
+	/**
+	 * pre: los interneos y las centrales deben existir.
+	 * post: devuelve la cantidad de llamadas totales realizadas entre ellos el tiempo total de conversacion 
+	 * y las cantidad de ocupados que se dieron(ocupados del interno X mas  los del interno Y).
+	 */
+	void detallesLlamadasEntreInternoXeInternoY();
   /**
 * Devuleve el puntero a la clase que lee el archivo de llamadas.
 * */

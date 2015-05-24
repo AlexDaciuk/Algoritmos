@@ -11,6 +11,7 @@
 #include "Enlace.h"
 #include "Central.h"
 #include "Internos.h"
+#include "Llamada.h"
 
 Interfaz::Interfaz()
 {
@@ -103,11 +104,11 @@ void Interfaz::iniciarlizarPunteroACentrales(ProcesadorLlamada* procesadorDeLlam
 
 void Interfaz::mostrarDetallesDeInternos()
 {
-  this->centrales->iniciarCursorNodo();
-  while (this->centrales->avanzarCursorNodo()) {
+  this->obtenercentrales()->iniciarCursorNodo();
+  while (this->obtenercentrales()->avanzarCursorNodo()) {
   std:
-    cout << "Internos de la central:" << this->centrales->obtenerCursorNodo->obtenerNumero() << ": \n";
-    Lista<Internos>* punteroAInternos = this->centrales->obtenercursorNodo()->obtenerInternos();
+    cout << "Internos de la central:" << this->obtenercentrales()->obtenerCursorNodo->obtenerNumero() << ": \n";
+    Lista<Internos>* punteroAInternos = this->obtenercentrales()->obtenercursorNodo()->obtenerInternos();
     punteroAInternos->iniciarCursorNodo();
     while (this->punteroAInternos->avanzarCursorNodo()) {
       std::cout << "Interno:" << punteroAInternos->obternerCursorNodo()->obtenerNumero() << ". \n";
@@ -119,9 +120,9 @@ void Interfaz::mostrarDetallesDeInternos()
 void Interfaz::mostrarDetallesDeCentrales()
 {
   std::cout << "A continuacion se indican los numeros de las centrales existentes: \n";
-  this->centrales->iniciarCursorNodo();
-  while (this->centrales->avanzarCursorNodo()) {
-    std::cout << "Central numero:" << this->centrales->obtenerCursorNodo()->obtenerNumero() << "\n";
+  this->obtenercentrales()->iniciarCursorNodo();
+  while (this->obtenercentrales()->avanzarCursorNodo()) {
+    std::cout << "Central numero:" << this->obtenercentrales()->obtenerCursorNodo()->obtenerNumero() << "\n";
   }
   std::cout << "\n"
 }
@@ -129,15 +130,60 @@ void Interfaz::mostrarDetallesDeCentrales()
 void Interfaz::mostrarDetallesDeEnlaces()
 {
   std::cout << "A continuacion se indican los dettalles de los enlaces existentes: \n";
-  this->enlaces->iniciarCursorNodo();
+  this->obtenerenlaces()->iniciarCursorNodo();
   int i = 0;
-  while (this->enlaces->avanzarCursorNodo()) {
+  while (this->obtenerenlaces()->avanzarCursorNodo()) {
     i++;
     std::cout << "Enlace " << i << ": \n";
-    std::cout << "Central origen: " << enlaces->obtenerCursorNodo()->obtenerOrigen()->obtenerNumero() << "\n";
-    std::cout << "Central destino: " << enlaces->obtenerCursorNodo()->obtenerDestino()->obtenerNumero() << "\n";
-    std::cout << "Numero de canales: " << enlaces->obtenerCursorNodo()->obtenerNumeroDeCanales() << "\n \n";
+    std::cout << "Central origen: " << obtenerenlaces()->obtenerCursorNodo()->obtenerOrigen()->obtenerNumero() << "\n";
+    std::cout << "Central destino: " << obtenerenlaces()->obtenerCursorNodo()->obtenerDestino()->obtenerNumero()
+              << "\n";
+    std::cout << "Numero de canales: " << obtenerenlaces()->obtenerCursorNodo()->obtenerNumeroDeCanales() << "\n \n";
   }
+}
+
+void Interfaz::detallesLlamadasEntreInternoXeInternoY()
+{
+  int primerInterno, centralPrimerInterno;
+  int segundoInterno, centralSegundoInterno;
+  std::cout << "Ingrese el numero del primer interno:";
+  std::cin >> primerInterno;
+  std::cout << "\n";
+  std::cout << "Indique a que central pertenece:";
+  std::cin >> centralPrimerInterno;
+  std::cout << "\n \n" std::cout << "Ingese el numero del segundo interno:";
+  std::cin >> segundoInterno;
+  std::cout << "Indique a que central pertenece:";
+  std::cin >> centralSegundoInterno;
+  std::cout << "\n \n";
+  Interno* buscadorDatosPrimerInterno, buscadorDatosSegundoInterno;
+  buscadorDatosPrimerInterno =
+      obtenercentrales()->obtenerPunteroAlObjeto(centralPrimerInterno)->obtenerObjeto()->obtenerInterno(primerInterno);
+  buscadorDatosSegundoInterno =
+      obtenercentrales()->obtenerPunteroAlObjeto(centralSegundoInterno)->obtenerObjeto()->obtenerInterno(segundoInterno);
+  if (buscadorDatosPrimerInterno == NULL) {
+    throw std::string "El primer interno no existe";
+  }
+	if (buscadorDatosSegundoInterno == NULL)
+	{
+		throw std::string "El segundo interno no existe";
+	}
+  std::cout << "Detalles de llamadas entre el interno " << buscadorDatosPrimerInterno->obtenerNumero() << " y "
+            << buscadorDatosSegundoInterno->obtenerNumero() << " : \n";
+  int numeroDeLlamadas = 0;
+  int numeroDeOcupados = 0;
+  bool encontro = false;
+  buscadorDatosPrimerInterno->obtenerLlamadas()->iniciarCursorNodo();
+  while (buscadorDatosPrimerInterno->obtenerLlamadas()->avanzarCursorNodo() && !encontro) {
+    if (buscadorDatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() == segundoInterno) {
+      encontro = true;
+      numeroDeLlamadas = buscadorDatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadas();
+      numeroDeOcupados = buscadorDatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosDados() 
+      +buscadorDatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos();
+    }
+  }
+  std::cout << "Llamadas realizadas:" << numeroDeLlamadas << "\n";
+  std::cout << "Cantidad de ocupados:" << numeroDeOcupados << "\n \n";
 }
 
 void Interfaz::tratarOpcion(int opcion)
@@ -162,6 +208,7 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 4:
+      detallesLlamadasEntreInternoXeInternoY();
       realizarOtraConsulta(opcion, continuar);
       break;
 
