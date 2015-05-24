@@ -62,7 +62,7 @@ void Interno::agregarLlamadaEmisor(int EmisorTemporal, int horaTemporal, DatosRe
   if ( ! punteroEmisorTemporal->internoOcupado() )
     {
       punteroEmisorTemporal->
-
+	}
 };
 
   
