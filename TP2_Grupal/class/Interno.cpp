@@ -58,15 +58,13 @@ void Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
  * emisor asi puede registrar a quien llamo
  */
 
-void Interno::agregarLlamadaEmisor(int InternoBTemporal, int horaTemporal, DatosRecorrido* recorridoTemporal)
+void Interno::agregarLlamadaEmisor(int EmisorTemporal, int horaTemporal, DatosRecorrido* recorridoTemporal)
 {
   /**
    * Obtengo el puntero a la llamada correspondiende al receptor en la lista de llamadas del interno
    */ 
-  Lista<Llamadas>* llamadaReceptorTemporal = this->existeReceptorLlamada(InternoBTemporal);
+  Lista<Llamadas>* llamadaReceptorTemporal = this->existeReceptorLlamada(OrigenTemporal);
 
-  
-  
   if ( ! punteroEmisorTemporal->internoOcupado() )
     {
       punteroEmisorTemporal->
