@@ -3,6 +3,7 @@
 
 #ifndef NULL
 #define NULL 0
+#endif
 
 #include <string>
 #include <sstream>
@@ -51,5 +52,5 @@ public:
   int obtenerHora();
 };
 
-#endif
+
 #endif
