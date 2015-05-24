@@ -51,11 +51,6 @@ void Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
     }  
 };
 
-//agregarLlamadaEmisor(DatosLlamada->obtenerInternoB(), DatosLlamada->obtenerHora(), DatosRecorrido* recorridoTemporal)
-/**
- * El internoB es el que recibe la llamada por ende, se lo paso al 
- * emisor asi puede registrar a quien llamo
- */
 
 void Interno::agregarLlamadaEmisor(int EmisorTemporal, int horaTemporal, DatosRecorrido* recorridoTemporal)
 {
