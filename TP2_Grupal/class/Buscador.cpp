@@ -49,8 +49,8 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 		int mejorPrecio = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot;
 		while(this->hayMasCaminos())
 		{
+			this->avanzarBusquedaPor(mejorPrecio, centralActual, centralReceptora);
 			//(this->precioDeLaLlamada > mejorPrecio) || (this->precioDeLaLlamada == 0)
-			Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
 		}
 	}
 }
@@ -117,5 +117,27 @@ bool Buscador::hayMasCaminos()
 	}
 	return (hayMasCaminos);
 }	  
+
+void Buscador::avanzarBusquedaPor(int mejorPrecio, Central* centralActual, int centralReceptora)
+{
+	while((this->precioDeLaLlamada > mejorPrecio) && (centralActual->obtenerNumero() != centralReceptora))
+	{
+		
+		
+		
+	}
+}
+
+bool Buscador::caminarEnlace(Central* centralActual)
+{
+	Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
+	Spot spotActual = this->rutaActual->obtenerCursorNodo();
+	if(!(spotActual->recorriTodosLosEnlaces()))
+	{
+		enlacesActuales->iniciarCursorNodo();
+		enlacesActuales->avanzarCursorNodo();
+		//caminar(punteroALasiguienteCentral);
+	}
+}
 
 #endif

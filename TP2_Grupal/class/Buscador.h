@@ -93,6 +93,9 @@ private:
 	  
 	  bool hayMasCaminos();
 	  
+	  void avanzarBusquedaPor(int mejorPrecio, Central* centralActual, int centralReceptora);
+	  
+	  bool caminarEnlace(Central* centralActual);
   //Buscar central de salida en la lista de centrales
   //iniciar camino:
       //me fijo si la llamada es interna en la misma central
