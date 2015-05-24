@@ -48,14 +48,7 @@ Central* Enlace::obteneroDestino()
 
 bool Enlace::chequearDisponibilidadCanales()
 {
-  bool disponibleTemporal = false;
-  
-  if (this->cantidadCanalesEnUso < this->cantidadDeCanales)
-    {
-      disponibleTemporal = true;
-    }
-
-  return (disponibleTemporal);
+	return (this->cantidadCanalesEnUso < this->cantidadDeCanales);
 }
 
 
