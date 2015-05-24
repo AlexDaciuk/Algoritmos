@@ -52,4 +52,9 @@ int Llamada::obtenerCantidadOcupadosRecibidos()
 	return this->cantidadOcupadosRecibidos;
 }
 
+int Llamada::obtenerCantidadLlamadas()
+{
+	return this->cantidadLlamadas;
+}
+
 #endif

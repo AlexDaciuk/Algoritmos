@@ -46,6 +46,8 @@ public:
 
 	/*post: devuelve la cantidad total de ocupados recibidos por el interno.*/
 	int obtenerCantidadOcupadosRecibidos();
+	
+	int obtenerCantidadLlamadas();
 
 };
 
