@@ -13,43 +13,43 @@
 
 
 /**
- * Clase que se encarga de leer los archivos de texto con las 
+ * Clase que se encarga de leer los archivos de texto con las
  * llamadas a procesar
  */
 
 class LectorArchivos
 {
 private:
-  std::string rutaArchivo;
-  DatosLlamada* datosLlamadaTemporal;
-  std::ifstream archivo;
-  bool hayLlamadas;
-  
-  
+	std::string rutaArchivo;
+	DatosLlamada* datosLlamadaTemporal;
+	std::ifstream archivo;
+	bool hayLlamadas;
+
+
 public:
-  /**
-   * Constructor de la clase LectorArchivos 
-   * Post: Se crea la clase, queda cargada la ruta del txt y crea un nuevo objeto DatosLlamada vacio
-   */
-  
-  LectorArchivos(std::string rutaArchivoTemporal);
+	/**
+	 * Constructor de la clase LectorArchivos
+	 * Post: Se crea la clase, queda cargada la ruta del txt y crea un nuevo objeto DatosLlamada vacio
+	 */
 
-  /**
-   * Obtiene una llamada a la vez y la devuelve un puntero
-   * al objeto con los datos
-   */
- 
-  DatosLlamada* obtenerDatosLlamada();
+	LectorArchivos(std::string rutaArchivoTemporal);
 
-  bool chequearLlamadas();
+	/**
+	 * Obtiene una llamada a la vez y la devuelve un puntero
+	 * al objeto con los datos
+	 */
 
-  /**
-   * Destructor
-   * Cierra la apertura del archivo txt
-   */
-  
-  ~LectorArchivos();
-  
+	DatosLlamada* obtenerDatosLlamada();
+
+	bool chequearLlamadas();
+
+	/**
+	 * Destructor
+	 * Cierra la apertura del archivo txt
+	 */
+
+	~LectorArchivos();
+
 };
 
 #endif
