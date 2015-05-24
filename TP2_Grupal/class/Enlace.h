@@ -35,6 +35,7 @@ public:
 	int obtenerDistancia();
 	int obtenerPrecio();
 	int obtenerCantidadEnlacesEnUso();
+	int obtenerNumeroDeEnlaces();
 	Central* obtenerOrigen();
 	Central* obtenerDestino();
 

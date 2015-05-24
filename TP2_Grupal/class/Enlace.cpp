@@ -17,6 +17,10 @@ int Enlace::obtenerOrigen()
 	return (Origen->Central);
 }
 
+int obtenerNumeroDeEnlaces()
+{
+	return this->cantidadDeCanales;
+}
 
 int Enlace::obtenerDistancia()
 {
