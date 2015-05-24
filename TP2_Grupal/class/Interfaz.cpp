@@ -121,10 +121,25 @@ void Interfaz::mostrarDetallesDeCentrales()
   std::cout << "A continuacion se indican los numeros de las centrales existentes: \n";
   this->centrales->iniciarCursorNodo();
   while (this->centrales->avanzarCursorNodo()) {
-    std::cout << "Central numero:" << this->centrales->obtenerCursorNodo()->obtenerNumero()<< "\n";
+    std::cout << "Central numero:" << this->centrales->obtenerCursorNodo()->obtenerNumero() << "\n";
   }
   std::cout << "\n"
 }
+
+void Interfaz::mostrarDetallesDeEnlaces()
+{
+  std::cout << "A continuacion se indican los dettalles de los enlaces existentes: \n";
+  this->enlaces->iniciarCursorNodo();
+  int i = 0;
+  while (this->enlaces->avanzarCursorNodo()) {
+    i++;
+    std::cout << "Enlace " << i << ": \n";
+    std::cout << "Central origen: " << enlaces->obtenerCursorNodo()->obtenerOrigen()->obtenerNumero() << "\n";
+    std::cout << "Central destino: " << enlaces->obtenerCursorNodo()->obtenerDestino()->obtenerNumero() << "\n";
+    std::cout << "Numero de canales: " << enlaces->obtenerCursorNodo()->obtenerNumeroDeCanales() << "\n \n";
+  }
+}
+
 void Interfaz::tratarOpcion(int opcion)
 {
   bool continuar = true;
@@ -137,11 +152,12 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 2:
-      mostrarDetallesDeCentrales()
+      mostrarDetallesDeCentrales();
       realizarOtraConsulta(opcion, continuar);
       break;
 
     case 3:
+      mostrarDetallesDeEnlaces();
       realizarOtraConsulta(opcion, continuar);
       break;
 
