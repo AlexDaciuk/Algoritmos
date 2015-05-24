@@ -42,7 +42,7 @@ public:
 	void crearInterno(int numeroInterno);
 
 	/**
-	 * Metodo que devuelve el numero de la central
+	 * Metodo que devuelve un puntero a un interno
 	 */
 
 	Interno* obtenerInterno(int numeroInterno);
