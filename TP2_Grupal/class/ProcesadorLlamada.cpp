@@ -45,8 +45,8 @@ void ProcesadorLlamada::iniciarLlamada();
 	Receptor = this->centrales->obtenerInterno(this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor() );
 
 	//Agrego la llamada a cada interno
-	Emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), recorridoTemporal);
-	Receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), recorridoTemporal);
+	Emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora());
+	Receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora());
 
 	//Cambio la disponibilidad de los enlaces
 	Enlace* EnlaceTemporal = this->recorridoTemporal->obtenerRuta;
@@ -111,6 +111,7 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 	// una llamada, pero realmente es para una central y estan ordenados
 	Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->datosTemporal->obtenerDestino(),
 	                                 this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora());
+
 		this->enlaces->insertar(nuevoEnlace);
 
 		// Tengo que agregar a la lista de puntero de enlaces de cada central el puntero que corresponde
