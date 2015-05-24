@@ -21,12 +21,12 @@ Interno* Central::obtenerPunteroAInterno(int numeroInterno)
   return this->internos->obtenerPunteroAlObjeto(numeroIterno);
 };
 
-Lista<Internos>* Central::obtenerInternos()
+Lista<Interno>* Central::obtenerInternos()
 {
 	return(this->internos);
 }
 
-Lista<Enlaces>* Central::obtenerEnlaces()
+Lista<Enlace>* Central::obtenerEnlaces()
 {
 	return(this->enlaces);
 }
