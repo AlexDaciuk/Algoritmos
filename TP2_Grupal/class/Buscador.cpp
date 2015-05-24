@@ -132,12 +132,25 @@ bool Buscador::caminarEnlace(Central* centralActual)
 {
 	Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
 	Spot spotActual = this->rutaActual->obtenerCursorNodo();
-	if(!(spotActual->recorriTodosLosEnlaces()))
+	enlacesActuales->iniciarCursorNodo();
+	while(!(spotActual->recorriTodosLosEnlaces()))
 	{
-		enlacesActuales->iniciarCursorNodo();
 		enlacesActuales->avanzarCursorNodo();
-		//caminar(punteroALasiguienteCentral);
+		caminar(enlacesActuales->obtenerCursorNodo(), spotActual);
 	}
+}
+
+Central* Buscador::caminar(Enlace* enlaceActual,Spot spotActual)
+{
+	if (enlaceActual->obtenerDestino()->obtenerNumero() != spotActual->obtenerPosicion()->obtenerNumero())
+		{
+			if(!spotActual->visitasteLacentral(enlaceActual->obtenerDestino()))
+				
+		}
+		else
+		{
+			if(!spotActual->visitasteLacentral(enlaceActual->obtenerDestino()))
+		}
 }
 
 #endif

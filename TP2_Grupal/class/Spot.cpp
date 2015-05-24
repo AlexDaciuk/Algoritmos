@@ -16,6 +16,11 @@ Spot::Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpot)
 	this->centralesVisitadas= new Lista<Central*>*;
 }
 
+Central* Spot::obtenerPosicion()
+{
+	return (this->posicion);
+}
+
 void Spot::anotarCaminoRecorrido(Central* CentralAVisitar, Enlace* enlaceRecorrido)
 {
 	this->centralesVisitadas->insertar(CentralAVisitar);
@@ -53,7 +58,7 @@ bool Spot::recorriTodosLosEnlaces()
 	while((enlacesDisponibles->avanzarCursorNodo())&& (losRecorri))
 	{
 		Enlace* enlaceActual = enlacesDisponibles->obtenerCursorNodo();
-		if (enlaceActual->obtenerDestino()->obtenerNumero() != this->posicion->obtenerNumero())
+		if (enlaceActual->obtenerDestino()->obtenerNumero() != this->obtenerPosicion()->obtenerNumero())
 		{
 			if(!this->visitasteLacentral(enlaceActual->obtenerDestino()))
 				losRecorri = false;
