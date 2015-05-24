@@ -22,7 +22,7 @@ private:
 	
 	Lista<Enlace>* enlaces;
   Lista<Central>* centrales;
-  LectorArchivos* punteroALectorDeArchivos;
+  LectorArchivos* LectorDeArchivos;
 	
 	
 public:
@@ -82,11 +82,16 @@ public:
    * cuenta el algoritmo de busqueda para elegir el mejor camino.
    * */
   int pedirAlgoritmoDeBusqueda();
-  /**
-   * Metodo que devuelve todos los numeros de los internos que aparecen en los datos de las llamadas 
-   * discriminados por central.
+	/**
+   * precondicion: Se tiene que haber leido un archivo de llamadas.
+	 * postcondicion: Devuleve los numeros de los internos leidos en el archivo de llamadas discriminadas por central.
    * */
   void mostrarDetallesDeInternos();
+	/**
+   * precondicion: Se tiene que haber leido un archivo de llamadas.
+	 * postcondicion: Devuleve los numeros de las centrales leidas en el archivo de llamadas.
+   * */
+	void mostrarDetallesDeCentrales();
   /**
    * Devuleve el puntero a la clase que lee el archivo de llamadas.
    * */
