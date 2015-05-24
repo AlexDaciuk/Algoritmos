@@ -1,7 +1,6 @@
 #include "Enlace.h"
 
 
-
 Enlace::Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal)
 
 {
@@ -67,3 +66,4 @@ void Enlace::eliminarLlamadaEnCurso()
       this->cantidadCanalesEnUso--;
     }
 }
+

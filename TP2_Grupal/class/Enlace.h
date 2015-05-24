@@ -7,7 +7,6 @@
 
 #include "Central.h"
 
-
 /**
  * Clase que define cada enlace entre 2 centrales
  */
@@ -24,7 +23,6 @@ public:
    * Constructor de la clase enlace
    * Post: Queda creado el enlace entre 2 centrales
    */
-  
 
   Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal);
 
