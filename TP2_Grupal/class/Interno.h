@@ -39,7 +39,7 @@ class Interno
    * ese nodo al principio y se suman 
    * los datos directamente ahi, no se crea ningun nodo.
    */
-  void agregarLlamadaEmisor(int InternoBTemporal, int horaTemporal, DatosRecorrido* recorridoTemporal);
+  void agregarLlamadaEmisor(int EmisorTemporal, int horaTemporal, DatosRecorrido* recorridoTemporal);
   
   /**
    *post: devuelve el puntero a la lista de llamadas del interno

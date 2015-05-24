@@ -6,7 +6,7 @@
 #endif
 
 #include "Lista.h"
-#include "Internos.h"
+#include "Interno.h"
 #include "Enlace.h"
 
 /**
@@ -20,7 +20,7 @@ private:
   
   int numeroCentral;
   
-  Lista<Internos>* internos;
+  Lista<Interno>* internos;
   // Puntero a la lista de punteros a los enlaces de la central
   Lista<Enlace*>* enlaces;
 
@@ -51,13 +51,13 @@ public:
    * Metodo que devuelve la lista de internos
    */
   
-  Lista<Internos>* obtenerInternos();
+  Lista<Interno>* obtenerInternos();
   
   /**
    * Metodo que devuelve la lista de enlaces
    */
    
-  Lista<Enlaces*>* obtenerEnlaces();
+  Lista<Enlace*>* obtenerEnlaces();
 
 
   
