@@ -72,6 +72,11 @@ bool Spot::recorriTodosLosEnlaces()
 	return (losRecorri);
 }
 
+Enlace* Spot::obtenerEnlaceRecorrido()
+{
+	return (this->enlaceRecorrido); 
+}
+
 Spot::~Spot()
 {
 	delete centralesVisitadas;

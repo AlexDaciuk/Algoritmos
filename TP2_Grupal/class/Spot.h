@@ -80,6 +80,8 @@ public:
 	*/
 	bool recorriTodosLosEnlaces();
 	
+	Enlace* obtenerEnlaceRecorrido();
+	
 	/**
 	 * Post: destruye toda la lista de caminos recorridos desde esta central
 	 */
