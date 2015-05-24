@@ -17,7 +17,7 @@ class Interno
  private:
   int numeroInterno;
   bool estaOcupado;
-  Lista<Llamada>* llamadas; //apunta siempre a la primer llamada
+  Lista<Llamada*>* llamadas; //apunta siempre a la primer llamada
   
  public:
   
@@ -45,7 +45,7 @@ class Interno
    *post: devuelve el puntero a la lista de llamadas del interno
    */
    
-  Lista<Llamada>* obtenerLlamadas();
+  Lista<Llamada*>* obtenerLlamadas();
   
   /**
     *post: recorre la lista de llamadas del interno emisor y busca si ya existe un nodo
