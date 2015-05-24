@@ -80,7 +80,7 @@ private:
     /**
 	 * Post: indica si ya visite a la central en el camino ya hecho
 	 */
-	  bool indicaSiPasePorLaCentral(Central* central);
+	  bool YaPasePorLaCentral(Central* central);
 	  
 	/**
 	 * Post: indica si La llamada es entre dos numeros de la misma central
@@ -95,14 +95,14 @@ private:
 	  
 	  void avanzarBusquedaPor(int mejorPrecio, Central* centralActual, int centralReceptora);
 	  
-	  bool caminarEnlace(Central* centralActual);
+	  bool caminarEnlace(Central* centralActual, int mejorValor, int centralReceptora);
 	  
 	  /**
 	   * @brief Camina el enlace dado devolviendo el puntero a la central de destino
 	   * @param enlaceActual, centralActual
 	   * @return central de destino
 	   */
-	  Central* caminar(Enlace* enlaceActual, Spot spotActual);
+	  Central* caminar(Enlace* enlaceActual, Spot spotActual, int mejorValor, int centralReceptora);
   //Buscar central de salida en la lista de centrales
   //iniciar camino:
       //me fijo si la llamada es interna en la misma central

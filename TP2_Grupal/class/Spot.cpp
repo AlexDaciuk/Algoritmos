@@ -53,7 +53,7 @@ int Spot::obtenerDistanciaRecorrida()
 bool Spot::recorriTodosLosEnlaces()
 {
 	losRecorri = true;
-	Lista<Enlace*>* enlacesDisponibles = this->posicion->obtenerEnlaces();
+	Lista<Enlace*>* enlacesDisponibles = this->obtenerPosicion()->obtenerEnlaces();
 	enlacesDisponibles->iniciarCursorNodo();
 	while((enlacesDisponibles->avanzarCursorNodo())&& (losRecorri))
 	{

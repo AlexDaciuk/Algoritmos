@@ -49,7 +49,7 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 		int mejorPrecio = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot;
 		while(this->hayMasCaminos())
 		{
-			this->avanzarBusquedaPor(mejorPrecio, centralActual, centralReceptora);
+			this->avanzarBusquedaPor( mejorPrecio, centralActual, centralReceptora);
 			//(this->precioDeLaLlamada > mejorPrecio) || (this->precioDeLaLlamada == 0)
 		}
 	}
@@ -70,7 +70,7 @@ Central* Buscador::encontrarLaCentral(int central)
 	}
 }
 
-bool Buscador::indicaSiPasePorLaCentral(Central* central)
+bool Buscador::YaPasePorLaCentral(Central* central)
 {
 	laEncontre=true;
 	this->rutaActual->iniciarCursorNodo();
@@ -118,17 +118,16 @@ bool Buscador::hayMasCaminos()
 	return (hayMasCaminos);
 }	  
 
-void Buscador::avanzarBusquedaPor(int mejorPrecio, Central* centralActual, int centralReceptora)
+void Buscador::avanzarBusquedaPor(int buscoMejorValor, Central* centralActual, int centralReceptora)
 {
-	while((this->precioDeLaLlamada > mejorPrecio) && (centralActual->obtenerNumero() != centralReceptora))
+	int precioActual = this->obtenerPrecioDeLaLlamada();
+	while(((precioActual > buscoMejorValor) || (precioActual == 0))&& (centralActual->obtenerNumero() != centralReceptora))
 	{
-		
-		
-		
+		this->caminarEnlace(centralActual, buscoMejorValor);
 	}
 }
 
-bool Buscador::caminarEnlace(Central* centralActual)
+bool Buscador::caminarEnlace(Central* centralActual, int buscoMejorValor, int centralReceptora)
 {
 	Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
 	Spot spotActual = this->rutaActual->obtenerCursorNodo();
@@ -136,20 +135,26 @@ bool Buscador::caminarEnlace(Central* centralActual)
 	while(!(spotActual->recorriTodosLosEnlaces()))
 	{
 		enlacesActuales->avanzarCursorNodo();
-		caminar(enlacesActuales->obtenerCursorNodo(), spotActual);
+		caminar(enlacesActuales->obtenerCursorNodo(), spotActual, buscoMejorValor, centralReceptora);
 	}
 }
 
-Central* Buscador::caminar(Enlace* enlaceActual,Spot spotActual)
+Central* Buscador::caminar(Enlace* enlaceActual,Spot spotActual, int buscoMejorValor, int centralReceptora)
 {
 	if (enlaceActual->obtenerDestino()->obtenerNumero() != spotActual->obtenerPosicion()->obtenerNumero())
 		{
-			if(!spotActual->visitasteLacentral(enlaceActual->obtenerDestino()))
-				
+			if(!this->YaPasePorLaCentral(enlaceActual->obtenerDestino()))
+			{
+				Central* centralNueva = enlaceActual->obtenerDestino();
+				int nuevaDistancia = spotActual->obtenerDistanciaRecorrida() + enlaceActual->obtenerDistancia();
+				int nuevoPrecio = spotActual->obtenerPrecioHastaSpot() + enlaceActual->obtenerPrecio();
+				this->rutaActual->insertar(Spot spotNuevo(centralNueva, nuevoPrecio, nuevaDistancia));
+				this->avanzarBusquedaPor(nuevoPrecio, centralNueva, int centralReceptora);
+			}
 		}
 		else
 		{
-			if(!spotActual->visitasteLacentral(enlaceActual->obtenerDestino()))
+			if(!this->YaPasePorLaCentral(enlaceActual->obtenerOrigen()))
 		}
 }
 
