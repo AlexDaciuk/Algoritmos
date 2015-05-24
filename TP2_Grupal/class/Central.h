@@ -22,7 +22,7 @@ private:
   
   Lista<Internos>* internos;
   // Puntero a la lista de punteros a los enlaces de la central
-  Lista<Enlaces*>* enlaces;
+  Lista<Enlace*>* enlaces;
 
 public:
 

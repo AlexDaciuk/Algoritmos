@@ -46,6 +46,13 @@ public:
 	Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpot);
 	
 	/**
+	 * @brief devuelve el puntero a la central del Spot
+	 * @return 
+	 */
+	 */
+	Central* obtenerPosicion();
+	
+	/**
 	 * Pre: debo indicarle el puntero de la central a la que me dirijo y el puntero
 	 * del enlace utilizado.
 	 * Post: de ser el primer enlace tomado se crea una lista de centrales

@@ -96,6 +96,13 @@ private:
 	  void avanzarBusquedaPor(int mejorPrecio, Central* centralActual, int centralReceptora);
 	  
 	  bool caminarEnlace(Central* centralActual);
+	  
+	  /**
+	   * @brief Camina el enlace dado devolviendo el puntero a la central de destino
+	   * @param enlaceActual, centralActual
+	   * @return central de destino
+	   */
+	  Central* caminar(Enlace* enlaceActual, Spot spotActual);
   //Buscar central de salida en la lista de centrales
   //iniciar camino:
       //me fijo si la llamada es interna en la misma central
