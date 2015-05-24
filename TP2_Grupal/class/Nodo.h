@@ -10,10 +10,10 @@
  *
  */
 
-template <class T> class Nodo {
+template<class T> class Nodo {
 
 private:
-  
+
   T* objeto;
   Nodo<T>* nodoSiguiente;
   Nodo<T>* nodoAnterior;
