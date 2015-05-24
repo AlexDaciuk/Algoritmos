@@ -1,12 +1,12 @@
 #include "Enlace.h"
 
 
-Enlace::Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal)
+Enlace::Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int CostoPorMinutoTemporal)
 
 {
 	this->cantidadDeCanales = cantidadCanalesTemporal;
 	this->distaciaKm = distanciaTemporal;
-	this->costoPorMinuto = costoPorMinutoTemporal;
+	this->costoPorMinuto = CostoPorMinutoTemporal;
 	this->cantidadCanalesEnUso = 0;
 	this->punteroDestino = ListaCentrales->obtenerPunteroAlObjeto(DestinoTemporal);
 	this->punteroOrigen = ListaCentrales->obtenerPunteroAlObjeto(OrigenTemporal);

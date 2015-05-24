@@ -24,7 +24,7 @@ public:
 	 * Post: Queda creado el enlace entre 2 centrales
 	 */
 
-	Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal);
+	Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int CostoPorMinutoTemporal);
 
 
 	/**
