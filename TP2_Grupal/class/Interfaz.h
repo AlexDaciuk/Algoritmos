@@ -96,7 +96,17 @@ public:
    * Cambia la direccion donde apunta el puntero.
    * */
   void cambiarPunteroPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero);
-  
+  /**
+   * Precondicion: Opcion de be estar comprendido entre numeros del 1 a 17 inclusive. 
+   * 
+   */
+	void tratarOpcion(int opcion);
+	/**
+	 * Precondicion: Se debe haber realizado una consulta anteriormente.
+	 * La opcion debe estar en tre 1 y 17 inclusive.
+	 * Postcondiciones: Si se desea continuar te vuelve a mostrar las opciones disponibles sino termina el programa.
+	 * */
+	void realizarOtraConsulta(int& opcion, bool& continuar)
   
   
   
