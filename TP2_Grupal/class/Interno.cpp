@@ -41,7 +41,7 @@ void Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
     {
       Nodo<Llamada> nodoLlamadaTemporal = punteroLlamadasTemporal->obtenerCursorNodo();
       
-	  existeLlamada = nodoLlamadaTemporal->obtenerReceptorLlamada() = receptorLlamadaTemporal;
+	  existeLlamada = nodoLlamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
 
     }
   
