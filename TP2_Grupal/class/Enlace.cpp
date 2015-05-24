@@ -1,36 +1,24 @@
 #include "Enlace.h"
 
 
-<<<<<<< Updated upstream
-Enlace::Enlace(int centralATemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal)
-=======
-Enlace::Enlace(int OrigenTemporal, int centralBTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal)
->>>>>>> Stashed changes
-{
-  this->cantidadDeCanales=cantidadCanalesTemporal;
-  this->distaciaKm=distanciaTemporal;
-  this->costoPorMinuto=costoPorMinutoTemporal;
-  this->cantidadCanalesEnUso=0;
-<<<<<<< Updated upstream
-  this->punteroCentralA = ListaCentrales->obtenerPunteroAlObjeto(centralATemporal);
-  this->punteroDestino = ListaCentrales->obtenerPunteroAlObjeto(DestinoTemporal);
-}
 
-=======
+Enlace::Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int costoPorMinutoTemporal)
+
+{
+  this->cantidadDeCanales = cantidadCanalesTemporal;
+  this->distaciaKm = distanciaTemporal;
+  this->costoPorMinuto = costoPorMinutoTemporal;
+  this->cantidadCanalesEnUso = 0;
+  this->punteroDestino = ListaCentrales->obtenerPunteroAlObjeto(DestinoTemporal);
   this->punteroOrigen = ListaCentrales->obtenerPunteroAlObjeto(OrigenTemporal);
-  this->punteroCentralB = ListaCentrales->obtenerPunteroAlObjeto(centralBTemporal);
+
 }
 
 int Enlace::obtenerOrigen()
 {
-  return (punteroOrigen->Central);
+  return (Origen->Central);
 }
 
-int Enlace::obtenerCentralB()
-{
-  return (punteroCentralB->Central);
-}
->>>>>>> Stashed changes
 
 int Enlace::obtenerDistancia()
 {
@@ -47,15 +35,10 @@ int Enlace::obtenerCantidadEnlacesEnUso()
   return this->cantidadCanalesEnUso;
 }
 
-<<<<<<< Updated upstream
+
 Central* Enlace::obtenerOrigen()
 {
   return this->Origen;
-=======
-Central* Enlace::obtenerPunteroOrigen()
-{
-  return this->punteroOrigen;
->>>>>>> Stashed changes
 }
 
 Central* Enlace::obteneroDestino()
