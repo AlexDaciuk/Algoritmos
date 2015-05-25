@@ -19,8 +19,8 @@ private:
 	DatosLlamada* datosTemporal;
 	Buscador* recorridoTemporal;
 	LectorArchivos* archivoLlamadas;
-	Lista<Enlace>* enlaces;
-	Lista<Central>* centrales;
+	Lista<Enlace*>* enlaces;
+	Lista<Central*>* centrales;
 
 public:
 	/**
