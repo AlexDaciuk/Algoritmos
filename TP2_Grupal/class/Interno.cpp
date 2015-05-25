@@ -87,14 +87,4 @@ void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal )
 }
 
 
-
-void Interno::agregarLlamada(int receptorLlamadaTemporal, int horaInicioLlamadaEnCursoTemporal)
-{
-	Nodo<Llamada>* punteroALlamadaTemporal = existeLlamadaAReceptor(receptorLlamadaTemporal);
-	if (punteroALlamadaTemporal == NULL) {
-		this->llamadas->insertar(receptorLlamadaTemporal);
-		this->llamadas->obtenerPrimerNodo->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
-	} else {
-		punteroALlamadaTemporal->empezarLlamada(horaInicioLlamadaEnCursoTemporal);
-	}
 };
