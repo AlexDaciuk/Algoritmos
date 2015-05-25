@@ -21,12 +21,15 @@ Lista<Llamada*>* Interno::obtenerLlamadas()
 Lista<Enlace*>* Interno::devolverRecorridoLlamada(int emisorLlamadaTemporal, int receptorLlamadaTemporal)
 {
 	Llamada* llamadaTemporal = NULL;
+	bool encontreLlamada = false;
 	this->llamadas->iniciarCursorNodo();
 
-	while ( this->llamadas->avanzarCursorNodo() && ! existeLlamada) {
+	while ( this->llamadas->avanzarCursorNodo() && ! encontreLlamada) {
 		llamadaTemporal = this->obtenerCursorNodo();
-		existeLlamada = nodoLlamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
+		encontreLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
 	}
+	
+	return llamadaTemporal->obtenerRecorridoLlamada();
 }
 
 
@@ -43,7 +46,7 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 
 	while ( this->llamadas->avanzarCursorNodo() && ! existeLlamada) {
 		llamadaTemporal = this->obtenerCursorNodo();
-		existeLlamada = nodoLlamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
+		existeLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
 	}
 
 	if (! existeLlamada) {
