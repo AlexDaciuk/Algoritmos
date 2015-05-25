@@ -20,16 +20,37 @@ class Buscador
 {
 
 private:
-    Lista<Enlace*>* mejorCamino;
 
+	/**
+     * Se guardara la lista de enlaces recorridos en la llamada.
+     */
+    Lista<Enlace*>* mejorCamino;
+	
+	/**
+     * Esta lista la utiliza el buscador para ir recorriendo todos los caminos posibles para
+	 * asegurarse de encontrar el mejor camino pedido.
+     */
     Lista<Spot*>* rutaActual;
 
+	/**
+     * Es la lista de todas las centrales que existen.
+     */
     Lista<Central*>* centralesTotales;
-
+	
+	/**
+     * Pre: Debe ser mayor a 0 y entero porque es en centavos. Guardara el precio final
+	 * de la llamada
+     */
     int precioDeLaLlamada;
-
+	
+	/**
+     * Pre:debe ser mayor a 0. Guardara la distancia final recorrida.
+     */
     int distanciaDeLaLlamada;
 	
+	/**
+     * El buscador aprovecha este atributo para saber si buscar por distancia o por precio.
+     */
 	int tipoDeBusqueda;
 
 public:
@@ -111,21 +132,51 @@ private:
 	 * la informacion y establece el mejor camino, precio y distancia.
      */
     void avanzarBusquedaDesde(Central* centralActual, int buscoMejorValor, int precioActual, int centralReceptora);
-
+	
+	/**
+	 * Realiza los pasos necesarios para ir de una central a otra.
+	 * En cada central se asegura de recorrer todos los enlaces posibles de recorrer.
+	 */
     bool caminarEnlace(Central* centralActual, int centralReceptora);
-
+	
+	/**
+     * Avanza termina de usar un enlace para ir a la siguiente central acumulando el 
+	 * precio y la distancia del recorrido. Pero compara para ir por el 
+	 * precio mas barato
+     */
     void caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual, int centralReceptora);
 	
+	/**
+     * Avanza termina de usar un enlace para ir a la siguiente central acumulando el 
+	 * precio y la distancia del recorrido. Pero compara para ir por la distancia mas corta.
+     */
 	void caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual, int centralReceptora);
 	
+	/**
+     * Define la lista de enlaces usados para llegar de una central a otra.
+     */
 	Lista<Enlace*>* definirEstaRuta();
 	
+	/**
+     * Indica si la busqueda es por precio o distancia.
+     */
 	int obtenerTipoDeBusqueda();
 	
+	/**
+     * Establece que la busqueda por precio.
+     */
 	void establecerBusquedaPorPrecio();
 	
+	/**
+     * Establece la busqueda por distancia.
+     */
 	void establecerBusquedaPorDistancia();
 	
+	/**
+     * Encuentra en la lista de centrales dada al buscador la central pedida.
+	 * Pre: se debe ingresar el numero de la central.
+	 * Post: devuelve un puntero a esa central.
+     */
 	Central* encontrarLaCentral(int central);
 };
 #endif
