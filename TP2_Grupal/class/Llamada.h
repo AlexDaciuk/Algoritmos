@@ -10,7 +10,8 @@ class Llamada
 {
 private:
 
-	int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas;
+	int  cantidadLlamadasRecibidas, cantidadLlamadasHechas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas;
+	Lista<Enlace*>* recorridoLlamada;
 
 public:
 
@@ -24,8 +25,8 @@ public:
 
 	/*post: guarda la hora de comienzo de la llamada y aumeta el numero de
 	 * llamadas en uno.*/
-	void empezarLlamada(int horaInicioLlamadaEnCursoTemporal);
-
+	void empezarLlamadaEmisor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal);
+	void empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal)
 	/*pre: la llamada debe haber comenzado antes.
 	 * post: calcula la duracion de la llamada y vuelve a poner el horario de inicio
 	 * en cero.*/
