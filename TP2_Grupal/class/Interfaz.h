@@ -27,10 +27,10 @@ class Interfaz
   Lista<Enlace>* enlaces;
   Lista<Central>* centrales;
   LectorArchivos* LectorDeArchivos;
-  
-   /**
-   * Cambia la direccion donde apunta el puntero.
-   * */
+
+  /**
+  * Cambia la direccion donde apunta el puntero.
+  * */
   void cambiarPunteroPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero);
 
   public:
@@ -106,47 +106,51 @@ class Interfaz
 * poseen los enlaces leidos en el archivo de llamadas.
 * */
   void mostrarDetallesDeEnlaces();
-	/**
+  /**
 * precondicion: Se tiene que haber leido un archivo de llamadas.
-   * postcondicion: Devuelve el interno con mayor duracion de llamadas de cada central y de todos en general.
-	 * Si hay mas de un interno con la misma duracionde llamadas en una central se muestra el primero.
+* postcondicion: Devuelve el interno con mayor duracion de llamadas de cada central y de todos en general.
+   * Si hay mas de un interno con la misma duracionde llamadas en una central se muestra el primero.
 * */
-	void internoQueMasHabloPorCentralYGeneral();
-	/**
-	 * pre: debe existir la central.
-	 * post: devuleve el numero del interno con mayor duracion de llamadas totales.
-	 */
-	void internoQueMasHabloEnUnaCentral(Lista<Interno*>* listaInternos,int& maximaDuracionEnLaCentral,int& internoQueMasHabloPorCentral);
-	/**
-	 * Pre: debe esxistir la lista de punteros a llamadas.
-	 * post: devuelve la sumatoria de todas las duraciones de llamadas de cada llamada en la lista del interno.
-	 */
-	int sumaDeDuracionDeLlamadas(Lista<Llamada*>* listaLlamadas);
+  void internoQueMasHabloPorCentralYGeneral();
+  /**
+   * pre: debe existir la central.
+   * post: devuleve el numero del interno con mayor duracion de llamadas totales.
+   */
+  void internoQueMasHabloEnUnaCentral(Lista<Interno*>* listaInternos,
+                                      int& maximaDuracionEnLaCentral,
+                                      int& internoQueMasHabloPorCentral);
+  /**
+   * Pre: debe esxistir la lista de punteros a llamadas.
+   * post: devuelve la sumatoria de todas las duraciones de llamadas de cada llamada en la lista del interno.
+   */
+  int sumaDeDuracionDeLlamadas(Lista<Llamada*>* listaLlamadas);
   /**
    * pre: los internos y las centrales deben existir.
    * post: devuelve la cantidad de llamadas totales realizadas entre ellos el tiempo total de conversacion
    * y las cantidad de ocupados que se dieron(ocupados del interno X mas  los del interno Y).
    */
   void detallesLlamadasEntreInternoXeInternoY();
-	/**
-	 * precondicion: Se tiene que haber leido un archivo de llamadas.
-   * postcondicion: Devuelve el interno con mayor numero de llamadas de cada central y de todos en general.
-	 * Si hay mas de un interno con la misma cantidad de llamadas en una central se muestra el primero.
-  */ 
-	void internoQueMasLlamoPorCentralYEnGeneral();
   /**
-	 * pre: debe existir la central.
-	 * post: devuleve el numero del interno con mayor numero de llamadas y ese numero de llamadas.
-	 */
-  void internoQueMasLlamoEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoNumeroLLamadasEnLaCentral,int& internoQueMasLlamoPorCentral)
+   * precondicion: Se tiene que haber leido un archivo de llamadas.
+* postcondicion: Devuelve el interno con mayor numero de llamadas de cada central y de todos en general.
+   * Si hay mas de un interno con la misma cantidad de llamadas en una central se muestra el primero.
+*/
+  void internoQueMasLlamoPorCentralYEnGeneral();
   /**
-	 * Pre: debe esxistir la lista de punteros a llamadas.
-	 * post: devuelve la sumatoria de las cantidades de llamadas de cada interno.
-	 */
+         * pre: debe existir la central.
+         * post: devuleve el numero del interno con mayor numero de llamadas y ese numero de llamadas.
+         */
+  void internoQueMasLlamoEnUnaCentral(Lista<Interno*>* listaInternos,
+                                      int& maximoNumeroLLamadasEnLaCentral,
+                                      int& internoQueMasLlamoPorCentral)
+  /**
+  * Pre: debe esxistir la lista de punteros a llamadas.
+  * post: devuelve la sumatoria de las cantidades de llamadas de cada interno.
+  */
   int sumaDeLlamadas(Lista<Llamada*>* listaLlamadas)
   /**
-* Devuleve el puntero a la clase que lee el archivo de llamadas.
-* */
+  * Devuleve el puntero a la clase que lee el archivo de llamadas.
+  * */
   LectorArchivos* obtenerPunteroALectorDeArchivos();
 
   /**

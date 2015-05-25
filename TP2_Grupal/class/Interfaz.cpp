@@ -300,6 +300,7 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 6:
+			internoQueMasLlamoPorCentralYEnGeneral();
       realizarOtraConsulta(opcion, continuar);
       break;
 
@@ -371,7 +372,7 @@ void Interfaz::iniciarPrograma()
 {
   LectorArchivos* lectorDeArchivos = new LectorArchivos(pedirRuta());
   this->cambiarPunteroALectorDeArchivos(lectorDeArchivos);
-
+  
   std::string variableDeBusqueda = pedirAlgoritmoDeBusqueda();
   mostrarMenu();
   int opcion = pedirOpcionMenu();
