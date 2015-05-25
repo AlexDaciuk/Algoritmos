@@ -31,7 +31,7 @@ int Buscador::obtenerDistanciaDeLaLlamada()
     return (this->distanciaDeLaLlamada);
 }
 
-void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora, int emisor, int receptor)
+void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora)
 {
 	this->establecerBusquedaPorPrecio();
     Central* centralActual = this->encontrarLaCentral(centralEmisora);
@@ -69,9 +69,10 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 	    }
 	}
     }
+	this->encontrarInternoEnLa(this->encontrarLaCentral(centralReceptora))
 }
 
-void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralReceptora, int emisor, int receptor)
+void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralReceptora)
 {
 	this->establecerBusquedaPorDistancia();
 	Central* centralActual = this->encontrarLaCentral(centralEmisora);
@@ -277,5 +278,37 @@ Buscador::~Buscador()
 {
 	delete (this->mejorCamino);
 	delete (this->rutaActual);
+}
+
+Central* Buscador::obtenerCentralEmisora(int centralEmisora)
+{
+	this->mejorCamino->iniciarCursorNodo();
+	this->mejorCamino->avanzarCursorPorElFinal();
+	if(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen() == centralEmisora)
+		return(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen());
+	else
+		return(this->mejorCamino->obtenerCursorNodo()->obteneroDestino());
+}
+
+Central* Buscador::obtenerCentralReceptora()
+{
+	this->mejorCamino->iniciarCursorNodo();
+	this->mejorCamino->avanzarCursorNodo();
+	if(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen() == centralEmisora)
+		return(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen());
+	else
+		return(this->mejorCamino->obtenerCursorNodo()->obteneroDestino());
+}
+
+Interno* Buscador::obtenerInternoEmisor(int emisor)
+{
+	Central* centralEmisora = this->obtenerCentralEmisora();
+	return (centralEmisora->obtenerInterno(emisor));
+}
+
+Interno* Buscador::obtenerInternoReceptor(int receptor)
+{
+	Central* centralReceptora = this->obtenerCentralReceptora();
+	return(centralReceptora->obtenerInterno(receptor));
 }
 #endif
