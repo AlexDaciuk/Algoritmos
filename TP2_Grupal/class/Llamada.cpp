@@ -1,10 +1,7 @@
 #ifndef LLAMADA_H_
 #define LLAMADA_H_
 
-
 #include "Llamada.h"
-
-
 
 Llamada::Llamada (int receptorLlamadaTemporal)
 {
@@ -16,7 +13,6 @@ Llamada::Llamada (int receptorLlamadaTemporal)
 		this->horaInicioLlamadaEnCurso =0;
 		this->receptorLlamada = receptorLlamadaTemporal;
 	}
-
 }
 
 void Llamada::empezarLlamada(int horaInicioLlamadaEnCursoTemporal)
@@ -45,7 +41,6 @@ int Llamada::obtenerCantidadOcupadosDados()
 {
 	return this->cantidadOcupadosDados;
 }
-
 
 int Llamada::obtenerCantidadOcupadosRecibidos()
 {
