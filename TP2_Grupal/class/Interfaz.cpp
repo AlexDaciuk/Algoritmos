@@ -1,17 +1,5 @@
 #include "Interfaz.h"
-#include <string>
-#include <sstream>
-#include <iostream>
-#include "DatosLlamada.h"
-#include "Menu.h"
-#include "ProcesadorLlamada.h"
-#include "LectorArchivos.h"
-#include "Opciones.h"
-#include "Lista.h"
-#include "Enlace.h"
-#include "Central.h"
-#include "Internos.h"
-#include "Llamada.h"
+
 
 Interfaz::Interfaz()
 {
@@ -186,6 +174,51 @@ void Interfaz::detallesLlamadasEntreInternoXeInternoY()
   std::cout << "Cantidad de ocupados:" << numeroDeOcupados << "\n \n";
 }
 
+void Interfaz::internoQueMasHabloPorCentralYGeneral()
+{
+	int maximaDuracionPorCentral=0;
+	int maximaDuracionGeneral=0;
+	int internoQueMasHablo, internoQueMasHabloGeneral, centralQueMasHablo;
+	obtenercentrales()->iniciarCursorNodo();
+	while (obtenercentrales()->avanzarCursorNodo())
+	{
+		std::cout<<"De la central "<<obtenercentrales()->obtenerCursorNodo()->obtenerNumero()<<" el interno que mas hablo fue:";
+		internoQueMasHabloEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),maximaDuracionPorCentral, internoQueMasHabloPorCentral);
+		std::cout<<internoQueMasHabloPorCentral;
+		if (maximaDuracionPorCentral > maximaDuracionGeneral)
+		{
+			centralQueMasHablo = obtenercentrales()->obtenerCursorNodo()->obtenerNumero();
+			internoQueMasHabloGeneral = internoQueMasHabloPorCentral;
+			maximaDuracionGeneral = maximaDuracionPorCentral;
+		}
+	}
+	std::cout<<"\n El interno que mas hablo de todos fue el interno "<<internoQueMasHabloGeneral<<" de la central "<<centralQueMasHablo-><<". \n";
+}
+
+void Interfaz::internoQueMasHabloEnUnaCentral(Lista<Interno*>* listaInternos,int& maximaDuracionPorInterno,int& internoQueMasHabloPorCentral)
+{
+	int duracionPorInterno=0;
+	listaInternos->iniciarCursorNodo();
+	while (listaInternos->avanzarCursorNodo())
+	{
+		 duracionPorInterno = sumaDeDuracionDeLlamadas(listaInternos->obtenerCursorNodo()->obtenerLlamadas());
+		if ( duracionPorInterno > maximaDuracionPorInterno)
+		{
+			internoQueMasHabloEnUnaCentral = listaInternos->obtenerCursorNodo()->obtenerNumero();
+			maximaDuracionPorInterno = duracionPorInterno;
+		}
+	}
+}
+int Interfaz::sumaDeDuracionDeLlamadas(Lista<Llamada*>* listaLlamadas)
+{
+	int duracion=0;
+	listaLlamadas->iniciarCursorNodo();
+	while (listaLlamadas->avanzarCursorNodo())
+	{
+		duracion = listaLlamadas->obtenerCursorNodo()->obtenerDuracionLlamadas();
+	}
+	return duracion;
+}
 void Interfaz::tratarOpcion(int opcion)
 {
   bool continuar = true;

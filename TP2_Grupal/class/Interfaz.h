@@ -2,11 +2,18 @@
 #define INTERFAZ_H
 
 #include <string>
+#include <sstream>
 #include <iostream>
+#include "DatosLlamada.h"
+#include "Menu.h"
+#include "ProcesadorLlamada.h"
+#include "LectorArchivos.h"
+#include "Opciones.h"
 #include "Lista.h"
 #include "Enlace.h"
 #include "Central.h"
-#include "LectorAchivos.h"
+#include "Internos.h"
+#include "Llamada.h"
 
 /**
  * Clase que maneja la interfaz e interaccion con el usuario
@@ -25,7 +32,7 @@ class Interfaz
   /**
    * Constructor de la clase. Inicializa los punteros a NULL.
    * */
-  Ineterfaz();
+  Interfaz();
   /**
    * Deuelve el puntero a la lista donde se guardan los enlaces para su uso.
    * */
@@ -91,10 +98,25 @@ class Interfaz
   /**
 * precondicion: Se tiene que haber leido un archivo de llamadas.
    * postcondicion: Devuelve los numeros de las centrales de origen y destino y cantidad de canales(iniciales) que
-* poseen
-   * 								los enlaces leidos en el archivo de llamadas.
+* poseen los enlaces leidos en el archivo de llamadas.
 * */
   void mostrarDetallesDeEnlaces();
+	/**
+* precondicion: Se tiene que haber leido un archivo de llamadas.
+   * postcondicion: Devuelve el interno con mayor duracion de llamadas de cada central y de todos en general.
+	 * Si hay mas de un interno con la misma duracionde llamadas en una central se muestra el primero.
+* */
+	void internoQueMasHabloPorCentralYGeneral();
+	/**
+	 * pre: debe existir la central.
+	 * post: devuleve el numero del interno con myor duracion de llamadas totales.
+	 */
+	void internoQueMasHabloEnUnaCentral(Lista<Interno>* listaInternos,int& maximaDuracionPorCentral,int& internoQueMasHabloPorCentral);
+	/**
+	 * Pre: debe esxistir la lista de punteros a llamadas.
+	 * post: devuelve la sumatoria de todas las duraciones de llamadas de cada llamada en la lista del interno.
+	 */
+	int sumaDeDuracionDeLlamadas(Lista<Llamada*>* listaLlamadas);
   /**
    * pre: los interneos y las centrales deben existir.
    * post: devuelve la cantidad de llamadas totales realizadas entre ellos el tiempo total de conversacion
