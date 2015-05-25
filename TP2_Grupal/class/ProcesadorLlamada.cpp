@@ -39,14 +39,14 @@ void ProcesadorLlamada::iniciarLlamada();
 	this->centrales->crearInterno(this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor());
 
 	//Obtengo punteros a cada interno
-	Internos* Emisor, Receptor;
+	Interno* emisor, receptor;
 
-	Emisor = this->centrales->obtenerInterno(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor() );
-	Receptor = this->centrales->obtenerInterno(this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor() );
+	emisor = this->centrales->obtenerInterno(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor() );
+	receptor = this->centrales->obtenerInterno(this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor() );
 
 	//Agrego la llamada a cada interno
-	Emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora());
-	Receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora());
+	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), receptor);
+	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora());
 
 	//Cambio la disponibilidad de los enlaces
 	Enlace* EnlaceTemporal = this->recorridoTemporal->obtenerRuta;
