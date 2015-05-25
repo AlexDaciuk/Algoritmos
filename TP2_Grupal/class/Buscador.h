@@ -29,6 +29,8 @@ private:
     int precioDeLaLlamada;
 
     int distanciaDeLaLlamada;
+	
+	int tipoDeBusqueda;
 
 public:
     /**
@@ -69,6 +71,9 @@ public:
      */
     void encontrarCaminoPordistancia(int centralEmisora, int centralReceptora, int emisor, int receptor);
 
+	void establecerBusquedaPorPrecio();
+	
+	void establecerBusquedaPorDistancia();
     /**
      * Post: libera la memoria de los spots usados y la lista del mejor camino
      */
@@ -105,6 +110,8 @@ private:
 	void caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual, int centralReceptora);
 	
 	Lista<Enlace*>* definirEstaRuta();
+	
+	int obtenerTipoDeBusqueda();
     // Buscar central de salida en la lista de centrales
     // iniciar camino:
     // me fijo si la llamada es interna en la misma central

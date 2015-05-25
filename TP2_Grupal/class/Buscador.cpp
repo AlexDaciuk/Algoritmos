@@ -182,7 +182,10 @@ bool Buscador::caminarEnlace(Central* centralActual, int centralReceptora)
     Spot* spotActual = this->rutaActual->obtenerCursorNodo();
     enlacesActuales->iniciarCursorNodo();
     while((!spotActual->recorriTodosLosEnlaces()) || (enlacesActuales->avanzarCursorNodo())) {
-	caminarPorPrecio(enlacesActuales->obtenerCursorNodo(), spotActual, centralReceptora);
+		if(this->obtenerTipoDeBusqueda() == 0)
+			caminarPorPrecio(enlacesActuales->obtenerCursorNodo(), spotActual, centralReceptora);
+		else
+			caminarPorDistancia(enlacesActuales->obtenerCursorNodo(), spotActual, centralReceptora);
     }
 }
 
@@ -253,4 +256,18 @@ Lista<Enlace*>* Buscador::definirEstaRuta()
     }
 }
 
+void Buscador::establecerBusquedaPorPrecio()
+{
+	this->tipoDeBusqueda = 0;
+}
+	
+void Buscador::establecerBusquedaPorDistancia()
+{
+	this->tipoDeBusqueda = 1;
+}
+
+int Buscador::obtenerTipoDeBusqueda()
+{
+	return (this->tipoDeBusqueda);
+}
 #endif
