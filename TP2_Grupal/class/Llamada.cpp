@@ -57,6 +57,11 @@ int Llamada::obtenerCantidadLlamadas()
 	return this->cantidadLlamadas;
 }
 
+int Llamada::obtenerCostoLlamadas()
+{
+	return this->costoLlamadas;
+}
+
 void Llamada::agregarOcupadoRecibido()
 {
 	this->cantidadOcupadosRecibidos++;

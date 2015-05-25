@@ -10,7 +10,7 @@ class Llamada
 {
 private:
 
-	int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada;
+	int  cantidadLlamadas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas;
 
 public:
 
@@ -48,6 +48,8 @@ public:
 	int obtenerCantidadOcupadosRecibidos();
 	
 	int obtenerCantidadLlamadas();
+	
+	int obtenerCostoLlamadas();
 	
 	void agregarOcupadoRecibido();
 	
