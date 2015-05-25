@@ -27,6 +27,11 @@ class Interfaz
   Lista<Enlace>* enlaces;
   Lista<Central>* centrales;
   LectorArchivos* LectorDeArchivos;
+  
+   /**
+   * Cambia la direccion donde apunta el puntero.
+   * */
+  void cambiarPunteroPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero);
 
   public:
   /**
@@ -144,10 +149,6 @@ class Interfaz
 * */
   LectorArchivos* obtenerPunteroALectorDeArchivos();
 
-  /**
-   * Cambia la direccion donde apunta el puntero.
-   * */
-  void cambiarPunteroPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero);
   /**
    * Precondicion: Opcion de be estar comprendido entre numeros del 1 a 17 inclusive.
    *

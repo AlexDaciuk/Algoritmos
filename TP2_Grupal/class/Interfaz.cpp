@@ -4,12 +4,12 @@ Interfaz::Interfaz()
 {
   this->enlaces = NULL;
   this->centrales = NULL;
-  this->LectorDeArchivos = NULL;
+  this->lectorDeArchivos = NULL;
 }
 
 void Interfaz::cambiarPunteroPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero)
 {
-  this->LectorDeArchivos = nuevoPuntero;
+  this->lectorDeArchivos = nuevoPuntero;
 }
 
 std::string Interfaz::pedirRuta()
@@ -369,8 +369,8 @@ void Interfaz::realizarOtraConsulta(int& opcion, bool& continuar)
 }
 void Interfaz::iniciarPrograma()
 {
-  LectorArchivos* lectorDeArchivos =
-      new LectorArchivos(pedirRuta()) this->cambiarPunteroALectorDeArchivos(lectorDeArchivos);
+  LectorArchivos* lectorDeArchivos = new LectorArchivos(pedirRuta());
+  this->cambiarPunteroALectorDeArchivos(lectorDeArchivos);
 
   std::string variableDeBusqueda = pedirAlgoritmoDeBusqueda();
   mostrarMenu();
