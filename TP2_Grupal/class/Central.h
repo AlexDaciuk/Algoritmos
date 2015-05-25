@@ -51,7 +51,7 @@ public:
 	 * Metodo que devuelve la lista de internos
 	 */
 
-	Lista<Interno>* obtenerInternos();
+	Lista<Interno*>* obtenerInternos();
 
 	/**
 	 * Metodo que devuelve la lista de enlaces
