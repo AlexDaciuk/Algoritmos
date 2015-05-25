@@ -23,7 +23,7 @@ class Interfaz
 
   public:
   /**
-   * Constructor de la clase. Inicializa los punteros.
+   * Constructor de la clase. Inicializa los punteros a NULL.
    * */
   Ineterfaz();
   /**
@@ -90,16 +90,17 @@ class Interfaz
   void mostrarDetallesDeCentrales();
   /**
 * precondicion: Se tiene que haber leido un archivo de llamadas.
-   * postcondicion: Devuelve los numeros de las centrales de origen y destino y cantidad de canales(iniciales) que poseen
+   * postcondicion: Devuelve los numeros de las centrales de origen y destino y cantidad de canales(iniciales) que
+* poseen
    * 								los enlaces leidos en el archivo de llamadas.
 * */
   void mostrarDetallesDeEnlaces();
-	/**
-	 * pre: los interneos y las centrales deben existir.
-	 * post: devuelve la cantidad de llamadas totales realizadas entre ellos el tiempo total de conversacion 
-	 * y las cantidad de ocupados que se dieron(ocupados del interno X mas  los del interno Y).
-	 */
-	void detallesLlamadasEntreInternoXeInternoY();
+  /**
+   * pre: los interneos y las centrales deben existir.
+   * post: devuelve la cantidad de llamadas totales realizadas entre ellos el tiempo total de conversacion
+   * y las cantidad de ocupados que se dieron(ocupados del interno X mas  los del interno Y).
+   */
+  void detallesLlamadasEntreInternoXeInternoY();
   /**
 * Devuleve el puntero a la clase que lee el archivo de llamadas.
 * */
