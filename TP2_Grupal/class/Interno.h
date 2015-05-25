@@ -33,14 +33,21 @@ public:
 	int obtenerNumero();
 
 	/**
-	 *post: agrega una nueva llamada a la lista de llamadas del interno que
+	 * post: agrega una nueva llamada a la lista de llamadas del interno que
 	 * realiza la llamada y la ubica al principio de la lista.
 	 * En el caso de que ya exista un nodo en la lista con el interno receptor se lleva
 	 * ese nodo al principio y se suman
 	 * los datos directamente ahi, no se crea ningun nodo.
 	 */
-	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, receptor);
+	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal,Interno* receptor);
 	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal )
+	
+	/**
+	 * Termina la llamada entre 2 internos
+	 */
+	 
+	 void terminarLlamada(int internoTemporal, int horaTemporal, int precioMinutoTemporal )
+
 
 	/**
 	 *post: devuelve el puntero a la lista de llamadas del interno
