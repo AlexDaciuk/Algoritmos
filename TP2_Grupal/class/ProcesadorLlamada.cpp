@@ -67,15 +67,15 @@ void ProcesadorLlamada::iniciarLlamada();
 void ProcesadorLlamada::finalizarLlamada()
 {
 	//Obtengo punteros a cada interno
-	Internos* Emisor, Receptor;
+	Internos* emisor, receptor;
 
-	Emisor = this->centrales->obtenerInterno(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
-	Receptor = this->centrales->obtenerInterno(this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor());
+	emisor = this->centrales->obtenerInterno(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
+	receptor = this->centrales->obtenerInterno(this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor());
 
 
 	// Termino la llamada en cada interno
-	Emisor->terminarLlamadaEmisor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora() );
-	Receptor->terminarLlamadaReceptor(this->datosTemporals->obtenerReceptor(), this->datosTemporal->obtenerHora() );
+	emisor->terminarLlamada(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
+	receptor->terminarLlamada(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 
 
 	//Cambio disponibilidad de enlaces
@@ -101,7 +101,7 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 {
 	this->enlaces->inicarCursorNodo();
 	bool encontro=false;
-	while ((this->enlaces->avanzarCursorNodo()) && (! encontro))) {
+	while ((this->enlaces->avanzarCursorNodo()) && (! encontro)) {
 		encontro= (numeroOrigen==this->enlaces->obtenerCursorNodo()->obtenerOrigen())
 		          &&
 		          (numeroDestino==this->enlaces->obtenerCursorNodo()->obtenerDestino()) ;
