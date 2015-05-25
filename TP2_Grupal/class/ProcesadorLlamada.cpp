@@ -67,8 +67,8 @@ void ProcesadorLlamada::finalizarLlamada()
 	receptor = this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerDestino() )->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
 	// Termino la llamada en cada interno
-	emisor->terminarLlamada(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
-	receptor->terminarLlamada(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
+	emisor->terminarLlamadaEmisor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
+	receptor->terminarLlamadaReceptor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 
 	//Cambio disponibilidad de enlaces
 	Lista<Enlace*>* enlacesRecorridos = this->emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerReceptor()) ;
