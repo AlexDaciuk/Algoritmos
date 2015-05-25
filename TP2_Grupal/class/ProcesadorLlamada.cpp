@@ -45,12 +45,12 @@ void ProcesadorLlamada::iniciarLlamada();
 	receptor = this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerDestino() )->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
 	//Agrego la llamada a cada interno
-	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), receptor, );
+	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), receptor, this->recorridoTemporal->obtenerRuta() );
 	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora());
 
 	//Cambio la disponibilidad de los enlaces
 	//Cambio disponibilidad de enlaces
-	Lista<Enlace*>* enlacesRecorridos = this->recorridoTemporal->obtenerRuta();
+	Lista<Enlace*>* enlacesRecorridos = this->emisor->
 	enlacesRecorridos->iniciarCursorNodo();
 	
 	while( enlacesRecorridos->avanzarCursorNodo() )	{
@@ -63,21 +63,18 @@ void ProcesadorLlamada::finalizarLlamada()
 {
 	//Obtengo punteros a cada interno
 	Interno* emisor, receptor;
-
 	emisor = this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerOrigen() )->obtenerInterno(this->datosTemporal->obtenerEmisor() );
 	receptor = this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerDestino() )->obtenerInterno(this->datosTemporal->obtenerReceptor() );
-
 
 	// Termino la llamada en cada interno
 	emisor->terminarLlamada(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 	receptor->terminarLlamada(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 
-
 	//Cambio disponibilidad de enlaces
-	Lista<Enlace*>* enlacesRecorridos = this->recorridoTemporal->obtenerRuta();
+	Lista<Enlace*>* enlacesRecorridos = this->emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerReceptor()) ;
 	enlacesRecorridos->iniciarCursorNodo();
-	
-	while( enlacesRecorridos->avanzarCursorNodo() )	{
+
+	while( enlacesRecorridos->avanzarCursorNodo() ) {
 		enlacesRecorridos->obtenerCursorNodo()->eliminarLlamadaEnCurso();
 	}
 };
