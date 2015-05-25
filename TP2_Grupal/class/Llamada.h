@@ -52,6 +52,8 @@ public:
 	
 	int obtenerCostoLlamadas();
 	
+	Lista<Enlace*>* obtenerRecorridoLlamada();
+	
 	void agregarOcupadoRecibido();
 	
 	void agregarOcupadoDado();

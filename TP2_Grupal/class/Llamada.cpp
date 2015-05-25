@@ -68,6 +68,11 @@ int Llamada::obtenerCostoLlamadas()
 	return this->costoLlamadas;
 }
 
+Lista<Enlace*>* obtenerRecorridoLlamada()
+{
+	return this->recorridoLlamada;
+}
+
 void Llamada::agregarOcupadoRecibido()
 {
 	this->cantidadOcupadosRecibidos++;
