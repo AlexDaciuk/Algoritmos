@@ -26,9 +26,11 @@ private:
 
     Lista<Central*>* centralesTotales;
 
-    float precioDeLaLlamada;
+    int precioDeLaLlamada;
 
     int distanciaDeLaLlamada;
+	
+	int tipoDeBusqueda;
 
 public:
     /**
@@ -46,7 +48,7 @@ public:
     /**
      * Post: devuelve el precio de la llamada segun corresponda.
      */
-    float obtenerPrecioDeLaLlamada();
+    int obtenerPrecioDeLaLlamada();
 
     /**
      * Post: devuelve la distancia de la llamada segun corresponda.
@@ -69,6 +71,9 @@ public:
      */
     void encontrarCaminoPordistancia(int centralEmisora, int centralReceptora, int emisor, int receptor);
 
+	void establecerBusquedaPorPrecio();
+	
+	void establecerBusquedaPorDistancia();
     /**
      * Post: libera la memoria de los spots usados y la lista del mejor camino
      */
@@ -91,18 +96,22 @@ private:
 
     bool hayMasCaminos();
 
-    void avanzarBusquedaPor(Central* centralActual, int centralReceptora);
+    void avanzarBusquedaDesde(Central* centralActual, int buscoMejorValor, int precioActual, int centralReceptora);
 
-    bool caminarEnlace(Central* centralActual, float mejorValor, int centralReceptora);
+    bool caminarEnlace(Central* centralActual, int centralReceptora);
 
     /**
      * @brief Camina el enlace dado devolviendo el puntero a la central de destino
      * @param enlaceActual, centralActual
      * @return central de destino
      */
-    Central* caminar(Enlace* enlaceActual, Spot* spotActual, float mejorValor, int centralReceptora);
+    void caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual, int centralReceptora);
+	
+	void caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual, int centralReceptora);
 	
 	Lista<Enlace*>* definirEstaRuta();
+	
+	int obtenerTipoDeBusqueda();
     // Buscar central de salida en la lista de centrales
     // iniciar camino:
     // me fijo si la llamada es interna en la misma central
