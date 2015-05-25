@@ -167,8 +167,7 @@ void Interfaz::detallesLlamadasEntreInternoXeInternoY()
   if (buscadorDatosSegundoInterno == NULL) {
     throw std::string "El segundo interno no existe";
   }
-  std::cout << "Detalles de llamadas entre el interno " << buscadorDatosPrimerInterno->obtenerNumero() << " y "
-            << buscadorDatosSegundoInterno->obtenerNumero() << " : \n";
+  std::cout << "Detalles de llamadas entre el interno " << primerInterno << " y " << segundoInterno << "\n";
   int numeroDeLlamadas = 0;
   int numeroDeOcupados = 0;
   bool encontro = false;
