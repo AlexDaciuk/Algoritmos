@@ -15,7 +15,7 @@ template<class T> class Nodo
 
 private:
 
-	T* objeto;
+	T objeto;
 	Nodo<T>* nodoSiguiente;
 	Nodo<T>* nodoAnterior;
 
