@@ -48,6 +48,10 @@ public:
 	int obtenerCantidadOcupadosRecibidos();
 	
 	int obtenerCantidadLlamadas();
+	
+	void agregarOcupadoRecibido();
+	
+	void agregarOcupadoDado();
 
 };
 
