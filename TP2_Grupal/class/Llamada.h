@@ -10,7 +10,7 @@ class Llamada
 {
 private:
 
-	int  cantidadLlamadasRecibidas, cantidadLlamadasHechas, duracionLlamadas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas;
+	int  cantidadLlamadasRecibidas, cantidadLlamadasHechas, duracionLlamadasHechas, duracionLlamadasRecibidas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas;
 	Lista<Enlace*>* recorridoLlamada;
 
 public:
@@ -40,7 +40,8 @@ public:
 	int obtenerReceptorLlamada();
 
 	/*post: devuelve la duracion acumulada todas las llamadas efectuadas por el interno.*/
-	int obtenerDuracionLlamadas();
+	int obtenerDuracionLlamadasHechas();
+	int obtenerDuracionLlamadasRecibidas();
 
 	/*post: devuelve la cantidad total de ocupados dados por el interno.*/
 	int obtenerCantidadOcupadosDados();
