@@ -13,8 +13,8 @@ void ProcesadorLlamada::procesarLlamadas()
 	while ( archivoLlamadas->chequearLLamada() ) {
 		this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
 
-		agregarCentral(this->datosTemporal->obtenerOrigen);
-		agregarCentral(this->datosTemporal->obtenerDestino);
+		agregarCentral(this->datosTemporal->obtenerOrigen() );
+		agregarCentral(this->datosTemporal->obtenerDestino() );
 
 		if ( this->datosTemporal->accionTemporal == "Inicio") {
 			// Aca va el tema con el buscador de caminos
@@ -35,42 +35,37 @@ void ProcesadorLlamada::procesarLlamadas()
 void ProcesadorLlamada::iniciarLlamada();
 {
 	// Veo si los internos existen o sino, los crea
-	this->centrales->crearInterno(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
-	this->centrales->crearInterno(this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor());
+	this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerOrigen() )->crearInterno(this->datosTemporal->obtenerEmisor() );
+	this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerDestino() )->crearInterno(this->datosTemporal->obtenerReceptor() );
 
 	//Obtengo punteros a cada interno
 	Interno* emisor, receptor;
 
-	emisor = this->centrales->obtenerInterno(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor() );
-	receptor = this->centrales->obtenerInterno(this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor() );
+	emisor = this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerOrigen() )->obtenerInterno(this->datosTemporal->obtenerEmisor() );
+	receptor = this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerDestino() )->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
 	//Agrego la llamada a cada interno
-	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), receptor);
+	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), receptor, );
 	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora());
 
 	//Cambio la disponibilidad de los enlaces
-	Enlace* EnlaceTemporal = this->recorridoTemporal->obtenerRuta;
-
-	/**
-	 *  Esto hay que cambiarlo, usar un cursor dentro de la lista
-	 * u otro metodo inclusive
-	 * while ( recorridoTemporal->punteroARuta != NULL )
-	 *{
-	 *punteroEnlaceTemporal->agregarLlamadaEnCurso();
-	 *
-	 *punteroEnlaceTemporal = punteroEnlaceTemporal->obtenerSiguiente();
-	 *}
-	 */
+	//Cambio disponibilidad de enlaces
+	Lista<Enlace*>* enlacesRecorridos = this->recorridoTemporal->obtenerRuta();
+	enlacesRecorridos->iniciarCursorNodo();
+	
+	while( enlacesRecorridos->avanzarCursorNodo() )	{
+		enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
+	}
 }
 
 
 void ProcesadorLlamada::finalizarLlamada()
 {
 	//Obtengo punteros a cada interno
-	Internos* emisor, receptor;
+	Interno* emisor, receptor;
 
-	emisor = this->centrales->obtenerInterno(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
-	receptor = this->centrales->obtenerInterno(this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor());
+	emisor = this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerOrigen() )->obtenerInterno(this->datosTemporal->obtenerEmisor() );
+	receptor = this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerDestino() )->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
 
 	// Termino la llamada en cada interno
@@ -79,7 +74,12 @@ void ProcesadorLlamada::finalizarLlamada()
 
 
 	//Cambio disponibilidad de enlaces
-
+	Lista<Enlace*>* enlacesRecorridos = this->recorridoTemporal->obtenerRuta();
+	enlacesRecorridos->iniciarCursorNodo();
+	
+	while( enlacesRecorridos->avanzarCursorNodo() )	{
+		enlacesRecorridos->obtenerCursorNodo()->eliminarLlamadaEnCurso();
+	}
 };
 
 
@@ -108,7 +108,7 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 	}
 	if (! encontro) {
 	// Aca tener en cuenta que los atributos de this->datosTemporal siguen con los nombres como si fuera
-	// una llamada, pero realmente es para una central y estan ordenados
+	// una llamada, pero realmente es para una enlace y estan ordenados
 	Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->datosTemporal->obtenerDestino(),
 	                                 this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora());
 
