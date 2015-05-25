@@ -91,16 +91,18 @@ private:
 
     bool hayMasCaminos();
 
-    void avanzarBusquedaDesde(Central* centralActual, int centralReceptora);
+    void avanzarBusquedaDesde(Central* centralActual, int buscoMejorValor, int precioActual, int centralReceptora);
 
-    bool caminarEnlace(Central* centralActual, int mejorValor, int centralReceptora);
+    bool caminarEnlace(Central* centralActual, int centralReceptora);
 
     /**
      * @brief Camina el enlace dado devolviendo el puntero a la central de destino
      * @param enlaceActual, centralActual
      * @return central de destino
      */
-    Central* caminar(Enlace* enlaceActual, Spot* spotActual, int mejorValor, int centralReceptora);
+    void caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual, int centralReceptora);
+	
+	void caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual, int centralReceptora);
 	
 	Lista<Enlace*>* definirEstaRuta();
     // Buscar central de salida en la lista de centrales
