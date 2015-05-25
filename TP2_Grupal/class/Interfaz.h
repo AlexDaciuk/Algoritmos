@@ -113,7 +113,7 @@ class Interfaz
 * */
   void internoQueMasHabloPorCentralYGeneral();
   /**
-   * pre: debe existir la central.
+   * pre: debe existir la lista de punteros a internos.
    * post: devuleve el numero del interno con mayor duracion de llamadas totales.
    */
   void internoQueMasHabloEnUnaCentral(Lista<Interno*>* listaInternos,
@@ -137,17 +137,36 @@ class Interfaz
 */
   void internoQueMasLlamoPorCentralYEnGeneral();
   /**
-         * pre: debe existir la central.
-         * post: devuleve el numero del interno con mayor numero de llamadas y ese numero de llamadas.
-         */
+	* pre: debe existir la lista de punteros a internos.
+	* post: devuleve el numero del interno con mayor numero de llamadas y ese numero de llamadas.
+	*/
   void internoQueMasLlamoEnUnaCentral(Lista<Interno*>* listaInternos,
                                       int& maximoNumeroLLamadasEnLaCentral,
-                                      int& internoQueMasLlamoPorCentral)
+                                      int& internoQueMasLlamoPorCentral);
   /**
   * Pre: debe esxistir la lista de punteros a llamadas.
   * post: devuelve la sumatoria de las cantidades de llamadas de cada interno.
   */
-  int sumaDeLlamadas(Lista<Llamada*>* listaLlamadas)
+  int sumaDeLlamadas(Lista<Llamada*>* listaLlamadas);
+  /**
+	* precondicion: Se tiene que haber leido un archivo de llamadas.
+	* postcondicion: Devuelve el interno con mayor numero de ocupados recibidos de cada central y de todos en
+	* general.
+	* Si hay mas de un interno con la misma cantidad de ocupados recibidos en una central se muestra el primero.
+*/
+  void internoQueAlQueMasOcupadosRecibioPorCentralYGeneral();
+	/**
+	* pre: debe existir la lista de punteros a internos.
+	* post: devuleve el numero del interno con mayor numero de ocupados recibidos y ese numero de ocupados.
+	*/
+  void internoQueMasOcupadosRecibioEnUnaCentral(Lista<Interno*>* listaInternos,
+                                                int& maximoNumeroOcupadosEnLaCentral,
+                                                int& internoQueMasRecibioOcupadosPorCentral);
+	/**
+  * Pre: debe esxistir la lista de punteros a llamadas.
+  * post: devuelve la sumatoria de las cantidades de ocupados recibidos de cada interno.
+  */
+	int Interfaz::sumaDeOcupadosRecibidos(Lista<Llamada*>* listaLlamadas)
   /**
   * Devuleve el puntero a la clase que lee el archivo de llamadas.
   * */
