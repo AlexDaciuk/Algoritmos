@@ -56,7 +56,7 @@ public:
 
 	Lista<Llamada*>* obtenerLlamadas();
 
-	Lista<Enlace*>* devolverRecorridoLlamada(int internoEmisorTemporal, int internoReceptorTemporal);
+	Lista<Enlace*>* devolverRecorridoLlamada(int emisorLlamadaTemporal, int receptorLlamadaTemporal);
 	/**
 	  *post: recorre la lista de llamadas del interno emisor y busca si ya existe un nodo
 	  * con datos pertenecientes a interacciones con el interno receptor. En ese caso de no

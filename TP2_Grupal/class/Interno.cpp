@@ -66,7 +66,7 @@ void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Inter
 	} else {
 		// Si recibio un ocupado, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
-		llamadaTemporal->empezarLlamada(0, recorridoLlamadaTemporal);
+		llamadaTemporal->empezarLlamadaEmisor(0, recorridoLlamadaTemporal);
 		llamadaTemporal->agregarOcupadoRecibido();
 	}
 
