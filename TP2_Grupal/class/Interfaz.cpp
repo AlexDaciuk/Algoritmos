@@ -355,6 +355,49 @@ int Interfaz::sumaDeLlamadasRecibidas(Lista<Llamada*>* listaLlamadas)
   return llamadasRecibidas;
 }     
 
+void Interfaz::internoQueMasGastoPorCentralYGeneral()
+{
+	int  = 0;
+  int maximoGastoGeneral = 0;
+  int internoQueMasGastoPorCentral, internoQueMasGastoGeneral, centralQueMasGasto;
+  obtenercentrales()->iniciarCursorNodo();
+  while (obtenercentrales()->avanzarCursorNodo()) {
+    std::cout << "De la central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero() << " el interno que mas llamo fue:";
+    internoQueMasGastoEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),maximoGastoEnLaCentral,
+                                    internoQueMasGastoPorCentral);
+    std::cout <<  internoQueMasGastoPorCentral<<"\n";
+    if (maximoGastoEnLaCentral > maximoGastoGeneral) {
+     centralQueMasGasto = obtenercentrales()->obtenerCursorNodo()->obtenerNumero();
+      internoQueMasGastoGeneral =  internoQueMasGastoPorCentral;
+      maximoGastoGeneral = maximoGastoEnLaCentral;
+    }
+  }
+  std::cout << "\n El interno que mas llamadas recibio de todos fue el interno " << internoQueMasGastoGeneral << " de la central "
+            << centralQueMasGasto-> << ". \n";
+}
+
+void Interfaz::  internoQueMasGastoEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoGastoEnLaCentral,
+int& internoQueMasGastoPorCentral)
+{
+	int GastosPorInterno = 0;
+  listaInternos->iniciarCursorNodo();
+  while (listaInternos->avanzarCursorNodo()) {
+    GastosPorInterno = sumaDeGastos(listaInternos->obtenerCursorNodo()->obtenerLlamadas());
+    if ( GastosPorInterno > maximoGastoEnLaCentral) {
+      internoQueMasGastoPorCentral = listaInternos->obtenerCursorNodo()->obtenerNumero();
+      maximoGastoEnLaCentral = GastosPorInterno;
+    }
+  }                    
+}
+int Interfaz::sumaDeGastos(Lista<Llamada*>* listaLlamadas)
+{
+  int gastos = 0;
+  listaLlamadas->iniciarCursorNodo();
+  while (listaLlamadas->avanzarCursorNodo()) {
+    gastos += listaLlamadas->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas();
+  }
+  return gastos;
+}     
 void Interfaz::tratarOpcion(int opcion)
 {
   bool continuar = true;
@@ -402,6 +445,7 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 9:
+			internoQueMasGastoPorCentralYGeneral();
       realizarOtraConsulta(opcion, continuar);
       break;
 

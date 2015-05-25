@@ -184,7 +184,25 @@ int& internoQueMasLlamaronPorCentral);
   * Pre: debe esxistir la lista de punteros a llamadas.
   * post: devuelve la sumatoria de las cantidades dellamadas recibidas de cada interno.
   */
-	int Interfaz::sumaDeLlamadasRecibidas(Lista<Llamada*>* listaLlamadas)
+	int sumaDeLlamadasRecibidas(Lista<Llamada*>* listaLlamadas);
+	/**
+	* precondicion: Se tiene que haber leido un archivo de llamadas.
+	* postcondicion: Devuelve el interno con mayor costos por llamadas de cada central y de todos en
+	* general.
+	* Si hay mas de un interno con los mismos costos en una central se muestra el primero.
+*/
+	void internoQueMasGastoPorCentralYGeneral();
+	/**
+	* pre: debe existir la lista de punteros a internos.
+	* post: devuleve el numero del interno con mayor costos por llamadas y ese numero de gastos.
+	*/
+	void Interfaz::  internoQueMasGastoEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoGastoEnLaCentral,
+int& internoQueMasGastoPorCentral);
+/**
+  * Pre: debe esxistir la lista de punteros a llamadas.
+  * post: devuelve la sumatoria de los gastos por llamadas de cada interno.
+  */
+int Interfaz::sumaDeGastos(Lista<Llamada*>* listaLlamadas)
 
   /**
   * Devuleve el puntero a la clase que lee el archivo de llamadas.
