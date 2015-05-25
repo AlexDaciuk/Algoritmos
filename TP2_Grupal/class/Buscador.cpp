@@ -33,6 +33,7 @@ int Buscador::obtenerDistanciaDeLaLlamada()
 
 void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora, int emisor, int receptor)
 {
+	this->establecerBusquedaPorPrecio();
     Central* centralActual = this->encontrarLaCentral(centralEmisora);
     this->rutaActual->insertar(spot(centralActual, 0, 0));
     if(this->esLlamadaInterna(centralEmisora, centralReceptora)) {
@@ -72,6 +73,7 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 
 void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralReceptora, int emisor, int receptor)
 {
+	this->establecerBusquedaPorDistancia();
 	Central* centralActual = this->encontrarLaCentral(centralEmisora);
     this->rutaActual->insertar(spot(centralActual, 0, 0));
     if(this->esLlamadaInterna(centralEmisora, centralReceptora)) {
@@ -269,5 +271,11 @@ void Buscador::establecerBusquedaPorDistancia()
 int Buscador::obtenerTipoDeBusqueda()
 {
 	return (this->tipoDeBusqueda);
+}
+
+Buscador::~Buscador()
+{
+	delete (this->mejorCamino);
+	delete (this->rutaActual);
 }
 #endif
