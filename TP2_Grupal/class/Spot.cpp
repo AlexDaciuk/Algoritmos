@@ -79,6 +79,6 @@ Enlace* Spot::obtenerEnlaceRecorrido()
 
 Spot::~Spot()
 {
-	delete centralesVisitadas;
+	delete (this->centralesVisitadas);
 }
 #endif
