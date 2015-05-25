@@ -52,7 +52,7 @@ public:
 	 * post: remueve de la Lista el elemento en la posición indicada.
 	 */
 
-	void remover(int numeroDeObjeto);
+	void remover();
 
 	/**
 	 * Devuelve el objeto al cual esta apuntando el cursor siempre y cuando
@@ -137,16 +137,23 @@ template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
 }
 
 
-template<class T> void Lista<T>::remover(int numeroDeObjeto)
+template<class T> void Lista<T>::remover()
 {
 
-	Nodo<T>* removido;
-	removido = obtenerPunteroAlObjeto(numeroDeObjeto);
+	Nodo<T>* removido = this->obtenerCursorNodo();
 	Nodo<T>* anterior = removido->obtenerAnterior();
 	Nodo<T>* siguiente = removido->obtenerSiguiente();
-	anterior->cambiarNodoSiguiente(siguiente);
-	siguiente->cambiarNodoAnterior(anterior);
-
+	if((siguiente != NULL) && (anterior != NULL))
+	{
+		anterior->cambiarNodoSiguiente(siguiente);
+		siguiente->cambiarNodoAnterior(anterior);
+	}
+	if (siguiente == NULL)
+		anterior->cambiarNodoSiguiente(siguiente);
+	
+	else
+		siguiente->cambiarNodoAnterior(anterior);
+		
 	delete removido;
 	/* cualquier recorrido actual queda invalidado */
 	this->iniciarCursor();
