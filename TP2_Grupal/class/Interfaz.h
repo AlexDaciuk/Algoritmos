@@ -114,7 +114,7 @@ class Interfaz
   void internoQueMasHabloPorCentralYGeneral();
   /**
    * pre: debe existir la lista de punteros a internos.
-   * post: devuleve el numero del interno con mayor duracion de llamadas totales.
+   * post: devuleve el numero del interno con mayor duracion de llamadas totales (recibidas mas hechas).
    */
   void internoQueMasHabloEnUnaCentral(Lista<Interno*>* listaInternos,
                                       int& maximaDuracionEnLaCentral,
@@ -202,7 +202,26 @@ int& internoQueMasGastoPorCentral);
   * Pre: debe esxistir la lista de punteros a llamadas.
   * post: devuelve la sumatoria de los gastos por llamadas de cada interno.
   */
-int Interfaz::sumaDeGastos(Lista<Llamada*>* listaLlamadas)
+int Interfaz::sumaDeGastos(Lista<Llamada*>* listaLlamadas);
+/**
+	* precondicion: Se tiene que haber leido un archivo de llamadas.
+	* postcondicion: Devuelve el interno con mayor duracion de llamadas recibidas de cada central y de todos en
+	* general.
+	* Si hay mas de un interno con la misma duracion total en una central se muestra el primero.
+*/
+void Interfaz::internoAlQueMasLeHablaronPorCentralYGeneral();
+/**
+	* pre: debe existir la lista de punteros a internos.
+	* post: devuleve el numero del interno con mayor duracion total de llamadas recibidas y esa duracion.
+	*/
+void Interfaz::internoQueMasLeHbalaronEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoInternoQueMasLeHablaronEnLaCentral,
+int& internoQueMasHablaronPorCentral);
+/**
+  * Pre: debe esxistir la lista de punteros a llamadas.
+  * post: devuelve la sumatoria de las duraciones de llamadas recibidas de cada interno.
+  */
+int Interfaz::sumaDeRecibidas(Lista<Llamada*>* listaLlamadas);
+
 
   /**
   * Devuleve el puntero a la clase que lee el archivo de llamadas.
