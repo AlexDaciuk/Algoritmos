@@ -49,7 +49,13 @@ int Interfaz::pedirOpcionMenu()
 {
   int opcion;
   std::cout << "Elija una opcion:";
-  std::cin >> opcion;
+	std::cin >> opcion;
+	if (opcion<1 || opcion>17)
+	{
+		std::cout<<"La opcion no existe. \/n"
+		pedirOpcionMenu();
+	}
+  
   return opcion;
 }
 
@@ -96,7 +102,7 @@ void Interfaz::mostrarDetallesDeInternos()
   while (this->obtenercentrales()->avanzarCursorNodo()) {
   std:
     cout << "Internos de la central:" << this->obtenercentrales()->obtenerCursorNodo->obtenerNumero() << ": \n";
-    Lista<Internos>* punteroAInternos = this->obtenercentrales()->obtenercursorNodo()->obtenerInternos();
+    Lista<Interno*>* punteroAInternos = this->obtenercentrales()->obtenercursorNodo()->obtenerInternos();
     punteroAInternos->iniciarCursorNodo();
     while (this->punteroAInternos->avanzarCursorNodo()) {
       std::cout << "Interno:" << punteroAInternos->obternerCursorNodo()->obtenerNumero() << ". \n";
@@ -129,19 +135,22 @@ void Interfaz::mostrarDetallesDeEnlaces()
     std::cout << "Numero de canales: " << obtenerenlaces()->obtenerCursorNodo()->obtenerNumeroDeCanales() << "\n \n";
   }
 }
-
+int	Interfaz::pedirCentral()
+{
+	int numeroDeCentral:
+	std::cout << "Indique a que central pertenece:"; std::cin>>numeroDeCentral;
+  return numeroDeCentral;
+}
 void Interfaz::detallesLlamadasEntreInternoXeInternoY()
 {
   int primerInterno, centralPrimerInterno, segundoInterno, centralSegundoInterno;
   std::cout << "Ingrese el numero del primer interno:";
   std::cin >> primerInterno;
   std::cout << "\n";
-  std::cout << "Indique a que central pertenece:";
-  std::cin >> centralPrimerInterno;
+  centralPrimerInterno = pedirCentral();
   std::cout << "\n \n" std::cout << "Ingese el numero del segundo interno:";
   std::cin >> segundoInterno;
-  std::cout << "Indique a que central pertenece:";
-  std::cin >> centralSegundoInterno;
+	centralSegundoInterno = pedirCentral();
   std::cout << "\n \n";
   Interno* buscadorDatosPrimerInterno, buscadorDatosSegundoInterno;
   buscadorDatosPrimerInterno =
