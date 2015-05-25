@@ -21,14 +21,12 @@ private:
 	std::string accion;
 	int origen, emisor, destino, receptor, hora;
 
-
 public:
 	/**
 	 * Constructor
 	 * Inicializa los enteros en 0 y el string en un espacio
 	 */
 	DatosLlamada();
-
 
 	/**
 	 * Metodo que carga datos a los atributos, si ya tuviera datos, los sobre escribe
@@ -41,14 +39,12 @@ public:
 	/**
 	 * Metodos que devuelven los valores de los atributos de la clase
 	 */
+	 
 	std::string obtenerAccion();
-
 	int obtenerOrigen();
 	int obtenerDestino();
-
 	int obtenerEmisor();
 	int obtenerReceptor();
-
 	int obtenerHora();
 };
 
