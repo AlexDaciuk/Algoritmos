@@ -26,7 +26,7 @@ private:
 
     Lista<Central*>* centralesTotales;
 
-    float precioDeLaLlamada;
+    int precioDeLaLlamada;
 
     int distanciaDeLaLlamada;
 
@@ -46,7 +46,7 @@ public:
     /**
      * Post: devuelve el precio de la llamada segun corresponda.
      */
-    float obtenerPrecioDeLaLlamada();
+    int obtenerPrecioDeLaLlamada();
 
     /**
      * Post: devuelve la distancia de la llamada segun corresponda.
@@ -91,16 +91,16 @@ private:
 
     bool hayMasCaminos();
 
-    void avanzarBusquedaPor(Central* centralActual, int centralReceptora);
+    void avanzarBusquedaDesde(Central* centralActual, int centralReceptora);
 
-    bool caminarEnlace(Central* centralActual, float mejorValor, int centralReceptora);
+    bool caminarEnlace(Central* centralActual, int mejorValor, int centralReceptora);
 
     /**
      * @brief Camina el enlace dado devolviendo el puntero a la central de destino
      * @param enlaceActual, centralActual
      * @return central de destino
      */
-    Central* caminar(Enlace* enlaceActual, Spot* spotActual, float mejorValor, int centralReceptora);
+    Central* caminar(Enlace* enlaceActual, Spot* spotActual, int mejorValor, int centralReceptora);
 	
 	Lista<Enlace*>* definirEstaRuta();
     // Buscar central de salida en la lista de centrales

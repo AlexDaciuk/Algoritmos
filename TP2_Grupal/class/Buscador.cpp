@@ -44,8 +44,28 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 	this->rutaActual->iniciarCursorNodo();
 
 	while(this->hayMasCaminos()) {
-	    this->avanzarBusquedaPor(centralActual, centralReceptora);
-	    //(this->precioDeLaLlamada > mejorPrecio) || (this->precioDeLaLlamada == 0)
+	    if(centralActual->obtenerNumero() != centralReceptora) {
+		this->avanzarBusquedaDesde(centralActual, centralReceptora);
+	    } else {
+		Spot* spotActual = this->rutaActual->obtenerCursorNodo();
+		Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
+		enlacesActuales->iniciarCursorNodo();
+		if((!spotActual->recorriTodosLosEnlaces()) || (enlacesActuales->avanzarCursorNodo())) {
+		    caminarEnlace(centralActual, buscoMejorValor);
+		} else {
+		    this->rutaActual->remover();
+		    this->rutaActual->avanzarCursorPorElFinal();
+		    spotActual = this->rutaActual->obtenerCursorNodo();
+		    while(spotActual != NULL) {
+			int buscoMejorValor = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
+			centralActual = this->rutaActual->obtenerCursorNodo()->obtenerPosicion();
+			while(((precioActual > buscoMejorValor) || (precioActual == 0)) &&
+			      (centralActual->obtenerNumero() != centralReceptora)) {
+			    this->caminarEnlace(centralActual, buscoMejorValor);
+			}
+		    }
+		}
+	    }
 	}
     }
 }
@@ -108,22 +128,22 @@ bool Buscador::hayMasCaminos()
     return (hayMasCaminos);
 }
 
-void Buscador::avanzarBusquedaPor(Central* centralActual, int centralReceptora)
+void Buscador::avanzarBusquedaDesde(Central* centralActual, int centralReceptora)
 {
     this->rutaActual->avanzarCursorNodo();
-    float buscoMejorValor = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
-    float precioActual = this->obtenerPrecioDeLaLlamada();
+    int buscoMejorValor = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
+    int precioActual = this->obtenerPrecioDeLaLlamada();
     while(((precioActual > buscoMejorValor) || (precioActual == 0)) &&
           (centralActual->obtenerNumero() != centralReceptora)) {
 	this->caminarEnlace(centralActual, buscoMejorValor);
     }
     if(centralActual->obtenerNumero() == centralReceptora) {
 	this->definirEstePrecioYDistancia();
-	this->
+	this->definirEstaRuta();
     }
 }
 
-bool Buscador::caminarEnlace(Central* centralActual, float buscoMejorValor, int centralReceptora)
+bool Buscador::caminarEnlace(Central* centralActual, int buscoMejorValor, int centralReceptora)
 {
     Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
     Spot* spotActual = this->rutaActual->obtenerCursorNodo();
@@ -133,7 +153,7 @@ bool Buscador::caminarEnlace(Central* centralActual, float buscoMejorValor, int 
     }
 }
 
-Central* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual, float buscoMejorValor, int centralReceptora)
+Central* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual, int buscoMejorValor, int centralReceptora)
 {
     if(enlaceActual->chequearDisponibilidadCanales()) {
 	if(enlaceActual->obtenerDestino()->obtenerNumero() != spotActual->obtenerPosicion()->obtenerNumero()) {
@@ -145,7 +165,7 @@ Central* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual, float buscoMe
 
 		spotActual->anotarCaminoRecorrido(centralNueva, enlaceActual);
 
-		this->avanzarBusquedaPor(centralNueva, centralReceptora);
+		this->avanzarBusquedaDesde(centralNueva, centralReceptora);
 	    }
 	} else {
 	    if(!this->YaPasePorLaCentral(enlaceActual->obtenerOrigen())) {
@@ -156,7 +176,7 @@ Central* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual, float buscoMe
 
 		spotActual->anotarCaminoRecorrido(centralNueva, enlaceActual);
 
-		this->avanzarBusquedaPor(centralNueva, centralReceptora);
+		this->avanzarBusquedaDesde(centralNueva, centralReceptora);
 	    }
 	}
     }
@@ -164,12 +184,11 @@ Central* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual, float buscoMe
 
 Lista<Enlace*>* Buscador::definirEstaRuta()
 {
-	this->rutaActual->iniciarCursorNodo();
-	while(this->rutaActual->avanzarCursorNodo())
-	{
-			Spot* spotActual = this->rutaActual->obtenerCursorNodo();
-			this->mejorCamino->insertar(spotActual->)
-	}
+    this->rutaActual->iniciarCursorNodo();
+    while(this->rutaActual->avanzarCursorNodo()) {
+	Spot* spotActual = this->rutaActual->obtenerCursorNodo();
+	this->mejorCamino->insertar(spotActual->obtenerEnlaceRecorrido());
+    }
 }
 
 #endif
