@@ -111,7 +111,7 @@ class Interfaz
 	 * pre: debe existir la central.
 	 * post: devuleve el numero del interno con myor duracion de llamadas totales.
 	 */
-	void internoQueMasHabloEnUnaCentral(Lista<Interno>* listaInternos,int& maximaDuracionPorCentral,int& internoQueMasHabloPorCentral);
+	void internoQueMasHabloEnUnaCentral(Lista<Interno*>* listaInternos,int& maximaDuracionEnLaCentral,int& internoQueMasHabloPorCentral);
 	/**
 	 * Pre: debe esxistir la lista de punteros a llamadas.
 	 * post: devuelve la sumatoria de todas las duraciones de llamadas de cada llamada en la lista del interno.
