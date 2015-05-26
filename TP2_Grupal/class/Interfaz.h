@@ -237,6 +237,9 @@ int Interfaz::sumaDeRecibidas(Lista<Llamada*>* listaLlamadas);
    * La opcion debe estar en tre 1 y 17 inclusive.
    * Postcondiciones: Si se desea continuar te vuelve a mostrar las opciones disponibles sino termina el programa.
    * */
-  void realizarOtraConsulta(int& opcion, bool& continuar) ~Interfaz();
-}
+  void realizarOtraConsulta(int& opcion, bool& continuar);
+  ~Interfaz();
+};
+
+
 #endif
