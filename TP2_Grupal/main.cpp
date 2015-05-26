@@ -1,4 +1,4 @@
-#include "Interfaz.h"
+#include "class/Interfaz.h"
 
 
 
