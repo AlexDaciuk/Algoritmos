@@ -41,13 +41,13 @@ public:
 	 * los datos directamente ahi, no se crea ningun nodo.
 	 */
 	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal,Interno* receptor);
-	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal )
+	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal );
 	
 	/**
 	 * Termina la llamada entre 2 internos
 	 */
 	 
-	 void terminarLlamada(int internoTemporal, int horaTemporal, int precioMinutoTemporal )
+	  void terminarLlamada(int internoTemporal, int horaTemporal, int precioMinutoTemporal );
 
 
 	/**

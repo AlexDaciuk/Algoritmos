@@ -5,6 +5,8 @@
 #define NULL 0
 #endif
 
+#include "Lista.h"
+#include "Enlace.h"
 
 class Llamada
 {

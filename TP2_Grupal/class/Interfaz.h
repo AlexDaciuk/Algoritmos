@@ -5,14 +5,13 @@
 #include <sstream>
 #include <iostream>
 #include "DatosLlamada.h"
-#include "Menu.h"
 #include "ProcesadorLlamada.h"
 #include "LectorArchivos.h"
 #include "Opciones.h"
 #include "Lista.h"
 #include "Enlace.h"
 #include "Central.h"
-#include "Internos.h"
+#include "Interno.h"
 #include "Llamada.h"
 
 /**
