@@ -56,7 +56,7 @@ public:
 	 * post:si no existe agrega la enlace a la lista de centrales
 	 * si ya existe la enlace no hace nada.
 	 * */
-	void agregarEnlace(int numeroOrigen, int numeroOrigen);
+	void agregarEnlace(int numeroOrigen, int numeroDestino);
 
 
 };
