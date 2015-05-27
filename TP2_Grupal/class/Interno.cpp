@@ -1,4 +1,4 @@
-#include "Interno.h"
+ProcesadorLlamadaes#include "Interno.h"
 
 Interno::Interno(int numeroInternoTemporal)
 {
@@ -27,7 +27,7 @@ Lista<Enlace*>* Interno::devolverRecorridoLlamada(int emisorLlamadaTemporal, int
 		llamadaTemporal = this->obtenerCursorNodo();
 		encontreLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
 	}
-	
+
 	return llamadaTemporal->obtenerRecorridoLlamada();
 }
 
