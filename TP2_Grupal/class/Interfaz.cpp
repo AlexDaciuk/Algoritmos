@@ -269,7 +269,7 @@ int Interfaz::sumaDeLlamadas(Lista<Llamada*>* listaLlamadas)
   return llamadas;
 }                                                
 
-void Interfaz::internoQueAlQueMasOcupadosRecibioPorCentralYGeneral()
+void Interfaz::internoQueMasOcupadosRecibioPorCentralYGeneral()
 {
 	int maximoNumeroOcupadosEnLaCentral = 0;
   int maximoNumeroDeOcupadosGeneral = 0;
@@ -484,7 +484,7 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 7:
-			internoQueQueMasOcupadosRecibioPorCentralYGeneral();
+			internoQueMasOcupadosRecibioPorCentralYGeneral();
       realizarOtraConsulta(opcion, continuar);
       break;
 

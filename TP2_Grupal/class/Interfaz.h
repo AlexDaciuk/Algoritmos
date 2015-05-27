@@ -153,7 +153,7 @@ class Interfaz
 	* general.
 	* Si hay mas de un interno con la misma cantidad de ocupados recibidos en una central se muestra el primero.
 */
-  void internoQueAlQueMasOcupadosRecibioPorCentralYGeneral();
+  void internoQueMasOcupadosRecibioPorCentralYGeneral();
 	/**
 	* pre: debe existir la lista de punteros a internos.
 	* post: devuleve el numero del interno con mayor numero de ocupados recibidos y ese numero de ocupados.
