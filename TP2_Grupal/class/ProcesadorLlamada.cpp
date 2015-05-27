@@ -123,10 +123,12 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 	}
 }
 
-Lista<Central*>* obtenerCentrales(){
+Lista<Central*>* obtenerCentrales()
+{
 	return this->centrales;
 }
 
-Lista<Enlace*>* obtenerEnlaces(){
+Lista<Enlace*>* obtenerEnlaces()
+{
 	return this->enlaces;
 }
