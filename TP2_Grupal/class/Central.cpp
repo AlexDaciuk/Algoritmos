@@ -17,7 +17,7 @@ void Central::crearInterno(int numeroInterno)
 
 Interno* Central::obtenerInterno(int numeroInterno)
 {
-	return this->internos->obtenerPunteroAlObjeto(numeroIterno);
+	return (this->internos->obtenerPunteroAlObjeto(numeroInterno));
 };
 
 Lista<Interno>* Central::obtenerInternos()
