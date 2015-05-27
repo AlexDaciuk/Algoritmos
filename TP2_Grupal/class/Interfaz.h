@@ -226,6 +226,26 @@ int sumaDeRecibidas(Lista<Llamada*>* listaLlamadas);
   * Devuleve el puntero a la clase que lee el archivo de llamadas.
   * */
   LectorArchivos* obtenerPunteroALectorDeArchivos();
+  /**
+	* precondicion: Se tiene que haber leido un archivo de llamadas.
+	* postcondicion: Devuelve el interno con mayor numero de ocupados dados de cada central y de todos en
+	* general.
+	* Si hay mas de un interno con la misma cantidad en una central se muestra el primero.
+*/
+  void internoQueMasDioOcupadoPorCentralYGeneral();
+  /**
+	* pre: debe existir la lista de punteros a internos.
+	* post: devuleve el numero del interno con mayor numero de ocupados dados y ese numero,
+  * por central
+	*/
+  void internoQueMasDioOcuapadoEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoNumeroDeOcupadosDadosEnLaCentral,
+int& internoQueMasDioOcupadoPorCentral);
+/**
+  * Pre: debe esxistir la lista de punteros a llamadas.
+  * post: devuelve la sumatoria de los ocupados dados de cada interno.
+  */
+int Interfaz::sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas);
+{
 
   /**
    * Precondicion: Opcion de be estar comprendido entre numeros del 1 a 17 inclusive.
