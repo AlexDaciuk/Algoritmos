@@ -6,7 +6,7 @@
 
 #include "Lista.h"
 #include "Enlace.h"
-#include "Internos.h"
+#include "Interno.h"
 #include "Central.h"
 #include "Spot.h"
 
