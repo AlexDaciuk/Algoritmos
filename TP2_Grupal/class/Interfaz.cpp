@@ -520,6 +520,41 @@ void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
     std::cout<<"Cantidad de ocupados dados:"<<internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosDados()<<".\n";
   }
 }
+
+void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB()
+{
+  std::cout<<"Emisor. \n";
+  int emisor = pedirInterno();
+  std::cout<<"Central del emisor.\n";
+  int numeroCentralEmisor= pedirCentral();
+  std::cout<<"Receptor. \n";
+  int receptor = pedirInterno();
+  std::cout<<"Central del receptor.\n";
+  int numeroCentralReceptor= pedirCentral();
+  Central centralEmisor=obtenercentrales()->obtenerPunteroAlObjeto(numeroCentralEmisor)->obtenerObjeto();
+  Lista<Llamada>* llamadasEmisor =centralEmisor->obtenerInterno(emisor)->obtenerLlamadas();
+  llamadasEmisor->iniciarCursorNodo();
+  bool estaElReceptor = false;
+  while (llamadasEmisor->avanzarCursorNodo() && !estaElReceptor)
+  {
+    if(llamadasEmisor->obtenerCursorNodo()->obtenerReceptorLlamada()==receptor)
+    {
+      estaElReceptor=true;
+    }
+  }
+  if (estaElReceptor)
+  {
+    std::cout<<"Detalles de llamadas realizadas por "<<emisor<<" de la central "<<numeroCentralEmisor<<"\n";
+    std::cout<<"y recibidas por "<<receptor<<" de la central "<<numeroCentralReceptor<<".\n";
+    std::cout<<"Llamadas realizadas:"<<llamadasEmisor->obtenerCursorNodo()->obtenerCantidadLlamadasHechas()<<".\n";
+    std::cout<<"Duracion de las llamadas:"<<llamadasEmisor->obtenerCursorNodo()->obtenerDuracionLlamadasHechas()<<".\n";
+    std::cout<<"Cantidad de ocupados recibidos:"<<llamadasEmisor->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos()<<".\n";
+  }
+  else
+  {
+    std::cout<<"No existen llamadas entre estos internos.\n";
+  }
+}
 int Interfaz::sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas)
 {
   int ocupados = 0;
@@ -601,6 +636,7 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 14:
+      DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB();
       realizarOtraConsulta(opcion, continuar);
       break;
 
