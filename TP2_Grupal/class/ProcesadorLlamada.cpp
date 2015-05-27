@@ -1,11 +1,12 @@
 #include "ProcesadorLlamada.h"
 
-ProcesadorLlamada::ProcesadorLlamada()
+ProcesadorLlamada::ProcesadorLlamada(ProcesadorLlamada* lectorArchivosTemporal)
 {
 	this->datosTemporal= NULL;
 	this->recorridoTemporal= NULL;
 	this->centrales = new Lista<Central>;
 	this->enlaces = new Lista<Enlace>;
+	this->archivoLlamadas = lectorArchivosTemporal;
 }
 
 void ProcesadorLlamada::procesarLlamadas()
@@ -31,7 +32,6 @@ void ProcesadorLlamada::procesarLlamadas()
 		}
 	}
 }
-
 void ProcesadorLlamada::iniciarLlamada();
 {
 	// Veo si los internos existen o sino, los crea
@@ -51,13 +51,12 @@ void ProcesadorLlamada::iniciarLlamada();
 	//Cambio la disponibilidad de los enlaces
 	//Cambio disponibilidad de enlaces
 	Lista<Enlace*>* enlacesRecorridos = this->emisor->
-	enlacesRecorridos->iniciarCursorNodo();
-	
+	                                    enlacesRecorridos->iniciarCursorNodo();
+
 	while( enlacesRecorridos->avanzarCursorNodo() )	{
 		enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
 	}
 }
-
 
 void ProcesadorLlamada::finalizarLlamada()
 {
@@ -78,7 +77,6 @@ void ProcesadorLlamada::finalizarLlamada()
 		enlacesRecorridos->obtenerCursorNodo()->eliminarLlamadaEnCurso();
 	}
 };
-
 
 void ProcesadorLlamada::agregarCentral(int numeroCentral)
 {
@@ -111,7 +109,7 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 
 		this->enlaces->insertar(nuevoEnlace);
 
-		//Agrego el puntero a 
+		//Agrego el puntero a
 		this->centrales->iniciarCursorNodo();
 
 		while ( this->centrales->avanzarCursorNodo() ) {
@@ -120,6 +118,15 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 			if (centralTemporal->obtenerNumero() == numeroDestino || centralTemporal->obtenerNumero() == numeroOrigen) {
 				centralTemporal->agregarEnlace(nuevoEnlace);
 			}
+
 		}
 	}
+}
+
+Lista<Central*>* obtenerCentrales(){
+	return this->centrales;
+}
+
+Lista<Enlace*>* obtenerEnlaces(){
+	return this->enlaces;
 }

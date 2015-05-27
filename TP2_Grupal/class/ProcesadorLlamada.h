@@ -26,7 +26,7 @@ public:
 	/**
 	* Se crea el procesador de llamadas con sus punteros apuntando a null
 	*/
-	ProcesadorLlamada();
+	ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal);
 
 	/**
 	 * post:si no existe agrega la central a la lista de centrales y tambien les agrega
@@ -50,15 +50,16 @@ public:
 	 * y fin de llamadas
 	 * */
 	void procesarLlamada();
-
+	
+	Lista<Enlace*>* obtenerEnlaces();
+	
+	Lista<Central*>* obtenerCentrales();
 
 	/**
 	 * post:si no existe agrega la enlace a la lista de centrales
 	 * si ya existe la enlace no hace nada.
 	 * */
 	void agregarEnlace(int numeroOrigen, int numeroDestino);
-
-
 };
 
 #endif
