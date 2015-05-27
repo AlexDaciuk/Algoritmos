@@ -20,8 +20,7 @@ private:
 
 	int numeroCentral;
 
-	Lista<Interno>* internos;
-	// Puntero a la lista de punteros a los enlaces de la central
+	Lista<Interno*>* internos;
 	Lista<Enlace*>* enlaces;
 
 public:
@@ -59,7 +58,7 @@ public:
 
 	Lista<Enlace*>* obtenerEnlaces();
 
-
+	void agregarEnlace(Enlace* enlaceTemporal);
 
 	/**
 	 * Metodo que devuelve el numero de la central

@@ -3,13 +3,13 @@
 Central::Central(int numeroCentralTemporal)
 {
 	this->NumeroCentral= numeroCentralTemporal;
-	this->internos = new Lista<Internos>;
-	this->enlaces = new Lista<Enlaces*>*;
+	this->internos = new Lista<Internos*>;
+	this->enlaces = new Lista<Enlaces*>;
 };
 
 void Central::crearInterno(int numeroInterno)
 {
-	Interno internoTemporal(numeroInterno);
+	Interno* internoTemporal = new Interno(numeroInterno);
 	if ( (this->internos->primerNodo == NULL) || (this->internos->obtenerPunteroAlObjeto(numeroInterno) == NULL) ) {
 		this->internos->Insertar(internoTemporal);
 	}
@@ -29,6 +29,12 @@ Lista<Enlace>* Central::obtenerEnlaces()
 {
 	return(this->enlaces);
 }
+
+void Central::agregarEnlace(Enlace* enlaceTemporal)
+{
+	this->enlaces->insertar(enlaceTemporal);
+}
+
 
 int Central::obtenerNumero()
 {
