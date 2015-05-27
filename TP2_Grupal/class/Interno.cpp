@@ -7,7 +7,6 @@ Interno::Interno(int numeroInternoTemporal)
 	this->estaOcupado=false;
 };
 
-
 int Internos::obtenerNumero()
 {
 	return (this->numeroInterno);
@@ -91,4 +90,36 @@ void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista
 		llamadaTemporal->agregarOcupadoDado();
 
 	}
+}
+
+void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int precioMinutoTemporal )
+{
+	// Busco la llamada
+	this->llamadas->iniciarCursorNodo();
+	bool encontroLlamada = false;
+	Llamada* llamadaTemporal = NULL;
+
+	while(this->llamadas->avanzarCursorNodo() && ! encontroLlamada) {
+		llamadaTemporal = this->llamadas->obtenerCursorNodo();
+		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorTemporal;
+	}
+
+	llamadaTemporal->terminarLlamadaEmisor(horaTemporal);
+	this->estaOcupado = false;
+}
+
+void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int precioMinutoTemporal )
+{
+	// Busco la llamada
+	this->llamadas->iniciarCursorNodo();
+	bool encontroLlamada = false;
+	Llamada* llamadaTemporal = NULL;
+
+	while(this->llamadas->avanzarCursorNodo() && ! encontroLlamada) {
+		llamadaTemporal = this->llamadas->obtenerCursorNodo();
+		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == emisorTemporal;
+	}
+
+	llamadaTemporal->terminarLlamadaReceptor(horaTemporal);
+	this->estaOcupado = false;
 }
