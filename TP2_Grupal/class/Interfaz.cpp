@@ -49,7 +49,8 @@ int Interfaz::pedirOpcionMenu()
   std::cout << "Elija una opcion:";
   std::cin >> opcion;
   if (opcion < 1 || opcion > 17) {
-    std::cout << "La opcion no existe. \/n" pedirOpcionMenu();
+    std::cout << "La opcion no existe. \n";
+    pedirOpcionMenu();
   }
 
   return opcion;
@@ -521,7 +522,7 @@ void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
   }
 }
 
-void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB()
+void Interfaz::DetalleDeLlamadasRealizadasPorXDeLaCentralAYRealizadasPorYDeLaCentralB()
 {
   std::cout<<"Emisor. \n";
   int emisor = pedirInterno();
@@ -555,6 +556,42 @@ void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCent
     std::cout<<"No existen llamadas entre estos internos.\n";
   }
 }
+
+void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB()
+{
+  std::cout<<"Emisor. \n";
+  int emisor = pedirInterno();
+  std::cout<<"Central del emisor.\n";
+  int numeroCentralEmisor= pedirCentral();
+  std::cout<<"Receptor. \n";
+  int receptor = pedirInterno();
+  std::cout<<"Central del receptor.\n";
+  int numeroCentralReceptor= pedirCentral();
+  Central centralEmisor=obtenercentrales()->obtenerPunteroAlObjeto(numeroCentralEmisor)->obtenerObjeto();
+  Lista<Llamada>* llamadas =centralEmisor->obtenerInterno(emisor)->obtenerLlamadas();
+  llamadasEmisor->iniciarCursorNodo();
+  bool estaElReceptor = false;
+  while (llamadasEmisor->avanzarCursorNodo() && !estaElReceptor)
+  {
+    if(llamadasEmisor->obtenerCursorNodo()->obtenerReceptorLlamada()==receptor)
+    {
+      estaElReceptor=true;
+    }
+  }
+  if (estaElReceptor)
+  {
+    std::cout<<"Detalles de llamadas recibidas por "<<receptor<<" de la central "<<numeroCentralReceptor<<"\n";
+    std::cout<<"y realizadas por "<<emisor<<" de la central "<<numeroCentralEmisor<<".\n";
+    std::cout<<"Llamadas realizadas:"<<llamadasEmisor->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas()<<".\n";
+    std::cout<<"Duracion de las llamadas:"<<llamadasEmisor->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas()<<".\n";
+    std::cout<<"Cantidad de ocupados recibidos:"<<llamadasEmisor->obtenerCursorNodo()->obtenerCantidadOcupadosDados()<<".\n";
+  }
+  else
+  {
+    std::cout<<"No existen llamadas entre estos internos.\n";
+  }
+}
+
 int Interfaz::sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas)
 {
   int ocupados = 0;
@@ -636,11 +673,12 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 14:
-      DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB();
+      DetalleDeLlamadasRealizadasPorXDeLaCentralAYRealizadasPorYDeLaCentralB();
       realizarOtraConsulta(opcion, continuar);
       break;
 
     case 15:
+      DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB();
       realizarOtraConsulta(opcion, continuar);
       break;
 

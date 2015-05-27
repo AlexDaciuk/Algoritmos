@@ -262,6 +262,12 @@ int& internoQueMasDioOcupadoPorCentral);
    * postcondicion: se devuelven los detalles de las llamadas realizadas del interno
    * emisor al receptor. Duracion, numero y ocupados.
    */
+  void DetalleDeLlamadasRealizadasPorXDeLaCentralAYRealizadasPorYDeLaCentralB();
+  /**
+   * precondicion: los numero de central e internos debes ser validos.
+   * postcondicion: se devuelven los detalles de las llamadas recibidas del interno
+   * receptor por el emisor. Duracion, numero y ocupados.
+   */
   void DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB();
 
   /**
