@@ -71,11 +71,15 @@ int Llamada::obtenerCantidadOcupadosRecibidos()
 	return this->cantidadOcupadosRecibidos;
 }
 
-int Llamada::obtenerCantidadLlamadas()
+int Llamada::obtenerCantidadLlamadasHechas()
 {
-	return this->cantidadLlamadas;
+	return this->cantidadLlamadasHechas;
 }
 
+int obtenerCantidadLlamadasRecibidas()
+{
+  return this->cantidadLlamadasRecibidas
+}
 int Llamada::obtenerCostoLlamadas()
 {
 	return this->costoLlamadas;

@@ -51,8 +51,8 @@ public:
 	/*post: devuelve la cantidad total de ocupados recibidos por el interno.*/
 	int obtenerCantidadOcupadosRecibidos();
 	
-	int obtenerCantidadLlamadas();
-	
+	int obtenerCantidadLlamadasHechas();
+	int obtenerCantidadLlamadasRecibidas();
 	int obtenerCostoLlamadas();
 	
 	Lista<Enlace*>* obtenerRecorridoLlamada();
