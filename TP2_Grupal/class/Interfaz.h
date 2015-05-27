@@ -144,9 +144,9 @@ class Interfaz
                                       int& internoQueMasLlamoPorCentral);
   /**
   * Pre: debe esxistir la lista de punteros a llamadas.
-  * post: devuelve la sumatoria de las cantidades de llamadas de cada interno.
+  * post: devuelve la sumatoria de las cantidades de llamadas del interno..
   */
-  int sumaDeLlamadas(Lista<Llamada*>* listaLlamadas);
+  int sumaDeLlamadasEmitidas(Lista<Llamada*>* listaLlamadas);
   /**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.
 	* postcondicion: Devuelve el interno con mayor numero de ocupados recibidos de cada central y de todos en
@@ -163,7 +163,7 @@ class Interfaz
                                                 int& internoQueMasRecibioOcupadosPorCentral);
 	/**
   * Pre: debe esxistir la lista de punteros a llamadas.
-  * post: devuelve la sumatoria de las cantidades de ocupados recibidos de cada interno.
+  * post: devuelve la sumatoria de las cantidades de ocupados recibidos del interno..
   */
 	int sumaDeOcupadosRecibidos(Lista<Llamada*>* listaLlamadas);
 	/**
@@ -181,7 +181,7 @@ class Interfaz
 int& internoQueMasLlamaronPorCentral);
 	/**
   * Pre: debe esxistir la lista de punteros a llamadas.
-  * post: devuelve la sumatoria de las cantidades dellamadas recibidas de cada interno.
+  * post: devuelve la sumatoria de las cantidades dellamadas recibidas del interno..
   */
 	int sumaDeLlamadasRecibidas(Lista<Llamada*>* listaLlamadas);
 	/**
@@ -199,7 +199,7 @@ int& internoQueMasLlamaronPorCentral);
 int& internoQueMasGastoPorCentral);
 /**
   * Pre: debe esxistir la lista de punteros a llamadas.
-  * post: devuelve la sumatoria de los gastos por llamadas de cada interno.
+  * post: devuelve la sumatoria de los gastos por llamadas del interno..
   */
 int sumaDeGastos(Lista<Llamada*>* listaLlamadas);
 /**
@@ -217,9 +217,9 @@ void internoQueMasLeHbalaronEnUnaCentral(Lista<Interno*>* listaInternos,int& max
 int& internoQueMasHablaronPorCentral);
 /**
   * Pre: debe esxistir la lista de punteros a llamadas.
-  * post: devuelve la sumatoria de las duraciones de llamadas recibidas de cada interno.
+  * post: devuelve la sumatoria de las duraciones de llamadas recibidas del interno.
   */
-int sumaDeRecibidas(Lista<Llamada*>* listaLlamadas);
+int sumaDuracionDeRecibidas(Lista<Llamada*>* listaLlamadas);
 
 
   /**
@@ -244,8 +244,13 @@ int& internoQueMasDioOcupadoPorCentral);
   * Pre: debe esxistir la lista de punteros a llamadas.
   * post: devuelve la sumatoria de los ocupados dados de cada interno.
   */
-int Interfaz::sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas);
-{
+  int sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas);
+  /**
+   * precondicion: el numero de central e interno deben ser positivos y ser validos.
+   * postcondicion: se devuelve el detalle de las llamadas emitidas de ese interno a todos
+   * los demas en esa central, diferenciandolo por interno.
+   */
+  void DetallesLlamadasEmitidasPorElInternoXDeLaCentralA();
 
   /**
    * Precondicion: Opcion de be estar comprendido entre numeros del 1 a 17 inclusive.

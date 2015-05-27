@@ -251,7 +251,7 @@ void Interfaz::internoQueMasLlamoEnUnaCentral(Lista<Interno*>* listaInternos,int
   int llamadasPorInterno = 0;
   listaInternos->iniciarCursorNodo();
   while (listaInternos->avanzarCursorNodo()) {
-    llamadasPorInterno = sumaDeLlamadas(listaInternos->obtenerCursorNodo()->obtenerLlamadas());
+    llamadasPorInterno = sumaDeLlamadasEmitidas(listaInternos->obtenerCursorNodo()->obtenerLlamadas());
     if (llamadasPorInterno > maximoNumeroLLamadasEnLaCentral) {
       internoQueMasLlamoPorCentral = listaInternos->obtenerCursorNodo()->obtenerNumero();
       maximoNumeroLLamadasEnLaCentral = llamadasPorInterno;
@@ -259,7 +259,7 @@ void Interfaz::internoQueMasLlamoEnUnaCentral(Lista<Interno*>* listaInternos,int
   }                                              
 }
 
-int Interfaz::sumaDeLlamadas(Lista<Llamada*>* listaLlamadas)
+int Interfaz::sumaDeLlamadasEmitidas(Lista<Llamada*>* listaLlamadas)
 {
   int llamadas = 0;
   listaLlamadas->iniciarCursorNodo();
@@ -397,7 +397,7 @@ int Interfaz::sumaDeGastos(Lista<Llamada*>* listaLlamadas)
   int gastos = 0;
   listaLlamadas->iniciarCursorNodo();
   while (listaLlamadas->avanzarCursorNodo()) {
-    gastos += listaLlamadas->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas();
+    gastos += listaLlamadas->obtenerCursorNodo()->obtenerCostoLlamadas();
   }
   return gastos;
 }     
@@ -429,7 +429,7 @@ int& internoQueMasHablaronPorCentral)
 	int duracionRecibidasPorInterno = 0;
   listaInternos->iniciarCursorNodo();
   while (listaInternos->avanzarCursorNodo()) {
-    duracionRecibidasPorInterno = sumaDeRecibidas(listaInternos->obtenerCursorNodo()->obtenerLlamadas());
+    duracionRecibidasPorInterno = sumaDuracionDeRecibidas(listaInternos->obtenerCursorNodo()->obtenerLlamadas());
     if ( duracionRecibidasPorInterno > maximoInternoQueMasLeHablaronEnLaCentral) {
       internoQueMasHablaronPorCentral = listaInternos->obtenerCursorNodo()->obtenerNumero();
       maximoInternoQueMasLeHablaronEnLaCentral = duracionRecibidasPorInterno;
@@ -437,14 +437,14 @@ int& internoQueMasHablaronPorCentral)
   }                    
 }
 
-int Interfaz::sumaDeRecibidas(Lista<Llamada*>* listaLlamadas)
+int Interfaz::sumaDuracionDeRecibidas(Lista<Llamada*>* listaLlamadas)
 {
-  int recibidas = 0;
+  int duracionRecibidas = 0;
   listaLlamadas->iniciarCursorNodo();
   while (listaLlamadas->avanzarCursorNodo()) {
-    recibidas += listaLlamadas->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas();
+    duracionRecibidas += listaLlamadas->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas();
   }
-  return recibidas;
+  return duracionRecibidas;
 }     
 
 void Interfaz::internoQueMasDioOcupadoPorCentralYGeneral()
@@ -483,6 +483,20 @@ int& internoQueMasDioOcupadoPorCentral)
   }                    
 }
 
+void Interfaz::DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
+{
+  string central = pedirCentral();
+  int interno = pedirInterno();
+  Interno internoPedido = obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto();
+  std::cout<<"Detalle de las llamadas emitidas por el interno "<<interno<<" de la central "<<central<<".\n";
+  internoPedido->obtenerLlamadas()->iniciarCursorNodo();
+  while (internoPedido->obtenerLlamadas()->avanzarCursorNodo())
+  {
+    std::cout<<"Llamadas realizadas al interno:"<<internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada()<<":\n";
+    std::cout<<"Duracion de las llamadas:"<<internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasHechas()<<".\n";
+    std::cout<<"Cantidad de ocupados recibidos:"<<internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos()<<".\n";
+  }
+}
 int Interfaz::sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas)
 {
   int ocupados = 0;
@@ -549,10 +563,12 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 11:
+      internoQueMasDioOcupadoPorCentralYGeneral();
       realizarOtraConsulta(opcion, continuar);
       break;
 
     case 12:
+      DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
       realizarOtraConsulta(opcion, continuar);
       break;
 
