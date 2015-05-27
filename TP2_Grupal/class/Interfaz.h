@@ -247,10 +247,16 @@ int& internoQueMasDioOcupadoPorCentral);
   int sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas);
   /**
    * precondicion: el numero de central e interno deben ser positivos y ser validos.
-   * postcondicion: se devuelve el detalle de las llamadas emitidas de ese interno a todos
-   * los demas en esa central, diferenciandolo por interno.
+   * postcondicion: se devuelve el detalle de las llamadas emitidas de ese interno  
+   * en esa central, diferenciandolo por interno.
    */
   void DetallesLlamadasEmitidasPorElInternoXDeLaCentralA();
+  /**
+   * precondicion: el numero de central e interno deben ser positivos y ser validos.
+   * postcondicion: se devuelve el detalle de las llamadas recibidas de ese interno 
+   * en esa central, diferenciandolo por interno.
+   */
+  void DetallesLlamadasRecibidasPorElInternoXDeLaCentralA();
 
   /**
    * Precondicion: Opcion de be estar comprendido entre numeros del 1 a 17 inclusive.
