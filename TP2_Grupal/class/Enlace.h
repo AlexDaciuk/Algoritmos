@@ -6,6 +6,7 @@
 #endif
 
 #include "Central.h"
+#include "Lista.h"
 
 /**
  * Clase que define cada enlace entre 2 centrales
@@ -16,8 +17,9 @@ class Enlace
 {
 private:
 	int cantidadDeCanales, distanciaKm, costoPorMinuto, cantidadCanalesEnUso;
-	Central* Origen;
-	Central* Destino;
+	Central* origen;
+	Central* destino;
+	Lista<Central*>* centrales;
 
 public:
 
@@ -26,7 +28,7 @@ public:
 	 * Post: Queda creado el enlace entre 2 centrales
 	 */
 
-	Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int CostoPorMinutoTemporal);
+	Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int CostoPorMinutoTemporal, Lista<Central*>* centralesTemporal);
 
 
 	/**

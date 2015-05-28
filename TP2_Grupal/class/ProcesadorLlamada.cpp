@@ -105,7 +105,7 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 		// Aca tener en cuenta que los atributos de this->datosTemporal siguen con los nombres como si fuera
 		// una llamada, pero realmente es para una enlace y estan ordenados
 		Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->datosTemporal->obtenerDestino(),
-		                                 this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora());
+		                                 this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->centrales);
 
 		this->enlaces->insertar(nuevoEnlace);
 
