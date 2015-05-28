@@ -12,6 +12,8 @@
 /**
  *Clase que define a cada interno de una central
  */
+class Llamada;
+class Enlace;
 
 class Interno
 {

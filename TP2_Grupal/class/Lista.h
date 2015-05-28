@@ -143,17 +143,16 @@ template<class T> void Lista<T>::remover()
 	Nodo<T>* removido = this->obtenerCursorNodo();
 	Nodo<T>* anterior = removido->obtenerAnterior();
 	Nodo<T>* siguiente = removido->obtenerSiguiente();
-	if((siguiente != NULL) && (anterior != NULL))
-	{
+	if((siguiente != NULL) && (anterior != NULL)) {
 		anterior->cambiarNodoSiguiente(siguiente);
 		siguiente->cambiarNodoAnterior(anterior);
 	}
 	if (siguiente == NULL)
 		anterior->cambiarNodoSiguiente(siguiente);
-	
+
 	else
 		siguiente->cambiarNodoAnterior(anterior);
-		
+
 	delete removido;
 	/* cualquier recorrido actual queda invalidado */
 	this->iniciarCursor();

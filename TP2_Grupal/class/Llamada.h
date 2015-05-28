@@ -8,6 +8,8 @@
 #include "Lista.h"
 #include "Enlace.h"
 
+class Enlace;
+
 class Llamada
 {
 private:

@@ -8,8 +8,9 @@
 #include "Lista.h"
 #include "Enlace.h"
 #include "Interno.h"
-#include "Central.h"
 #include "Spot.h"
+#include "Central.h"
+
 
 /**
  * Esta clase se ocupará de encontrar el camino con la menor distacia
@@ -17,6 +18,8 @@
  * Modo de uso: Luego de crear el buscador, lo primero que se debe hacer es buscar el
  * camino, ya sea por precio o distancia, antes de pedirle cualquiera de las operaciones.
  */
+ class Spot;
+ 
 class Buscador
 {
 
