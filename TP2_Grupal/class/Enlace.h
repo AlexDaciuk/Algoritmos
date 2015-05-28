@@ -10,12 +10,14 @@
 /**
  * Clase que define cada enlace entre 2 centrales
  */
+class Central;
 
 class Enlace
 {
 private:
 	int cantidadDeCanales, distanciaKm, costoPorMinuto, cantidadCanalesEnUso;
-	Central* Origen, Destino;
+	Central* Origen;
+	Central* Destino;
 
 public:
 
