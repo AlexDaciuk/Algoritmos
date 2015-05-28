@@ -6,8 +6,8 @@
 #endif
 
 #include "Lista.h"
-#include "Interno.h"
 #include "Enlace.h"
+#include "Interno.h"
 
 /**
  * Clase que maneja cada central

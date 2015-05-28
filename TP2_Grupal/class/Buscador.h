@@ -1,5 +1,5 @@
-#ifndef BUSCADOR_H
-#define BUSCADOR_H
+#ifndef BUSCADOR_H_
+#define BUSCADOR_H_
 
 #ifndef NULL
 #define NULL 0
@@ -18,7 +18,7 @@
  * Modo de uso: Luego de crear el buscador, lo primero que se debe hacer es buscar el
  * camino, ya sea por precio o distancia, antes de pedirle cualquiera de las operaciones.
  */
- class Spot;
+class Spot;
  
 class Buscador
 {

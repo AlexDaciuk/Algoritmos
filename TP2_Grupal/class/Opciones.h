@@ -1,5 +1,5 @@
-#ifndef OPCIONES_H
-#define OPCIONES_H
+#ifndef OPCIONES_H_
+#define OPCIONES_H_
 #include <string>
 
 
