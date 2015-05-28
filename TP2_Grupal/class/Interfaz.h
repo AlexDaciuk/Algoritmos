@@ -14,6 +14,10 @@
 #include "Llamada.h"
 #include "Interno.h"
 
+#ifndef NULL
+#define NULL 0
+#endif
+
 
 /**
  * Clase que maneja la interfaz e interaccion con el usuario
@@ -26,7 +30,7 @@ class Interfaz
 private:
 	Lista<Enlace>* enlaces;
 	Lista<Central>* centrales;
-	LectorArchivos* LectorDeArchivos;
+	LectorArchivos* lectorDeArchivos;
 	ProcesadorLlamada* procesadorLlamada;
 
 	/**
@@ -90,7 +94,7 @@ public:
 	 * Metodo que permite elegir la variable que va a tener en
 	 * cuenta el algoritmo de busqueda para elegir el mejor camino.
 	 * */
-	int pedirAlgoritmoDeBusqueda();
+	std::string pedirAlgoritmoDeBusqueda();
 	/**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.
 	 * postcondicion: Devuleve los numeros de los internos leidos en el archivo de llamadas discriminadas por central.

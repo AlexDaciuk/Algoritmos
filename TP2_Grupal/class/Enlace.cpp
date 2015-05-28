@@ -55,8 +55,8 @@ bool Enlace::chequearDisponibilidadCanales()
 
 void Enlace::agregarLlamadaEnCurso()
 {
-	if ( this->chequearDisponibilidad() ) {
-		this->cantidadCanalesEnUso++
+	if ( this->chequearDisponibilidadCanales() ) {
+		this->cantidadCanalesEnUso++;
 	}
 
 }
