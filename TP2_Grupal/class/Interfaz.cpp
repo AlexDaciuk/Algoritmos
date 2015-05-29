@@ -1,5 +1,10 @@
 #include "Interfaz.h"
 
+enum respuestaAContinuar
+{
+  s;
+  n;
+}
 Interfaz::Interfaz()
 {
 	this->enlaces = NULL;
@@ -692,9 +697,9 @@ void Interfaz::tratarOpcion(int opcion)
 }
 void Interfaz::realizarOtraConsulta(int& opcion, bool& continuar)
 {
+  respuestaAContinuar respuesta;
 	std::cout << "Desea realizar otra consulta? s/n:";
-	char respuesta;
-	std::cin >> respuesta;
+	std::cin >>respuesta;
 	if (respuesta == 's') {
 		continuar = true;
 		std::cout << "\n";
