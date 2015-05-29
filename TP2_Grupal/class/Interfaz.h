@@ -37,7 +37,7 @@ private:
 	/**
 	* Cambia la direccion donde apunta el puntero.
 	* */
-	void cambiarPunteroPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero);
+	void cambiarPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero);
 
 public:
 	/**
@@ -270,7 +270,7 @@ public:
 	 * postcondicion: se devuelven los detalles de las llamadas realizadas del interno
 	 * emisor al receptor. Duracion, numero y ocupados.
 	 */
-	void DetalleDeLlamadasRealizadasPorXDeLaCentralAYRealizadasPorYDeLaCentralB();
+	void DetalleDeLlamadasRealizadasPorXDeLaCentralAYRecibidasPorYDeLaCentralB();
 	/**
 	 * precondicion: los numero de central e internos debes ser validos.
 	 * postcondicion: se devuelven los detalles de las llamadas recibidas del interno
