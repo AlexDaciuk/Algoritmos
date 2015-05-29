@@ -35,7 +35,7 @@ Interno* Central::obtenerInterno(int numeroInterno)
 	this->internos->iniciarCursorNodo();
 
 	while (this->internos->avanzarCursorNodo() && ! encontro) {
-		Interno* internoTemporal = this->internos->obtenerCursorNodo();
+		Interno* internoTemporal = this->internos->obtenerCursorNodo()->obtenerObjeto();
 		encontro = (internoTemporal->obtenerNumero() == numeroInterno);
 	}
 
