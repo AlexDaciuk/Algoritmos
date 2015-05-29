@@ -112,7 +112,7 @@ void Interfaz::mostrarDetallesDeInternos()
     while (punteroAInternos->avanzarCursorNodo()) {
       std::cout << "Interno:" << punteroAInternos->obtenerCursorNodo()->obtenerNumero() << ". \n";
     }
-    std::cout<<endl;
+    std::cout<<"\n";
 }
 }
 
@@ -155,13 +155,15 @@ void Interfaz::detallesLlamadasEntreInternoXeInternoY()
   std::cin >> primerInterno;
   std::cout << "\n";
   centralPrimerInterno = pedirCentral();
-  std::cout << "\n \n" std::cout << "Ingese el numero del segundo interno:";
+  std::cout << "\n \n"; 
+  std::cout << "Ingese el numero del segundo interno:";
   std::cin >> segundoInterno;
   centralSegundoInterno = pedirCentral();
   std::cout << "\n \n";
-  Interno* DatosPrimerInterno, DatosSegundoInterno;
+  Interno* DatosPrimerInterno=NULL;
+  Interno* DatosSegundoInterno=NULL;
   DatosPrimerInterno = 
-			obtenercentrales()->
+			obtenercentrales()->obtenerPunteroAlObjeto(centralPrimerInterno)->obtenerObjeto()->obtenerInterno(primerInterno);
   DatosSegundoInterno =
       obtenercentrales()->obtenerPunteroAlObjeto(centralSegundoInterno)->obtenerObjeto()->obtenerInterno(segundoInterno);
   if (DatosPrimerInterno == NULL) {
