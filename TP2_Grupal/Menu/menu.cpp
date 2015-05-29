@@ -151,4 +151,6 @@ void TratarOpcion(int opcion)
                cout<<endl;
                cout<<"Hasta luego. \n"; 
               break;
-  
+	}
+  }
+}	
