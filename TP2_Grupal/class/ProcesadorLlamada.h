@@ -49,7 +49,7 @@ public:
 	 * Post: carga los datos de cada linea del txt de llamadas ya sea datos de enlaces como de inicio
 	 * y fin de llamadas
 	 * */
-	void procesarLlamada();
+	void procesarLlamadas();
 	
 	Lista<Enlace*>* obtenerEnlaces();
 	
