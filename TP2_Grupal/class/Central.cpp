@@ -3,7 +3,7 @@
 Central::Central(int numeroCentralTemporal)
 {
 	this->NumeroCentral= numeroCentralTemporal;
-	this->internos = new Lista<Internos>;
+	this->internos = new Lista<Internos*>;
 	this->enlaces = new Lista<Enlaces*>*;
 };
 
@@ -20,7 +20,7 @@ Interno* Central::obtenerInterno(int numeroInterno)
 	return this->internos->obtenerPunteroAlObjeto(numeroIterno);
 };
 
-Lista<Interno>* Central::obtenerInternos()
+Lista<Interno*>* Central::obtenerInternos()
 {
 	return(this->internos);
 }

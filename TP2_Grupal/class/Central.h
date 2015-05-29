@@ -20,7 +20,7 @@ private:
 
 	int numeroCentral;
 
-	Lista<Interno>* internos;
+	Lista<Interno*>* internos;
 	// Puntero a la lista de punteros a los enlaces de la central
 	Lista<Enlace*>* enlaces;
 
