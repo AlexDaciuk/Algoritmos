@@ -70,3 +70,14 @@ Central::~Central()
 	delete this->internos;
 	delete this->enlaces;
 }
+
+int Central::obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos)
+{
+  int llamadasAnuladasPorInterno = 0;
+  internos->iniciarCursorNodo();
+  while(internos->avanzarCursorNodo())
+  {
+    llamadasAnuladasPorInterno=contarLlamadasAnuladas(internos->obtenerCursorNodo()->obtenerLlamadas());
+  }
+  return llamadasAnuladasPorInterno
+}

@@ -123,3 +123,13 @@ void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int 
 	llamadaTemporal->terminarLlamadaReceptor(horaTemporal);
 	this->estaOcupado = false;
 }
+
+int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
+{
+  int llamadasAnuladas
+  listaLlamadas->iniciarCursorNodo();
+  while (listaLlamadas->avanzarCursorNodo())
+  {
+    llamadasAnuladas += listaLlamadas->obtenerCursorNodo()->obtenerLlamadasAnuladas();
+  }
+}

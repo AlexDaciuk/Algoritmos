@@ -66,6 +66,10 @@ public:
 	 */
 
 	int obtenerNumero();
+  /**
+   * post: devuelve el total de llamadas anuladas de toda la lista de internos.
+   */
+  int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
 
 	/**
 	 * destructor de Central

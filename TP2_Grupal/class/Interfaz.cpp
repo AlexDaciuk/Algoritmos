@@ -45,8 +45,8 @@ void Interfaz::mostrarMenu()
 	std::cout << "13)Detalle de llamadas recibidas por el interno X de la central A.\n";
 	std::cout << "14)Detalle de llamadas realizadas de X de la central A a Y de la Central B.\n";
 	std::cout << "15)Detalle de llamadas recibidas por X de la Central A y realizadas por Y de la Central B.\n";
-// std::cout << "16)Imprimir cantidad de llamadas anuladas por falta de enlaces por central,ordenado por cantidad descendiente.\n";
-	std::cout << "16)Salir. \n \n";
+  std::cout << "16)Imprimir cantidad de llamadas anuladas por falta de enlaces por central,ordenado por cantidad descendiente.\n";
+	std::cout << "17)Salir. \n \n";
 }
 
 int Interfaz::pedirOpcionMenu()
@@ -602,6 +602,19 @@ int Interfaz::sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas)
 	}
 	return ocupados;
 }
+
+void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemente()
+{
+  
+  int totalLlamadasAnuladas = 0;
+  obtenercentrales->iniciarCursorNodo();
+  while (obtenercentrales->avanzarCursorNodo())
+  {
+    Central* centralActual = obtenercentrales->obtenerCursorNodo();
+    totalLlamadasAnuladas=centralActual->obtenerTotalDeLlamadasAnuladasDeInternos(centralActual->obtenerInternos());
+  }
+}
+
 void Interfaz::tratarOpcion(int opcion)
 {
 	bool continuar = true;
@@ -683,11 +696,12 @@ void Interfaz::tratarOpcion(int opcion)
 			realizarOtraConsulta(opcion, continuar);
 			break;
 
-			/* case 16:
-			   realizarOtraConsulta(opcion, continuar);
-			   break;
-			 */
-		case 16:
+    case 16:
+      llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemente();
+      realizarOtraConsulta(opcion, continuar);
+      break;
+			 
+		case 17:
 			continuar = false;
 			std::cout << "\n";
 			std::cout << "Hasta luego. \n";
