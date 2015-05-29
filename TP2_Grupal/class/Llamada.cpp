@@ -105,5 +105,10 @@ void Llamada::agregarOcupadoDado()
 	this->cantidadOcupadosDados++;
 }
 
+void Llamada::contarLlamadaAnulada()
+{
+  this->llamadasAnuladas++;
+}
+
 
 #endif

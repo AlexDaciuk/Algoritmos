@@ -46,6 +46,7 @@ public:
 
 	/*post: devuelve la duracion acumulada todas las llamadas efectuadas por el interno.*/
 	int obtenerDuracionLlamadasHechas();
+  /*post: devuelve la duracion acumulada todas las llamadas recibidas del interno.*/
 	int obtenerDuracionLlamadasRecibidas();
 
 	/*post: devuelve la cantidad total de ocupados dados al interno.*/
@@ -61,11 +62,20 @@ public:
 	int obtenerCantidadLlamadasRecibidas();
   /*post: devuelve la cantidad total de gastos por las llamadas al interno.*/
 	int obtenerCostoLlamadas();
+  /** 
+   * Incrementa en una unidad el atributo llamadasAnuladas.
+   * */
+  void contarLlamadaAnulada();
+
 	
 	Lista<Enlace*>* obtenerRecorridoLlamada();
-	
+	/** 
+   * Incrementa en una unidad el atributo cantidadOcupadosRecibidos.
+   * */
 	void agregarOcupadoRecibido();
-	
+	/** 
+   * Incrementa en una unidad el atributo cantidadOcupadosDados.
+   * */
 	void agregarOcupadoDado();
 
 };
