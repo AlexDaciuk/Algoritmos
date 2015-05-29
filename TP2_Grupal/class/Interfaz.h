@@ -23,8 +23,8 @@
 class Interfaz
 {
   private:
-  Lista<Enlace>* enlaces;
-  Lista<Central>* centrales;
+  Lista<Enlace*>* enlaces;
+  Lista<Central*>* centrales;
   LectorArchivos* LectorDeArchivos;
 
   /**
