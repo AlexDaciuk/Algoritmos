@@ -104,7 +104,6 @@ void Interfaz::iniciarlizarPunteroACentrales(ProcesadorLlamada* procesadorDeLlam
 
 void Interfaz::mostrarDetallesDeInternos()
 {
-<<<<<<< HEAD
   this->obtenercentrales()->iniciarCursorNodo();
   while (this->obtenercentrales()->avanzarCursorNodo()) {
   std:
@@ -115,19 +114,6 @@ void Interfaz::mostrarDetallesDeInternos()
       std::cout << "Interno:" << punteroAInternos->obternerCursorNodo()->obtenerNumero() << ". \n";
     }
     std::cout >> endl;
-  }
-=======
-	this->obtenercentrales()->iniciarCursorNodo();
-	while (this->obtenercentrales()->avanzarCursorNodo()) {
-		std::cout << "Internos de la central:" << this->obtenercentrales()->obtenerCursorNodo()->obtenerNumero() << ": \n";
-		Lista<Interno*>* punteroAInternos = this->obtenercentrales()->obtenercursorNodo()->obtenerInternos();
-		punteroAInternos->iniciarCursorNodo();
-		while (punteroAInternos->avanzarCursorNodo()) {
-			std::cout << "Interno:" << punteroAInternos->obternerCursorNodo()->obtenerNumero() << ". \n";
-		}
-		std::cout << "\n";
-	}
->>>>>>> 9ae36e9e09a56545e7f109a6e4e325a042d43de1
 }
 
 void Interfaz::mostrarDetallesDeCentrales()
@@ -164,7 +150,6 @@ int Interfaz::pedirCentral()
 }
 void Interfaz::detallesLlamadasEntreInternoXeInternoY()
 {
-<<<<<<< HEAD
   int primerInterno, centralPrimerInterno, segundoInterno, centralSegundoInterno;
   std::cout << "Ingrese el numero del primer interno:";
   std::cin >> primerInterno;
@@ -202,7 +187,6 @@ void Interfaz::detallesLlamadasEntreInternoXeInternoY()
   }
   std::cout << "Llamadas realizadas:" << numeroDeLlamadas << "\n";
   std::cout << "Cantidad de ocupados:" << numeroDeOcupados << "\n \n";
-=======
 	int primerInterno, centralPrimerInterno, segundoInterno, centralSegundoInterno;
 	std::cout << "Ingrese el numero del primer interno:";
 	std::cin >> primerInterno;
@@ -246,7 +230,6 @@ void Interfaz::detallesLlamadasEntreInternoXeInternoY()
 	}
 	std::cout << "Llamadas realizadas:" << numeroDeLlamadas << "\n";
 	std::cout << "Cantidad de ocupados:" << numeroDeOcupados << "\n \n";
->>>>>>> 9ae36e9e09a56545e7f109a6e4e325a042d43de1
 }
 
 void Interfaz::internoQueMasHabloPorCentralYGeneral()

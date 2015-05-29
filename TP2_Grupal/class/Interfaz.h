@@ -27,18 +27,12 @@
 
 class Interfaz
 {
-<<<<<<< HEAD
-  private:
-  Lista<Enlace*>* enlaces;
-  Lista<Central*>* centrales;
-  LectorArchivos* LectorDeArchivos;
-=======
+
 private:
-	Lista<Enlace>* enlaces;
-	Lista<Central>* centrales;
+	Lista<Enlace*>* enlaces;
+	Lista<Central*>* centrales;
 	LectorArchivos* lectorDeArchivos;
 	ProcesadorLlamada* procesadorLlamada;
->>>>>>> 9ae36e9e09a56545e7f109a6e4e325a042d43de1
 
 	/**
 	* Cambia la direccion donde apunta el puntero.

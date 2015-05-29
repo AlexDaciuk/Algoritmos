@@ -2,17 +2,11 @@
 
 Central::Central(int numeroCentralTemporal)
 {
-<<<<<<< HEAD
+
 	this->NumeroCentral= numeroCentralTemporal;
 	this->internos = new Lista<Internos*>;
 	this->enlaces = new Lista<Enlaces*>*;
 };
-=======
-	this->numeroCentral= numeroCentralTemporal;
-	this->internos = new Lista<Interno*>;
-	this->enlaces = new Lista<Enlace*>;
-}
->>>>>>> 9ae36e9e09a56545e7f109a6e4e325a042d43de1
 
 void Central::crearInterno(int numeroInterno)
 {
