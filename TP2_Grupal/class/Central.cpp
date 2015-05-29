@@ -3,7 +3,7 @@
 Central::Central(int numeroCentralTemporal)
 {
 
-	this->NumeroCentral= numeroCentralTemporal;
+	this->numeroCentral= numeroCentralTemporal;
 	this->internos = new Lista<Internos*>;
 	this->enlaces = new Lista<Enlaces*>*;
 };
