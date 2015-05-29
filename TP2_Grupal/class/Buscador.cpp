@@ -10,6 +10,8 @@ Buscador::Buscador(Lista<Central*>* centrales)
 	this->rutaActual = new Lista<Spot*>*;
 	this->precioDeLaLlamada = 0;
 	this->distanciaDeLaLlamada = 0;
+	this->tipoDeBusqueda = 0;
+	this->llamadaAnulada = false;
 }
 
 Lista<Enlace*>* Buscador::obtenerRuta()
@@ -62,10 +64,11 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 						}
 					}
 				}
+			If(this->obtenerRuta() = NULL)
+				this->anularLlamada();
 			}
 		}
 	}
-	this->encontrarInternoEnLa(this->encontrarLaCentral(centralReceptora))
 }
 
 void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralReceptora)
@@ -105,6 +108,8 @@ void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralRecept
 				}
 			}
 		}
+		If(this->obtenerRuta() = NULL)
+			this->anularLlamada();
 	}
 }
 
@@ -306,6 +311,16 @@ Interno* Buscador::obtenerInternoReceptor(int receptor)
 {
 	Central* centralReceptora = this->obtenerCentralReceptora();
 	return(centralReceptora->obtenerInterno(receptor));
+}
+
+bool Buscador::estaAnuladaLaLlamada()
+{
+	return this->llamadaAnulada;
+}
+
+void Buscador::anularLlamada()
+{
+	this->llamadaAnulada = true;
 }
 
 #endif
