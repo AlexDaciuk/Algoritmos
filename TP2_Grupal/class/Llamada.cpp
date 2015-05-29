@@ -12,6 +12,7 @@ Llamada::Llamada (int receptorLlamadaTemporal)
 		this->cantidadOcupadosDados = 0;
 		this->cantidadOcupadosRecibidos = 0;
 		this->horaInicioLlamadaEnCurso =0;
+    this->llamadasAnuladas = 0;
 		this->receptorLlamada = receptorLlamadaTemporal;
 		this->recorridoLlamada = NULL;
 	}
@@ -45,6 +46,10 @@ void Llamada::terminarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal)
 	this->recorridoLlamada = NULL;
 }
 
+int Llamada::obtenerLlamadasAnuladas()
+{
+  return this->llamadasAnuladas();
+}
 
 int Llamada::obtenerReceptorLlamada()
 {

@@ -14,7 +14,7 @@ class Llamada
 {
 private:
 
-	int  cantidadLlamadasRecibidas, cantidadLlamadasHechas, duracionLlamadasHechas, duracionLlamadasRecibidas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas;
+	int  cantidadLlamadasRecibidas, llamadasAnuladas, cantidadLlamadasHechas, duracionLlamadasHechas, duracionLlamadasRecibidas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas;
 	Lista<Enlace*>* recorridoLlamada;
 
 public:
@@ -48,14 +48,18 @@ public:
 	int obtenerDuracionLlamadasHechas();
 	int obtenerDuracionLlamadasRecibidas();
 
-	/*post: devuelve la cantidad total de ocupados dados por el interno.*/
+	/*post: devuelve la cantidad total de ocupados dados al interno.*/
 	int obtenerCantidadOcupadosDados();
 
 	/*post: devuelve la cantidad total de ocupados recibidos por el interno.*/
 	int obtenerCantidadOcupadosRecibidos();
-	
+  /*post: devuelve la cantidad total de llamadas anuladas realizadas por interno.*/
+	int obtenerLlamadasAnuladas();
+  /*post: devuelve la cantidad total de llamadas realizadas al interno.*/
 	int obtenerCantidadLlamadasHechas();
+  /*post: devuelve la cantidad total de llamadas recibidas por el interno.*/
 	int obtenerCantidadLlamadasRecibidas();
+  /*post: devuelve la cantidad total de gastos por las llamadas al interno.*/
 	int obtenerCostoLlamadas();
 	
 	Lista<Enlace*>* obtenerRecorridoLlamada();
