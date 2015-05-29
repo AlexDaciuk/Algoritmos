@@ -217,8 +217,7 @@ void Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual, int cent
 	}
 }
 
-void Buscador:
-.caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual, int centralReceptora)
+void Buscador::caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual, int centralReceptora)
 {
 	if(enlaceActual->chequearDisponibilidadCanales()) {
 		if(enlaceActual->obtenerDestino()->obtenerNumero() != spotActual->obtenerPosicion()->obtenerNumero()) {
