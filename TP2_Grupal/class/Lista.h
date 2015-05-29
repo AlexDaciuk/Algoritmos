@@ -10,11 +10,9 @@
 template<class T> class Lista
 {
 private:
-
 	Nodo<T>* primerNodo;
 	Nodo<T>* ultimoNodo;
 	Nodo<T>* cursorNodo;
-
 public:
 
 	/**
@@ -95,9 +93,10 @@ template<class T> Lista<T>::Lista()
 }
 
 
-template <class T> void Lista<T>::insertar( T objeto)
+template <class T> void Lista<T>::insertar(T objeto)
 {
-	Nodo<T>* nuevoNodo= new Nodo<T>(objeto);
+	Nodo<T>* nuevoNodo = new Nodo<T>(objeto);
+
 	if (ultimoNodo!=NULL) {
 		nuevoNodo->cambiarNodoSiguiente(this->primerNodo);
 		this->primerNodo->cambiarNodoAnterior(nuevoNodo);
@@ -143,17 +142,16 @@ template<class T> void Lista<T>::remover()
 	Nodo<T>* removido = this->obtenerCursorNodo();
 	Nodo<T>* anterior = removido->obtenerAnterior();
 	Nodo<T>* siguiente = removido->obtenerSiguiente();
-	if((siguiente != NULL) && (anterior != NULL))
-	{
+	if((siguiente != NULL) && (anterior != NULL)) {
 		anterior->cambiarNodoSiguiente(siguiente);
 		siguiente->cambiarNodoAnterior(anterior);
 	}
 	if (siguiente == NULL)
 		anterior->cambiarNodoSiguiente(siguiente);
-	
+
 	else
 		siguiente->cambiarNodoAnterior(anterior);
-		
+
 	delete removido;
 	/* cualquier recorrido actual queda invalidado */
 	this->iniciarCursor();
@@ -196,8 +194,8 @@ template <class T> bool Lista<T>::avanzarCursorPorElFinal()
 template<class T> T Lista<T>::obtenerCursorNodo()
 {
 	T elemento;
-	if (this->cursor != NULL) {
-		elemento = this->cursor->obtenerObjeto();
+	if (this->cursorNodo != NULL) {
+		elemento = this->cursorNodo->obtenerObjeto();
 	}
 	return elemento;
 }

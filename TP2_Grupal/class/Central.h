@@ -6,13 +6,15 @@
 #endif
 
 #include "Lista.h"
-#include "Interno.h"
 #include "Enlace.h"
+#include "Interno.h"
 
 /**
  * Clase que maneja cada central
  */
 
+class Interno;
+class Enlace;
 
 class Central
 {
@@ -21,7 +23,10 @@ private:
 	int numeroCentral;
 
 	Lista<Interno*>* internos;
+<<<<<<< HEAD
 	// Puntero a la lista de punteros a los enlaces de la central
+=======
+>>>>>>> 9ae36e9e09a56545e7f109a6e4e325a042d43de1
 	Lista<Enlace*>* enlaces;
 
 public:
@@ -59,7 +64,7 @@ public:
 
 	Lista<Enlace*>* obtenerEnlaces();
 
-
+	void agregarEnlace(Enlace* enlaceTemporal);
 
 	/**
 	 * Metodo que devuelve el numero de la central

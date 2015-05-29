@@ -12,6 +12,8 @@
 /**
  *Clase que define a cada interno de una central
  */
+class Llamada;
+class Enlace;
 
 class Interno
 {
@@ -47,8 +49,8 @@ public:
 	 * Termina la llamada entre 2 internos
 	 */
 	 
-	  void terminarLlamada(int internoTemporal, int horaTemporal, int precioMinutoTemporal );
-
+	void terminarLlamadaEmisor(int receptorTemporal,int horaTemporal, int precioMinutoTemporal);
+	void terminarLlamadaReceptor(int emisorTemporal,int horaTemporal, int precioMinutoTemporal);
 
 	/**
 	 *post: devuelve el puntero a la lista de llamadas del interno

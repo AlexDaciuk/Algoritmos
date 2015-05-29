@@ -1,4 +1,4 @@
-#include "Interno.h"
+ProcesadorLlamadaes#include "Interno.h"
 
 Interno::Interno(int numeroInternoTemporal)
 {
@@ -6,7 +6,6 @@ Interno::Interno(int numeroInternoTemporal)
 	Lista<Llamada*>* llamadas= new Lista<Llamada>;
 	this->estaOcupado=false;
 };
-
 
 int Internos::obtenerNumero()
 {
@@ -28,7 +27,7 @@ Lista<Enlace*>* Interno::devolverRecorridoLlamada(int emisorLlamadaTemporal, int
 		llamadaTemporal = this->obtenerCursorNodo();
 		encontreLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
 	}
-	
+
 	return llamadaTemporal->obtenerRecorridoLlamada();
 }
 
@@ -91,4 +90,36 @@ void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista
 		llamadaTemporal->agregarOcupadoDado();
 
 	}
+}
+
+void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int precioMinutoTemporal )
+{
+	// Busco la llamada
+	this->llamadas->iniciarCursorNodo();
+	bool encontroLlamada = false;
+	Llamada* llamadaTemporal = NULL;
+
+	while(this->llamadas->avanzarCursorNodo() && ! encontroLlamada) {
+		llamadaTemporal = this->llamadas->obtenerCursorNodo();
+		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorTemporal;
+	}
+
+	llamadaTemporal->terminarLlamadaEmisor(horaTemporal);
+	this->estaOcupado = false;
+}
+
+void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int precioMinutoTemporal )
+{
+	// Busco la llamada
+	this->llamadas->iniciarCursorNodo();
+	bool encontroLlamada = false;
+	Llamada* llamadaTemporal = NULL;
+
+	while(this->llamadas->avanzarCursorNodo() && ! encontroLlamada) {
+		llamadaTemporal = this->llamadas->obtenerCursorNodo();
+		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == emisorTemporal;
+	}
+
+	llamadaTemporal->terminarLlamadaReceptor(horaTemporal);
+	this->estaOcupado = false;
 }

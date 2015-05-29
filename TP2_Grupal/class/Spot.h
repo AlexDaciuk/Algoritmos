@@ -49,7 +49,6 @@ public:
 	 * @brief devuelve el puntero a la central del Spot
 	 * @return 
 	 */
-	 */
 	Central* obtenerPosicion();
 	
 	/**

@@ -25,7 +25,7 @@ public:
 	 * Pre: Se le debe pasar un objeto del tipo correspondiente al tipo que guarda el nodo.
 	 * Post: El nodo se crea con un dato almacenado y sus punteros apuntando a null
 	 */
-	Nodo(T* objeto) {
+	Nodo(T objeto) {
 
 		this->objeto= objeto;
 		this->nodoSiguiente= NULL;

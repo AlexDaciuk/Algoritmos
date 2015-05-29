@@ -1,35 +1,34 @@
-#include "DatosLlamada.h"
+#include "LectorArchivos.h"
 
 
 LectorArchivos::LectorArchivos (std::string rutaArchivoTemporal)
 {
-	this->archivo.open( ruta.c_str(rutaArchivoTemporal) );
+	this->archivo.open( rutaArchivoTemporal.c_str() );
 
-	this->datosLlamadasTemporal = new DatosLlamada();
+	this->datosLlamadaTemporal = new DatosLlamada();
 
 	this->hayLlamadas = true;
-
 }
 
 
 DatosLlamada* LectorArchivos::obtenerDatosLlamada()
 {
-	if (! archivo.eof() ) {
-		string accionTemporal, centralATemporal, internoATemporal, centralBTemporal, internoBTemporal, horaTemporal;
+	if (! this->archivo.eof() ) {
+		std::string accionTemporal, origenTemporal, emisorTemporal, destinoTemporal, receptorTemporal, horaTemporal;
 
 		getline(archivo, accionTemporal,' ');
 
-		getline(archivo, centralATemporal,' ');
+		getline(archivo, origenTemporal,' ');
 
-		getline(archivo, internoATemporal,' ');
+		getline(archivo, emisorTemporal,' ');
 
-		getline(archivo, centralBTemporal,' ');
+		getline(archivo, destinoTemporal,' ');
 
-		getline(archivo, internoBTemporal,' ');
+		getline(archivo, receptorTemporal,' ');
 
 		getline(archivo, horaTemporal,'\n');
 
-		datosLlamadasTemporal->cargarLlamada(accionTemporal, centralATemporal. InternoATemporal, centralBTemporal. internoBTemporal, horaTemporal);
+		this->datosLlamadaTemporal->cargarLlamada(accionTemporal, origenTemporal, emisorTemporal, destinoTemporal, receptorTemporal, horaTemporal);
 	} else {
 		this->hayLlamadas = false;
 	}
@@ -38,15 +37,14 @@ DatosLlamada* LectorArchivos::obtenerDatosLlamada()
 }
 
 
-bool LectorArchivos::chequearLlamada()
+bool LectorArchivos::chequearLlamadas()
 {
-	return (this->hayLlamada);
+	return (this->hayLlamadas);
 }
 
 
 LectorArchivos::~LectorArchivos()
 {
-
-	delete this->datosLlamadasTemporal;
+	delete (this->datosLlamadaTemporal);
 
 }

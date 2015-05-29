@@ -1,11 +1,12 @@
 #include "ProcesadorLlamada.h"
 
-ProcesadorLlamada::ProcesadorLlamada()
+ProcesadorLlamada::ProcesadorLlamada(ProcesadorLlamada* lectorArchivosTemporal)
 {
 	this->datosTemporal= NULL;
 	this->recorridoTemporal= NULL;
 	this->centrales = new Lista<Central>;
 	this->enlaces = new Lista<Enlace>;
+	this->archivoLlamadas = lectorArchivosTemporal;
 }
 
 void ProcesadorLlamada::procesarLlamadas()
@@ -31,7 +32,6 @@ void ProcesadorLlamada::procesarLlamadas()
 		}
 	}
 }
-
 void ProcesadorLlamada::iniciarLlamada();
 {
 	// Veo si los internos existen o sino, los crea
@@ -51,13 +51,12 @@ void ProcesadorLlamada::iniciarLlamada();
 	//Cambio la disponibilidad de los enlaces
 	//Cambio disponibilidad de enlaces
 	Lista<Enlace*>* enlacesRecorridos = this->emisor->
-	enlacesRecorridos->iniciarCursorNodo();
-	
+	                                    enlacesRecorridos->iniciarCursorNodo();
+
 	while( enlacesRecorridos->avanzarCursorNodo() )	{
 		enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
 	}
 }
-
 
 void ProcesadorLlamada::finalizarLlamada()
 {
@@ -78,7 +77,6 @@ void ProcesadorLlamada::finalizarLlamada()
 		enlacesRecorridos->obtenerCursorNodo()->eliminarLlamadaEnCurso();
 	}
 };
-
 
 void ProcesadorLlamada::agregarCentral(int numeroCentral)
 {
@@ -104,13 +102,33 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 		          (numeroDestino==this->enlaces->obtenerCursorNodo()->obtenerDestino()) ;
 	}
 	if (! encontro) {
-	// Aca tener en cuenta que los atributos de this->datosTemporal siguen con los nombres como si fuera
-	// una llamada, pero realmente es para una enlace y estan ordenados
-	Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->datosTemporal->obtenerDestino(),
-	                                 this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora());
+		// Aca tener en cuenta que los atributos de this->datosTemporal siguen con los nombres como si fuera
+		// una llamada, pero realmente es para una enlace y estan ordenados
+		Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->datosTemporal->obtenerDestino(),
+		                                 this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->centrales);
 
 		this->enlaces->insertar(nuevoEnlace);
 
-		// Tengo que agregar a la lista de puntero de enlaces de cada central el puntero que corresponde
+		//Agrego el puntero a
+		this->centrales->iniciarCursorNodo();
+
+		while ( this->centrales->avanzarCursorNodo() ) {
+			Central* centralTemporal = this->centrales->obtenerCursorNodo();
+
+			if (centralTemporal->obtenerNumero() == numeroDestino || centralTemporal->obtenerNumero() == numeroOrigen) {
+				centralTemporal->agregarEnlace(nuevoEnlace);
+			}
+
+		}
 	}
+}
+
+Lista<Central*>* obtenerCentrales()
+{
+	return this->centrales;
+}
+
+Lista<Enlace*>* obtenerEnlaces()
+{
+	return this->enlaces;
 }
