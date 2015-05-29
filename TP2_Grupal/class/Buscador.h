@@ -56,6 +56,12 @@ private:
 	 * El buscador aprovecha este atributo para saber si buscar por distancia o por precio.
 	 */
 	int tipoDeBusqueda;
+	
+	/**
+	 * El buscador aprovecha este atributo para informar si la llamada no pudo llegar a destino
+	 * por saturacion delos enlaces.
+	 */
+	bool llamadaAnulada;
 
 public:
 
@@ -67,7 +73,8 @@ public:
 
 	/**
 	 * Post: te otorga la ruta de enlaces que encontro.
-	 * Sera nula cuando la llamada fue interna de una central
+	 * Sera nula cuando la llamada fue interna de una central o en el caso de que se hayan
+	 * saturado los enlaces.
 	 */
 	Lista<Enlace*>* obtenerRuta();
 
@@ -91,6 +98,13 @@ public:
 	Interno* obtenerInternoEmisor(int emisor);
 
 	Interno* obtenerInternoReceptor(int receptor);
+	
+	bool estaAnuladaLaLlamada();
+	
+	/**
+	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
+	 */
+	void anularLlamada();
 
 	/**
 	 * Post: hace el algoritmo de busqueda por mejor precio

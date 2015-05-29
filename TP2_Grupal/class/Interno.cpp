@@ -3,7 +3,7 @@ ProcesadorLlamadaes#include "Interno.h"
 Interno::Interno(int numeroInternoTemporal)
 {
 	this->numeroInterno = numeroInternoTemporal;
-	Lista<Llamada*>* llamadas= new Lista<Llamada>;
+	Lista<Llamada*>* llamadas= new Lista<Llamada*>*;
 	this->estaOcupado=false;
 };
 
