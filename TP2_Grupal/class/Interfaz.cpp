@@ -85,11 +85,11 @@ std::string Interfaz::pedirAlgoritmoDeBusqueda()
 	return opcionAlgoritmo;
 }
 
-Lista<Enlace>* Interfaz::obtenerenlaces()
+Lista<Enlace*>* Interfaz::obtenerenlaces()
 {
 	return this->enlaces;
 }
-Lista<Central>* Interfaz::obtenercentrales()
+Lista<Central*>* Interfaz::obtenercentrales()
 {
 	return this->centrales;
 }

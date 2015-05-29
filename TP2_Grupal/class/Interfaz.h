@@ -47,11 +47,11 @@ public:
 	/**
 	 * Deuelve el puntero a la lista donde se guardan los enlaces para su uso.
 	 * */
-	Lista<Enlace>* obtenerenlaces();
+	Lista<Enlace*>* obtenerenlaces();
 	/**
 	* Deuelve el puntero a la lista donde se guardan las centrales para su uso.
 	* */
-	Lista<Central>* obtenercentrales();
+	Lista<Central*>* obtenercentrales();
 	/**
 	 * Metodo que va a iniciar el programa
 	 */
