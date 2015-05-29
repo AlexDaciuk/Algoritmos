@@ -708,8 +708,8 @@ void Interfaz::realizarOtraConsulta(int& opcion, bool& continuar)
 }
 void Interfaz::iniciarPrograma()
 {
-	LectorArchivos* lectorDeArchivos = new LectorArchivos(pedirRuta());
-	this->cambiarPunteroALectorDeArchivos(lectorDeArchivos);
+	LectorArchivos* lectorArchivos = new LectorArchivos(pedirRuta());
+	this->cambiarPunteroALectorDeArchivos(lectorArchivos);
 	
 	procesadorLlamada = new ProcesadorLlamada(lectorDeArchivos);
 	procesadorLlamada->procesarLlamadas();
