@@ -4,7 +4,7 @@
 
 void MostrarMenuYElegirOpcion (int& opcion);
 void TratarOpcion(int opcion);
-void realizarOtraConsulta(int& opcion, bool& continuar)
+void realizarOtraConsulta(int& opcion, bool& continuar);
 void ElgirAlgoritmo(sts::string& opcionAlgoritmo);
 
 
