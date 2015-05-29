@@ -41,7 +41,8 @@ public:
 	void crearInterno(int numeroInterno);
 
 	/**
-	 * Metodo que devuelve un puntero a un interno
+	 * Precondicion: el interno debe existir.
+   * postcondicion: devuelve el puntero al interno indicado de la lista de internos.
 	 */
 
 	Interno* obtenerInterno(int numeroInterno);
