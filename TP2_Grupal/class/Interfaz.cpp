@@ -31,7 +31,7 @@ void Interfaz::mostrarMenu()
 	std::cout << "4)Detalle de llamadas entre el interno 'X' de la central 'A' al interno 'Y' de la central 'B'.\n";
 	std::cout << "5)Interno que mas hablo de todos y de cada central.\n";
 	std::cout << "6)Interno que más llamó de todos y de cada central.\n";
-	std::cout << "7) Interno que mas le dio ocupado sus intentos de todos y de cada central.\n";
+	std::cout << "7)Interno que mas le dio ocupado sus intentos de todos y de cada central.\n";
 	std::cout << "8)Interno al que más llamaron de todos y de cada central.\n";
 	std::cout << "9)Interno que mas gasto de todos y de cada central.\n";
 	std::cout << "10)Interno al que más le hablaron de todos y de cada central.\n";
@@ -148,7 +148,7 @@ int Interfaz::pedirCentral()
 	std::cin >> numeroDeCentral;
 	return numeroDeCentral;
 }
-void Interfaz::detallesLlamadasEntreInternoXeInternoY()
+void Interfaz::detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB()
 {
   int primerInterno, centralPrimerInterno, segundoInterno, centralSegundoInterno;
   std::cout << "Ingrese el numero del primer interno:";
@@ -167,7 +167,7 @@ void Interfaz::detallesLlamadasEntreInternoXeInternoY()
   DatosSegundoInterno =
       obtenercentrales()->obtenerPunteroAlObjeto(centralSegundoInterno)->obtenerObjeto()->obtenerInterno(segundoInterno);
   if (DatosPrimerInterno == NULL) {
-    throw std::string "El primer interno no existe";
+    throw std::string ("El primer interno no existe");
   }
   if (DatosSegundoInterno == NULL) {
     throw std::string "El segundo interno no existe";
@@ -175,63 +175,25 @@ void Interfaz::detallesLlamadasEntreInternoXeInternoY()
   std::cout << "Detalles de llamadas entre el interno " << primerInterno << " y " << segundoInterno << "\n";
   int numeroDeLlamadas = 0;
   int numeroDeOcupados = 0;
+  int duracionDeLlamadas = 0;
   bool encontro = false;
   DatosPrimerInterno->obtenerLlamadas()->iniciarCursorNodo();
   while (DatosPrimerInterno->obtenerLlamadas()->avanzarCursorNodo() && !encontro) {
     if (DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() ==
         segundoInterno) {
       encontro = true;
-      numeroDeLlamadas = DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadas();
+      numeroDeLlamadas = DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() +
+          DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas();
       numeroDeOcupados =
           DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosDados() +
           DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos();
+      duracionDeLlamadas = DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasHechas() +
+          DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas();
     }
   }
-  std::cout << "Llamadas realizadas:" << numeroDeLlamadas << "\n";
-  std::cout << "Cantidad de ocupados:" << numeroDeOcupados << "\n \n";
-	int primerInterno, centralPrimerInterno, segundoInterno, centralSegundoInterno;
-	std::cout << "Ingrese el numero del primer interno:";
-	std::cin >> primerInterno;
-	std::cout << "\n";
-	centralPrimerInterno = this->pedirCentral();
-	std::cout << "\n \n";
-	std::cout << "Ingese el numero del segundo interno:";
-	std::cin >> segundoInterno;
-	centralSegundoInterno = this->pedirCentral();
-	std::cout << "\n \n";
-	Interno* DatosPrimerInterno;
-	Interno* DatosSegundoInterno;
-
-	DatosPrimerInterno =
-	    this->obtenercentrales()->obtenerPunteroAlObjeto(centralSegundoInterno)->obtenerObjeto();
-	DatosSegundoInterno =
-	    this->obtenercentrales()->obtenerPunteroAlObjeto(centralSegundoInterno)->obtenerObjeto();
-
-	if (DatosPrimerInterno == NULL) {
-		throw std::string "El primer interno no existe";
-	}
-	if (DatosSegundoInterno == NULL) {
-		throw std::string "El segundo interno no existe";
-	}
-
-	std::cout << "Detalles de llamadas entre el interno " << primerInterno << " y " << segundoInterno << "\n";
-	int numeroDeLlamadas = 0;
-	int numeroDeOcupados = 0;
-	bool encontro = false;
-	DatosPrimerInterno->obtenerLlamadas()->iniciarCursorNodo();
-	while (DatosPrimerInterno->obtenerLlamadas()->avanzarCursorNodo() && !encontro) {
-		if (DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() ==
-		    segundoInterno) {
-			encontro = true;
-			numeroDeLlamadas = DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() +
-							   DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas();
-			numeroDeOcupados =
-			    DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosDados() +
-			    DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos();
-		}
-	}
-	std::cout << "Llamadas realizadas:" << numeroDeLlamadas << "\n";
-	std::cout << "Cantidad de ocupados:" << numeroDeOcupados << "\n \n";
+  std::cout << "Llamadas realizadas entre ambos:" << numeroDeLlamadas << "\n";
+  std::cout << "Duracion total de llamadas entr ambos:" << duracionDeLlamadas << "\n";
+  std::cout << "Cantidad de ocupados entre ambos:" << numeroDeOcupados << "\n \n";
 }
 
 void Interfaz::internoQueMasHabloPorCentralYGeneral()
@@ -566,7 +528,7 @@ void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
 	}
 }
 
-void Interfaz::DetalleDeLlamadasRealizadasPorXDeLaCentralAYRealizadasPorYDeLaCentralB()
+void Interfaz::DetalleDeLlamadasRealizadasPorXDeLaCentralAYRcibidasPorYDeLaCentralB()
 {
 	std::cout<<"Emisor. \n";
 	int emisor = pedirInterno();

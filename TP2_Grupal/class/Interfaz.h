@@ -135,7 +135,7 @@ public:
 	 * post: devuelve la cantidad de llamadas totales realizadas entre ellos el tiempo total de conversacion
 	 * y las cantidad de ocupados que se dieron(ocupados del interno X mas  los del interno Y).
 	 */
-	void detallesLlamadasEntreInternoXeInternoY();
+	void detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB();
 	/**
 	 * precondicion: Se tiene que haber leido un archivo de llamadas.
 	* postcondicion: Devuelve el interno con mayor numero de llamadas de cada central y de todos en general.
