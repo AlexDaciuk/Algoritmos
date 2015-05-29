@@ -1,7 +1,14 @@
 Informe Trabajo Practico N°2
 
 Manual del usuario:
-Una vez compilado el programa, al ejecutarlo lo primero que se pedirá es que ingrese la ruta donde tenga guardado el archivo con los datos de las llamadas y luego elegir la variable de búsqueda que va a utilizar el software durante su ejecución. Tener en cuenta la que una vez elegida la variable de búsqueda no se podrá modificar a menos que se reinicie el programa.
+Paso a paso para su correcta utilización:
+
+	Compilar el programa y ejecutarlo;
+	Una vez ejecutado, ingresar la ruta donde se encuentra guardado su archivo con los datos de las llamadas. La misma debe ser una ruta valida;
+	A continuación se le pedirá que elija una de dos variables, la cual utilizara el software  Buscador durante toda la ejecución del programa. Tener en cuenta que una vez elegida la variable no se podrá cambiar, a menos que se reinicie el programa.;
+	Luego se le mostrara el menú con las opciones que ofrece el programa. Las mismas deben ser elegidas teniendo en cuenta su numero;
+	Una vez que se muestren los datos de la opción pedida, el programa le ofrecerá si desea hacer otra consulta o no;
+	Tenga precaución a la hora de realizar una consulta que involucre ingresar números de interno o centrales, ya que si los mismos no existen el programa terminara su ejecución. Se recomienda pedir el listado con los números de internos y centrales como referencia antes de realizar la consulta;
 
 
 
