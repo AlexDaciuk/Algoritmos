@@ -27,5 +27,5 @@ int obtenerNombreNumerico();
  * */
 int obtenerValorAOrdenar();
 
-}
+};
 #endif

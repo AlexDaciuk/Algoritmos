@@ -35,7 +35,7 @@ public:
    * pre: la lista debe tener mas de un nodo.
    * post: devuelve un puntero a la lista ordenada decrecientemente
    */
-  T ordenarDecrecientemente();
+  void ordenarDecrecientemente();
 
 	/**
 	 * Devuelve el puntero a un objeto en especial dentro de la lista
@@ -205,13 +205,9 @@ template<class T> T Lista<T>::obtenerCursorNodo()
 	return elemento;
 }
 
-template <class T> T ordenarDecrecientemente(int totalObjetos)
+template <class T> void ordenarDecrecientemente(int totalObjetos)
 {
-  if (totalObjetos==1)
-  {
-    return primerNodo;
-  }
-  else
+  if (totalObjetos > 1)
   {
     for (int i=0; i< totalObjetos; i++)
     {
@@ -219,7 +215,7 @@ template <class T> T ordenarDecrecientemente(int totalObjetos)
       if (ordenar->obtenerSiguiente() != NULL && 
       ordenar->obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerValorAOrdenar())
       {
-        if (ordenar==primerNodo)
+        if (ordenar==sprimerNodo)
         {
           Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
           primerNodo->cambiarNodoSiguiente(siguienteAOrdenar);
@@ -230,21 +226,23 @@ template <class T> T ordenarDecrecientemente(int totalObjetos)
         else{
           Nodo<T>* anteriorAOrdenar = ordenar->obtenerAnterior();
           Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
-          anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
-          siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
-          ordenar->cambiarNodoSiguiente(siguienteAOrdenar->obtenerSiguiente());
-          siguienteAOrdenar->cambiarNodoSiguiente(ordenar);
-          ordenar->cambiarNodoAnterior(siguienteAOrdenar);
-          if(ordenar->cambiarNodoSiguiente()==NULL)
+          if (siguienteAOrdenar != NULL)
           {
+            anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
+            siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
+            ordenar->cambiarNodoSiguiente(siguienteAOrdenar->obtenerSiguiente());
+            siguienteAOrdenar->cambiarNodoSiguiente(ordenar);
+            ordenar->cambiarNodoAnterior(siguienteAOrdenar);
+          }
+          else {
             ultimoNodo=ordenar;
           }
+          
         }
         ordenar=ordenar->obtenerSiguiente();
       }
     }
   }
-  return primerNodo;
 }
 
 cambiar(ordenar, ordenar->obtenerSiguiente())

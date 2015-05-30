@@ -618,7 +618,7 @@ void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemen
     totalLlamadasAnuladas=centralActual->obtenerTotalDeLlamadasAnuladasDeInternos(centralActual->obtenerInternos());
     ordenarCentrales->insertar(Ordenar(centralActual->obtenerNumero(),totalLlamadasAnuladas));
   }
-  ordenarCentrales = ordenarCentrales->ordenarDecrecientemente();
+  ordenarCentrales->ordenarDecrecientemente();
   ordenarCentrales->iniciarCursorNodo();
   while(ordenarCentrales->avanzarCursorNodo())
   {
