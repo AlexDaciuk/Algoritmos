@@ -6,6 +6,7 @@
 #endif
 
 #include "Nodo.h"
+#include "Ordenar.h"
 
 template<class T> class Lista
 {
@@ -30,6 +31,11 @@ public:
 	 */
 
 	void insertar(T objeto);
+  /**
+   * pre: la lista debe tener mas de un nodo.
+   * post: devuelve un puntero a la lista ordenada decrecientemente
+   */
+  T ordenarDecrecientemente();
 
 	/**
 	 * Devuelve el puntero a un objeto en especial dentro de la lista
@@ -165,8 +171,6 @@ template <class T> void Lista<T>::iniciarCursorNodo()
 	this->cursorNodo = NULL;
 }
 
-
-
 template <class T> bool Lista<T>::avanzarCursorNodo()
 {
 	if (this->cursorNodo == NULL) {
@@ -201,7 +205,48 @@ template<class T> T Lista<T>::obtenerCursorNodo()
 	return elemento;
 }
 
+template <class T> T ordenarDecrecientemente(int totalObjetos)
+{
+  if (totalObjetos==1)
+  {
+    return primerNodo;
+  }
+  else
+  {
+    for (int i=0; i< totalObjetos; i++)
+    {
+      Nodo<T>* ordenar = primerNodo;
+      if (ordenar->obtenerSiguiente() != NULL && 
+      ordenar->obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerValorAOrdenar())
+      {
+        if (ordenar==primerNodo)
+        {
+          Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
+          ordenar->cambiarNodoSiguiente(primerNodo->obtenerSiguiente());
+          primerNodo->cambiarNodoSiguiente(ordenar);
+          primerNodo->cambiarNodoAnterior(NULL);
+          ordenar->cambiarNodoAnterior(primerNodo)
+        }
+        else{
+          Nodo<T>* anteriorAOrdenar = ordenar->obtenerAnterior();
+          Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
+          anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
+          siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
+          ordenar->cambiarNodoSiguiente(siguienteAOrdenar->obtenerSiguiente());
+          siguienteAOrdenar->cambiarNodoSiguiente(ordenar);
+          ordenar->cambiarNodoAnterior(siguienteAOrdenar);
+          if(ordenar->cambiarNodoSiguiente()==NULL)
+          {
+            ultimoNodo=ordenar;
+          }
+        }
+        ordenar=ordenar->obtenerSiguiente();
+      }
+    }
+  }
+}
 
+cambiar(ordenar, ordenar->obtenerSiguiente())
 
 template <class T> Lista<T>::~Lista()
 {
