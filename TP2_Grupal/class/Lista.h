@@ -244,6 +244,7 @@ template <class T> T ordenarDecrecientemente(int totalObjetos)
       }
     }
   }
+  return primerNodo;
 }
 
 cambiar(ordenar, ordenar->obtenerSiguiente())
