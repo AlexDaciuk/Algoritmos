@@ -222,8 +222,8 @@ template <class T> T ordenarDecrecientemente(int totalObjetos)
         if (ordenar==primerNodo)
         {
           Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
+          primerNodo->cambiarNodoSiguiente(siguienteAOrdenar);
           ordenar->cambiarNodoSiguiente(primerNodo->obtenerSiguiente());
-          primerNodo->cambiarNodoSiguiente(ordenar);
           primerNodo->cambiarNodoAnterior(NULL);
           ordenar->cambiarNodoAnterior(primerNodo)
         }
