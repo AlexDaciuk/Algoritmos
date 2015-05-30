@@ -605,13 +605,26 @@ int Interfaz::sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas)
 
 void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemente()
 {
-  
+  int totalCentrales = 0;
   int totalLlamadasAnuladas = 0;
+  int i=0;
+  Lista<Ordenar>* ordenarCentrales = new Lista<Ordenar>;
+  std::cout<<"Lista de centrales ordenadas decrecientemente por numero de llamadas anuladas:\n \n";
   obtenercentrales->iniciarCursorNodo();
   while (obtenercentrales->avanzarCursorNodo())
   {
+    totalCentrales++;
     Central* centralActual = obtenercentrales->obtenerCursorNodo();
     totalLlamadasAnuladas=centralActual->obtenerTotalDeLlamadasAnuladasDeInternos(centralActual->obtenerInternos());
+    ordenarCentrales->insertar(Ordenar(centralActual->obtenerNumero(),totalLlamadasAnuladas));
+  }
+  ordenarCentrales = ordenarCentrales->ordenarDecrecientemente();
+  ordenarCentrales->iniciarCursorNodo();
+  while(ordenarCentrales->avanzarCursorNodo())
+  {
+    i++;
+    std::cout<<i") Central numero:"<<ordenarCentrales->obtenerCursorNodo()->obtenerNombreNumerico()<<"\n";
+    std::cout<<"   Numero de llamdas anuladas:"<<ordenarCentrales->obtenerCursorNodo()->obtenerValorAOrdenar()<<"\n \n";
   }
 }
 

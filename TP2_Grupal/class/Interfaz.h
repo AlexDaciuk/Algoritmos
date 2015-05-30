@@ -13,6 +13,7 @@
 #include "Enlace.h"
 #include "Llamada.h"
 #include "Interno.h"
+#include "Ordenar.h"
 
 #ifndef NULL
 #define NULL 0
@@ -277,6 +278,11 @@ public:
 	 * receptor por el emisor. Duracion, numero y ocupados.
 	 */
 	void DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB();
+  /**
+   * Imprime una liste de centrales ordenadas decrecientemente segun su numero total
+   * de llamadas anuladas por falta de enlaces.
+   */
+  void llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemente();
 
 	/**
 	 * Precondicion: Opcion de be estar comprendido entre numeros del 1 a 17 inclusive.
