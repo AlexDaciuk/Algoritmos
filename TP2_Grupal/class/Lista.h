@@ -212,7 +212,7 @@ template<class T> void Lista<T>::ordenarDecrecientemente(int totalObjetos)
     {
       Nodo<T>* ordenar = this->primerNodo;
       if (ordenar->obtenerSiguiente() != NULL && 
-			(ordenar->obtenerObjeto().obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerObjeto().obtenerValorAOrdenar()))
+			(ordenar->obtenerObjeto()->obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerObjeto()->obtenerValorAOrdenar()))
       {
         if (ordenar==this->primerNodo)
         {
