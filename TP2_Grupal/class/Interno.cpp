@@ -81,7 +81,7 @@ void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal,  List
 	//Consigo un puntero al receptor, para ver si esta ocupado
 
 	if (! this->internoOcupado()) {
-		llamadaTemporal->empezarLlamadaReceptor(horaTemporal);
+		llamadaTemporal->empezarLlamadaReceptor(horaTemporal, recorridoLlamadaTemporal);
 	} else {
 		// Si dio un ocupado, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
@@ -103,7 +103,7 @@ void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int 
 		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorTemporal;
 	}
 
-	llamadaTemporal->terminarLlamadaEmisor(horaTemporal);
+	llamadaTemporal->cortarLlamadaEmisor(horaTemporal, precioMinutoTemporal);
 	this->estaOcupado = false;
 }
 
@@ -119,7 +119,7 @@ void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int 
 		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == emisorTemporal;
 	}
 
-	llamadaTemporal->terminarLlamadaReceptor(horaTemporal);
+	llamadaTemporal->cortarLlamadaReceptor(horaTemporal, precioMinutoTemporal);
 	this->estaOcupado = false;
 }
 
@@ -131,4 +131,5 @@ int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
   {
     llamadasAnuladas += listaLlamadas->obtenerCursorNodo()->obtenerLlamadasAnuladas();
   }
+  return llamadasAnuladas;
 }
