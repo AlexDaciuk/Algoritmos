@@ -1,14 +1,14 @@
-#ifndef LLAMADA_H_
-#define LLAMADA_H_
+
 
 #include "Llamada.h"
 
 Llamada::Llamada (int receptorLlamadaTemporal)
 {
-	if (receptorLlamadaTemporal > 0 && receptorLlamadaTemporal =< 9999) {
+	if ((receptorLlamadaTemporal > 0) && (receptorLlamadaTemporal =< 9999)) {
 		this->cantidadLlamadasHechas = 0;
 		this->cantidadLlamadasRecibidas = 0;
-		this->duracionLlamadas = 0;
+		this->duracionLlamadasHechas = 0;
+		this->duracionLlamadasRecibidas = 0;
 		this->cantidadOcupadosDados = 0;
 		this->cantidadOcupadosRecibidos = 0;
 		this->horaInicioLlamadaEnCurso =0;
@@ -111,4 +111,4 @@ void Llamada::contarLlamadaAnulada()
 }
 
 
-#endif
+
