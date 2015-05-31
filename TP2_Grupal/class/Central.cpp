@@ -10,7 +10,7 @@ Central::Central(int numeroCentralTemporal)
 
 void Central::crearInterno(int numeroInterno)
 {
-	Interno* internoNuevo = new Interno(numeroInterno);
+	Interno internoNuevo = Interno(numeroInterno);
 
 	this->internos->iniciarCursorNodo();
 
@@ -54,7 +54,7 @@ Lista<Enlace*>* Central::obtenerEnlaces()
 	return(this->enlaces);
 }
 
-void Central::agregarEnlace(Enlace* enlaceTemporal)
+void Central::agregarEnlace(Enlace enlaceTemporal)
 {
 	this->enlaces->insertar(enlaceTemporal);
 }
