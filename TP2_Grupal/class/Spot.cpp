@@ -1,5 +1,3 @@
-#ifndef LISTA_H_
-#define LISTA_H_
 
 #ifndef NULL
 #define NULL 0
@@ -13,7 +11,7 @@ Spot::Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpot)
 	this->distanciaHastaSpot = distanciaHastaSpot;
 	this->posicion = posicion;
 	this->enlaceRecorrido = NULL;
-	this->centralesVisitadas= new Lista<Central*>*;
+	this->centralesVisitadas= new Lista<Central*>;
 }
 
 Central* Spot::obtenerPosicion()
@@ -29,7 +27,7 @@ void Spot::anotarCaminoRecorrido(Central* CentralAVisitar, Enlace* enlaceRecorri
 
 bool Spot::visitasteLacentral(Central* centralAVisitar)
 {
-	laEncontre=false;
+	bool laEncontre=false;
 	this->centralesVisitadas->iniciarCursorNodo();
 	while((this->centralesVisitadas->avanzarCursorNodo()) && (!laEncontre))
 	{
@@ -52,7 +50,7 @@ int Spot::obtenerDistanciaRecorrida()
 
 bool Spot::recorriTodosLosEnlaces()
 {
-	losRecorri = true;
+	bool losRecorri = true;
 	Lista<Enlace*>* enlacesDisponibles = this->obtenerPosicion()->obtenerEnlaces();
 	enlacesDisponibles->iniciarCursorNodo();
 	while((enlacesDisponibles->avanzarCursorNodo())&& (losRecorri))
@@ -81,4 +79,3 @@ Spot::~Spot()
 {
 	delete (this->centralesVisitadas);
 }
-#endif

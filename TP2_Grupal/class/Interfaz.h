@@ -6,7 +6,6 @@
 #include <iostream>
 #include "DatosLlamada.h"
 #include "LectorArchivos.h"
-#include "Opciones.h"
 #include "Lista.h"
 #include "ProcesadorLlamada.h"
 #include "Central.h"
