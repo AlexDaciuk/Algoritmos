@@ -103,7 +103,7 @@ void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int 
 		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorTemporal;
 	}
 
-	llamadaTemporal->cortarLlamadaEmisor(horaTemporal);
+	llamadaTemporal->cortarLlamadaEmisor(horaTemporal, precioMinutoTemporal);
 	this->estaOcupado = false;
 }
 
@@ -119,7 +119,7 @@ void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int 
 		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == emisorTemporal;
 	}
 
-	llamadaTemporal->cortarLlamadaReceptor(horaTemporal);
+	llamadaTemporal->cortarLlamadaReceptor(horaTemporal, precioMinutoTemporal);
 	this->estaOcupado = false;
 }
 
