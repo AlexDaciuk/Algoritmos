@@ -91,9 +91,9 @@ public:
 	/**
 	 * Los siguientes metodos requieren de haber hecho la busqueda para que funcionen.
 	 */
-	Central* obtenerCentralEmisora();
+	Central* obtenerCentralEmisora(int centralEmisora);
 
-	Central* obtenerCentralReceptora();
+	Central* obtenerCentralReceptora(int centralReceptora);
 
 	Interno* obtenerInternoEmisor(int emisor);
 
