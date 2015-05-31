@@ -32,15 +32,17 @@ void Llamada::empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista
 	this->recorridoLlamada = recorridoLlamadaTemporal;
 }
 
-void Llamada::cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal)
+void Llamada::cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal, int precioMinuto)
 {
+	this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
 	this->duracionLlamadasHechas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
 	this->horaInicioLlamadaEnCurso = 0;
 	this->recorridoLlamada = NULL;
 }
 
-void Llamada::cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal)
+void Llamada::cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal, int precioMinuto)
 {
+	this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
 	this->duracionLlamadasRecibidas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
 	this->horaInicioLlamadaEnCurso = 0;
 	this->recorridoLlamada = NULL;
