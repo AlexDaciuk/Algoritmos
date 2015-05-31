@@ -605,7 +605,7 @@ void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemen
   int totalCentrales = 0;
   int totalLlamadasAnuladas = 0;
   int i=0;
-  Lista<Ordenar>* ordenarCentrales = new Lista<Ordenar>;
+  Lista<Ordenar*>* ordenarCentrales = new Lista<Ordenar*>;
   std::cout<<"Lista de centrales ordenadas decrecientemente por numero de llamadas anuladas:\n \n";
   obtenercentrales()->iniciarCursorNodo();
   while (obtenercentrales()->avanzarCursorNodo())
@@ -613,15 +613,16 @@ void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemen
     totalCentrales++;
     Central* centralActual = obtenercentrales()->obtenerCursorNodo();
     totalLlamadasAnuladas=centralActual->obtenerTotalDeLlamadasAnuladasDeInternos(centralActual->obtenerInternos());
-    ordenarCentrales->insertar(Ordenar(centralActual->obtenerNumero(),totalLlamadasAnuladas));
+		Ordenar* nuevaCentral = new Ordenar(centralActual->obtenerNumero(),totalLlamadasAnuladas);
+    ordenarCentrales->insertar(nuevaCentral);
   }
   ordenarCentrales->ordenarDecrecientemente(totalCentrales);
   ordenarCentrales->iniciarCursorNodo();
   while(ordenarCentrales->avanzarCursorNodo())
   {
     i++;
-    std::cout<<i<<") Central numero:"<<ordenarCentrales->obtenerCursorNodo().obtenerNombreNumerico()<<"\n";
-    std::cout<<"   Numero de llamadas anuladas:"<<ordenarCentrales->obtenerCursorNodo().obtenerValorAOrdenar()<<"\n \n";
+    std::cout<<i<<") Central numero:"<<ordenarCentrales->obtenerCursorNodo()->obtenerNombreNumerico()<<"\n";
+    std::cout<<"   Numero de llamadas anuladas:"<<ordenarCentrales->obtenerCursorNodo()->obtenerValorAOrdenar()<<"\n \n";
   }
 }
 

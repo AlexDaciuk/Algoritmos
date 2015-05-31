@@ -199,9 +199,9 @@ template<class T> bool Lista<T>::avanzarCursorPorElFinal()
 template<class T> T Lista<T>::obtenerCursorNodo()
 {
 	
-	if (this->cursorNodo != NULL) {
+	if (this->cursorNodo != NULL) 
 		return this->cursorNodo->obtenerObjeto();
-	}
+	
 }
 
 template<class T> void Lista<T>::ordenarDecrecientemente(int totalObjetos)
@@ -212,7 +212,7 @@ template<class T> void Lista<T>::ordenarDecrecientemente(int totalObjetos)
     {
       Nodo<T>* ordenar = this->primerNodo;
       if (ordenar->obtenerSiguiente() != NULL && 
-			(ordenar->obtenerObjeto().obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerObjeto().obtenerValorAOrdenar()))
+			(ordenar->obtenerObjeto()->obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerObjeto()->obtenerValorAOrdenar()))
       {
         if (ordenar==this->primerNodo)
         {
