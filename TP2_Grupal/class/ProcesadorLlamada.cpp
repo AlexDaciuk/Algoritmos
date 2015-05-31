@@ -45,8 +45,8 @@ void ProcesadorLlamada::iniciarLlamada();
 	receptor = this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerDestino() )->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
 	//Agrego la llamada a cada interno
-	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), receptor, this->recorridoTemporal->obtenerRuta() );
-	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora());
+	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta() );
+	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta() );
 
 	//Cambio la disponibilidad de los enlaces
 	//Cambio disponibilidad de enlaces
