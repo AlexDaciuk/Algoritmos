@@ -78,16 +78,16 @@ int Llamada::obtenerCantidadLlamadasHechas()
 	return this->cantidadLlamadasHechas;
 }
 
-int obtenerCantidadLlamadasRecibidas()
+int Llamada::obtenerCantidadLlamadasRecibidas()
 {
-  return this->cantidadLlamadasRecibidas
+  return this->cantidadLlamadasRecibidas;
 }
 int Llamada::obtenerCostoLlamadas()
 {
 	return this->costoLlamadas;
 }
 
-Lista<Enlace*>* obtenerRecorridoLlamada()
+Lista<Enlace*>* Interno::obtenerRecorridoLlamada()
 {
 	return this->recorridoLlamada;
 }
