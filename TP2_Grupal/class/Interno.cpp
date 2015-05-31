@@ -49,21 +49,21 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 	}
 
 	if (! existeLlamada) {
-		Llamada nuevaLlamada = Llamada(receptorLlamadaTemporal);
+		Llamada* nuevaLlamada = new Llamada(receptorLlamadaTemporal);
 		this->llamadas->insertar(nuevaLlamada);
 	}
 
 	return llamadaTemporal;
 }
 
-void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor)
+void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal)
 {
 	// Me fijo si la llamada esta creada, sino, la creo
 	Llamada* llamadaTemporal = creaReceptorLlamada(receptorTemporal);
 
 
 	if (! receptor->internoOcupado()) {
-		llamadaTemporal->empezarLlamadaEmisor(horaInicioLlamadaEnCursoTemporal, recorridoLlamadaTemporal);
+		llamadaTemporal->empezarLlamadaEmisor(horaTemporal, recorridoLlamadaTemporal);
 	} else {
 		// Si recibio un ocupado, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
@@ -73,19 +73,19 @@ void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Inter
 
 }
 
-void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal )
+void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal,  Lista<Enlace*>* recorridoLlamadaTemporal )
 {
 	// Me fijo si la llamada con el receptor esta creada, sino, la creo
-	Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
+	Llamada* llamadaTemporal = creaReceptorLlamada(emisorTemporal);
 
 	//Consigo un puntero al receptor, para ver si esta ocupado
 
 	if (! this->internoOcupado()) {
-		llamadaTemporal->empezarLlamadaReceptor(horaInicioLlamadaEnCursoTemporal);
+		llamadaTemporal->empezarLlamadaReceptor(horaTemporal);
 	} else {
 		// Si dio un ocupado, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
-		llamadaTemporal->empezarLlamada(0, recorridoLlamadaTemporal);
+		llamadaTemporal->empezarLlamadaReceptor(0, recorridoLlamadaTemporal);
 		llamadaTemporal->agregarOcupadoDado();
 
 	}
