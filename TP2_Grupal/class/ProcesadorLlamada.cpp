@@ -9,30 +9,8 @@ ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal)
 	this->archivoLlamadas = lectorArchivosTemporal;
 }
 
-void ProcesadorLlamada::procesarLlamadas()
-{
-	while ( archivoLlamadas->chequearLLamadas() ) {
-		this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
 
-		agregarCentral(this->datosTemporal->obtenerOrigen() );
-		agregarCentral(this->datosTemporal->obtenerDestino() );
-
-		if ( this->datosTemporal->accionTemporal == "Inicio") {
-			// Aca va el tema con el buscador de caminos
-			// recorridoTemporal = this->buscaCentral;
-			this->iniciarLlamada();
-		} else {
-			if ( this->datosTemporal->accionTemporal == "Fin") {
-				this->finalizarLlamada();
-			} else {
-				if ( this->datosTemporal->accionTemporal == "Enlace") {
-					agregarEnlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerDestino());
-				}
-			}
-		}
-	}
-}
-void ProcesadorLlamada::iniciarLlamada();
+void ProcesadorLlamada::iniciarLlamada()
 {
 	// Veo si los internos existen o sino, los crea
 	this->centrales->obtenerPunteroAObjeto(this->datosTemporal->obtenerOrigen() )->crearInterno(this->datosTemporal->obtenerEmisor() );
@@ -131,4 +109,28 @@ Lista<Central*>* obtenerCentrales()
 Lista<Enlace*>* obtenerEnlaces()
 {
 	return this->enlaces;
+}
+
+void ProcesadorLlamada::procesarLlamadas()
+{
+	while ( archivoLlamadas->chequearLlamadas() ) {
+		this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
+
+		this->agregarCentral(this->datosTemporal->obtenerOrigen() );
+		this->agregarCentral(this->datosTemporal->obtenerDestino() );
+
+		if ( this->datosTemporal->obtenerAccion() == "Inicio") {
+			// Aca va el tema con el buscador de caminos
+			// recorridoTemporal = this->buscaCentral;
+			this->iniciarLlamada();
+		} else {
+			if ( this->datosTemporal->obtenerAccion() == "Fin") {
+				this->finalizarLlamada();
+			} else {
+				if ( this->datosTemporal->obtenerAccion() == "Enlace") {
+					agregarEnlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerDestino());
+				}
+			}
+		}
+	}
 }

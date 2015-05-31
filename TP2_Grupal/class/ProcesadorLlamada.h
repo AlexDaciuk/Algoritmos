@@ -28,6 +28,7 @@ public:
 	*/
 	ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal);
 
+	void iniciarLlamada();
 	/**
 	 * post:si no existe agrega la central a la lista de centrales y tambien les agrega
 	 * el interno a la lista de internos de la respectiva central
