@@ -31,11 +31,11 @@ public:
 	 */
 
 	void insertar(T objeto);
-  /**
-   * pre: la lista debe tener mas de un nodo.
-   * post: devuelve un puntero a la lista ordenada decrecientemente
-   */
-  void ordenarDecrecientemente(int totalObjetos);
+	/**
+	 * pre: la lista debe tener mas de un nodo.
+	 * post: devuelve un puntero a la lista ordenada decrecientemente
+	 */
+	void ordenarDecrecientemente(int totalObjetos);
 
 	/**
 	 * Devuelve el puntero a un objeto en especial dentro de la lista
@@ -198,48 +198,41 @@ template<class T> bool Lista<T>::avanzarCursorPorElFinal()
 
 template<class T> T Lista<T>::obtenerCursorNodo()
 {
-		return this->cursorNodo->obtenerObjeto();
+	return this->cursorNodo->obtenerObjeto();
 }
 
 template<class T> void Lista<T>::ordenarDecrecientemente(int totalObjetos)
 {
-  if (totalObjetos > 1)
-  {
-    for (int i=0; i< totalObjetos; i++)
-    {
-      Nodo<T>* ordenar = this->primerNodo;
-      if (ordenar->obtenerSiguiente() != NULL && 
-			(ordenar->obtenerObjeto()->obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerObjeto()->obtenerValorAOrdenar()))
-      {
-        if (ordenar==this->primerNodo)
-        {
-          Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
-          this->primerNodo->cambiarNodoSiguiente(siguienteAOrdenar);
-          ordenar->cambiarNodoSiguiente(this->primerNodo->obtenerSiguiente());
-          this->primerNodo->cambiarNodoAnterior(NULL);
-          ordenar->cambiarNodoAnterior(this->primerNodo);
-        }
-        else{
-          Nodo<T>* anteriorAOrdenar = ordenar->obtenerAnterior();
-          Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
-          if (siguienteAOrdenar != NULL)
-          {
-            anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
-            siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
+	if (totalObjetos > 1) {
+		for (int i=0; i< totalObjetos; i++) {
+			Nodo<T>* ordenar = this->primerNodo;
+			if (ordenar->obtenerSiguiente() != NULL &&
+			    (ordenar->obtenerObjeto()->obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerObjeto()->obtenerValorAOrdenar())) {
+				if (ordenar==this->primerNodo) {
+					Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
+					this->primerNodo->cambiarNodoSiguiente(siguienteAOrdenar);
+					ordenar->cambiarNodoSiguiente(this->primerNodo->obtenerSiguiente());
+					this->primerNodo->cambiarNodoAnterior(NULL);
+					ordenar->cambiarNodoAnterior(this->primerNodo);
+				} else {
+					Nodo<T>* anteriorAOrdenar = ordenar->obtenerAnterior();
+					Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
+					if (siguienteAOrdenar != NULL) {
+						anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
+						siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
 						siguienteAOrdenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar);
-            ordenar->cambiarNodoSiguiente(siguienteAOrdenar->obtenerSiguiente());
-            siguienteAOrdenar->cambiarNodoSiguiente(ordenar);
-            ordenar->cambiarNodoAnterior(siguienteAOrdenar);
-          }
-          else {
-            this->ultimoNodo=ordenar;
-          }
-          
-        }
-        ordenar=ordenar->obtenerSiguiente();
+						ordenar->cambiarNodoSiguiente(siguienteAOrdenar->obtenerSiguiente());
+						siguienteAOrdenar->cambiarNodoSiguiente(ordenar);
+						ordenar->cambiarNodoAnterior(siguienteAOrdenar);
+					} else {
+						this->ultimoNodo=ordenar;
+					}
+
+				}
+				ordenar=ordenar->obtenerSiguiente();
 			}
-    }
-  }
+		}
+	}
 }
 
 

@@ -29,6 +29,7 @@ public:
 	ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal);
 
 	void iniciarLlamada();
+	void finalizarLlamada();
 	/**
 	 * post:si no existe agrega la central a la lista de centrales y tambien les agrega
 	 * el interno a la lista de internos de la respectiva central
@@ -40,6 +41,8 @@ public:
 	 * si ya existe la central no hace nada.
 	 * */
 	void agregarDestino(int numeroCentral);
+	
+	void agregarCentral(int numeroCentral);
 
 	Buscador* buscaCentralMenorPrecio();
 
