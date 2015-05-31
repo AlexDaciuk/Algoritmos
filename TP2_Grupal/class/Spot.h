@@ -1,5 +1,5 @@
-#ifndef LISTA_H_
-#define LISTA_H_
+#ifndef SPOT_H
+#define SPOT_H
 
 #ifndef NULL
 #define NULL 0
@@ -27,7 +27,8 @@ private:
 	 * precio acumulado.
 	 *
 	 */
-	int precioHastaSpot, distanciaHastaSpot;
+	int precioHastaSpot;
+	int distanciaHastaSpot;
 	
 	Central* posicion;
 	
