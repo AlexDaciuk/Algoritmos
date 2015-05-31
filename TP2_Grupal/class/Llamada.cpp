@@ -4,7 +4,7 @@
 
 Llamada::Llamada (int receptorLlamadaTemporal)
 {
-	if ((receptorLlamadaTemporal > 0) && (receptorLlamadaTemporal =< 9999)) {
+	if ((receptorLlamadaTemporal > 0) && (receptorLlamadaTemporal <= 9999)) {
 		this->cantidadLlamadasHechas = 0;
 		this->cantidadLlamadasRecibidas = 0;
 		this->duracionLlamadasHechas = 0;
@@ -50,7 +50,7 @@ void Llamada::cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal, int preci
 
 int Llamada::obtenerLlamadasAnuladas()
 {
-  return this->llamadasAnuladas();
+  return this->llamadasAnuladas;
 }
 
 int Llamada::obtenerReceptorLlamada()
@@ -61,11 +61,6 @@ int Llamada::obtenerReceptorLlamada()
 int Llamada::obtenerDuracionLlamadasHechas()
 {
 	return this->duracionLlamadasHechas;
-}
-
-int Llamada::obtenerDuracionLlamadasHechas()
-{
-	return this->duracionLlamadasRecibidas;
 }
 
 int Llamada::obtenerCantidadOcupadosDados()
