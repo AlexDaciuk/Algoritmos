@@ -1,10 +1,7 @@
 #include "Interfaz.h"
 
-enum respuestaAContinuar
-{
-  s;
-  n;
-}
+
+
 Interfaz::Interfaz()
 {
 	this->enlaces = NULL;
@@ -610,21 +607,21 @@ void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemen
   int i=0;
   Lista<Ordenar>* ordenarCentrales = new Lista<Ordenar>;
   std::cout<<"Lista de centrales ordenadas decrecientemente por numero de llamadas anuladas:\n \n";
-  obtenercentrales->iniciarCursorNodo();
-  while (obtenercentrales->avanzarCursorNodo())
+  obtenercentrales()->iniciarCursorNodo();
+  while (obtenercentrales()->avanzarCursorNodo())
   {
     totalCentrales++;
-    Central* centralActual = obtenercentrales->obtenerCursorNodo();
+    Central* centralActual = obtenercentrales()->obtenerCursorNodo();
     totalLlamadasAnuladas=centralActual->obtenerTotalDeLlamadasAnuladasDeInternos(centralActual->obtenerInternos());
     ordenarCentrales->insertar(Ordenar(centralActual->obtenerNumero(),totalLlamadasAnuladas));
   }
-  ordenarCentrales->ordenarDecrecientemente();
+  ordenarCentrales->ordenarDecrecientemente(totalCentrales);
   ordenarCentrales->iniciarCursorNodo();
   while(ordenarCentrales->avanzarCursorNodo())
   {
     i++;
-    std::cout<<i") Central numero:"<<ordenarCentrales->obtenerCursorNodo()->obtenerNombreNumerico()<<"\n";
-    std::cout<<"   Numero de llamdas anuladas:"<<ordenarCentrales->obtenerCursorNodo()->obtenerValorAOrdenar()<<"\n \n";
+    std::cout<<i<<") Central numero:"<<ordenarCentrales->obtenerCursorNodo().obtenerNombreNumerico()<<"\n";
+    std::cout<<"   Numero de llamadas anuladas:"<<ordenarCentrales->obtenerCursorNodo().obtenerValorAOrdenar()<<"\n \n";
   }
 }
 
@@ -724,15 +721,16 @@ void Interfaz::tratarOpcion(int opcion)
 }
 void Interfaz::realizarOtraConsulta(int& opcion, bool& continuar)
 {
-  respuestaAContinuar respuesta;
-	std::cout << "Desea realizar otra consulta? s/n:";
-	std::cin >>respuesta;
+	char respuesta;
+	std::cout << "Desea realizar otra consulta? [s/n]:";
+	std::cin>>respuesta;
 	if (respuesta == 's') {
 		continuar = true;
 		std::cout << "\n";
 		mostrarMenu();
 		opcion = pedirOpcionMenu();
-	} else {
+	} 
+	else {
 		continuar = false;
 		std::cout << "\n";
 		std::cout << "Hasta luego.\n \n";

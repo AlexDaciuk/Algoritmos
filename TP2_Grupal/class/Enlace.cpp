@@ -9,13 +9,13 @@ Enlace::Enlace(int origenTemporal, int destinoTemporal, int distanciaTemporal, i
 	this->costoPorMinuto = CostoPorMinutoTemporal;
 	this->cantidadCanalesEnUso = 0;
 	this->centrales = centralesTemporal;
-	this->destino = centrales->obtenerPunteroAlObjeto(destinoTemporal);
-	this->origen = centrales->obtenerPunteroAlObjeto(origenTemporal);
+	this->destino = centralesTemporal->obtenerPunteroAlObjeto(destinoTemporal)->obtenerObjeto();
+	this->origen = centralesTemporal->obtenerPunteroAlObjeto(origenTemporal)->obtenerObjeto();
 }
 
-int Enlace::obtenerOrigen()
+Central* Enlace::obtenerOrigen()
 {
-	return ( origen->obtenerNumero() );
+	return origen;
 }
 
 int Enlace::obtenerNumeroDeCanales()
@@ -38,12 +38,7 @@ int Enlace::obtenerCantidadEnlacesEnUso()
 	return (this->cantidadCanalesEnUso);
 }
 
-Central* Enlace::obtenerOrigen()
-{
-	return (this->origen);
-}
-
-Central* Enlace::obteneroDestino()
+Central* Enlace::obtenerDestino()
 {
 	return (this->destino);
 }

@@ -4,9 +4,9 @@ Central::Central(int numeroCentralTemporal)
 {
 
 	this->numeroCentral= numeroCentralTemporal;
-	this->internos = new Lista<Internos*>;
-	this->enlaces = new Lista<Enlaces*>*;
-};
+	this->internos = new Lista<Interno*>;
+	this->enlaces = new Lista<Enlace*>;
+}
 
 void Central::crearInterno(int numeroInterno)
 {
@@ -29,13 +29,13 @@ void Central::crearInterno(int numeroInterno)
 Interno* Central::obtenerInterno(int numeroInterno)
 {
 	Interno* internoDevolver = NULL;
-
+	Interno* internoTemporal = NULL;
 	bool encontro = false;
 
 	this->internos->iniciarCursorNodo();
 
 	while (this->internos->avanzarCursorNodo() && ! encontro) {
-		Interno* internoTemporal = this->internos->obtenerCursorNodo();
+		internoTemporal = this->internos->obtenerCursorNodo();
 		encontro = (internoTemporal->obtenerNumero() == numeroInterno);
 	}
   if (encontro) {
@@ -77,7 +77,7 @@ int Central::obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos)
   internos->iniciarCursorNodo();
   while(internos->avanzarCursorNodo())
   {
-    llamadasAnuladasPorInterno=contarLlamadasAnuladas(internos->obtenerCursorNodo()->obtenerLlamadas());
+    llamadasAnuladasPorInterno=internos->obtenerCursorNodo()->contarLlamadasAnuladas(internos->obtenerCursorNodo()->obtenerLlamadas());
   }
-  return llamadasAnuladasPorInterno
+  return llamadasAnuladasPorInterno;
 }

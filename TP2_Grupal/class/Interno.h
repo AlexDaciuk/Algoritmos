@@ -75,7 +75,7 @@ public:
   /**
    * post: contabiliza todas las llamadas aunladas de la lista de llamadas y devuelve el totoal.
    * */
-  int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
+  int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas);
 
 };
 

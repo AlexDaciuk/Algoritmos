@@ -14,6 +14,7 @@
 #include "Llamada.h"
 #include "Interno.h"
 #include "Ordenar.h"
+#include "Buscador.h"
 
 #ifndef NULL
 #define NULL 0

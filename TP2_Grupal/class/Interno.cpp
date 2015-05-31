@@ -1,21 +1,21 @@
-ProcesadorLlamadaes#include "Interno.h"
+#include "Interno.h"
 
 Interno::Interno(int numeroInternoTemporal)
 {
 	this->numeroInterno = numeroInternoTemporal;
 	Lista<Llamada*>* llamadas= new Lista<Llamada*>*;
 	this->estaOcupado=false;
-};
+}
 
-int Internos::obtenerNumero()
+int Interno::obtenerNumero()
 {
-	return (this->numeroInterno);
-};
+	return numeroInterno;
+}
 
 Lista<Llamada*>* Interno::obtenerLlamadas()
 {
 	return (this->llamadas);
-};
+}
 
 Lista<Enlace*>* Interno::devolverRecorridoLlamada(int emisorLlamadaTemporal, int receptorLlamadaTemporal)
 {
@@ -35,7 +35,7 @@ Lista<Enlace*>* Interno::devolverRecorridoLlamada(int emisorLlamadaTemporal, int
 bool Interno::internoOcupado()
 {
 	return (this->estaOcupado);
-};
+}
 
 Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 {
@@ -55,7 +55,7 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 	}
 
 	return llamadaTemporal;
-};
+}
 
 void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor, Lista<Enlace*>* recorridoLlamadaTemporal )
 {

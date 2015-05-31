@@ -1,417 +1,224 @@
-cc1plus: warning: class/Buscador.cpp: not a directory
-In file included from class/Interfaz.h:10:0,
-                 from main.cpp:1:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-In file included from class/Buscador.h:8:0:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
 In file included from class/Central.h:8:0,
                  from class/Central.cpp:1:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-In file included from class/Central.h:8:0:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-cc1plus: warning: class/Buscador.cpp: not a directory
-cc1plus: warning: class/Buscador.cpp: not a directory
-In file included from class/Central.h:8:0,
-                 from class/Enlace.h:8,
-                 from class/Enlace.cpp:1:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-In file included from class/Central.h:8:0,
-                 from class/Enlace.h:8:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
+class/Lista.h: In member function ‘T Lista<T>::obtenerCursorNodo() [with T = Interno*]’:
+class/Lista.h:205:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+In file included from class/Lista.h:8:0,
+                 from class/Interfaz.h:10,
+                 from class/Interfaz.cpp:1:
+class/Nodo.h: In instantiation of ‘Nodo<T>::Nodo(T) [with T = Ordenar]’:
+class/Lista.h:105:41:   required from ‘void Lista<T>::insertar(T) [with T = Ordenar]’
+class/Interfaz.cpp:616:93:   required from here
+class/Nodo.h:28:17: error: no matching function for call to ‘Ordenar::Ordenar()’
+  Nodo(T objeto) {
+                 ^
+class/Nodo.h:28:17: note: candidates are:
+In file included from class/Lista.h:9:0,
+                 from class/Interfaz.h:10,
+                 from class/Interfaz.cpp:1:
+class/Ordenar.h:19:1: note: Ordenar::Ordenar(unsigned int, unsigned int)
+ Ordenar (unsigned int nombreNumerico,unsigned int valor);
+ ^
+class/Ordenar.h:19:1: note:   candidate expects 2 arguments, 0 provided
+class/Ordenar.h:8:7: note: Ordenar::Ordenar(const Ordenar&)
+ class Ordenar
+       ^
+class/Ordenar.h:8:7: note:   candidate expects 1 argument, 0 provided
 In file included from class/Interfaz.h:10:0,
                  from class/Interfaz.cpp:1:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-In file included from class/Interfaz.h:10:0:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-class/Interno.cpp:1:20: error: stray ‘#’ in program
- ProcesadorLlamadaes#include "Interno.h"
-                    ^
-class/Interno.cpp:1:1: error: ‘ProcesadorLlamadaes’ does not name a type
- ProcesadorLlamadaes#include "Interno.h"
+class/Lista.h: In member function ‘T Lista<T>::obtenerCursorNodo() [with T = Central*]’:
+class/Lista.h:205:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
  ^
-class/Interno.cpp:8:2: warning: extra ‘;’ [-Wpedantic]
- };
-  ^
-class/Interno.cpp:10:5: error: ‘Internos’ has not been declared
- int Internos::obtenerNumero()
-     ^
-class/Interno.cpp: In function ‘int obtenerNumero()’:
-class/Interno.cpp:12:10: error: invalid use of ‘this’ in non-member function
-  return (this->numeroInterno);
-          ^
-class/Interno.cpp: At global scope:
-class/Interno.cpp:13:2: warning: extra ‘;’ [-Wpedantic]
- };
-  ^
-class/Interno.cpp:15:1: error: ‘Lista’ does not name a type
- Lista<Llamada*>* Interno::obtenerLlamadas()
+class/Lista.h: In member function ‘T Lista<T>::obtenerCursorNodo() [with T = Interno*]’:
+class/Lista.h:205:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
  ^
-class/Interno.cpp:18:2: warning: extra ‘;’ [-Wpedantic]
- };
-  ^
-class/Interno.cpp:20:1: error: ‘Lista’ does not name a type
- Lista<Enlace*>* Interno::devolverRecorridoLlamada(int emisorLlamadaTemporal, int receptorLlamadaTemporal)
+class/Lista.h: In member function ‘T Lista<T>::obtenerCursorNodo() [with T = Enlace*]’:
+class/Lista.h:205:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
  ^
-class/Interno.cpp:35:6: error: ‘Interno’ has not been declared
- bool Interno::internoOcupado()
-      ^
-class/Interno.cpp: In function ‘bool internoOcupado()’:
-class/Interno.cpp:37:10: error: invalid use of ‘this’ in non-member function
-  return (this->estaOcupado);
-          ^
-class/Interno.cpp: At global scope:
-class/Interno.cpp:38:2: warning: extra ‘;’ [-Wpedantic]
- };
-  ^
-class/Interno.cpp:40:1: error: ‘Llamada’ does not name a type
- Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
+class/Lista.h: In member function ‘T Lista<T>::obtenerCursorNodo() [with T = Llamada*]’:
+class/Lista.h:205:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
  ^
-class/Interno.cpp:58:2: warning: extra ‘;’ [-Wpedantic]
- };
-  ^
-class/Interno.cpp:60:6: error: ‘Interno’ has not been declared
- void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor, Lista<Enlace*>* recorridoLlamadaTemporal )
-      ^
-class/Interno.cpp:60:76: error: ‘Interno’ has not been declared
- void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor, Lista<Enlace*>* recorridoLlamadaTemporal )
-                                                                            ^
-class/Interno.cpp:60:95: error: ‘Lista’ has not been declared
- void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor, Lista<Enlace*>* recorridoLlamadaTemporal )
-                                                                                               ^
-class/Interno.cpp:60:100: error: expected ‘,’ or ‘...’ before ‘<’ token
- void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor, Lista<Enlace*>* recorridoLlamadaTemporal )
-                                                                                                    ^
-class/Interno.cpp: In function ‘void agregarLlamadaEmisor(int, int, int*, int)’:
-class/Interno.cpp:63:2: error: ‘Llamada’ was not declared in this scope
-  Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
-  ^
-class/Interno.cpp:63:11: error: ‘llamadaTemporal’ was not declared in this scope
-  Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
-           ^
-class/Interno.cpp:63:49: error: ‘receptorLlamadaTemporal’ was not declared in this scope
-  Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
-                                                 ^
-class/Interno.cpp:63:72: error: ‘creaReceptorLlamada’ was not declared in this scope
-  Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
-                                                                        ^
-class/Interno.cpp:66:18: error: request for member ‘internoOcupado’ in ‘* receptor’, which is of non-class type ‘int’
-  if (! receptor->internoOcupado()) {
-                  ^
-class/Interno.cpp:67:41: error: ‘horaInicioLlamadaEnCursoTemporal’ was not declared in this scope
-   llamadaTemporal->empezarLlamadaEmisor(horaInicioLlamadaEnCursoTemporal, recorridoLlamadaTemporal);
-                                         ^
-class/Interno.cpp:67:75: error: ‘recorridoLlamadaTemporal’ was not declared in this scope
-   llamadaTemporal->empezarLlamadaEmisor(horaInicioLlamadaEnCursoTemporal, recorridoLlamadaTemporal);
-                                                                           ^
-class/Interno.cpp:71:44: error: ‘recorridoLlamadaTemporal’ was not declared in this scope
-   llamadaTemporal->empezarLlamadaEmisor(0, recorridoLlamadaTemporal);
-                                            ^
-class/Interno.cpp: At global scope:
-class/Interno.cpp:60:40: warning: unused parameter ‘receptorTemporal’ [-Wunused-parameter]
- void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor, Lista<Enlace*>* recorridoLlamadaTemporal )
-                                        ^
-class/Interno.cpp:60:62: warning: unused parameter ‘horaTemporal’ [-Wunused-parameter]
- void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor, Lista<Enlace*>* recorridoLlamadaTemporal )
-                                                              ^
-class/Interno.cpp:77:6: error: ‘Interno’ has not been declared
- void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal )
-      ^
-class/Interno.cpp:77:76: error: ‘Lista’ has not been declared
- void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal )
-                                                                            ^
-class/Interno.cpp:77:81: error: expected ‘,’ or ‘...’ before ‘<’ token
- void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal )
-                                                                                 ^
-class/Interno.cpp: In function ‘void agregarLlamadaReceptor(int, int, int)’:
-class/Interno.cpp:80:2: error: ‘Llamada’ was not declared in this scope
-  Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
-  ^
-class/Interno.cpp:80:11: error: ‘llamadaTemporal’ was not declared in this scope
-  Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
-           ^
-class/Interno.cpp:80:49: error: ‘receptorLlamadaTemporal’ was not declared in this scope
-  Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
-                                                 ^
-class/Interno.cpp:80:72: error: ‘creaReceptorLlamada’ was not declared in this scope
-  Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
-                                                                        ^
-class/Interno.cpp:84:8: error: invalid use of ‘this’ in non-member function
-  if (! this->internoOcupado()) {
+class/Lista.h: In member function ‘T Lista<T>::obtenerCursorNodo() [with T = Ordenar]’:
+class/Lista.h:205:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+In file included from class/Enlace.h:8:0,
+                 from class/Llamada.h:9,
+                 from class/Interno.h:8,
+                 from class/Interno.cpp:1:
+class/Central.h:22:8: error: ‘Interno’ was not declared in this scope
+  Lista<Interno*>* internos;
         ^
-class/Interno.cpp:85:43: error: ‘horaInicioLlamadaEnCursoTemporal’ was not declared in this scope
-   llamadaTemporal->empezarLlamadaReceptor(horaInicioLlamadaEnCursoTemporal);
-                                           ^
-class/Interno.cpp:89:38: error: ‘recorridoLlamadaTemporal’ was not declared in this scope
-   llamadaTemporal->empezarLlamada(0, recorridoLlamadaTemporal);
-                                      ^
-class/Interno.cpp: At global scope:
-class/Interno.cpp:77:42: warning: unused parameter ‘emisorTemporal’ [-Wunused-parameter]
- void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal )
-                                          ^
-class/Interno.cpp:77:62: warning: unused parameter ‘horaTemporal’ [-Wunused-parameter]
- void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal )
-                                                              ^
-class/Interno.cpp:95:6: error: ‘Interno’ has not been declared
- void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int precioMinutoTemporal )
-      ^
-class/Interno.cpp: In function ‘void terminarLlamadaEmisor(int, int, int)’:
-class/Interno.cpp:98:2: error: invalid use of ‘this’ in non-member function
-  this->llamadas->iniciarCursorNodo();
-  ^
-class/Interno.cpp:100:2: error: ‘Llamada’ was not declared in this scope
-  Llamada* llamadaTemporal = NULL;
-  ^
-class/Interno.cpp:100:11: error: ‘llamadaTemporal’ was not declared in this scope
-  Llamada* llamadaTemporal = NULL;
-           ^
-class/Interno.cpp:100:29: error: ‘NULL’ was not declared in this scope
-  Llamada* llamadaTemporal = NULL;
-                             ^
-class/Interno.cpp:102:8: error: invalid use of ‘this’ in non-member function
-  while(this->llamadas->avanzarCursorNodo() && ! encontroLlamada) {
+class/Central.h:22:16: error: template argument 1 is invalid
+  Lista<Interno*>* internos;
+                ^
+class/Central.h:24:8: error: ‘Enlace’ was not declared in this scope
+  Lista<Enlace*>* enlaces;
         ^
-class/Interno.cpp:103:21: error: invalid use of ‘this’ in non-member function
-   llamadaTemporal = this->llamadas->obtenerCursorNodo();
+class/Central.h:24:15: error: template argument 1 is invalid
+  Lista<Enlace*>* enlaces;
+               ^
+class/Central.h:48:2: error: ‘Interno’ does not name a type
+  Interno* obtenerInterno(int numeroInterno);
+  ^
+class/Central.h:54:8: error: ‘Interno’ was not declared in this scope
+  Lista<Interno*>* obtenerInternos();
+        ^
+class/Central.h:54:16: error: template argument 1 is invalid
+  Lista<Interno*>* obtenerInternos();
+                ^
+class/Central.h:60:8: error: ‘Enlace’ was not declared in this scope
+  Lista<Enlace*>* obtenerEnlaces();
+        ^
+class/Central.h:60:15: error: template argument 1 is invalid
+  Lista<Enlace*>* obtenerEnlaces();
+               ^
+class/Central.h:62:21: error: ‘Enlace’ has not been declared
+  void agregarEnlace(Enlace* enlaceTemporal);
                      ^
-class/Interno.cpp:108:2: error: invalid use of ‘this’ in non-member function
-  this->estaOcupado = false;
-  ^
+class/Central.h:72:54: error: ‘Interno’ was not declared in this scope
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                      ^
+class/Central.h:72:62: error: template argument 1 is invalid
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                              ^
+class/Central.h:72:54: error: ‘Interno’ was not declared in this scope
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                      ^
+class/Central.h:72:62: error: template argument 1 is invalid
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                              ^
+class/Central.h:72:48: error: ‘Lista’ is not a type
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                ^
+class/Central.h:72:53: error: expected ‘,’ or ‘...’ before ‘<’ token
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                     ^
+class/Interno.cpp: In constructor ‘Interno::Interno(int)’:
+class/Interno.cpp:6:48: error: cannot convert ‘Lista<Llamada*>**’ to ‘Lista<Llamada*>*’ in initialization
+  Lista<Llamada*>* llamadas= new Lista<Llamada*>*;
+                                                ^
+class/Interno.cpp:6:19: warning: unused variable ‘llamadas’ [-Wunused-variable]
+  Lista<Llamada*>* llamadas= new Lista<Llamada*>*;
+                   ^
+class/Interno.cpp: In member function ‘Lista<Enlace*>* Interno::devolverRecorridoLlamada(int, int)’:
+class/Interno.cpp:27:27: error: ‘class Interno’ has no member named ‘obtenerCursorNodo’
+   llamadaTemporal = this->obtenerCursorNodo();
+                           ^
+class/Interno.cpp: At global scope:
+class/Interno.cpp:20:55: warning: unused parameter ‘emisorLlamadaTemporal’ [-Wunused-parameter]
+ Lista<Enlace*>* Interno::devolverRecorridoLlamada(int emisorLlamadaTemporal, int receptorLlamadaTemporal)
+                                                       ^
+class/Interno.cpp:40:10: error: prototype for ‘Llamada* Interno::creaReceptorLlamada(int)’ does not match any in class ‘Interno’
+ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
+          ^
+In file included from class/Interno.cpp:1:0:
+class/Interno.h:67:7: error: candidate is: void Interno::creaReceptorLlamada(int)
+  void creaReceptorLlamada(int receptor);
+       ^
+class/Interno.cpp:60:6: error: prototype for ‘void Interno::agregarLlamadaEmisor(int, int, Interno*, Lista<Enlace*>*)’ does not match any in class ‘Interno’
+ void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor, Lista<Enlace*>* recorridoLlamadaTemporal )
+      ^
+In file included from class/Interno.cpp:1:0:
+class/Interno.h:45:7: error: candidate is: void Interno::agregarLlamadaEmisor(int, int, Interno*)
+  void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal,Interno* receptor);
+       ^
+class/Interno.cpp:77:6: error: prototype for ‘void Interno::agregarLlamadaReceptor(int, int, Lista<Enlace*>*)’ does not match any in class ‘Interno’
+ void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal )
+      ^
+In file included from class/Interno.cpp:1:0:
+class/Interno.h:46:7: error: candidate is: void Interno::agregarLlamadaReceptor(int, int)
+  void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal );
+       ^
+class/Interno.cpp: In member function ‘void Interno::terminarLlamadaEmisor(int, int, int)’:
+class/Interno.cpp:107:19: error: ‘class Llamada’ has no member named ‘terminarLlamadaEmisor’
+  llamadaTemporal->terminarLlamadaEmisor(horaTemporal);
+                   ^
 class/Interno.cpp: At global scope:
 class/Interno.cpp:95:81: warning: unused parameter ‘precioMinutoTemporal’ [-Wunused-parameter]
  void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int precioMinutoTemporal )
                                                                                  ^
-class/Interno.cpp:111:6: error: ‘Interno’ has not been declared
- void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int precioMinutoTemporal )
-      ^
-class/Interno.cpp: In function ‘void terminarLlamadaReceptor(int, int, int)’:
-class/Interno.cpp:114:2: error: invalid use of ‘this’ in non-member function
-  this->llamadas->iniciarCursorNodo();
-  ^
-class/Interno.cpp:116:2: error: ‘Llamada’ was not declared in this scope
-  Llamada* llamadaTemporal = NULL;
-  ^
-class/Interno.cpp:116:11: error: ‘llamadaTemporal’ was not declared in this scope
-  Llamada* llamadaTemporal = NULL;
-           ^
-class/Interno.cpp:116:29: error: ‘NULL’ was not declared in this scope
-  Llamada* llamadaTemporal = NULL;
-                             ^
-class/Interno.cpp:118:8: error: invalid use of ‘this’ in non-member function
-  while(this->llamadas->avanzarCursorNodo() && ! encontroLlamada) {
-        ^
-class/Interno.cpp:119:21: error: invalid use of ‘this’ in non-member function
-   llamadaTemporal = this->llamadas->obtenerCursorNodo();
-                     ^
-class/Interno.cpp:124:2: error: invalid use of ‘this’ in non-member function
-  this->estaOcupado = false;
-  ^
+class/Interno.cpp: In member function ‘void Interno::terminarLlamadaReceptor(int, int, int)’:
+class/Interno.cpp:123:19: error: ‘class Llamada’ has no member named ‘terminarLlamadaReceptor’
+  llamadaTemporal->terminarLlamadaReceptor(horaTemporal);
+                   ^
 class/Interno.cpp: At global scope:
 class/Interno.cpp:111:81: warning: unused parameter ‘precioMinutoTemporal’ [-Wunused-parameter]
  void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int precioMinutoTemporal )
                                                                                  ^
-class/Interno.cpp:127:5: error: ‘Interno’ has not been declared
- int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
+class/Interno.cpp: In member function ‘int Interno::contarLlamadasAnuladas(Lista<Llamada*>*)’:
+class/Interno.cpp:130:3: error: expected initializer before ‘listaLlamadas’
+   listaLlamadas->iniciarCursorNodo();
+   ^
+class/Interno.cpp:133:5: error: ‘llamadasAnuladas’ was not declared in this scope
+     llamadasAnuladas += listaLlamadas->obtenerCursorNodo()->obtenerLlamadasAnuladas();
      ^
-class/Interno.cpp:127:37: error: ‘Lista’ was not declared in this scope
- int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
-                                     ^
-class/Interno.cpp:127:43: error: ‘Llamada’ was not declared in this scope
- int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
-                                           ^
-class/Interno.cpp:127:51: error: expected primary-expression before ‘>’ token
- int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
-                                                   ^
-class/Interno.cpp:127:54: error: ‘listaLlamadas’ was not declared in this scope
- int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
-                                                      ^
-class/Interno.cpp:128:1: error: expected ‘,’ or ‘;’ before ‘{’ token
- {
+class/Interno.cpp:135:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
  ^
-class/Interno.cpp: In function ‘int obtenerNumero()’:
-class/Interno.cpp:13:1: warning: control reaches end of non-void function [-Wreturn-type]
- };
- ^
-class/Interno.cpp: In function ‘bool internoOcupado()’:
-class/Interno.cpp:38:1: warning: control reaches end of non-void function [-Wreturn-type]
- };
- ^
-cc1plus: warning: class/Buscador.cpp: not a directory
 In file included from class/Llamada.h:8:0,
+                 from class/Interno.h:8,
+                 from class/Interno.cpp:1:
+class/Lista.h: In member function ‘T Lista<T>::obtenerCursorNodo() [with T = Llamada*]’:
+class/Lista.h:205:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+In file included from class/Enlace.h:8:0,
+                 from class/Llamada.h:9,
                  from class/Interno.h:8:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
+class/Central.h:22:8: error: ‘Interno’ was not declared in this scope
+  Lista<Interno*>* internos;
         ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-cc1plus: warning: class/Buscador.cpp: not a directory
-cc1plus: warning: class/Buscador.cpp: not a directory
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
+class/Central.h:22:16: error: template argument 1 is invalid
+  Lista<Interno*>* internos;
+                ^
+class/Central.h:24:8: error: ‘Enlace’ was not declared in this scope
+  Lista<Enlace*>* enlaces;
         ^
-cc1plus: warning: class/Buscador.cpp: not a directory
+class/Central.h:24:15: error: template argument 1 is invalid
+  Lista<Enlace*>* enlaces;
+               ^
+class/Central.h:48:2: error: ‘Interno’ does not name a type
+  Interno* obtenerInterno(int numeroInterno);
+  ^
+class/Central.h:54:8: error: ‘Interno’ was not declared in this scope
+  Lista<Interno*>* obtenerInternos();
+        ^
+class/Central.h:54:16: error: template argument 1 is invalid
+  Lista<Interno*>* obtenerInternos();
+                ^
+class/Central.h:60:8: error: ‘Enlace’ was not declared in this scope
+  Lista<Enlace*>* obtenerEnlaces();
+        ^
+class/Central.h:60:15: error: template argument 1 is invalid
+  Lista<Enlace*>* obtenerEnlaces();
+               ^
+class/Central.h:62:21: error: ‘Enlace’ has not been declared
+  void agregarEnlace(Enlace* enlaceTemporal);
+                     ^
+class/Central.h:72:54: error: ‘Interno’ was not declared in this scope
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                      ^
+class/Central.h:72:62: error: template argument 1 is invalid
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                              ^
+class/Central.h:72:54: error: ‘Interno’ was not declared in this scope
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                      ^
+class/Central.h:72:62: error: template argument 1 is invalid
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                              ^
+class/Central.h:72:48: error: ‘Lista’ is not a type
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                ^
+class/Central.h:72:53: error: expected ‘,’ or ‘...’ before ‘<’ token
+   int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
+                                                     ^
 class/Llamada.cpp:6:1: error: ‘Llamada’ does not name a type
  Llamada::Llamada (int receptorLlamadaTemporal)
  ^
@@ -638,73 +445,48 @@ class/Llamada.cpp: In function ‘int obtenerCostoLlamadas()’:
 class/Llamada.cpp:91:1: warning: control reaches end of non-void function [-Wreturn-type]
  }
  ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-In file included from class/Llamada.h:8:0:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-cc1plus: warning: class/Buscador.cpp: not a directory
 class/Opciones.cpp:2:0: error: unterminated #ifndef
  #ifndef NULL
  ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-cc1plus: warning: class/Buscador.cpp: not a directory
-cc1plus: warning: class/Buscador.cpp: not a directory
-cc1plus: warning: class/Buscador.cpp: not a directory
-In file included from class/ProcesadorLlamada.h:9:0,
-                 from class/ProcesadorLlamada.cpp:1:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
-In file included from class/ProcesadorLlamada.h:9:0:
-class/Lista.h: In function ‘void ordenarDecrecientemente(int)’:
-class/Lista.h:214:26: error: ‘primerNodo’ was not declared in this scope
-       Nodo<T>* ordenar = primerNodo;
-                          ^
-class/Lista.h:218:22: error: ‘sprimerNodo’ was not declared in this scope
-         if (ordenar==sprimerNodo)
-                      ^
-class/Lista.h:225:9: error: expected ‘;’ before ‘}’ token
-         }
-         ^
-class/Lista.h:238:13: error: ‘ultimoNodo’ was not declared in this scope
-             ultimoNodo=ordenar;
-             ^
-class/Lista.h: At global scope:
-class/Lista.h:248:8: error: expected constructor, destructor, or type conversion before ‘(’ token
- cambiar(ordenar, ordenar->obtenerSiguiente())
-        ^
-cc1plus: warning: class/Buscador.cpp: not a directory
+class/ProcesadorLlamada.cpp:3:1: error: prototype for ‘ProcesadorLlamada::ProcesadorLlamada(ProcesadorLlamada*)’ does not match any in class ‘ProcesadorLlamada’
+ ProcesadorLlamada::ProcesadorLlamada(ProcesadorLlamada* lectorArchivosTemporal)
+ ^
+In file included from class/ProcesadorLlamada.cpp:1:0:
+class/ProcesadorLlamada.h:16:7: error: candidates are: ProcesadorLlamada::ProcesadorLlamada(const ProcesadorLlamada&)
+ class ProcesadorLlamada
+       ^
+class/ProcesadorLlamada.h:29:2: error:                 ProcesadorLlamada::ProcesadorLlamada(LectorArchivos*)
+  ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal);
+  ^
+class/ProcesadorLlamada.cpp: In member function ‘void ProcesadorLlamada::procesarLlamadas()’:
+class/ProcesadorLlamada.cpp:14:27: error: ‘class LectorArchivos’ has no member named ‘chequearLLamada’
+  while ( archivoLlamadas->chequearLLamada() ) {
+                           ^
+class/ProcesadorLlamada.cpp:17:55: error: ‘agregarCentral’ was not declared in this scope
+   agregarCentral(this->datosTemporal->obtenerOrigen() );
+                                                       ^
+class/ProcesadorLlamada.cpp:20:29: error: ‘class DatosLlamada’ has no member named ‘accionTemporal’
+   if ( this->datosTemporal->accionTemporal == "Inicio") {
+                             ^
+class/ProcesadorLlamada.cpp:23:10: error: ‘class ProcesadorLlamada’ has no member named ‘iniciarLlamada’
+    this->iniciarLlamada();
+          ^
+class/ProcesadorLlamada.cpp:25:30: error: ‘class DatosLlamada’ has no member named ‘accionTemporal’
+    if ( this->datosTemporal->accionTemporal == "Fin") {
+                              ^
+class/ProcesadorLlamada.cpp:26:11: error: ‘class ProcesadorLlamada’ has no member named ‘finalizarLlamada’
+     this->finalizarLlamada();
+           ^
+class/ProcesadorLlamada.cpp:28:31: error: ‘class DatosLlamada’ has no member named ‘accionTemporal’
+     if ( this->datosTemporal->accionTemporal == "Enlace") {
+                               ^
+class/ProcesadorLlamada.cpp: At global scope:
+class/ProcesadorLlamada.cpp:35:40: error: no ‘void ProcesadorLlamada::iniciarLlamada()’ member function declared in class ‘ProcesadorLlamada’
+ void ProcesadorLlamada::iniciarLlamada();
+                                        ^
+class/ProcesadorLlamada.cpp:36:1: error: expected unqualified-id before ‘{’ token
+ {
+ ^
 class/Spot.cpp:10:1: error: ‘Spot’ does not name a type
  Spot::Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpot)
  ^
@@ -739,7 +521,6 @@ class/Spot.cpp:30:40: error: ‘centralAVisitar’ was not declared in this scop
 class/Spot.cpp:31:1: error: expected ‘,’ or ‘;’ before ‘{’ token
  {
  ^
-cc1plus: warning: class/Buscador.cpp: not a directory
 In file included from class/Interno.h:8:0,
                  from class/Central.h:10,
                  from class/Enlace.h:8,
@@ -775,14 +556,11 @@ class/Interno.h:61:2: error: ‘Lista’ does not name a type
   Lista<Enlace*>* devolverRecorridoLlamada(int emisorLlamadaTemporal, int receptorLlamadaTemporal);
   ^
 class/Interno.h:78:30: error: ‘Lista’ has not been declared
-   int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
+   int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas);
                               ^
 class/Interno.h:78:35: error: expected ‘,’ or ‘...’ before ‘<’ token
-   int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
+   int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas);
                                    ^
-class/Interno.h:78:60: error: expected ‘;’ at end of member declaration
-   int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
-                                                            ^
 In file included from class/Enlace.h:8:0,
                  from class/Spot.h:9:
 class/Central.h:22:2: error: ‘Lista’ does not name a type

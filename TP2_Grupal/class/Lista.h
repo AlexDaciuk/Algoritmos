@@ -35,7 +35,7 @@ public:
    * pre: la lista debe tener mas de un nodo.
    * post: devuelve un puntero a la lista ordenada decrecientemente
    */
-  void ordenarDecrecientemente();
+  void ordenarDecrecientemente(int totalObjetos);
 
 	/**
 	 * Devuelve el puntero a un objeto en especial dentro de la lista
@@ -100,7 +100,7 @@ template<class T> Lista<T>::Lista()
 }
 
 
-template <class T> void Lista<T>::insertar(T objeto)
+template<class T> void Lista<T>::insertar(T objeto)
 {
 	Nodo<T>* nuevoNodo = new Nodo<T>(objeto);
 
@@ -115,7 +115,7 @@ template <class T> void Lista<T>::insertar(T objeto)
 }
 
 
-template <class T> Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
+template<class T> Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
 {
 	Nodo<T>* cursor=this->primerNodo;
 
@@ -126,7 +126,7 @@ template <class T> Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
 }
 
 
-template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
+template<class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
 {
 	Nodo<T>* cursor = obtenerPunteroAlObjeto(numeroDeObjeto);
 
@@ -166,12 +166,12 @@ template<class T> void Lista<T>::remover()
 }
 
 
-template <class T> void Lista<T>::iniciarCursorNodo()
+template<class T> void Lista<T>::iniciarCursorNodo()
 {
 	this->cursorNodo = NULL;
 }
 
-template <class T> bool Lista<T>::avanzarCursorNodo()
+template<class T> bool Lista<T>::avanzarCursorNodo()
 {
 	if (this->cursorNodo == NULL) {
 		this->cursorNodo = primerNodo;
@@ -183,7 +183,7 @@ template <class T> bool Lista<T>::avanzarCursorNodo()
 
 
 
-template <class T> bool Lista<T>::avanzarCursorPorElFinal()
+template<class T> bool Lista<T>::avanzarCursorPorElFinal()
 {
 	if (this->cursorNodo == NULL) {
 		this->cursorNodo = ultimoNodo;
@@ -198,30 +198,29 @@ template <class T> bool Lista<T>::avanzarCursorPorElFinal()
 
 template<class T> T Lista<T>::obtenerCursorNodo()
 {
-	T elemento;
+	
 	if (this->cursorNodo != NULL) {
-		elemento = this->cursorNodo->obtenerObjeto();
+		return this->cursorNodo->obtenerObjeto();
 	}
-	return elemento;
 }
 
-template <class T> void ordenarDecrecientemente(int totalObjetos)
+template<class T> void Lista<T>::ordenarDecrecientemente(int totalObjetos)
 {
   if (totalObjetos > 1)
   {
     for (int i=0; i< totalObjetos; i++)
     {
-      Nodo<T>* ordenar = primerNodo;
+      Nodo<T>* ordenar = this->primerNodo;
       if (ordenar->obtenerSiguiente() != NULL && 
-      ordenar->obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerValorAOrdenar())
+			(ordenar->obtenerObjeto().obtenerValorAOrdenar() < ordenar->obtenerSiguiente()->obtenerObjeto().obtenerValorAOrdenar()))
       {
-        if (ordenar==sprimerNodo)
+        if (ordenar==this->primerNodo)
         {
           Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
-          primerNodo->cambiarNodoSiguiente(siguienteAOrdenar);
-          ordenar->cambiarNodoSiguiente(primerNodo->obtenerSiguiente());
-          primerNodo->cambiarNodoAnterior(NULL);
-          ordenar->cambiarNodoAnterior(primerNodo)
+          this->primerNodo->cambiarNodoSiguiente(siguienteAOrdenar);
+          ordenar->cambiarNodoSiguiente(this->primerNodo->obtenerSiguiente());
+          this->primerNodo->cambiarNodoAnterior(NULL);
+          ordenar->cambiarNodoAnterior(this->primerNodo);
         }
         else{
           Nodo<T>* anteriorAOrdenar = ordenar->obtenerAnterior();
@@ -230,24 +229,24 @@ template <class T> void ordenarDecrecientemente(int totalObjetos)
           {
             anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
             siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
+						siguienteAOrdenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar);
             ordenar->cambiarNodoSiguiente(siguienteAOrdenar->obtenerSiguiente());
             siguienteAOrdenar->cambiarNodoSiguiente(ordenar);
             ordenar->cambiarNodoAnterior(siguienteAOrdenar);
           }
           else {
-            ultimoNodo=ordenar;
+            this->ultimoNodo=ordenar;
           }
           
         }
         ordenar=ordenar->obtenerSiguiente();
-      }
+			}
     }
   }
 }
 
-cambiar(ordenar, ordenar->obtenerSiguiente())
 
-template <class T> Lista<T>::~Lista()
+template<class T> Lista<T>::~Lista()
 {
 	while (this->primerNodo != NULL) {
 		Nodo<T>* aBorrar = this->primerNodo;
