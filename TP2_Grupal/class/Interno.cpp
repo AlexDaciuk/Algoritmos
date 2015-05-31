@@ -3,7 +3,7 @@
 Interno::Interno(int numeroInternoTemporal)
 {
 	this->numeroInterno = numeroInternoTemporal;
-	Lista<Llamada*>* llamadas= new Lista<Llamada*>;
+	this->llamadas= new Lista<Llamada*>;
 	this->estaOcupado=false;
 }
 
@@ -44,23 +44,22 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 	this->llamadas->iniciarCursorNodo();
 
 	while ( this->llamadas->avanzarCursorNodo() && ! existeLlamada) {
-		llamadaTemporal = this->obtenerCursorNodo();
+		llamadaTemporal = this->llamadas->obtenerCursorNodo();
 		existeLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
 	}
 
 	if (! existeLlamada) {
 		Llamada* nuevaLlamada = new Llamada(receptorLlamadaTemporal);
-		llamadaTemporal = nuevaLlamada;
-		llamadasTemporal->insertar(nuevaLlamada);
+		this->llamadas->insertar(nuevaLlamada);
 	}
 
 	return llamadaTemporal;
 }
 
-void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor, Lista<Enlace*>* recorridoLlamadaTemporal )
+void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Interno* receptor)
 {
 	// Me fijo si la llamada esta creada, sino, la creo
-	Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
+	Llamada* llamadaTemporal = creaReceptorLlamada(receptorTemporal);
 
 
 	if (! receptor->internoOcupado()) {
@@ -74,7 +73,7 @@ void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Inter
 
 }
 
-void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal )
+void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal )
 {
 	// Me fijo si la llamada con el receptor esta creada, sino, la creo
 	Llamada* llamadaTemporal = creaReceptorLlamada(receptorLlamadaTemporal);
