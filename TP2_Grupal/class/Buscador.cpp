@@ -1,5 +1,4 @@
-#ifndef BUSCADOR_H
-#define BUSCADOR_H
+
 
 #include "Buscador.h"
 
@@ -323,4 +322,4 @@ void Buscador::anularLlamada()
 	this->llamadaAnulada = true;
 }
 
-#endif
+
