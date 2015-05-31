@@ -87,7 +87,7 @@ int Llamada::obtenerCostoLlamadas()
 	return this->costoLlamadas;
 }
 
-Lista<Enlace*>* Interno::obtenerRecorridoLlamada()
+Lista<Enlace*>* Llamada::obtenerRecorridoLlamada()
 {
 	return this->recorridoLlamada;
 }

@@ -31,7 +31,7 @@ public:
 	 * llamadas en uno.*/
 	void empezarLlamadaEmisor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal);
 	void empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal);
-	
+
 	/*pre: la llamada debe haber comenzado antes.
 	 * post: calcula la duracion de la llamada y vuelve a poner el horario de inicio
 	 * en cero.*/
@@ -47,7 +47,7 @@ public:
 
 	/*post: devuelve la duracion acumulada todas las llamadas efectuadas por el interno.*/
 	int obtenerDuracionLlamadasHechas();
-  /*post: devuelve la duracion acumulada todas las llamadas recibidas del interno.*/
+	/*post: devuelve la duracion acumulada todas las llamadas recibidas del interno.*/
 	int obtenerDuracionLlamadasRecibidas();
 
 	/*post: devuelve la cantidad total de ocupados dados al interno.*/
@@ -55,28 +55,28 @@ public:
 
 	/*post: devuelve la cantidad total de ocupados recibidos por el interno.*/
 	int obtenerCantidadOcupadosRecibidos();
-  /*post: devuelve la cantidad total de llamadas anuladas realizadas por interno.*/
+	/*post: devuelve la cantidad total de llamadas anuladas realizadas por interno.*/
 	int obtenerLlamadasAnuladas();
-  /*post: devuelve la cantidad total de llamadas realizadas al interno.*/
+	/*post: devuelve la cantidad total de llamadas realizadas al interno.*/
 	int obtenerCantidadLlamadasHechas();
-  /*post: devuelve la cantidad total de llamadas recibidas por el interno.*/
+	/*post: devuelve la cantidad total de llamadas recibidas por el interno.*/
 	int obtenerCantidadLlamadasRecibidas();
-  /*post: devuelve la cantidad total de gastos por las llamadas al interno.*/
+	/*post: devuelve la cantidad total de gastos por las llamadas al interno.*/
 	int obtenerCostoLlamadas();
-  /** 
-   * Incrementa en una unidad el atributo llamadasAnuladas.
-   * */
-  void contarLlamadaAnulada();
+	/**
+	 * Incrementa en una unidad el atributo llamadasAnuladas.
+	 * */
+	void contarLlamadaAnulada();
 
-	
+
 	Lista<Enlace*>* obtenerRecorridoLlamada();
-	/** 
-   * Incrementa en una unidad el atributo cantidadOcupadosRecibidos.
-   * */
+	/**
+	* Incrementa en una unidad el atributo cantidadOcupadosRecibidos.
+	* */
 	void agregarOcupadoRecibido();
-	/** 
-   * Incrementa en una unidad el atributo cantidadOcupadosDados.
-   * */
+	/**
+	* Incrementa en una unidad el atributo cantidadOcupadosDados.
+	* */
 	void agregarOcupadoDado();
 
 };
