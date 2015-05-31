@@ -18,7 +18,6 @@
  * Modo de uso: Luego de crear el buscador, lo primero que se debe hacer es buscar el
  * camino, ya sea por precio o distancia, antes de pedirle cualquiera de las operaciones.
  */
-class Spot;
  
 class Buscador
 {
@@ -155,7 +154,7 @@ private:
 	 * Realiza los pasos necesarios para ir de una central a otra.
 	 * En cada central se asegura de recorrer todos los enlaces posibles de recorrer.
 	 */
-	bool caminarEnlace(Central* centralActual, int centralReceptora);
+	void caminarEnlace(Central* centralActual, int centralReceptora);
 
 	/**
 	 * Avanza termina de usar un enlace para ir a la siguiente central acumulando el
@@ -173,7 +172,7 @@ private:
 	/**
 	 * Define la lista de enlaces usados para llegar de una central a otra.
 	 */
-	Lista<Enlace*>* definirEstaRuta();
+	void definirEstaRuta();
 
 	/**
 	 * Indica si la busqueda es por precio o distancia.
@@ -196,6 +195,16 @@ private:
 	 * Post: devuelve un puntero a esa central.
 	 */
 	Central* encontrarLaCentral(int central);
+	
+	/**
+	 * Devuelve la ruta Actual de Spots.
+	 */
+	Lista<Spot*>* obtenerRutaActual();
+	
+	/**
+	 * Borra la ruta actual liberando la memoria.
+	 */
+	void borrarRutaActual();
 };
 #endif
 
