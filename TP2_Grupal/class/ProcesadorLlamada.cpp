@@ -1,17 +1,17 @@
 #include "ProcesadorLlamada.h"
 
-ProcesadorLlamada::ProcesadorLlamada(ProcesadorLlamada* lectorArchivosTemporal)
+ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal)
 {
 	this->datosTemporal= NULL;
 	this->recorridoTemporal= NULL;
-	this->centrales = new Lista<Central>;
-	this->enlaces = new Lista<Enlace>;
+	this->centrales = new Lista<Central*>;
+	this->enlaces = new Lista<Enlace*>;
 	this->archivoLlamadas = lectorArchivosTemporal;
 }
 
 void ProcesadorLlamada::procesarLlamadas()
 {
-	while ( archivoLlamadas->chequearLLamada() ) {
+	while ( archivoLlamadas->chequearLLamadas() ) {
 		this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
 
 		agregarCentral(this->datosTemporal->obtenerOrigen() );
