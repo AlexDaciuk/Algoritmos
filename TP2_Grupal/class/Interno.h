@@ -64,7 +64,7 @@ public:
 	  * con datos pertenecientes a interacciones con el interno receptor. En ese caso de no
 	  * existir la llamada, la crea
 	  */
-	void creaReceptorLlamada(int receptor);
+	Llamada* creaReceptorLlamada(int receptorLlamadaTemporal);
 
 	/**
 	 *post: recorre la lista de llamadas del interno y se fija si en algun nodo la hora

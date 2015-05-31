@@ -13,6 +13,9 @@
  * Clase que maneja cada central
  */
 
+class Interno;
+class Enlace;
+
 class Central
 {
 private:

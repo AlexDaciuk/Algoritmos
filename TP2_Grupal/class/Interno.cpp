@@ -3,7 +3,7 @@
 Interno::Interno(int numeroInternoTemporal)
 {
 	this->numeroInterno = numeroInternoTemporal;
-	Lista<Llamada*>* llamadas= new Lista<Llamada*>*;
+	Lista<Llamada*>* llamadas= new Lista<Llamada*>;
 	this->estaOcupado=false;
 }
 
@@ -17,14 +17,14 @@ Lista<Llamada*>* Interno::obtenerLlamadas()
 	return (this->llamadas);
 }
 
-Lista<Enlace*>* Interno::devolverRecorridoLlamada(int emisorLlamadaTemporal, int receptorLlamadaTemporal)
+Lista<Enlace*>* Interno::devolverRecorridoLlamada( int receptorLlamadaTemporal)
 {
 	Llamada* llamadaTemporal = NULL;
 	bool encontreLlamada = false;
 	this->llamadas->iniciarCursorNodo();
 
 	while ( this->llamadas->avanzarCursorNodo() && ! encontreLlamada) {
-		llamadaTemporal = this->obtenerCursorNodo();
+		llamadaTemporal = this->llamadas->obtenerCursorNodo();
 		encontreLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
 	}
 

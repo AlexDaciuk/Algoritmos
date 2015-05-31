@@ -70,7 +70,7 @@ void ProcesadorLlamada::finalizarLlamada()
 	receptor->terminarLlamadaReceptor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 
 	//Cambio disponibilidad de enlaces
-	Lista<Enlace*>* enlacesRecorridos = this->emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerReceptor()) ;
+	Lista<Enlace*>* enlacesRecorridos = this->emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor()) ;
 	enlacesRecorridos->iniciarCursorNodo();
 
 	while( enlacesRecorridos->avanzarCursorNodo() ) {
