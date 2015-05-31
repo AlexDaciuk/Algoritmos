@@ -12,7 +12,7 @@ Llamada::Llamada (int receptorLlamadaTemporal)
 		this->cantidadOcupadosDados = 0;
 		this->cantidadOcupadosRecibidos = 0;
 		this->horaInicioLlamadaEnCurso =0;
-    this->llamadasAnuladas = 0;
+		this->llamadasAnuladas = 0;
 		this->receptorLlamada = receptorLlamadaTemporal;
 		this->recorridoLlamada = NULL;
 	}

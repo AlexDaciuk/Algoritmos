@@ -49,7 +49,7 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 	}
 
 	if (! existeLlamada) {
-		Llamada* nuevaLlamada = new Llamada(receptorLlamadaTemporal);
+		Llamada nuevaLlamada = Llamada(receptorLlamadaTemporal);
 		this->llamadas->insertar(nuevaLlamada);
 	}
 
@@ -125,7 +125,7 @@ void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int 
 
 int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
 {
-  int llamadasAnuladas
+  int llamadasAnuladas;
   listaLlamadas->iniciarCursorNodo();
   while (listaLlamadas->avanzarCursorNodo())
   {
