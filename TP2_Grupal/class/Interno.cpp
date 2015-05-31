@@ -81,7 +81,7 @@ void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal,  List
 	//Consigo un puntero al receptor, para ver si esta ocupado
 
 	if (! this->internoOcupado()) {
-		llamadaTemporal->empezarLlamadaReceptor(horaTemporal);
+		llamadaTemporal->empezarLlamadaReceptor(horaTemporal, recorridoLlamadaTemporal);
 	} else {
 		// Si dio un ocupado, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
