@@ -16,7 +16,7 @@ class Ordenar
  * Constructor de la case ordenar. Va a inicializar el objeto con su nombre (identificador)
  * y el valor a tener en cuenta para ordenar.
  * */
-Ordenar (unsigned int nombreNumerico,unsigned int valor);
+Ordenar ( int nombreNumerico, int valor);
 /**
  *Devuelve el identificador del objeto. 
  */
