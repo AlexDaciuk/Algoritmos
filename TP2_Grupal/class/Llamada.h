@@ -35,7 +35,8 @@ public:
 	/*pre: la llamada debe haber comenzado antes.
 	 * post: calcula la duracion de la llamada y vuelve a poner el horario de inicio
 	 * en cero.*/
-	void terminarLlamada(int horaFinLlamadaEnCursoTemporal);
+	void cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal, int precioMinuto);
+	void cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal, int precioMinuto)
 
 	/*post: devuelve la hora de inicio de la llamada.*/
 	int obtenerHoraInicioLlamadaEnCurso();
