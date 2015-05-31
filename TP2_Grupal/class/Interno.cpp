@@ -62,7 +62,7 @@ void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista
 	Llamada* llamadaTemporal = creaReceptorLlamada(receptorTemporal);
 
 
-	if (! receptor->internoOcupado()) {
+	if (! this->internoOcupado()) {
 		llamadaTemporal->empezarLlamadaEmisor(horaTemporal, recorridoLlamadaTemporal);
 	} else {
 		// Si recibio un ocupado, pongo la hora de inicio en 0, asi puedo diferenciar
