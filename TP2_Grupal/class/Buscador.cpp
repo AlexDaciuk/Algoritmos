@@ -193,7 +193,7 @@ void Buscador::avanzarBusquedaDesde(Central* centralActual, int buscoMejorValor,
 	while(((precioActual > buscoMejorValor) || (precioActual == 0)) &&
 	      (centralActual->obtenerNumero() != centralReceptora)) {
 		this->caminarEnlace(centralActual, buscoMejorValor, centralReceptora);
-	}//EN ESTE "THIS" TE FALTA UN PUNTERO O ALGO ASI PARA LLAMAR AL METODO
+	}
 	if(centralActual->obtenerNumero() == centralReceptora) {
 		this->definirEstePrecioYDistancia();
 		this->definirEstaRuta();
