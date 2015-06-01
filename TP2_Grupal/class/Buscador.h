@@ -205,6 +205,11 @@ private:
 	 * Borra la ruta actual liberando la memoria.
 	 */
 	void borrarRutaActual();
+	
+	/**
+	 * Borra el ultimo spot de la ruta actual.
+	 */
+	void borrarUnSpot();
 };
 #endif
 
