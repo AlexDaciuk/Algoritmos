@@ -55,7 +55,7 @@ int DatosLlamada::obtenerEmisor()
 
 int DatosLlamada::obtenerReceptor()
 {
-	return this->emisor;
+	return this->receptor;
 }
 
 int DatosLlamada::obtenerHora()

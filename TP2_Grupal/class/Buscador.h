@@ -214,7 +214,7 @@ private:
 	/**
 	 *restaura los valores iniciales en todos los atributos.
 	 */
-	void resetDatos(),
+	void resetDatos();
 };
 #endif
 
