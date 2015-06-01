@@ -210,6 +210,11 @@ private:
 	 * Borra el ultimo spot de la ruta actual y deja el cursor en la ultima posicion.
 	 */
 	void borrarUnSpot();
+	
+	/**
+	 *restaura los valores iniciales en todos los atributos.
+	 */
+	void resetDatos(),
 };
 #endif
 

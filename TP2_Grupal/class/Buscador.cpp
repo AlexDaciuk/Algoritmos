@@ -7,6 +7,8 @@ Buscador::Buscador(Lista<Central*>* centrales)
 	this->centralesTotales = centrales;
 	this->mejorCamino = new Lista<Enlace*>;
 	this->rutaActual = new Lista<Spot*>;
+	this->mejorCamino = NULL;
+	this->rutaActual = NULL;
 	this->precioDeLaLlamada = 0;
 	this->distanciaDeLaLlamada = 0;
 	this->tipoDeBusqueda = 0;
@@ -30,6 +32,7 @@ int Buscador::obtenerDistanciaDeLaLlamada()
 
 void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora)
 {
+	this->resetDatos();
 	this->establecerBusquedaPorPrecio();
 	Central* centralActual = this->encontrarLaCentral(centralEmisora);
 	Spot* nuevoSpot = new Spot(centralActual, 0, 0);
@@ -75,6 +78,7 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 
 void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralReceptora)
 {
+	this->resetDatos();
 	this->establecerBusquedaPorDistancia();
 	Central* centralActual = this->encontrarLaCentral(centralEmisora);
 	Spot* nuevoSpot = new Spot(centralActual, 0, 0);
@@ -176,6 +180,7 @@ bool Buscador::hayMasCaminos()
 
 void Buscador::caminarEnlace(Central* centralActual, int centralReceptora)
 {
+	this->rutaActual->avanzarCursorNodo();
 	Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
 	Spot* spotActual = this->rutaActual->obtenerCursorNodo();
 	enlacesActuales->iniciarCursorNodo();
@@ -190,7 +195,7 @@ void Buscador::caminarEnlace(Central* centralActual, int centralReceptora)
 
 void Buscador::avanzarBusquedaDesde(Central* centralActual, int buscoMejorValor, int precioActual, int centralReceptora)
 {
-	this->rutaActual->avanzarCursorNodo();
+	
 	while(((precioActual > buscoMejorValor) || (precioActual == 0)) &&
 	      (centralActual->obtenerNumero() != centralReceptora)) {
 		this->caminarEnlace(centralActual, centralReceptora);
@@ -358,6 +363,16 @@ void Buscador::borrarRutaActual()
 Lista<Spot*>* Buscador::obtenerRutaActual()
 {
 	return (this->rutaActual);
+}
+
+void Buscador::resetDatos()
+{
+	this->mejorCamino = NULL;
+	this->rutaActual = NULL;
+	this->precioDeLaLlamada = 0;
+	this->distanciaDeLaLlamada = 0;
+	this->tipoDeBusqueda = 0;
+	this->llamadaAnulada = false;
 }
 
 Buscador::~Buscador()
