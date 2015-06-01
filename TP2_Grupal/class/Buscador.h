@@ -207,7 +207,7 @@ private:
 	void borrarRutaActual();
 	
 	/**
-	 * Borra el ultimo spot de la ruta actual.
+	 * Borra el ultimo spot de la ruta actual y deja el cursor en la ultima posicion.
 	 */
 	void borrarUnSpot();
 };

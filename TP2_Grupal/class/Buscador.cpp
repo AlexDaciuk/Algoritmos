@@ -44,6 +44,7 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 				int buscoMejorValor = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
 				this->avanzarBusquedaDesde(centralActual,buscoMejorValor, this->obtenerPrecioDeLaLlamada(), centralReceptora);
 			} else {
+				this->borrarUnSpot();//el cursor esta al final
 				Spot* spotActual = this->rutaActual->obtenerCursorNodo();
 				Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
 				enlacesActuales->iniciarCursorNodo();
@@ -51,15 +52,14 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 					caminarEnlace(centralActual, centralReceptora);
 				} else {
 					while(spotActual != NULL) {
-						this->borrarUnSpot();
-						this->rutaActual->avanzarCursorPorElFinal();
+						this->borrarUnSpot();//el cursor esta al final
 						spotActual = this->rutaActual->obtenerCursorNodo();
 					if(spotActual != NULL) {
 						int buscoMejorValor = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
 						centralActual = this->rutaActual->obtenerCursorNodo()->obtenerPosicion();
 						int precioActual =  this->obtenerPrecioDeLaLlamada();
 						while(((precioActual > buscoMejorValor) || (precioActual == 0)) &&
-						      ((centralActual->obtenerNumero() != centralReceptora) && (!this->YaPasePorLaCentral(centralActual))))
+						      (centralActual->obtenerNumero() != centralReceptora))
 						{
 							this->caminarEnlace(centralActual, centralReceptora);
 						}
@@ -89,6 +89,7 @@ void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralRecept
 				int buscoMejorValor = this->rutaActual->obtenerCursorNodo()->obtenerDistanciaRecorrida();
 				this->avanzarBusquedaDesde(centralActual,buscoMejorValor, this->obtenerDistanciaDeLaLlamada(), centralReceptora);
 			} else {
+				this->borrarUnSpot();//el cursor esta al final
 				Spot* spotActual = this->rutaActual->obtenerCursorNodo();
 				Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
 				enlacesActuales->iniciarCursorNodo();
@@ -96,15 +97,14 @@ void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralRecept
 					caminarEnlace(centralActual, centralReceptora);
 				} else {
 					while(spotActual != NULL) {
-						this->borrarUnSpot();
-						this->rutaActual->avanzarCursorPorElFinal();
+						this->borrarUnSpot();//el cursor esta al final
 						spotActual = this->rutaActual->obtenerCursorNodo();
 						if(spotActual != NULL) {
 							int buscoMejorValor = this->rutaActual->obtenerCursorNodo()->obtenerDistanciaRecorrida();
 							int distanciaActual = this->obtenerDistanciaDeLaLlamada();
 							centralActual = this->rutaActual->obtenerCursorNodo()->obtenerPosicion();
 							while(((distanciaActual > buscoMejorValor) || (distanciaActual == 0)) &&
-								  ((centralActual->obtenerNumero() != centralReceptora) && (!this->YaPasePorLaCentral(centralActual)))) 
+								  (centralActual->obtenerNumero() != centralReceptora)) 
 							{
 								this->caminarEnlace(centralActual, centralReceptora);
 							}
@@ -333,12 +333,14 @@ void Buscador::borrarUnSpot()
 {
 	Lista<Spot*>* rutaActual = this->obtenerRutaActual();
 	rutaActual->iniciarCursorNodo();
-	if(rutaActual->avanzarCursorNodo())
+	if(rutaActual->avanzarCursorPorElFinal())
 	{
 		Spot* spotActual = rutaActual->obtenerCursorNodo();
 		rutaActual->remover();
 		delete spotActual;
 	}
+	rutaActual->iniciarCursorNodo();
+	rutaActual->avanzarCursorPorElFinal();
 }
 
 void Buscador::borrarRutaActual()
