@@ -5,8 +5,6 @@
 LectorArchivos::LectorArchivos (std::string rutaArchivoTemporal)
 {
 	this->archivo.open( rutaArchivoTemporal.c_str() );
-	//DEBUG
-	std::cout << "La ruta del archivo es" << rutaArchivoTemporal;
 
 	this->datosLlamadaTemporal = new DatosLlamada();
 
@@ -20,17 +18,17 @@ DatosLlamada* LectorArchivos::obtenerDatosLlamada()
 		std::string accionTemporal, origenTemporal, emisorTemporal, destinoTemporal, receptorTemporal, horaTemporal;
 
 		getline(archivo, accionTemporal,' ');
-
+		
 		getline(archivo, origenTemporal,' ');
-
+		
 		getline(archivo, emisorTemporal,' ');
-
+		
 		getline(archivo, destinoTemporal,' ');
-
+		
 		getline(archivo, receptorTemporal,' ');
-
+		
 		getline(archivo, horaTemporal,'\n');
-
+		
 		this->datosLlamadaTemporal->cargarLlamada(accionTemporal, origenTemporal, emisorTemporal, destinoTemporal, receptorTemporal, horaTemporal);
 	} else {
 		this->hayLlamadas = false;

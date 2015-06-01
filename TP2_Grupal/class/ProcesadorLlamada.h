@@ -21,12 +21,13 @@ private:
 	LectorArchivos* archivoLlamadas;
 	Lista<Enlace*>* enlaces;
 	Lista<Central*>* centrales;
+	std::string variableBusqueda;
 
 public:
 	/**
 	* Se crea el procesador de llamadas con sus punteros apuntando a null
 	*/
-	ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal);
+	ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std::string variableBusqueda);
 
 	void iniciarLlamada();
 	void finalizarLlamada();
@@ -44,9 +45,9 @@ public:
 	
 	void agregarCentral(int numeroCentral);
 
-	Buscador* buscaCentralMenorPrecio();
+	void buscaCentralMenorPrecio();
 
-	Buscador* buscaCentralMenorDistancia();
+	void buscaCentralMenorDistancia();
 
 	/**
 	 * Pre: la ruta donde se encuentra el archivo con los datos de llamadas debe existir.

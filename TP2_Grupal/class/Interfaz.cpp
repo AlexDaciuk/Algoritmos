@@ -754,13 +754,16 @@ void Interfaz::iniciarPrograma()
 	LectorArchivos* lectorArchivos = new LectorArchivos(ruta);
 	this->cambiarPunteroALectorDeArchivos(lectorArchivos);
 
-	procesadorLlamada = new ProcesadorLlamada(lectorDeArchivos);
+	std::string variableDeBusqueda = pedirAlgoritmoDeBusqueda();
+
+
+	procesadorLlamada = new ProcesadorLlamada(lectorDeArchivos, variableDeBusqueda);
 	procesadorLlamada->procesarLlamadas();
 
 	this->iniciarlizarPunteroACentrales(procesadorLlamada);
 	this->iniciarlizarPunteroAEnlaces(procesadorLlamada);
 
-	std::string variableDeBusqueda = pedirAlgoritmoDeBusqueda();
+	
 	mostrarMenu();
 	int opcion = pedirOpcionMenu();
 	tratarOpcion(opcion);

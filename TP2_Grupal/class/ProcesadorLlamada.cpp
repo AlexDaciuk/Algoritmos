@@ -1,13 +1,25 @@
 #include "ProcesadorLlamada.h"
 
-ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal)
+ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std::string variableBusquedaTemporal)
 {
 	this->datosTemporal= NULL;
-	this->recorridoTemporal= NULL;
 	this->centrales = new Lista<Central*>;
 	this->enlaces = new Lista<Enlace*>;
 	this->archivoLlamadas = lectorArchivosTemporal;
+	this->recorridoTemporal= new Buscador(this->centrales);
+	this->variableBusqueda = variableBusquedaTemporal;
 }
+
+void ProcesadorLlamada::buscaCentralMenorDistancia()
+{
+	this->recorridoTemporal->encontrarCaminoPordistancia(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerReceptor());	
+}
+
+void ProcesadorLlamada::buscaCentralMenorPrecio()
+{
+	this->recorridoTemporal->encontrarCaminoPorPrecio(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerReceptor());	
+}
+
 
 
 void ProcesadorLlamada::iniciarLlamada()
@@ -24,6 +36,7 @@ void ProcesadorLlamada::iniciarLlamada()
 	receptor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerDestino() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
 	//Agrego la llamada a cada interno
+	
 	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta() );
 	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta() );
 
@@ -122,11 +135,19 @@ void ProcesadorLlamada::procesarLlamadas()
 		this->agregarCentral(this->datosTemporal->obtenerOrigen() );
 		this->agregarCentral(this->datosTemporal->obtenerDestino() );
 
-		if ( this->datosTemporal->obtenerAccion() == "Inicio") {
+
+		if ( this->datosTemporal->obtenerAccion() == "Inicio")
+		{
 			// Aca va el tema con el buscador de caminos
 			// recorridoTemporal = this->buscaCentral;
+			if (this->variableBusqueda == "Distancia") {
+				this->buscaCentralMenorDistancia();
+			} else if (this->variableBusqueda == "Precio") {
+				this->buscaCentralMenorPrecio();
+			}
 			this->iniciarLlamada();
-		} else {
+		} else
+		{
 			if ( this->datosTemporal->obtenerAccion() == "Fin") {
 				this->finalizarLlamada();
 			} else {
