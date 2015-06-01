@@ -13,11 +13,13 @@ ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std
 
 void ProcesadorLlamada::buscaCentralMenorDistancia()
 {
+	this->recorridoTemporal->resetDatos();
 	this->recorridoTemporal->encontrarCaminoPordistancia(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerDestino());	
 }
 
 void ProcesadorLlamada::buscaCentralMenorPrecio()
 {
+	this->recorridoTemporal->resetDatos();
 	this->recorridoTemporal->encontrarCaminoPorPrecio(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerDestino());	
 }
 
