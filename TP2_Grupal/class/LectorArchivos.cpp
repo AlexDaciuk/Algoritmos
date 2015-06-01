@@ -1,9 +1,12 @@
 #include "LectorArchivos.h"
+#include <iostream>
 
 
 LectorArchivos::LectorArchivos (std::string rutaArchivoTemporal)
 {
 	this->archivo.open( rutaArchivoTemporal.c_str() );
+	//DEBUG
+	std::cout << "La ruta del archivo es" << rutaArchivoTemporal;
 
 	this->datosLlamadaTemporal = new DatosLlamada();
 

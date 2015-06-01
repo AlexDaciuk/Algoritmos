@@ -58,6 +58,16 @@ int Llamada::obtenerReceptorLlamada()
 	return this->receptorLlamada;
 }
 
+int Llamada::obtenerCantidadLlamadasRecibidas()
+{
+	return this->cantidadLlamadasRecibidas;
+}
+
+int Llamada::obtenerDuracionLlamadasRecibidas()
+{
+	return this->duracionLlamadasRecibidas;
+}
+
 int Llamada::obtenerDuracionLlamadasHechas()
 {
 	return this->duracionLlamadasHechas;
@@ -78,10 +88,6 @@ int Llamada::obtenerCantidadLlamadasHechas()
 	return this->cantidadLlamadasHechas;
 }
 
-int Llamada::obtenerCantidadLlamadasRecibidas()
-{
-  return this->cantidadLlamadasRecibidas;
-}
 int Llamada::obtenerCostoLlamadas()
 {
 	return this->costoLlamadas;

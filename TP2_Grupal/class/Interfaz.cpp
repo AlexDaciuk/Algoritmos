@@ -2,6 +2,7 @@
 
 
 
+
 Interfaz::Interfaz()
 {
 	this->enlaces = NULL;
@@ -157,14 +158,14 @@ void Interfaz::detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB(
   std::cin >> primerInterno;
   std::cout << "\n";
   centralPrimerInterno = pedirCentral();
-  std::cout << "\n \n"; 
+  std::cout << "\n \n";
   std::cout << "Ingese el numero del segundo interno:";
   std::cin >> segundoInterno;
   centralSegundoInterno = pedirCentral();
   std::cout << "\n \n";
   Interno* DatosPrimerInterno=NULL;
   Interno* DatosSegundoInterno=NULL;
-  DatosPrimerInterno = 
+  DatosPrimerInterno =
 			obtenercentrales()->obtenerPunteroAlObjeto(centralPrimerInterno)->obtenerObjeto()->obtenerInterno(primerInterno);
   DatosSegundoInterno =
       obtenercentrales()->obtenerPunteroAlObjeto(centralSegundoInterno)->obtenerObjeto()->obtenerInterno(segundoInterno);
@@ -720,7 +721,7 @@ void Interfaz::tratarOpcion(int opcion)
       llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemente();
       realizarOtraConsulta(opcion, continuar);
       break;
-			 
+
 		case 17:
 			continuar = false;
 			std::cout << "\n";
@@ -739,7 +740,7 @@ void Interfaz::realizarOtraConsulta(int& opcion, bool& continuar)
 		std::cout << "\n";
 		mostrarMenu();
 		opcion = pedirOpcionMenu();
-	} 
+	}
 	else {
 		continuar = false;
 		std::cout << "\n";
@@ -748,12 +749,14 @@ void Interfaz::realizarOtraConsulta(int& opcion, bool& continuar)
 }
 void Interfaz::iniciarPrograma()
 {
-	LectorArchivos* lectorArchivos = new LectorArchivos(pedirRuta());
+	std::string ruta = pedirRuta();
+	std::cout << "La ruta es " << ruta << "\n";
+	LectorArchivos* lectorArchivos = new LectorArchivos(ruta);
 	this->cambiarPunteroALectorDeArchivos(lectorArchivos);
-	
+
 	procesadorLlamada = new ProcesadorLlamada(lectorDeArchivos);
 	procesadorLlamada->procesarLlamadas();
-	
+
 	this->iniciarlizarPunteroACentrales(procesadorLlamada);
 	this->iniciarlizarPunteroAEnlaces(procesadorLlamada);
 
