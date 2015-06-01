@@ -12,12 +12,12 @@ ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std
 
 void ProcesadorLlamada::buscaCentralMenorDistancia()
 {
-	this->recorridoTemporal->encontrarCaminoPordistancia(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerReceptor());	
+	this->recorridoTemporal->encontrarCaminoPordistancia(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerDestino());	
 }
 
 void ProcesadorLlamada::buscaCentralMenorPrecio()
 {
-	this->recorridoTemporal->encontrarCaminoPorPrecio(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerReceptor());	
+	this->recorridoTemporal->encontrarCaminoPorPrecio(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerDestino());	
 }
 
 
