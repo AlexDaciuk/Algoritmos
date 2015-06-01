@@ -114,6 +114,11 @@ public:
 	 * Post: hace el algoritmo de busqueda por mejor distancia
 	 */
 	void encontrarCaminoPordistancia(int centralEmisora, int centralReceptora);
+	
+	/**
+	 *restaura los valores iniciales en todos los atributos.
+	 */
+	void resetDatos();
 
 	/**
 	 * Post: libera la memoria de los spots usados y la lista del mejor camino
@@ -211,10 +216,7 @@ private:
 	 */
 	void borrarUnSpot();
 	
-	/**
-	 *restaura los valores iniciales en todos los atributos.
-	 */
-	void resetDatos(),
+	
 };
 #endif
 
