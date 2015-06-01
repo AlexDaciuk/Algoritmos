@@ -192,7 +192,7 @@ void Buscador::avanzarBusquedaDesde(Central* centralActual, int buscoMejorValor,
 	this->rutaActual->avanzarCursorNodo();
 	while(((precioActual > buscoMejorValor) || (precioActual == 0)) &&
 	      (centralActual->obtenerNumero() != centralReceptora)) {
-		this->caminarEnlace(centralActual, buscoMejorValor, centralReceptora);
+		this->caminarEnlace(centralActual, centralReceptora);
 	}
 	if(centralActual->obtenerNumero() == centralReceptora) {
 		this->definirEstePrecioYDistancia();
@@ -291,7 +291,7 @@ Central* Buscador::obtenerCentralEmisora(int centralEmisora)
 {
 	this->mejorCamino->iniciarCursorNodo();
 	this->mejorCamino->avanzarCursorPorElFinal();
-	if(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen() == centralEmisora)
+	if(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen()->obtenerNumero() == centralEmisora)
 		return(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen());
 	else
 		return(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen());
@@ -301,7 +301,7 @@ Central* Buscador::obtenerCentralReceptora(int centralReceptora)
 {
 	this->mejorCamino->iniciarCursorNodo();
 	this->mejorCamino->avanzarCursorNodo();
-	if(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen == centralReceptora)
+	if(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen->obtenerNumero() == centralReceptora)
 		return(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen());
 	else
 		return(this->mejorCamino->obtenerCursorNodo()->obtenerOrigen());
