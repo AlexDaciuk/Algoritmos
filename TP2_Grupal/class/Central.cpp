@@ -2,16 +2,15 @@
 
 Central::Central(int numeroCentralTemporal)
 {
-
 	this->numeroCentral= numeroCentralTemporal;
 	this->internos = new Lista<Interno*>;
 	this->enlaces = new Lista<Enlace*>;
 }
 
+
 void Central::crearInterno(int numeroInterno)
 {
 	this->internos->iniciarCursorNodo();
-
 	bool encontro = false;
 
 	while (this->internos->avanzarCursorNodo() && ! encontro) {
@@ -25,6 +24,7 @@ void Central::crearInterno(int numeroInterno)
 	}
 }
 
+
 Interno* Central::obtenerInterno(int numeroInterno)
 {
 	Interno* internoDevolver = NULL;
@@ -37,21 +37,26 @@ Interno* Central::obtenerInterno(int numeroInterno)
 		internoTemporal = this->internos->obtenerCursorNodo();
 		encontro = (internoTemporal->obtenerNumero() == numeroInterno);
 	}
-  if (encontro) {
-    internoDevolver=internoTemporal;
-  }
-	return internoDevolver;
+	
+	if (encontro) {
+		internoDevolver=internoTemporal;
+	}
+	
+	return(internoDevolver);
 }
+
 
 Lista<Interno*>* Central::obtenerInternos()
 {
 	return(this->internos);
 }
 
+
 Lista<Enlace*>* Central::obtenerEnlaces()
 {
 	return(this->enlaces);
 }
+
 
 void Central::agregarEnlace(Enlace* enlaceTemporal)
 {
@@ -61,22 +66,25 @@ void Central::agregarEnlace(Enlace* enlaceTemporal)
 
 int Central::obtenerNumero()
 {
-	return this->numeroCentral;
+	return(this->numeroCentral);
 }
 
-Central::~Central()
-{
-	delete this->internos;
-	delete this->enlaces;
-}
 
 int Central::obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos)
 {
-  int llamadasAnuladasPorInterno = 0;
-  this->internos->iniciarCursorNodo();
-  while(this->internos->avanzarCursorNodo())
-  {
-    llamadasAnuladasPorInterno=this->internos->obtenerCursorNodo()->contarLlamadasAnuladas(internos->obtenerCursorNodo()->obtenerLlamadas());
-  }
-  return llamadasAnuladasPorInterno;
+	int llamadasAnuladasPorInterno = 0;
+	this->internos->iniciarCursorNodo();
+	
+	while(this->internos->avanzarCursorNodo()) {
+		llamadasAnuladasPorInterno=this->internos->obtenerCursorNodo()->contarLlamadasAnuladas(internos->obtenerCursorNodo()->obtenerLlamadas());
+	}
+	
+	return llamadasAnuladasPorInterno;
+}
+
+
+Central::~Central()
+{
+	delete(this->internos);
+	delete(this->enlaces);
 }
