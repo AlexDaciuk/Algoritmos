@@ -10,5 +10,5 @@
 	g++ -Wall -fexceptions -g  -c  class/Ordenar.cpp -o  class/Ordenar.o
 	g++ -Wall -fexceptions -g  -c  class/ProcesadorLlamada.cpp -o  class/ProcesadorLlamada.o
 	g++ -Wall -fexceptions -g  -c  class/Spot.cpp -o  class/Spot.o
-	g++ -Wall -fexceptions -g  -c  TP2/main.cpp -o  TP2/main.o
-	g++  -o TP2_debug  class/Buscador.o  class/Central.o  class/DatosLlamada.o  class/Enlace.o  class/Interfaz.o  class/Interno.o  class/LectorArchivos.o  class/Llamada.o  class/Ordenar.o  class/ProcesadorLlamada.o  class/Spot.o  TP2/main.o 
+	g++ -Wall -fexceptions -g  -c  main.cpp -o  main.o
+	g++  -o TP2_debug  class/Buscador.o  class/Central.o  class/DatosLlamada.o  class/Enlace.o  class/Interfaz.o  class/Interno.o  class/LectorArchivos.o  class/Llamada.o  class/Ordenar.o  class/ProcesadorLlamada.o  class/Spot.o  main.o 
