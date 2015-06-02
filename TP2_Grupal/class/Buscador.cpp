@@ -1,6 +1,7 @@
 
 
 #include "Buscador.h"
+#include <iostream>
 
 Buscador::Buscador(Lista<Central*>* centrales)
 {
@@ -36,9 +37,9 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 	this->rutaActual->insertar(nuevoSpot);
 	if(this->esLlamadaInterna(centralEmisora, centralReceptora)) {
 		this->definirEstePrecioYDistancia();
-		//rutaActual y mejorCamino permanecen como NULL
+		this->rutaActual = NULL;
+		this->mejorCamino = NULL;
 	} else {
-		this->rutaActual->iniciarCursorNodo();
 		while(this->hayMasCaminos()) {
 			if(centralActual->obtenerNumero() != centralReceptora) {
 				int buscoMejorValor = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
@@ -81,9 +82,9 @@ void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralRecept
 	this->rutaActual->insertar(nuevoSpot);
 	if(this->esLlamadaInterna(centralEmisora, centralReceptora)) {
 		this->definirEstePrecioYDistancia();
-		//rutaActual y mejorCamino permanecen como NULL
+		this->rutaActual = NULL;
+		this->mejorCamino = NULL;
 	} else {
-		this->rutaActual->iniciarCursorNodo();
 		while(this->hayMasCaminos()) {
 			if(centralActual->obtenerNumero() != centralReceptora) {
 				int buscoMejorValor = this->rutaActual->obtenerCursorNodo()->obtenerDistanciaRecorrida();
@@ -176,11 +177,13 @@ bool Buscador::hayMasCaminos()
 
 void Buscador::caminarEnlace(Central* centralActual, int centralReceptora)
 {
+	this->rutaActual->iniciarCursorNodo();
 	this->rutaActual->avanzarCursorNodo();
 	Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
 	Spot* spotActual = this->rutaActual->obtenerCursorNodo();
 	enlacesActuales->iniciarCursorNodo();
 	while((!spotActual->recorriTodosLosEnlaces()) || (enlacesActuales->avanzarCursorNodo())) {
+		std::cout<<"el primer enlace es :"<<enlacesActuales->obtenerCursorNodo()<<"/n";
 		if(this->obtenerTipoDeBusqueda() == 0)
 			caminarPorPrecio(enlacesActuales->obtenerCursorNodo(), spotActual, centralReceptora);
 		else
