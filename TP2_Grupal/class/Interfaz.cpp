@@ -749,7 +749,8 @@ void Interfaz::realizarOtraConsulta(int& opcion, bool& continuar)
 void Interfaz::iniciarPrograma()
 {
 	std::string ruta = pedirRuta();
-	std::cout << "La ruta es " << ruta << "\n";
+	std::cout<<"\n";
+	std::cout << "La ruta es " << ruta << "\n\n";
 	LectorArchivos* lectorArchivos = new LectorArchivos(ruta);
 	this->cambiarPunteroALectorDeArchivos(lectorArchivos);
 
