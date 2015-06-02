@@ -32,7 +32,6 @@ int Buscador::obtenerDistanciaDeLaLlamada()
 
 void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora)
 {
-	this->resetDatos();
 	this->establecerBusquedaPorPrecio();
 	Central* centralActual = this->encontrarLaCentral(centralEmisora);
 	Spot* nuevoSpot = new Spot(centralActual, 0, 0);
@@ -78,7 +77,6 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 
 void Buscador::encontrarCaminoPordistancia(int centralEmisora, int centralReceptora)
 {
-	this->resetDatos();
 	this->establecerBusquedaPorDistancia();
 	Central* centralActual = this->encontrarLaCentral(centralEmisora);
 	Spot* nuevoSpot = new Spot(centralActual, 0, 0);
