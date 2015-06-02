@@ -1,13 +1,10 @@
 #include "LectorArchivos.h"
-#include <iostream>
 
 
 LectorArchivos::LectorArchivos (std::string rutaArchivoTemporal)
 {
 	this->archivo.open( rutaArchivoTemporal.c_str() );
-
 	this->datosLlamadaTemporal = new DatosLlamada();
-
 	this->hayLlamadas = true;
 }
 
@@ -18,34 +15,34 @@ DatosLlamada* LectorArchivos::obtenerDatosLlamada()
 		std::string accionTemporal, origenTemporal, emisorTemporal, destinoTemporal, receptorTemporal, horaTemporal;
 
 		getline(archivo, accionTemporal,' ');
-		
+
 		getline(archivo, origenTemporal,' ');
-		
+
 		getline(archivo, emisorTemporal,' ');
-		
+
 		getline(archivo, destinoTemporal,' ');
-		
+
 		getline(archivo, receptorTemporal,' ');
-		
+
 		getline(archivo, horaTemporal,'\n');
-		
+
 		this->datosLlamadaTemporal->cargarLlamada(accionTemporal, origenTemporal, emisorTemporal, destinoTemporal, receptorTemporal, horaTemporal);
 	} else {
 		this->hayLlamadas = false;
 	}
 
-	return datosLlamadaTemporal;
+	return(datosLlamadaTemporal);
 }
 
 
 bool LectorArchivos::chequearLlamadas()
 {
-	return (this->hayLlamadas);
+	return(this->hayLlamadas);
 }
 
 
 LectorArchivos::~LectorArchivos()
 {
-	delete (this->datosLlamadaTemporal);
-
+	this->archivo.close();
+	delete(this->datosLlamadaTemporal);
 }
