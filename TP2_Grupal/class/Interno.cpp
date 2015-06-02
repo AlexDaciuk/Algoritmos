@@ -1,5 +1,6 @@
 #include "Interno.h"
 
+
 Interno::Interno(int numeroInternoTemporal)
 {
 	this->numeroInterno = numeroInternoTemporal;
@@ -9,7 +10,7 @@ Interno::Interno(int numeroInternoTemporal)
 
 int Interno::obtenerNumero()
 {
-	return numeroInterno;
+	return (this->numeroInterno);
 }
 
 Lista<Llamada*>* Interno::obtenerLlamadas()
@@ -51,6 +52,7 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 	if (! existeLlamada) {
 		Llamada* nuevaLlamada = new Llamada(receptorLlamadaTemporal);
 		this->llamadas->insertar(nuevaLlamada);
+		llamadaTemporal = nuevaLlamada;
 	}
 
 	return llamadaTemporal;

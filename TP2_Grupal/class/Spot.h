@@ -44,7 +44,7 @@ public:
 	 * En caso de ser la primer central precioHastaSpot valdra 0.
 	 * Post: Guardara la informacion de lo indicado en las precondiciones.
 	 */
-	Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpot);
+	Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpotTemporal);
 	
 	/**
 	 * @brief devuelve el puntero a la central del Spot
