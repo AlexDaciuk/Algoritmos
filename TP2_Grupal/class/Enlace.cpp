@@ -2,7 +2,6 @@
 
 
 Enlace::Enlace(int origenTemporal, int destinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int CostoPorMinutoTemporal, Lista<Central*>* centralesTemporal)
-
 {
 	this->cantidadDeCanales = cantidadCanalesTemporal;
 	this->distanciaKm = distanciaTemporal;
@@ -13,48 +12,56 @@ Enlace::Enlace(int origenTemporal, int destinoTemporal, int distanciaTemporal, i
 	this->origen = centralesTemporal->obtenerPunteroAlObjeto(origenTemporal)->obtenerObjeto();
 }
 
-Central* Enlace::obtenerOrigen()
-{
-	return origen;
-}
 
 int Enlace::obtenerNumeroDeCanales()
 {
-	return (this->cantidadDeCanales);
+	return(this->cantidadDeCanales);
 }
+
 
 int Enlace::obtenerDistancia()
 {
-	return (this->distanciaKm);
+	return(this->distanciaKm);
 }
+
 
 int Enlace::obtenerPrecio()
 {
-	return (this->costoPorMinuto);
+	return(this->costoPorMinuto);
 }
+
 
 int Enlace::obtenerCantidadEnlacesEnUso()
 {
-	return (this->cantidadCanalesEnUso);
+	return(this->cantidadCanalesEnUso);
 }
+
+
+Central* Enlace::obtenerOrigen()
+{
+	return(origen);
+}
+
 
 Central* Enlace::obtenerDestino()
 {
-	return (this->destino);
+	return(this->destino);
 }
+
 
 bool Enlace::chequearDisponibilidadCanales()
 {
 	return (this->cantidadCanalesEnUso < this->cantidadDeCanales);
 }
 
+
 void Enlace::agregarLlamadaEnCurso()
 {
 	if ( this->chequearDisponibilidadCanales() ) {
 		this->cantidadCanalesEnUso++;
 	}
-
 }
+
 
 void Enlace::eliminarLlamadaEnCurso()
 {

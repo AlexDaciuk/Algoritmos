@@ -8,11 +8,13 @@
 #include "Central.h"
 #include "Lista.h"
 
+
+class Central;
+
 /**
  * Clase que define cada enlace entre 2 centrales
  */
-class Central;
-
+ 
 class Enlace
 {
 private:
@@ -21,13 +23,12 @@ private:
 	Central* destino;
 	Lista<Central*>* centrales;
 
-public:
 
+public:
 	/**
 	 * Constructor de la clase enlace
 	 * Post: Queda creado el enlace entre 2 centrales
 	 */
-
 	Enlace(int OrigenTemporal, int DestinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int CostoPorMinutoTemporal, Lista<Central*>* centralesTemporal);
 
 
@@ -35,7 +36,6 @@ public:
 	 * Funciones varias que devuelven atributos del enlace
 	 * Post: se devuelve el dato del tipo correspondiente
 	 */
-
 	int obtenerDistancia();
 	int obtenerPrecio();
 	int obtenerCantidadEnlacesEnUso();
@@ -43,22 +43,20 @@ public:
 	Central* obtenerOrigen();
 	Central* obtenerDestino();
 
+
 	/**
 	* Metodo que devuelve true si se puede realizar una llamada mediante el enlace,
 	* en caso contrario, devuelve false
 	*/
-
 	bool chequearDisponibilidadCanales();
 
+
 	/**
-	*  Metodos que van a cambiar la disponibilidad de cada enlace
+	* Metodos que van a cambiar la disponibilidad de cada enlace
 	* ya sea agregando una llamada o eliminandola
 	*/
 	void agregarLlamadaEnCurso();
-
 	void eliminarLlamadaEnCurso();
-
-
 
 };
 
