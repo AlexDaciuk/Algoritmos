@@ -154,8 +154,7 @@ void ProcesadorLlamada::procesarLlamadas()
 		{
 			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
 			this->agregarCentral(this->datosTemporal->obtenerDestino() );
-			// Aca va el tema con el buscador de caminos
-			// recorridoTemporal = this->buscaCentral;
+			
 			if (this->variableBusqueda == "Distancia") {
 				this->buscaCentralMenorDistancia();
 			} else if (this->variableBusqueda == "Precio") {
