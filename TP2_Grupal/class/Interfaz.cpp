@@ -67,7 +67,6 @@ int Interfaz::pedirInterno()
   int numeroInterno;
   std::cout << "Ingrese el numero de interno:";
   std::cin >> numeroInterno;
-  std::cout << "\n";
   return numeroInterno;
 }
 std::string Interfaz::pedirAlgoritmoDeBusqueda()
@@ -538,23 +537,33 @@ void Interfaz::internoQueMasDioOcupadoPorCentralYGeneral()
 
 void Interfaz::DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
 {
+	std::cout<<"\n";
   int interno = pedirInterno();
   int central = pedirCentral();
+	bool emitioLlamadas = false;
   Interno* internoPedido =
       obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto()->obtenerInterno(interno);
-  std::cout << "Detalle de las llamadas emitidas por el interno " << interno << " de la central " << central << ".\n\n";
+  std::cout << "\nDetalle de las llamadas emitidas por el interno " << interno << " de la central " << central << ".\n\n";
   internoPedido->obtenerLlamadas()->iniciarCursorNodo();
   while (internoPedido->obtenerLlamadas()->avanzarCursorNodo()) {
-    std::cout << "Llamadas realizadas al interno:"
-              << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() << ":\n";
-    std::cout << "Cantidad de llamadas: "
-              << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() << ".\n";
-    std::cout << "Duracion de las llamadas:"
-              << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasHechas() << ".\n";
-    std::cout << "Cantidad de ocupados recibidos:"
-              << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos() << ".\n\n";
+    if (internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() > 0) {
+			emitioLlamadas=true;
+      std::cout << "Llamadas realizadas al interno:"
+                << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() << ":\n";
+      std::cout << "Cantidad de llamadas: "
+                << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() << ".\n";
+      std::cout << "Duracion de las llamadas:"
+                << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasHechas() << ".\n";
+      std::cout << "Cantidad de ocupados recibidos:"
+                << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos() << ".\n\n";
+    }
   }
+	if (! emitioLlamadas)
+	{
+		std::cout<<"Este interno no realizo llamadas.\n \n";
+	}
 }
+
 
 void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
 {
@@ -689,6 +698,7 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 4:
+			mostrarDetallesDeInternos();
       detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB();
       realizarOtraConsulta(opcion, continuar);
       break;
@@ -729,21 +739,25 @@ void Interfaz::tratarOpcion(int opcion)
       break;
 
     case 12:
+			mostrarDetallesDeInternos();
       DetallesLlamadasEmitidasPorElInternoXDeLaCentralA();
       realizarOtraConsulta(opcion, continuar);
       break;
 
     case 13:
+			mostrarDetallesDeInternos();
       DetallesLlamadasRecibidasPorElInternoXDeLaCentralA();
       realizarOtraConsulta(opcion, continuar);
       break;
 
     case 14:
+			mostrarDetallesDeInternos();
       DetalleDeLlamadasRealizadasPorXDeLaCentralAYRecibidasPorYDeLaCentralB();
       realizarOtraConsulta(opcion, continuar);
       break;
 
     case 15:
+			mostrarDetallesDeInternos();
       DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB();
       realizarOtraConsulta(opcion, continuar);
       break;
