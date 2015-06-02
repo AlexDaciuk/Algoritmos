@@ -75,6 +75,7 @@ std::string Interfaz::pedirAlgoritmoDeBusqueda()
 	std::cout << "Quiere usar algoritmo de: \n";
 	std::cout << "1) Precio mas bajo \n";
 	std::cout << "2) Distancia mas corta \n";
+	std::cout << "Opcion:";
 	std::cin >> opcion;
 	switch (opcion) {
 	case 1:
@@ -85,6 +86,7 @@ std::string Interfaz::pedirAlgoritmoDeBusqueda()
 		opcionAlgoritmo = "Distancia";
 		break;
 	}
+	std::cout<<"\n";
 	return opcionAlgoritmo;
 }
 
