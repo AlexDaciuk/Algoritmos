@@ -38,7 +38,7 @@ void ProcesadorLlamada::iniciarLlamada()
 	emisor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerOrigen() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerEmisor() );
 	receptor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerDestino() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
-	std::cout << this->datosTemporal->obtenerEmisor() << " " << this->datosTemporal->obtenerReceptor() << "\n" ;
+	std::cout << this->datosTemporal->obtenerEmisor() << " , " << this->datosTemporal->obtenerReceptor() << "\n" ;
 
 	//Agrego la llamada a cada interno
 	
@@ -126,7 +126,6 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 			Central* centralTemporal = this->centrales->obtenerCursorNodo();
 
 			if (centralTemporal->obtenerNumero() == numeroDestino || centralTemporal->obtenerNumero() == numeroOrigen) {
-				std::cout << "La central en la que trato de agregar enlaces es " << centralTemporal->obtenerNumero() << "\n";
 				centralTemporal->agregarEnlace(nuevoEnlace);
 			}
 
