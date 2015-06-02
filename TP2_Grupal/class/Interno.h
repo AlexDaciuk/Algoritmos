@@ -9,12 +9,14 @@
 #include "Lista.h"
 #include "Enlace.h"
 
-/**
- *Clase que define a cada interno de una central
- */
 class Llamada;
 class Enlace;
 
+
+/**
+ * Clase que define a cada interno de una central, que tiene una lista propia de llamadas
+ * y un numero unico
+ */
 class Interno
 {
 private:
@@ -23,20 +25,21 @@ private:
 	Lista<Llamada*>* llamadas; //apunta siempre a la primer llamada
 
 public:
-
 	/**
 	 * Constructor de la clase Interno
 	 * Post: Queda creado el interno con el numero asignado
 	 */
 	Interno(int numeroInternoTemporal);
 
+
 	/**
-	 *post: devuelve el numero del interno.
+	 * Devuelve el numero del interno.
 	 */
 	int obtenerNumero();
 
+
 	/**
-	 * post: agrega una nueva llamada a la lista de llamadas del interno que
+	 * Agrega una nueva llamada a la lista de llamadas del interno que
 	 * realiza la llamada y la ubica al principio de la lista.
 	 * En el caso de que ya exista un nodo en la lista con el interno receptor se lleva
 	 * ese nodo al principio y se suman
@@ -44,40 +47,49 @@ public:
 	 */
 	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada);
 	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada);
-	
+
+
 	/**
-	 * Termina la llamada entre 2 internos
+	 * Termina la llamada del tipo de interno correspondiente
 	 */
-	 
 	void terminarLlamadaEmisor(int receptorTemporal,int horaTemporal, int precioMinutoTemporal);
 	void terminarLlamadaReceptor(int emisorTemporal,int horaTemporal, int precioMinutoTemporal);
 
+
 	/**
-	 *post: devuelve el puntero a la lista de llamadas del interno
+	 * Devuelve el puntero a la lista solicitada
 	 */
-
 	Lista<Llamada*>* obtenerLlamadas();
-
 	Lista<Enlace*>* devolverRecorridoLlamada(int receptorLlamadaTemporal);
+
+
 	/**
-	  *post: recorre la lista de llamadas del interno emisor y busca si ya existe un nodo
-	  * con datos pertenecientes a interacciones con el interno receptor. En ese caso de no
-	  * existir la llamada, la crea
-	  */
+	 * Recorre la lista de llamadas del interno emisor y busca si ya existe un nodo
+	 * con datos pertenecientes a interacciones con el interno receptor. En ese caso de no
+	 * existir la llamada, la crea.
+	 */
 	Llamada* creaReceptorLlamada(int receptorLlamadaTemporal);
 
+
 	/**
-	 *post: recorre la lista de llamadas del interno y se fija si en algun nodo la hora
+	 * Recorre la lista de llamadas del interno y se fija si en algun nodo la hora
 	 * de inicio de una llamada es distinto de cero. En ese caso devuelve verdadero,
 	 * si no falso.
 	 */
 	bool internoOcupado();
-  /**
-   * post: contabiliza todas las llamadas aunladas de la lista de llamadas y devuelve el totoal.
-   * */
-  int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas);
+
+
+	/**
+	 * Contabiliza todas las llamadas aunladas de la lista de llamadas y devuelve el totoal.
+	 */
+	int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas);
+
+
+	/**
+	 * Destructor que libera el espacio pedido para la lista de llamadas
+	 */
+	~Interno();
 
 };
-
 
 #endif

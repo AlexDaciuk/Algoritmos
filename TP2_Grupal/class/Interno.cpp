@@ -1,6 +1,5 @@
 #include "Interno.h"
 
-
 Interno::Interno(int numeroInternoTemporal)
 {
 	this->numeroInterno = numeroInternoTemporal;
@@ -8,15 +7,18 @@ Interno::Interno(int numeroInternoTemporal)
 	this->estaOcupado=false;
 }
 
+
 int Interno::obtenerNumero()
 {
-	return (this->numeroInterno);
+	return(this->numeroInterno);
 }
+
 
 Lista<Llamada*>* Interno::obtenerLlamadas()
 {
-	return (this->llamadas);
+	return(this->llamadas);
 }
+
 
 Lista<Enlace*>* Interno::devolverRecorridoLlamada( int receptorLlamadaTemporal)
 {
@@ -29,14 +31,15 @@ Lista<Enlace*>* Interno::devolverRecorridoLlamada( int receptorLlamadaTemporal)
 		encontreLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorLlamadaTemporal;
 	}
 
-	return llamadaTemporal->obtenerRecorridoLlamada();
+	return(llamadaTemporal->obtenerRecorridoLlamada() );
 }
 
 
 bool Interno::internoOcupado()
 {
-	return (this->estaOcupado);
+	return(this->estaOcupado);
 }
+
 
 Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 {
@@ -55,52 +58,45 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 		llamadaTemporal = nuevaLlamada;
 	}
 
-	return llamadaTemporal;
+	return(llamadaTemporal);
 }
+
 
 void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada)
 {
 	// Me fijo si la llamada esta creada, sino, la creo
 	Llamada* llamadaTemporal = creaReceptorLlamada(receptorTemporal);
 
-
-	if (! this->internoOcupado() && ! fueAnulada ) 
-	{
+	if (! this->internoOcupado() && ! fueAnulada ) {
 		llamadaTemporal->empezarLlamadaEmisor(horaTemporal, recorridoLlamadaTemporal, fueAnulada);
-	} else if ( this->internoOcupado() || fueAnulada )
-	{
+	} else if ( this->internoOcupado() || fueAnulada ) {
 		// Si recibio un ocupado o fue anulada, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
 		llamadaTemporal->empezarLlamadaEmisor(0, recorridoLlamadaTemporal, fueAnulada);
 		llamadaTemporal->agregarOcupadoRecibido();
 	}
-
 }
+
 
 void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal,  Lista<Enlace*>* recorridoLlamadaTemporal,  bool fueAnulada )
 {
 	// Me fijo si la llamada con el receptor esta creada, sino, la creo
 	Llamada* llamadaTemporal = creaReceptorLlamada(emisorTemporal);
 
-	//Consigo un puntero al receptor, para ver si esta ocupado
-
-	if (! this->internoOcupado() && ! fueAnulada ) 
-	{
+	if (! this->internoOcupado() && ! fueAnulada ) {
 		llamadaTemporal->empezarLlamadaReceptor(horaTemporal, recorridoLlamadaTemporal, fueAnulada);
 		this->estaOcupado = true;
-	} else if ( this->internoOcupado() || fueAnulada )
-	{
+	} else if ( this->internoOcupado() || fueAnulada ) {
 		// Si dio un ocupado o fue anulada, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
 		llamadaTemporal->empezarLlamadaReceptor(0, recorridoLlamadaTemporal, fueAnulada);
 		llamadaTemporal->agregarOcupadoDado();
 	}
-	
 }
+
 
 void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int precioMinutoTemporal )
 {
-	// Busco la llamada
 	this->llamadas->iniciarCursorNodo();
 	bool encontroLlamada = false;
 	Llamada* llamadaTemporal = NULL;
@@ -111,12 +107,13 @@ void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int 
 	}
 
 	llamadaTemporal->cortarLlamadaEmisor(horaTemporal, precioMinutoTemporal);
+
 	this->estaOcupado = false;
 }
 
+
 void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int precioMinutoTemporal )
 {
-	// Busco la llamada
 	this->llamadas->iniciarCursorNodo();
 	bool encontroLlamada = false;
 	Llamada* llamadaTemporal = NULL;
@@ -127,16 +124,24 @@ void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int 
 	}
 
 	llamadaTemporal->cortarLlamadaReceptor(horaTemporal, precioMinutoTemporal);
+
 	this->estaOcupado = false;
 }
 
+
 int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
 {
-  int llamadasAnuladas = 0;
-  listaLlamadas->iniciarCursorNodo();
-  while (listaLlamadas->avanzarCursorNodo())
-  {
-    llamadasAnuladas += listaLlamadas->obtenerCursorNodo()->obtenerLlamadasAnuladas();
-  }
-  return llamadasAnuladas;
+	int llamadasAnuladas = 0;
+	listaLlamadas->iniciarCursorNodo();
+
+	while (listaLlamadas->avanzarCursorNodo()) {
+		llamadasAnuladas += listaLlamadas->obtenerCursorNodo()->obtenerLlamadasAnuladas();
+	}
+
+	return(llamadasAnuladas);
+}
+
+Interno::~Interno()
+{
+	delete(this->llamadas)
 }
