@@ -1,5 +1,5 @@
 #include "Interfaz.h"
-
+#include <cstdlib>
 Interfaz::Interfaz()
 {
   this->enlaces = NULL;
@@ -221,7 +221,9 @@ void Interfaz::internoQueMasHabloPorCentralYGeneral()
 {
   std::cout << "\n";
   int maximaDuracionGeneral = 0;
-  int internoQueMasHabloPorCentral, internoQueMasHabloGeneral, centralQueMasHablo;
+  int internoQueMasHabloPorCentral = 0;
+  int internoQueMasHabloGeneral = 0;
+  int centralQueMasHablo = 0;
   obtenercentrales()->iniciarCursorNodo();
   while (obtenercentrales()->avanzarCursorNodo()) {
     int maximaDuracionEnLaCentral = 0;
@@ -271,7 +273,9 @@ void Interfaz::internoQueMasLlamoPorCentralYEnGeneral()
 {
   std::cout << "\n";
   int maximoNumeroLLamdadasGeneral = 0;
-  int internoQueMasLlamoPorCentral, internoQueMasLlamoGeneral, centralQueMasLlamo;
+  int internoQueMasLlamoPorCentral = 0;
+  int internoQueMasLlamoGeneral = 0;
+  int centralQueMasLlamo = 0;
   obtenercentrales()->iniciarCursorNodo();
   while (obtenercentrales()->avanzarCursorNodo()) {
     int maximoNumeroLLamadasEnLaCentral = 0;
@@ -321,7 +325,9 @@ void Interfaz::internoQueMasOcupadosRecibioPorCentralYGeneral()
 {
   std::cout << "\n";
   int maximoNumeroDeOcupadosGeneral = 0;
-  int internoQueMasRecibioOcupadosPorCentral, internoQueMasRecibioOcupadosGeneral, centralQueMasRecibioOcupados;
+  int internoQueMasRecibioOcupadosPorCentral = 0;
+  int internoQueMasRecibioOcupadosGeneral = 0;
+  int centralQueMasRecibioOcupados = 0;
   obtenercentrales()->iniciarCursorNodo();
   while (obtenercentrales()->avanzarCursorNodo()) {
     int maximoNumeroOcupadosEnLaCentral = 0;
@@ -373,7 +379,9 @@ void Interfaz::internoAlQueMasLlamaronPorCentralYGeneral()
 {
   std::cout << "\n";
   int maximoNumeroLlamadasRecibidasGeneral = 0;
-  int internoQueMasLlamaronPorCentral, internoQueMasLlamaronGeneral, centralQueMasLlamadasRecibio;
+  int internoQueMasLlamaronPorCentral = 0;
+  int internoQueMasLlamaronGeneral = 0;
+  int centralQueMasLlamadasRecibio = 0;
   obtenercentrales()->iniciarCursorNodo();
   while (obtenercentrales()->avanzarCursorNodo()) {
     int maximoLlamadasRecibidasEnLaCentral = 0;
@@ -424,7 +432,9 @@ void Interfaz::internoQueMasGastoPorCentralYGeneral()
 {
   std::cout << "\n";
   int maximoGastoGeneral = 0;
-  int internoQueMasGastoPorCentral, internoQueMasGastoGeneral, centralQueMasGasto;
+  int internoQueMasGastoPorCentral = 0;
+  int internoQueMasGastoGeneral = 0;
+  int centralQueMasGasto = 0;
   obtenercentrales()->iniciarCursorNodo();
   while (obtenercentrales()->avanzarCursorNodo()) {
     int maximoGastoEnLaCentral = 0;
@@ -440,7 +450,7 @@ void Interfaz::internoQueMasGastoPorCentralYGeneral()
       maximoGastoGeneral = maximoGastoEnLaCentral;
     }
   }
-  std::cout << "\n El interno que mas gasto en llamadas de todos fue el interno " << internoQueMasGastoGeneral
+  std::cout << "\nEl interno que mas gasto en llamadas de todos fue el interno " << internoQueMasGastoGeneral
             << " de la central " << centralQueMasGasto << ". Gasto " << maximoGastoGeneral << " centavo/s. \n\n";
 }
 
@@ -474,7 +484,9 @@ void Interfaz::internoAlQueMasLeHablaronPorCentralYGeneral()
 {
   std::cout << "\n";
   int maximoInternoQueMasLeHablaronEnGeneral = 0;
-  int internoQueMasHablaronPorCentral, internoQueMasHablaronGeneral, centralQueMasHablaron;
+  int internoQueMasHablaronPorCentral = 0;
+  int internoQueMasHablaronGeneral = 0;
+  int centralQueMasHablaron = 0;
   obtenercentrales()->iniciarCursorNodo();
   while (obtenercentrales()->avanzarCursorNodo()) {
     int maximoInternoQueMasLeHablaronEnLaCentral = 0;
@@ -525,7 +537,9 @@ void Interfaz::internoQueMasDioOcupadoPorCentralYGeneral()
 {
   std::cout << "\n";
   int maximoNumeroDeOcupadosDadosEnGeneral = 0;
-  int internoQueMasDioOcupadoPorCentral, internoQueMasDioOcupadoEnGeneral, centralQueMasDioOcuapdo;
+  int internoQueMasDioOcupadoPorCentral = 0;
+  int internoQueMasDioOcupadoEnGeneral = 0;
+  int centralQueMasDioOcuapdo = 0;
   obtenercentrales()->iniciarCursorNodo();
   while (obtenercentrales()->avanzarCursorNodo()) {
     int maximoNumeroDeOcupadosDadosEnLaCentral = 0;

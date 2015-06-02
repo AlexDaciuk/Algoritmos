@@ -132,7 +132,7 @@ void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int 
 
 int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
 {
-  int llamadasAnuladas;
+  int llamadasAnuladas = 0;
   listaLlamadas->iniciarCursorNodo();
   while (listaLlamadas->avanzarCursorNodo())
   {
