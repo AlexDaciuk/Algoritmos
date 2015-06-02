@@ -573,6 +573,7 @@ void Interfaz::DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
             << ".\n\n";
   internoPedido->obtenerLlamadas()->iniciarCursorNodo();
   while (internoPedido->obtenerLlamadas()->avanzarCursorNodo()) {
+		//me fijo si por lo menos realizo una llamada. Porque el nodo en la llamada puede estar creado solo con datos de llamadas recibidas.
     if (internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() > 0) {
       emitioLlamadas = true;
       std::cout << "Llamadas realizadas al interno:"
@@ -600,6 +601,7 @@ void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
   std::cout << "Detalle de las llamadas recibidas por el interno " << interno << " de la central " << central << ".\n";
   internoPedido->obtenerLlamadas()->iniciarCursorNodo();
   while (internoPedido->obtenerLlamadas()->avanzarCursorNodo()) {
+		//me fijo si por lo menos recibio una llamada. Porque el nodo en la llamada puede estar creado solo con datos de llamadas realizadas.
     if (internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas() > 0) {
       recibioLlamadas = true;
       std::cout << "Llamadas recibidas del interno:"
@@ -640,6 +642,7 @@ void Interfaz::DetalleDeLlamadasRealizadasPorXDeLaCentralAYRecibidasPorYDeLaCent
       estaElReceptor = true;
     }
   }
+	// me aseguro de que, ademas de que exista un nodo con los datos de receptor, tenga datos de llamadas realizadas a el.
   if (estaElReceptor && (llamadasEmisor->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() > 0)) {
     std::cout << "Llamadas realizadas:" << llamadasEmisor->obtenerCursorNodo()->obtenerCantidadLlamadasHechas()
               << ".\n";
@@ -675,6 +678,7 @@ void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCent
       estaElReceptor = true;
     }
   }
+	// me aseguro de que, ademas de que exista un nodo con los datos de receptor, tenga datos de llamadas recibidas de el.
   if (estaElReceptor && (llamadasEmisor->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas() > 0)) {
 
     std::cout << "Llamadas realizadas:" << llamadasEmisor->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas()
