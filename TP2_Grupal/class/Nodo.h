@@ -45,9 +45,9 @@ public:
 	/**
 	 * Post: Cambia la direccion del puntero que apunta al nodo anterior
 	 */
-	void cambiarNodoAnterior(Nodo<T>* nodoAnterior) {
+	void cambiarNodoAnterior(Nodo<T>* nodoAnteriorTemporal) {
 
-		this->nodoAnterior=nodoAnterior;
+		this->nodoAnterior=nodoAnteriorTemporal;
 	}
 
 

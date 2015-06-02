@@ -7,8 +7,6 @@ Buscador::Buscador(Lista<Central*>* centrales)
 	this->centralesTotales = centrales;
 	this->mejorCamino = new Lista<Enlace*>;
 	this->rutaActual = new Lista<Spot*>;
-	this->mejorCamino = NULL;
-	this->rutaActual = NULL;
 	this->precioDeLaLlamada = 0;
 	this->distanciaDeLaLlamada = 0;
 	this->tipoDeBusqueda = 0;
@@ -365,8 +363,10 @@ Lista<Spot*>* Buscador::obtenerRutaActual()
 
 void Buscador::resetDatos()
 {
-	this->mejorCamino = NULL;
-	this->rutaActual = NULL;
+	delete (this->mejorCamino);
+	delete (this->rutaActual);
+	this->mejorCamino = new Lista<Enlace*>;
+	this->rutaActual = new Lista<Spot*>;
 	this->precioDeLaLlamada = 0;
 	this->distanciaDeLaLlamada = 0;
 	this->tipoDeBusqueda = 0;

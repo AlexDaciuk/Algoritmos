@@ -104,7 +104,7 @@ template<class T> void Lista<T>::insertar(T objeto)
 {
 	Nodo<T>* nuevoNodo =  new Nodo<T>(objeto);
 
-	if (!this->ultimoNodo) {
+	if ( this->ultimoNodo != NULL ) {
 		nuevoNodo->cambiarNodoSiguiente(this->primerNodo);
 		this->primerNodo->cambiarNodoAnterior(nuevoNodo);
 		this->primerNodo=nuevoNodo;
