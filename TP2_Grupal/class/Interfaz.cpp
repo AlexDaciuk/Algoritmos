@@ -640,7 +640,6 @@ void Interfaz::tratarOpcion(int opcion)
 {
 	bool continuar = true;
 	while (continuar) {
-		std::cin >> opcion;
 		switch (opcion) {
 		case 1:
 			mostrarDetallesDeInternos();
