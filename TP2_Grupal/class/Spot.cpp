@@ -10,9 +10,7 @@ Spot::Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpotTempora
 	this->precioHastaSpot = precioHastaSpot;
 	this->distanciaHastaSpot = distanciaHastaSpotTemporal;
 	this->posicion = posicion;
-	this->enlaceRecorrido = NULL;
 	this->centralesVisitadas= new Lista<Central*>;
-	this->centralesVisitadas = NULL;
 }
 
 Central* Spot::obtenerPosicion()

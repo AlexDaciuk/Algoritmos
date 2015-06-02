@@ -96,7 +96,7 @@ template<class T> Lista<T>::Lista()
 {
 	this->primerNodo=NULL;
 	this->ultimoNodo=NULL;
-	this->cursorNodo=NULL;
+
 }
 
 
