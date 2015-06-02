@@ -6,6 +6,8 @@ int main()
 
 	interfazTemporal->iniciarPrograma();
 
+	delete interfazTemporal;
+
 	return 0;
 
 }
