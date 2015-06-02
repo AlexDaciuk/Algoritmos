@@ -126,6 +126,7 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 			Central* centralTemporal = this->centrales->obtenerCursorNodo();
 
 			if (centralTemporal->obtenerNumero() == numeroDestino || centralTemporal->obtenerNumero() == numeroOrigen) {
+				std::cout << "La central en la que trato de agregar enlaces es " << centralTemporal->obtenerNumero() << "\n";
 				centralTemporal->agregarEnlace(nuevoEnlace);
 			}
 
@@ -148,8 +149,6 @@ void ProcesadorLlamada::procesarLlamadas()
 	while ( archivoLlamadas->chequearLlamadas() ) {
 		this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
 		
-		
-		
 		if ( this->datosTemporal->obtenerAccion() == "Inicio")
 		{
 			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
@@ -167,6 +166,7 @@ void ProcesadorLlamada::procesarLlamadas()
 			this->finalizarLlamada();
 		
 		} else if (this->datosTemporal->obtenerAccion() == "Enlace") {
+			
 			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
 			this->agregarCentral(this->datosTemporal->obtenerEmisor() );
 			agregarEnlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
