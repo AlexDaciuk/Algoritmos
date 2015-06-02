@@ -11,7 +11,8 @@ DatosLlamada::DatosLlamada()
 }
 
 
-void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string origenTemporal, std::string emisorTemporal, std::string destinoTemporal, std::string receptorTemporal, std::string horaTemporal)
+void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string origenTemporal, std::string emisorTemporal,
+                                 std::string destinoTemporal, std::string receptorTemporal, std::string horaTemporal)
 {
 	if (! accionTemporal.empty()) {
 		this->accion = accionTemporal;
@@ -34,31 +35,38 @@ void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string origenT
 	}
 }
 
+
 std::string DatosLlamada::obtenerAccion()
 {
-	return this->accion;
+	return(this->accion);
 }
+
 
 int DatosLlamada::obtenerOrigen()
 {
-	return this->origen;
+	return(this->origen);
 }
+
+
 int DatosLlamada::obtenerDestino()
 {
-	return this->destino;
+	return(this->destino);
 }
+
 
 int DatosLlamada::obtenerEmisor()
 {
-	return this->emisor;
+	return(this->emisor);
 }
+
 
 int DatosLlamada::obtenerReceptor()
 {
-	return this->receptor;
+	return(this->receptor);
 }
+
 
 int DatosLlamada::obtenerHora()
 {
-	return this->hora;
+	return(this->hora);
 }
