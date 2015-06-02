@@ -138,11 +138,12 @@ void ProcesadorLlamada::procesarLlamadas()
 	while ( archivoLlamadas->chequearLlamadas() ) {
 		this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
 		
-		this->agregarCentral(this->datosTemporal->obtenerOrigen() );
-		this->agregarCentral(this->datosTemporal->obtenerDestino() );
+		
 		
 		if ( this->datosTemporal->obtenerAccion() == "Inicio")
 		{
+			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
+			this->agregarCentral(this->datosTemporal->obtenerDestino() );
 			// Aca va el tema con el buscador de caminos
 			// recorridoTemporal = this->buscaCentral;
 			if (this->variableBusqueda == "Distancia") {
@@ -157,7 +158,8 @@ void ProcesadorLlamada::procesarLlamadas()
 			this->finalizarLlamada();
 		
 		} else if (this->datosTemporal->obtenerAccion() == "Enlace") {
-		
+			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
+			this->agregarCentral(this->datosTemporal->obtenerEmisor() );
 			agregarEnlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
 		
 		}
