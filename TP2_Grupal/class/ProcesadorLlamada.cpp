@@ -38,12 +38,10 @@ void ProcesadorLlamada::iniciarLlamada()
 	emisor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerOrigen() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerEmisor() );
 	receptor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerDestino() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
-	std::cout << this->datosTemporal->obtenerEmisor() << " , " << this->datosTemporal->obtenerReceptor() << "\n" ;
-
 	//Agrego la llamada a cada interno
 	
-	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta() );
-	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta() );
+	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(), this->recorridoTemporal->estaAnuladaLaLlamada() );
+	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(), this->recorridoTemporal->estaAnuladaLaLlamada() );
 
 	//Cambio la disponibilidad de los enlaces
 	//Cambio disponibilidad de enlaces
