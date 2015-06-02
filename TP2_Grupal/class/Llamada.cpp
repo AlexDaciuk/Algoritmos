@@ -18,34 +18,53 @@ Llamada::Llamada (int receptorLlamadaTemporal)
 	}
 }
 
-void Llamada::empezarLlamadaEmisor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal)
+void Llamada::empezarLlamadaEmisor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada)
 {
-	this->cantidadLlamadasHechas++;
-	this->horaInicioLlamadaEnCurso = horaInicioLlamadaEnCursoTemporal;
-	this->recorridoLlamada = recorridoLlamadaTemporal;
+	if (! fueAnulada)
+	{
+		this->cantidadLlamadasHechas++;
+		this->horaInicioLlamadaEnCurso = horaInicioLlamadaEnCursoTemporal;
+		this->recorridoLlamada = recorridoLlamadaTemporal;
+	} else
+	{
+		this->horaInicioLlamadaEnCurso=0;
+		this->llamadasAnuladas++;
+	}
 }
 
-void Llamada::empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal)
+void Llamada::empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada)
 {
-	this->cantidadLlamadasRecibidas++;
-	this->horaInicioLlamadaEnCurso = horaInicioLlamadaEnCursoTemporal;
-	this->recorridoLlamada = recorridoLlamadaTemporal;
+	if (! fueAnulada)
+	{
+		this->cantidadLlamadasRecibidas++;
+		this->horaInicioLlamadaEnCurso = horaInicioLlamadaEnCursoTemporal;
+		this->recorridoLlamada = recorridoLlamadaTemporal;
+	} else
+	{
+		this->horaInicioLlamadaEnCurso = 0;
+		this->llamadasAnuladas++;
+	}
 }
 
 void Llamada::cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal, int precioMinuto)
 {
-	this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
-	this->duracionLlamadasHechas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
-	this->horaInicioLlamadaEnCurso = 0;
-	this->recorridoLlamada = NULL;
+	if (this->horaInicioLlamadaEnCurso != 0)
+	{
+		this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
+		this->duracionLlamadasHechas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
+		this->horaInicioLlamadaEnCurso = 0;
+		this->recorridoLlamada = NULL;
+	}
 }
 
 void Llamada::cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal, int precioMinuto)
 {
+	if (this->horaInicioLlamadaEnCurso != 0){
 	this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
 	this->duracionLlamadasRecibidas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
 	this->horaInicioLlamadaEnCurso = 0;
 	this->recorridoLlamada = NULL;
+	}
 }
 
 int Llamada::obtenerLlamadasAnuladas()

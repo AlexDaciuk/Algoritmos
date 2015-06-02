@@ -40,8 +40,8 @@ void ProcesadorLlamada::iniciarLlamada()
 
 	//Agrego la llamada a cada interno
 	
-	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta() );
-	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta() );
+	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(), this->recorridoTemporal->estaAnuladaLaLlamada() );
+	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(), this->recorridoTemporal->estaAnuladaLaLlamada() );
 
 	//Cambio la disponibilidad de los enlaces
 	//Cambio disponibilidad de enlaces

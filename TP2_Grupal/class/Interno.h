@@ -42,8 +42,8 @@ public:
 	 * ese nodo al principio y se suman
 	 * los datos directamente ahi, no se crea ningun nodo.
 	 */
-	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal);
-	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal);
+	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada);
+	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada);
 	
 	/**
 	 * Termina la llamada entre 2 internos

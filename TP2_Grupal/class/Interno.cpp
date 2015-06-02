@@ -58,39 +58,44 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 	return llamadaTemporal;
 }
 
-void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal)
+void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada)
 {
 	// Me fijo si la llamada esta creada, sino, la creo
 	Llamada* llamadaTemporal = creaReceptorLlamada(receptorTemporal);
 
 
-	if (! this->internoOcupado()) {
-		llamadaTemporal->empezarLlamadaEmisor(horaTemporal, recorridoLlamadaTemporal);
-	} else {
-		// Si recibio un ocupado, pongo la hora de inicio en 0, asi puedo diferenciar
+	if (! this->internoOcupado() && ! fueAnulada ) 
+	{
+		llamadaTemporal->empezarLlamadaEmisor(horaTemporal, recorridoLlamadaTemporal, fueAnulada);
+	} else if ( this->internoOcupado() || fueAnulada )
+	{
+		// Si recibio un ocupado o fue anulada, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
-		llamadaTemporal->empezarLlamadaEmisor(0, recorridoLlamadaTemporal);
+		llamadaTemporal->empezarLlamadaEmisor(0, recorridoLlamadaTemporal, fueAnulada);
 		llamadaTemporal->agregarOcupadoRecibido();
 	}
 
 }
 
-void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal,  Lista<Enlace*>* recorridoLlamadaTemporal )
+void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal,  Lista<Enlace*>* recorridoLlamadaTemporal,  bool fueAnulada )
 {
 	// Me fijo si la llamada con el receptor esta creada, sino, la creo
 	Llamada* llamadaTemporal = creaReceptorLlamada(emisorTemporal);
 
 	//Consigo un puntero al receptor, para ver si esta ocupado
 
-	if (! this->internoOcupado()) {
-		llamadaTemporal->empezarLlamadaReceptor(horaTemporal, recorridoLlamadaTemporal);
-	} else {
-		// Si dio un ocupado, pongo la hora de inicio en 0, asi puedo diferenciar
+	if (! this->internoOcupado() && ! fueAnulada ) 
+	{
+		llamadaTemporal->empezarLlamadaReceptor(horaTemporal, recorridoLlamadaTemporal, fueAnulada);
+		this->estaOcupado = true;
+	} else if ( this->internoOcupado() || fueAnulada )
+	{
+		// Si dio un ocupado o fue anulada, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
-		llamadaTemporal->empezarLlamadaReceptor(0, recorridoLlamadaTemporal);
+		llamadaTemporal->empezarLlamadaReceptor(0, recorridoLlamadaTemporal, fueAnulada);
 		llamadaTemporal->agregarOcupadoDado();
-
 	}
+	
 }
 
 void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int precioMinutoTemporal )

@@ -182,8 +182,8 @@ void Buscador::caminarEnlace(Central* centralActual, int centralReceptora)
 	Lista<Enlace*>* enlacesActuales = centralActual->obtenerEnlaces();
 	Spot* spotActual = this->rutaActual->obtenerCursorNodo();
 	enlacesActuales->iniciarCursorNodo();
-	while((!spotActual->recorriTodosLosEnlaces()) || (enlacesActuales->avanzarCursorNodo())) {
-		std::cout<<"el primer enlace es :"<<enlacesActuales->obtenerCursorNodo()<<"/n";
+	while((!spotActual->recorriTodosLosEnlaces()) && (enlacesActuales->avanzarCursorNodo())) {
+		std::cout<<"el primer enlace es :"<<enlacesActuales->obtenerCursorNodo()<<"\n";
 		if(this->obtenerTipoDeBusqueda() == 0)
 			caminarPorPrecio(enlacesActuales->obtenerCursorNodo(), spotActual, centralReceptora);
 		else
