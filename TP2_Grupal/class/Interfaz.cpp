@@ -19,7 +19,7 @@ void Interfaz::cambiarPunteroALectorDeArchivos(LectorArchivos* nuevoPuntero)
 std::string Interfaz::pedirRuta()
 {
 	std::string ruta;
-	std::cout << "Ingrese la ruta del archivo de llamadas:";
+	std::cout << "\n"<<"Ingrese la ruta del archivo de llamadas:";
 	std::cin >> ruta;
 	return ruta;
 }
@@ -158,26 +158,17 @@ void Interfaz::detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB(
   int primerInterno, centralPrimerInterno, segundoInterno, centralSegundoInterno;
   std::cout << "Ingrese el numero del primer interno:";
   std::cin >> primerInterno;
-  std::cout << "\n";
   centralPrimerInterno = pedirCentral();
-  std::cout << "\n \n";
+  std::cout << "\n";
   std::cout << "Ingese el numero del segundo interno:";
   std::cin >> segundoInterno;
   centralSegundoInterno = pedirCentral();
   std::cout << "\n \n";
   Interno* DatosPrimerInterno=NULL;
-  Interno* DatosSegundoInterno=NULL;
   DatosPrimerInterno =
 			obtenercentrales()->obtenerPunteroAlObjeto(centralPrimerInterno)->obtenerObjeto()->obtenerInterno(primerInterno);
-  DatosSegundoInterno =
-      obtenercentrales()->obtenerPunteroAlObjeto(centralSegundoInterno)->obtenerObjeto()->obtenerInterno(segundoInterno);
-  if (DatosPrimerInterno == NULL) {
-    throw std::string ("El primer interno no existe");
-  }
-  if (DatosSegundoInterno == NULL) {
-    throw std::string ("El segundo interno no existe");
-  }
-  std::cout << "Detalles de llamadas entre el interno " << primerInterno << " y " << segundoInterno << "\n";
+  std::cout << "Detalles de llamadas entre el interno " << primerInterno << " de la central " << centralPrimerInterno;
+	std::cout<<" y " << segundoInterno <<" de la central " << centralSegundoInterno <<"\n";
   int numeroDeLlamadas = 0;
   int numeroDeOcupados = 0;
   int duracionDeLlamadas = 0;
@@ -197,7 +188,7 @@ void Interfaz::detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB(
     }
   }
   std::cout << "Llamadas realizadas entre ambos:" << numeroDeLlamadas << "\n";
-  std::cout << "Duracion total de llamadas entr ambos:" << duracionDeLlamadas << "\n";
+  std::cout << "Duracion total de llamadas entre ambos:" << duracionDeLlamadas << " minutos.\n";
   std::cout << "Cantidad de ocupados entre ambos:" << numeroDeOcupados << "\n \n";
 }
 
