@@ -74,22 +74,26 @@ public:
 	void mostrarMenu();
 
 	/**
-	 * Metodo que va a pedir la opcion del menu al usuario
+	 * Metodo que va a pedir la opcion del menu al usuario.
+	 * precondicion: la opcion a ingresar debe ser un numero entre 1 y 17 inclusive.
 	 */
 	int pedirOpcionMenu();
 
 	/**
 	 * Metodo que va a pedir numero de central al usuario
+	 * precondicion: el numero de la central debe ser positivo y ser valido.
 	 */
 	int pedirCentral();
 
 	/**
 	 * Metodo que pide la ruta donde esta hubicado el archivo de llamadas.
+	 * precondicion: la ruta debe ser valida.
 	 * */
 	std::string pedirRuta();
 
 	/**
-	 * Metodo que va a pedir numero de interno al usuario
+	 * Metodo que va a pedir numero de interno al usuario.
+	 * precondicion: el numero de interno debe ser positivo y ser valido  a un interno existente.
 	 */
 	int pedirInterno();
 	/**
@@ -116,7 +120,7 @@ public:
 	/**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.
 	* postcondicion: Devuelve el interno con mayor duracion de llamadas de cada central y de todos en general.
-	 * Si hay mas de un interno con la misma duracionde llamadas en una central se muestra el primero.
+	 * Si hay mas de un interno con la misma duracionde llamadas en una central se muestra el ultimo primero.
 	* */
 	void internoQueMasHabloPorCentralYGeneral();
 	/**
@@ -134,7 +138,7 @@ public:
 	/**
 	 * pre: los internos y las centrales deben existir.
 	 * post: devuelve la cantidad de llamadas totales realizadas entre ellos el tiempo total de conversacion
-	 * y las cantidad de ocupados que se dieron(ocupados del interno X mas  los del interno Y).
+	 * y las cantidad de ocupados que se dieron(ocupados del interno X mas  los del interno Y.
 	 */
 	void detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB();
 	/**
