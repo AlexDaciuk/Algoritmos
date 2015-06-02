@@ -143,5 +143,5 @@ int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
 
 Interno::~Interno()
 {
-	delete(this->llamadas)
+	delete(this->llamadas);
 }

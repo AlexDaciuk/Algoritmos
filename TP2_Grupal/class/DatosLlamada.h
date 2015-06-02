@@ -39,8 +39,6 @@ public:
 	int obtenerReceptor();
 	int obtenerHora();
 
-
-private:
 	/**
 	 * Metodo que carga datos a los atributos, si ya tuviera datos, los sobre escribe
 	 */
