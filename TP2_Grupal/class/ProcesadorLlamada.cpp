@@ -103,8 +103,9 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 	if (! encontro) {
 		// Aca tener en cuenta que los atributos de this->datosTemporal siguen con los nombres como si fuera
 		// una llamada, pero realmente es para una enlace y estan ordenados
-		Enlace* nuevoEnlace = new Enlace(numeroOrigen, numeroDestino, this->datosTemporal->obtenerDestino(),
-		                                 this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->centrales);
+		Enlace* nuevoEnlace = new Enlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor(), 
+										this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor(),
+										this->datosTemporal->obtenerHora(), this->centrales);
 
 		this->enlaces->insertar(nuevoEnlace);
 
@@ -136,11 +137,10 @@ void ProcesadorLlamada::procesarLlamadas()
 {
 	while ( archivoLlamadas->chequearLlamadas() ) {
 		this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
-
+		
 		this->agregarCentral(this->datosTemporal->obtenerOrigen() );
 		this->agregarCentral(this->datosTemporal->obtenerDestino() );
-
-
+		
 		if ( this->datosTemporal->obtenerAccion() == "Inicio")
 		{
 			// Aca va el tema con el buscador de caminos
@@ -151,15 +151,15 @@ void ProcesadorLlamada::procesarLlamadas()
 				this->buscaCentralMenorPrecio();
 			}
 			this->iniciarLlamada();
-		} else
+			
+		} else if ( this->datosTemporal->obtenerAccion() == "Fin")
 		{
-			if ( this->datosTemporal->obtenerAccion() == "Fin") {
-				this->finalizarLlamada();
-			} else {
-				if ( this->datosTemporal->obtenerAccion() == "Enlace") {
-					agregarEnlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerDestino());
-				}
-			}
+			this->finalizarLlamada();
+		
+		} else if (this->datosTemporal->obtenerAccion() == "Enlace") {
+		
+			agregarEnlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
+		
 		}
-	}
+		}
 }
