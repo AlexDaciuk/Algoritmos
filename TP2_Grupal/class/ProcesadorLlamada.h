@@ -23,31 +23,12 @@ private:
 	Lista<Central*>* centrales;
 	std::string variableBusqueda;
 
+
 public:
 	/**
-	* Se crea el procesador de llamadas con sus punteros apuntando a null
+	* Se crea el procesador de llamadas con su lista de enlaces y centrales vacia
 	*/
 	ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std::string variableBusqueda);
-
-	void iniciarLlamada();
-	void finalizarLlamada();
-	/**
-	 * post:si no existe agrega la central a la lista de centrales y tambien les agrega
-	 * el interno a la lista de internos de la respectiva central
-	 * si ya existe la central no hace nada.
-	 * */
-	void agregarOrigen(int numeroCentral);
-	/**
-	 * post:si no existe agrega la central a la lista de centrales
-	 * si ya existe la central no hace nada.
-	 * */
-	void agregarDestino(int numeroCentral);
-	
-	void agregarCentral(int numeroCentral);
-
-	void buscaCentralMenorPrecio();
-
-	void buscaCentralMenorDistancia();
 
 	/**
 	 * Pre: la ruta donde se encuentra el archivo con los datos de llamadas debe existir.
@@ -55,16 +36,45 @@ public:
 	 * y fin de llamadas
 	 * */
 	void procesarLlamadas();
-	
-	Lista<Enlace*>* obtenerEnlaces();
-	
-	Lista<Central*>* obtenerCentrales();
+
 
 	/**
-	 * post:si no existe agrega la enlace a la lista de centrales
+	 * Metodos que devuelven las listas correspondientes, de enlaces o centrales
+	 */
+	Lista<Enlace*>* obtenerEnlaces();
+	Lista<Central*>* obtenerCentrales();
+
+
+private:
+
+	/**
+	 * Metodos internos para iniciar y finalizar llamadas
+	 */
+	void iniciarLlamada();
+	void finalizarLlamada();
+
+
+	/**
+	 * Post: Si no existe agrega la central a la lista de centrales
+	 * si ya existe la central no hace nada.
+	 * */
+	void agregarCentral(int numeroCentral);
+
+
+	/**
+	 * Metodos que llaman al buscador de caminos en un modo u otro, ya sea en camino de
+	 * menor precio o de menor distancia
+	 */
+	void buscaCentralMenorPrecio();
+	void buscaCentralMenorDistancia();
+
+
+	/**
+	 * Post: Si no existe agrega la enlace a la lista de centrales
 	 * si ya existe la enlace no hace nada.
 	 * */
 	void agregarEnlace(int numeroOrigen, int numeroDestino);
+
 };
 
 #endif
