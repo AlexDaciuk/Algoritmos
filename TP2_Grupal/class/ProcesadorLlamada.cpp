@@ -47,13 +47,17 @@ void ProcesadorLlamada::iniciarLlamada()
 
 	//Cambio la disponibilidad de los enlaces
 	//Cambio disponibilidad de enlaces
-	Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor() );
-	enlacesRecorridos->iniciarCursorNodo();
-
-	while( enlacesRecorridos->avanzarCursorNodo() )	{
-		enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
+	if(this->datosTemporal->obtenerOrigen() != this->datosTemporal->obtenerDestino())
+	{
+		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor() );
+		enlacesRecorridos->iniciarCursorNodo();
+	
+		while( enlacesRecorridos->avanzarCursorNodo() )	{
+			enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
+		}
 	}
 }
+
 
 void ProcesadorLlamada::finalizarLlamada()
 {
@@ -69,13 +73,19 @@ void ProcesadorLlamada::finalizarLlamada()
 	receptor->terminarLlamadaReceptor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 
 	//Cambio disponibilidad de enlaces
-	Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor()) ;
-	enlacesRecorridos->iniciarCursorNodo();
-
-	while( enlacesRecorridos->avanzarCursorNodo() ) {
-		enlacesRecorridos->obtenerCursorNodo()->eliminarLlamadaEnCurso();
+	if(this->datosTemporal->obtenerOrigen() != this->datosTemporal->obtenerDestino())
+	{
+		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor() );
+		enlacesRecorridos->iniciarCursorNodo();
+	
+		while( enlacesRecorridos->avanzarCursorNodo() )	{
+			enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
+		}
 	}
 }
+
+	
+
 
 void ProcesadorLlamada::agregarCentral(int numeroCentral)
 {
