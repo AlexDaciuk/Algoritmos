@@ -200,13 +200,14 @@ Spot* Buscador::caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual)
     }
 }
 
-void Buscador::definirEstaRuta(int centralReceptora)
+void Buscador::definirEstaRuta(int primerCentral)
 {
 	this->rutaActual->iniciarCursorNodo();
 	while((this->rutaActual->avanzarCursorNodo()) &&
- (this->rutaActual->obtenerCursorNodo()->obtenerPosicion()->obtenerNumero() != centralReceptora))
+ (this->rutaActual->obtenerCursorNodo()->obtenerPosicion()->obtenerNumero() != primerCentral))
 	{
 		Spot* spotActual = this->rutaActual->obtenerCursorNodo();
+		std::cout<<"el spot actual tiene la central"<<spotActual->obtenerPosicion()->obtenerNumero()<<"\n";
 		this->mejorCamino->insertar(spotActual->obtenerEnlaceRecorrido());
 	}
 }
@@ -313,6 +314,7 @@ void Buscador::resetDatos()
 void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActual, int centralReceptora)
 {
 	bool llegue=false;
+	int primerCentral = centralActual->obtenerNumero();
 	while(this->hayMasCaminos()) {
 		while((!spotActual->recorriTodosLosEnlaces()) && (!llegue)) {
 			
@@ -329,7 +331,7 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActua
 					if (spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora) {
 						std::cout<<"llegue\n";
 						this->definirEstePrecioYDistancia();
-						this->definirEstaRuta(centralReceptora);
+						this->definirEstaRuta(primerCentral);
 						llegue = true;
 					}
 					std::cout<<"la central de ahora es''' :"<<spotActual->obtenerPosicion()->obtenerNumero()<<"\n";
@@ -349,6 +351,7 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActua
 void Buscador::ProcesoIterativoPorDistancia(Central* centralActual, Spot* spotActual, int centralReceptora)
 {
 bool llegue=false;
+int primerCentral = centralActual->obtenerNumero();
 while(this->hayMasCaminos())
 {
 	while((!spotActual->recorriTodosLosEnlaces()) && (!llegue)) 
@@ -367,7 +370,7 @@ while(this->hayMasCaminos())
 					{
 						std::cout<<"llegue\n";
 						this->definirEstePrecioYDistancia();
-						this->definirEstaRuta( centralReceptora);
+						this->definirEstaRuta(primerCentral);
 						llegue = true;
 					}
 			}

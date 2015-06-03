@@ -177,7 +177,7 @@ private:
 	/**
 	 * Define la lista de enlaces usados para llegar de una central a otra.
 	 */
-	void definirEstaRuta(int centralReceptora);
+	void definirEstaRuta(int primerCentral);
 
 	/**
 	 * Indica si la busqueda es por precio o distancia.

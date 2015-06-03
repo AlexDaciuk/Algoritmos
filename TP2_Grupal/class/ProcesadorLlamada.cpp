@@ -51,9 +51,9 @@ void ProcesadorLlamada::iniciarLlamada()
 		
 		
 		enlacesRecorridos->iniciarCursorNodo();
+			std::cout<<"El primer enlace de la ruta es :"<<enlacesRecorridos->obtenerCursorNodo()->obtenerDestino()<<"\n";
 
 		while( enlacesRecorridos->avanzarCursorNodo() )	{
-			std::cout<<"El primer enlace de la ruta es :"<<enlacesRecorridos->obtenerCursorNodo()->obtenerDestino()<<"\n";
 			enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
 		}
 	}
@@ -150,7 +150,8 @@ void ProcesadorLlamada::procesarLlamadas()
 		if ( this->datosTemporal->obtenerAccion() == "Inicio") {
 			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
 			this->agregarCentral(this->datosTemporal->obtenerDestino() );
-
+			
+			this->recorridoTemporal->resetDatos();
 			if (this->variableBusqueda == "Distancia") {
 				this->buscaCentralMenorDistancia();
 			} else if (this->variableBusqueda == "Precio") {
