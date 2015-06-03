@@ -481,5 +481,3 @@ Buscador::~Buscador()
 	delete (this->rutaActual);
 
 }
-
-clone this paste

@@ -17,41 +17,45 @@
  *
  */
 
-class Spot{
-	
+class Spot
+{
+
 private:
-	
+
 	/**
 	 * La posicion es la central en donde estoy.
-	 * el precioHastaSpot es la distancia recorrida o el 
+	 * el precioHastaSpot es la distancia recorrida o el
 	 * precio acumulado.
 	 *
 	 */
 	int precioHastaSpot;
 	int distanciaHastaSpot;
-	
+
 	Central* posicion;
-	
+
 	Lista<Central*>* centralesVisitadas;
-	
+
 	Enlace* enlaceRecorrido;
-	
+
+	Lista<Enlace*>* enlacesARecorrer;
+
+	bool hayMasEnlaces;
 public:
 	/**
 	 *Constructor de la clase Ruta.
-	 * Pre: debo indicarle el puntero de la central correspondiente 
+	 * Pre: debo indicarle el puntero de la central correspondiente
 	 * a la posicion y el valor total del camino recorrido.
 	 * En caso de ser la primer central precioHastaSpot valdra 0.
 	 * Post: Guardara la informacion de lo indicado en las precondiciones.
 	 */
 	Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpotTemporal);
-	
+
 	/**
 	 * @brief devuelve el puntero a la central del Spot
-	 * @return 
+	 * @return
 	 */
 	Central* obtenerPosicion();
-	
+
 	/**
 	 * Pre: debo indicarle el puntero de la central a la que me dirijo y el puntero
 	 * del enlace utilizado.
@@ -59,34 +63,37 @@ public:
 	 * visitadas desde esta central.
 	 */
 	void anotarCaminoRecorrido(Central* CentralAVisitar, Enlace* enlaceRecorrido);
-	 
-    /**
-	* Post: indica si ya visite desde esta central a la CentralAVisitar
-	*/
+
+	/**
+	    * Post: indica si ya visite desde esta central a la CentralAVisitar
+	    */
 	bool visitasteLacentral(Central* CentralAVisitar);
-	
+
 	/**
 	* Post: indica el precio del recorrido hasta este spot
 	*/
 	int obtenerPrecioHastaSpot();
-	
+
 	/**
 	* Post: indica la distancia recorrida hasta el spot
 	*/
 	int obtenerDistanciaRecorrida();
-	
+
 	/**
 	* Post: indica si desde la central del spot uso ya todos los enlaces
 	*/
 	bool recorriTodosLosEnlaces();
-	
+
 	Enlace* obtenerEnlaceRecorrido();
-	
+
+	Enlace* obtenerEnlaceSiguiente();
+
+	bool VerSiHayMasEnlaces();
 	/**
 	 * Post: destruye toda la lista de caminos recorridos desde esta central
 	 */
-	 ~Spot();
-	};
+	~Spot();
+};
 
 
 #endif
