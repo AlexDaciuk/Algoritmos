@@ -22,7 +22,7 @@ Lista<Llamada*>* Interno::obtenerLlamadas()
 
 Lista<Enlace*>* Interno::devolverRecorridoLlamada( int receptorLlamadaTemporal)
 {
-	Llamada* llamadaTemporal = NULL;
+	Llamada* llamadaTemporal;
 	bool encontreLlamada = false;
 	this->llamadas->iniciarCursorNodo();
 

@@ -200,7 +200,7 @@ Spot* Buscador::caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual)
     }
 }
 
-void Buscador::definirEstaRuta(int primerCentral)
+void Buscador::definirEstaRuta()
 {
 	this->rutaActual->iniciarCursorNodo();
 	//salteo el spot de la central de llegada por como esta hecha la lista.
@@ -315,7 +315,6 @@ void Buscador::resetDatos()
 void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActual, int centralReceptora)
 {
 	bool llegue=false;
-	int primerCentral = centralActual->obtenerNumero();
 	while(this->hayMasCaminos()) {
 		while((!spotActual->recorriTodosLosEnlaces()) && (!llegue)) {
 			
@@ -332,7 +331,7 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActua
 					if (spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora) {
 						std::cout<<"llegue\n";
 						this->definirEstePrecioYDistancia();
-						this->definirEstaRuta(primerCentral);
+						this->definirEstaRuta();
 						llegue = true;
 					}
 					std::cout<<"la central de ahora es''' :"<<spotActual->obtenerPosicion()->obtenerNumero()<<"\n";
@@ -352,7 +351,6 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActua
 void Buscador::ProcesoIterativoPorDistancia(Central* centralActual, Spot* spotActual, int centralReceptora)
 {
 bool llegue=false;
-int primerCentral = centralActual->obtenerNumero();
 while(this->hayMasCaminos())
 {
 	while((!spotActual->recorriTodosLosEnlaces()) && (!llegue)) 
@@ -371,7 +369,7 @@ while(this->hayMasCaminos())
 					{
 						std::cout<<"llegue\n";
 						this->definirEstePrecioYDistancia();
-						this->definirEstaRuta(primerCentral);
+						this->definirEstaRuta();
 						llegue = true;
 					}
 			}

@@ -13,7 +13,7 @@ Llamada::Llamada (int receptorLlamadaTemporal)
 		this->horaInicioLlamadaEnCurso =0;
 		this->llamadasAnuladas = 0;
 		this->receptorLlamada = receptorLlamadaTemporal;
-		this->recorridoLlamada = NULL;
+		this->recorridoLlamada = new Lista<Enlace*>;
 	}
 }
 
@@ -50,7 +50,6 @@ void Llamada::cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal, int precioM
 		this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
 		this->duracionLlamadasHechas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
 		this->horaInicioLlamadaEnCurso = 0;
-		this->recorridoLlamada = NULL;
 	}
 }
 
@@ -61,7 +60,6 @@ void Llamada::cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal, int preci
 		this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
 		this->duracionLlamadasRecibidas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
 		this->horaInicioLlamadaEnCurso = 0;
-		this->recorridoLlamada = NULL;
 	}
 }
 
