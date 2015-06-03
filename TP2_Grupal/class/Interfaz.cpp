@@ -776,18 +776,22 @@ void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCent
 void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemente()
 {
   int totalCentrales = 0;
-  int totalLlamadasAnuladas = 0;
   int i = 0;
+	//creo la lista que voy a usar para oredenar las centrales
   Lista<Ordenar*>* ordenarCentrales = new Lista<Ordenar*>;
 	
   std::cout << "Lista de centrales ordenadas decrecientemente por numero de llamadas anuladas:\n \n";
   obtenercentrales()->iniciarCursorNodo();
 	
   while (obtenercentrales()->avanzarCursorNodo()) {
+		int totalLlamadasAnuladas = 0;
     totalCentrales++;
     Central* centralActual = obtenercentrales()->obtenerCursorNodo();
+		
+		//cuento el total de llamadas anuladas por central
     totalLlamadasAnuladas = centralActual->obtenerTotalDeLlamadasAnuladasDeInternos(centralActual->obtenerInternos());
     Ordenar* nuevaCentral = new Ordenar(centralActual->obtenerNumero(), totalLlamadasAnuladas);
+		
     ordenarCentrales->insertar(nuevaCentral);
 		 delete nuevaCentral;
   }

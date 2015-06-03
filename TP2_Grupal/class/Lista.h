@@ -32,8 +32,8 @@ template <class T> class Lista
 
   void insertar(T objeto);
   /**
-   * pre: la lista debe tener mas de un nodo.
-   * post: devuelve un puntero a la lista ordenada decrecientemente
+   * pre: hay que crear la a ordenar con la clave previamente.
+   * post: ordena la lista decrecientemeente segun una detarminada clave.
    */
   void ordenarDecrecientemente(int totalObjetos);
 
@@ -192,20 +192,26 @@ template <class T> void Lista<T>::ordenarDecrecientemente(int totalObjetos)
 {
   if (totalObjetos > 1) {
     for (int i = 0; i < totalObjetos; i++) {
+			
       Nodo<T>* ordenar = this->primerNodo;
+			
       if (ordenar->obtenerSiguiente() != NULL &&
           (ordenar->obtenerObjeto()->obtenerValorAOrdenar() <
            ordenar->obtenerSiguiente()->obtenerObjeto()->obtenerValorAOrdenar())) {
+						 
 	if (ordenar == this->primerNodo) {
+		
 	  this->primerNodo = ordenar->obtenerSiguiente();
 	  ordenar->cambiarNodoSiguiente(this->primerNodo->obtenerSiguiente());
 	  this->primerNodo->cambiarNodoAnterior(NULL);
 	  this->primerNodo->cambiarNodoSiguiente(ordenar);
 	  ordenar->cambiarNodoAnterior(this->primerNodo);
 	  ordenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar);
-	} else {
+	} 
+	else {
 	  Nodo<T>* anteriorAOrdenar = ordenar->obtenerAnterior();
 	  Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
+		
 	  if (siguienteAOrdenar != this->ultimoNodo) {
 	    anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
 	    siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
@@ -214,7 +220,8 @@ template <class T> void Lista<T>::ordenarDecrecientemente(int totalObjetos)
 	    siguienteAOrdenar->cambiarNodoSiguiente(ordenar);
 	    ordenar->cambiarNodoAnterior(siguienteAOrdenar);
 
-	  } else if (siguienteAOrdenar == this->ultimoNodo) {
+	  }
+			else if (siguienteAOrdenar == this->ultimoNodo) {
 	    ordenar->obtenerAnterior()->cambiarNodoSiguiente(this->ultimoNodo);
 	    ordenar->cambiarNodoSiguiente(NULL);
 	    ordenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar->obtenerAnterior());
