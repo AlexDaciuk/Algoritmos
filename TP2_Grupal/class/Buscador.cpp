@@ -324,6 +324,7 @@ Enlace* Buscador::PosicionarEnUltimoEnlaceVisitadoDela(Lista<Enlace*>* enlacesDe
 			enlaceActual = enlacesDelSpot->obtenerCursorNodo();
 			if((enlaceActual->obtenerDestino() == posicionEnlace->obtenerDestino()) &&
 				(enlaceActual->obtenerOrigen() == posicionEnlace->obtenerOrigen()))
+					mePosicione= true;
         }
 	}
 	else
