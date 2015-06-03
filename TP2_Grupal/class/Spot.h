@@ -90,7 +90,7 @@ public:
 
 	bool VerSiHayMasEnlaces();
 	
-	void posicionarmeEnUltimoEnlace();
+	Enlace* posicionarmeEnUltimoEnlace();
 	/**
 	 * Post: destruye toda la lista de caminos recorridos desde esta central
 	 */

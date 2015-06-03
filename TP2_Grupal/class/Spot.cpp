@@ -79,8 +79,7 @@ Enlace* Spot::obtenerEnlaceRecorrido()
 
 Enlace* Spot::obtenerEnlaceSiguiente()
 {
-	this->posicionarmeEnUltimoEnlace();
-	return(this->enlacesARecorrer->obtenerCursorNodo());
+	return(this->posicionarmeEnUltimoEnlace());
 }
 
 bool Spot::VerSiHayMasEnlaces()
@@ -88,19 +87,30 @@ bool Spot::VerSiHayMasEnlaces()
 	return(this->enlacesARecorrer->avanzarCursorNodo());
 }
 
-void Spot::posicionarmeEnUltimoEnlace()
+Enlace* Spot::posicionarmeEnUltimoEnlace()
 {
 	bool mePosicione = false;
-	Enlace* posicionEnlace = spotActual->obtenerEnlaceRecorrido();
+	Enlace* posicionEnlace;
+	Enlace* enlaceActual;
 	Lista<Enlace*>* enlacesDelSpot = this->obtenerPosicion()->obtenerEnlaces();
-	enlacesDelSpot->iniciarCursorNodo();
-	while((enlacesDelSpot->avanzarCursorNodo()) && (!mePosicione))
+	if(this->obtenerEnlaceRecorrido() != NULL)
 	{
-		Enlace* enlaceActual = enlacesDelSpot->obtenerCursorNodo();
-		if((enlaceActual->obtenerDestino() == posicionEnlace->obtenerDestino()) &&
-		(enlaceActual->obtenerOrigen() == posicionEnlace->obtenerOrigen()))
-				mePosicione = true;
+		posicionEnlace = this->obtenerEnlaceRecorrido();
+		enlacesDelSpot->iniciarCursorNodo();
+		while((enlacesDelSpot->avanzarCursorNodo()) && (!mePosicione))
+		{
+			 enlaceActual = enlacesDelSpot->obtenerCursorNodo();
+			if((enlaceActual->obtenerDestino() == posicionEnlace->obtenerDestino()) &&
+			(enlaceActual->obtenerOrigen() == posicionEnlace->obtenerOrigen()))
+					mePosicione = true;
+		}
 	}
+	else
+	{
+		enlacesDelSpot->iniciarCursorNodo();
+		enlacesDelSpot->avanzarCursorNodo();
+	}
+	return enlacesDelSpot->obtenerCursorNodo();
 }
 
 Spot::~Spot()
