@@ -10,239 +10,232 @@
 
 template <class T> class Lista
 {
-  private:
-  Nodo<T>* primerNodo;
-  Nodo<T>* ultimoNodo;
-  Nodo<T>* cursorNodo;
+private:
+	Nodo<T>* primerNodo;
+	Nodo<T>* ultimoNodo;
+	Nodo<T>* cursorNodo;
 
-  public:
-  /**
-   * Constructor de la clase Lista
-   * Post: Queda creada la lista con los punteros correspondientes al primer y
-   *  y ultimo nodo apuntando a NULL
-   */
+public:
+	/**
+	 * Constructor de la clase Lista
+	 * Post: Queda creada la lista con los punteros correspondientes al primer y
+	 *  y ultimo nodo apuntando a NULL
+	 */
 
-  Lista();
+	Lista();
 
-  /**
-   * Inserta un nuevo nodo en el primer lugar de la lista
-   * Pre: Tiene que existir la lista
-   * Post: Queda creado y posicionado el nodo
-   */
+	/**
+	 * Inserta un nuevo nodo en el primer lugar de la lista
+	 * Pre: Tiene que existir la lista
+	 * Post: Queda creado y posicionado el nodo
+	 */
 
-  void insertar(T objeto);
-  /**
-   * pre: hay que crear la a ordenar con la clave previamente.
-   * post: ordena la lista decrecientemeente segun una detarminada clave.
-   */
-  void ordenarDecrecientemente(int totalObjetos);
+	void insertar(T objeto);
+	/**
+	 * pre: hay que crear la a ordenar con la clave previamente.
+	 * post: ordena la lista decrecientemeente segun una detarminada clave.
+	 */
+	void ordenarDecrecientemente(int totalObjetos);
 
-  /**
-   * Devuelve el puntero a un objeto en especial dentro de la lista
-   * Post: El puntero apunta al objeto si existiese y a NULL si no existe
-   */
+	/**
+	 * Devuelve el puntero a un objeto en especial dentro de la lista
+	 * Post: El puntero apunta al objeto si existiese y a NULL si no existe
+	 */
+	Nodo<T>* obtenerPunteroAlObjeto(int numeroDeObjeto);
 
-  Nodo<T>* obtenerPunteroAlObjeto(int numeroDeObjeto);
+	Nodo<T>* obtenerPunteroAlObjeto();
 
-  /**
-   * pre: numeroDeObjeto pertenece a la Lista en la que se busca.
-   * post: Pone primero en la lista al objeto indicado en el parametro
-   */
+	/**
+	 * pre: numeroDeObjeto pertenece a la Lista en la que se busca.
+	 * post: Pone primero en la lista al objeto indicado en el parametro
+	 */
 
-  void ponerPrimero(int numeroDeObjeto);
+	void ponerPrimero(int numeroDeObjeto);
 
-  /**
-   * pre : numeroDeObjeto pertenece a la Lista en la que se busca.
-   * post: remueve de la Lista el elemento en la posición indicada.
-   */
+	/**
+	 * pre : numeroDeObjeto pertenece a la Lista en la que se busca.
+	 * post: remueve de la Lista el elemento en la posición indicada.
+	 */
 
-  void remover();
+	void remover();
 
-  /**
-   * Devuelve el objeto al cual esta apuntando el cursor siempre y cuando
-   * no este apuntando a un objeto inexistente
-   */
+	/**
+	 * Devuelve el objeto al cual esta apuntando el cursor siempre y cuando
+	 * no este apuntando a un objeto inexistente
+	 */
 
-  T obtenerCursorNodo();
+	T obtenerCursorNodo();
 
-  /**
-   * Mueve el cursor al siguiente nodo
-   *
-   * Pre: Se ha iniciado un recorrido (invocando al metodo iniciarCursor) y desde entonces
-   * no se han agregado o removido elementos de la lista
-   *
-   * Post: El cursor apunta al siguiente elemento, si no existiese el metodo devuelve false
-   *
-   */
+	/**
+	 * Mueve el cursor al siguiente nodo
+	 *
+	 * Pre: Se ha iniciado un recorrido (invocando al metodo iniciarCursor) y desde entonces
+	 * no se han agregado o removido elementos de la lista
+	 *
+	 * Post: El cursor apunta al siguiente elemento, si no existiese el metodo devuelve false
+	 *
+	 */
 
-  bool avanzarCursorNodo();
+	bool avanzarCursorNodo();
 
-  /**
-   * Idem avanzarCursorNodo pero recorre la lista al revez
-   */
+	/**
+	 * Idem avanzarCursorNodo pero recorre la lista al revez
+	 */
 
-  bool avanzarCursorPorElFinal();
+	bool avanzarCursorPorElFinal();
 
-  /**
-   * Crea un cursor y lo apunta a NULL para poder hacer un recorrido de la lista
-   */
+	/**
+	 * Crea un cursor y lo apunta a NULL para poder hacer un recorrido de la lista
+	 */
 
-  void iniciarCursorNodo();
+	void iniciarCursorNodo();
 
-  ~Lista();
+	~Lista();
 };
 
 template <class T> Lista<T>::Lista()
 {
-  this->primerNodo = NULL;
-  this->ultimoNodo = NULL;
+	this->primerNodo = NULL;
+	this->ultimoNodo = NULL;
 }
 
 template <class T> void Lista<T>::insertar(T objeto)
 {
-  Nodo<T>* nuevoNodo = new Nodo<T>(objeto);
+	Nodo<T>* nuevoNodo = new Nodo<T>(objeto);
 
-  if (this->ultimoNodo != NULL) {
-    nuevoNodo->cambiarNodoSiguiente(this->primerNodo);
-    this->primerNodo->cambiarNodoAnterior(nuevoNodo);
-    this->primerNodo = nuevoNodo;
-  } else {
-    this->primerNodo = nuevoNodo;
-    this->ultimoNodo = nuevoNodo;
-  }
+	if (this->ultimoNodo != NULL) {
+		nuevoNodo->cambiarNodoSiguiente(this->primerNodo);
+		this->primerNodo->cambiarNodoAnterior(nuevoNodo);
+		this->primerNodo = nuevoNodo;
+	} else {
+		this->primerNodo = nuevoNodo;
+		this->ultimoNodo = nuevoNodo;
+	}
 }
 
 template <class T> Nodo<T>* Lista<T>::obtenerPunteroAlObjeto(int numeroDeObjeto)
 {
-  Nodo<T>* cursor = this->primerNodo;
+	Nodo<T>* cursor = this->primerNodo;
 
-  while ((cursor->obtenerObjeto()->obtenerNumero() != numeroDeObjeto) && (cursor != NULL))
-    cursor = cursor->obtenerSiguiente();
+	while ((cursor->obtenerObjeto()->obtenerNumero() != numeroDeObjeto) && (cursor != NULL))
+		cursor = cursor->obtenerSiguiente();
 
-  return cursor;
+	return cursor;
+}
+
+template<class T> Nodo<T>* Lista<T>::obtenerPunteroAlObjeto()
+{
+	return (this->cursorNodo);
 }
 
 template <class T> void Lista<T>::ponerPrimero(int numeroDeObjeto)
 {
-  Nodo<T>* cursor = obtenerPunteroAlObjeto(numeroDeObjeto);
+	Nodo<T>* cursor = obtenerPunteroAlObjeto(numeroDeObjeto);
 
-  Nodo<T>* cursorAnterior = cursor->obtenerAnterior();
+	Nodo<T>* cursorAnterior = cursor->obtenerAnterior();
 
-  Nodo<T>* cursorSiguiente = cursor->obtenerSiguiente();
+	Nodo<T>* cursorSiguiente = cursor->obtenerSiguiente();
 
-  cursorAnterior->cambiarNodoSiguiente(cursorSiguiente);
-  cursorSiguiente->cambiarNodoAnterior(cursorAnterior);
-  cursor->cambiarNodoAnterior(NULL);
-  cursor->cambiarNodoSiguiente(this->primerNodo);
-  this->primerNodo->cambiarNodoAnterior(cursor);
+	cursorAnterior->cambiarNodoSiguiente(cursorSiguiente);
+	cursorSiguiente->cambiarNodoAnterior(cursorAnterior);
+	cursor->cambiarNodoAnterior(NULL);
+	cursor->cambiarNodoSiguiente(this->primerNodo);
+	this->primerNodo->cambiarNodoAnterior(cursor);
 }
 
-template <class T> void Lista<T>::remover()
+template<class T> void Lista<T>::remover()
 {
+	Nodo<T>* removido = this->primerNodo;
+	Nodo<T>* siguiente = removido->obtenerSiguiente();
+	this->primerNodo = siguiente;
+	siguiente->cambiarNodoAnterior(NULL);
 
-  Nodo<T>* removido = this->cursorNodo;
-  Nodo<T>* anterior = removido->obtenerAnterior();
-  Nodo<T>* siguiente = removido->obtenerSiguiente();
-  if ((siguiente != NULL) && (anterior != NULL)) {
-    anterior->cambiarNodoSiguiente(siguiente);
-    siguiente->cambiarNodoAnterior(anterior);
-  }
-  if (siguiente == NULL)
-    anterior->cambiarNodoSiguiente(siguiente);
-
-  else
-    siguiente->cambiarNodoAnterior(anterior);
-
-  delete removido;
-  /* cualquier recorrido actual queda invalidado */
-  this->iniciarCursorNodo();
+	delete removido;
 }
 
 template <class T> void Lista<T>::iniciarCursorNodo()
 {
-  this->cursorNodo = NULL;
+	this->cursorNodo = NULL;
 }
 
 template <class T> bool Lista<T>::avanzarCursorNodo()
 {
-  if (this->cursorNodo == NULL) {
-    this->cursorNodo = primerNodo;
-  } else {
-    this->cursorNodo = this->cursorNodo->obtenerSiguiente();
-  }
-  return (this->cursorNodo != NULL);
+	if (this->cursorNodo == NULL) {
+		this->cursorNodo = primerNodo;
+	} else {
+		this->cursorNodo = this->cursorNodo->obtenerSiguiente();
+	}
+	return (this->cursorNodo != NULL);
 }
 
 template <class T> bool Lista<T>::avanzarCursorPorElFinal()
 {
-  if (this->cursorNodo == NULL) {
-    this->cursorNodo = ultimoNodo;
-  } else {
-    this->cursorNodo = this->cursorNodo->obtenerAnterior();
-  }
-  return (this->cursorNodo != NULL);
+	if (this->cursorNodo == NULL) {
+		this->cursorNodo = ultimoNodo;
+	} else {
+		this->cursorNodo = this->cursorNodo->obtenerAnterior();
+	}
+	return (this->cursorNodo != NULL);
 }
 
 template <class T> T Lista<T>::obtenerCursorNodo()
 {
-  return this->cursorNodo->obtenerObjeto();
+	return this->cursorNodo->obtenerObjeto();
 }
 
 template <class T> void Lista<T>::ordenarDecrecientemente(int totalObjetos)
 {
-  if (totalObjetos > 1) {
-    for (int i = 0; i < totalObjetos; i++) {
-			
-      Nodo<T>* ordenar = this->primerNodo;
-			
-      if (ordenar->obtenerSiguiente() != NULL &&
-          (ordenar->obtenerObjeto()->obtenerValorAOrdenar() <
-           ordenar->obtenerSiguiente()->obtenerObjeto()->obtenerValorAOrdenar())) {
-						 
-	if (ordenar == this->primerNodo) {
-		
-	  this->primerNodo = ordenar->obtenerSiguiente();
-	  ordenar->cambiarNodoSiguiente(this->primerNodo->obtenerSiguiente());
-	  this->primerNodo->cambiarNodoAnterior(NULL);
-	  this->primerNodo->cambiarNodoSiguiente(ordenar);
-	  ordenar->cambiarNodoAnterior(this->primerNodo);
-	  ordenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar);
-	} 
-	else {
-	  Nodo<T>* anteriorAOrdenar = ordenar->obtenerAnterior();
-	  Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
-		
-	  if (siguienteAOrdenar != this->ultimoNodo) {
-	    anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
-	    siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
-	    siguienteAOrdenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar);
-	    ordenar->cambiarNodoSiguiente(siguienteAOrdenar->obtenerSiguiente());
-	    siguienteAOrdenar->cambiarNodoSiguiente(ordenar);
-	    ordenar->cambiarNodoAnterior(siguienteAOrdenar);
+	if (totalObjetos > 1) {
+		for (int i = 0; i < totalObjetos; i++) {
 
-	  }
-			else if (siguienteAOrdenar == this->ultimoNodo) {
-	    ordenar->obtenerAnterior()->cambiarNodoSiguiente(this->ultimoNodo);
-	    ordenar->cambiarNodoSiguiente(NULL);
-	    ordenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar->obtenerAnterior());
-	    ordenar->cambiarNodoAnterior(this->ultimoNodo);
-	    this->ultimoNodo->cambiarNodoSiguiente(ordenar);
-	    this->ultimoNodo = ordenar;
-	  }
-	  ordenar = ordenar->obtenerSiguiente();
+			Nodo<T>* ordenar = this->primerNodo;
+
+			if (ordenar->obtenerSiguiente() != NULL &&
+			    (ordenar->obtenerObjeto()->obtenerValorAOrdenar() <
+			     ordenar->obtenerSiguiente()->obtenerObjeto()->obtenerValorAOrdenar())) {
+
+				if (ordenar == this->primerNodo) {
+
+					this->primerNodo = ordenar->obtenerSiguiente();
+					ordenar->cambiarNodoSiguiente(this->primerNodo->obtenerSiguiente());
+					this->primerNodo->cambiarNodoAnterior(NULL);
+					this->primerNodo->cambiarNodoSiguiente(ordenar);
+					ordenar->cambiarNodoAnterior(this->primerNodo);
+					ordenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar);
+				} else {
+					Nodo<T>* anteriorAOrdenar = ordenar->obtenerAnterior();
+					Nodo<T>* siguienteAOrdenar = ordenar->obtenerSiguiente();
+
+					if (siguienteAOrdenar != this->ultimoNodo) {
+						anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
+						siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
+						siguienteAOrdenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar);
+						ordenar->cambiarNodoSiguiente(siguienteAOrdenar->obtenerSiguiente());
+						siguienteAOrdenar->cambiarNodoSiguiente(ordenar);
+						ordenar->cambiarNodoAnterior(siguienteAOrdenar);
+
+					} else if (siguienteAOrdenar == this->ultimoNodo) {
+						ordenar->obtenerAnterior()->cambiarNodoSiguiente(this->ultimoNodo);
+						ordenar->cambiarNodoSiguiente(NULL);
+						ordenar->obtenerSiguiente()->cambiarNodoAnterior(ordenar->obtenerAnterior());
+						ordenar->cambiarNodoAnterior(this->ultimoNodo);
+						this->ultimoNodo->cambiarNodoSiguiente(ordenar);
+						this->ultimoNodo = ordenar;
+					}
+					ordenar = ordenar->obtenerSiguiente();
+				}
+			}
+		}
 	}
-      }
-    }
-  }
 }
-  template <class T> Lista<T>::~Lista()
-  {
-    while (this->primerNodo != NULL) {
-      Nodo<T>* aBorrar = this->primerNodo;
-      this->primerNodo = this->primerNodo->obtenerSiguiente();
+template <class T> Lista<T>::~Lista()
+{
+	while (this->primerNodo != NULL) {
+		Nodo<T>* aBorrar = this->primerNodo;
+		this->primerNodo = this->primerNodo->obtenerSiguiente();
 
-      delete aBorrar;
-    }
-  }
+		delete aBorrar;
+	}
+}
 
 #endif
