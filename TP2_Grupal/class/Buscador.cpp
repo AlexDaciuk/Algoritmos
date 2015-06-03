@@ -176,7 +176,6 @@ Spot* Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual, int& ce
 
 				std::cout<<"La siguiente central es :"<<centralNueva->obtenerNumero()<<"   El precio nuevo :"<<nuevoPrecio<<"\n";
 				int algo;
-				std::cin>>algo;
 				return spotNuevo;
 			}
 		} else {
@@ -191,7 +190,6 @@ Spot* Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual, int& ce
 
 				std::cout<<"La siguiente central es** :"<<centralNueva->obtenerNumero()<<"   El precio nuevo** :"<<nuevoPrecio<<"\n";
 				int algo;
-				std::cin>>algo;
 				return spotNuevo;
 			}
 		}
