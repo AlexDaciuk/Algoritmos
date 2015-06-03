@@ -1,7 +1,7 @@
 #include "Enlace.h"
 
 
-Enlace::Enlace(int origenTemporal, int destinoTemporal, int distanciaTemporal, int cantidadCanalesTemporal, int CostoPorMinutoTemporal, Lista<Central*>* centralesTemporal)
+Enlace::Enlace(int origenTemporal, int destinoTemporal, int distanciaTemporal,int CostoPorMinutoTemporal, int cantidadCanalesTemporal, Lista<Central*>* centralesTemporal)
 {
 	this->cantidadDeCanales = cantidadCanalesTemporal;
 	this->distanciaKm = distanciaTemporal;
