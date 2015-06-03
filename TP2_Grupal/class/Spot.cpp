@@ -68,6 +68,7 @@ bool Spot::recorriTodosLosEnlaces()
 				losRecorri = false;
 		}
 	}
+	this->posicionarmeEnUltimoEnlace();
 	return (losRecorri);
 }
 
@@ -78,12 +79,28 @@ Enlace* Spot::obtenerEnlaceRecorrido()
 
 Enlace* Spot::obtenerEnlaceSiguiente()
 {
+	this->posicionarmeEnUltimoEnlace();
 	return(this->enlacesARecorrer->obtenerCursorNodo());
 }
 
 bool Spot::VerSiHayMasEnlaces()
 {
 	return(this->enlacesARecorrer->avanzarCursorNodo());
+}
+
+void Spot::posicionarmeEnUltimoEnlace()
+{
+	bool mePosicione = false;
+	Enlace* posicionEnlace = spotActual->obtenerEnlaceRecorrido();
+	Lista<Enlace*>* enlacesDelSpot = this->obtenerPosicion()->obtenerEnlaces();
+	enlacesDelSpot->iniciarCursorNodo();
+	while((enlacesDelSpot->avanzarCursorNodo()) && (!mePosicione))
+	{
+		Enlace* enlaceActual = enlacesDelSpot->obtenerCursorNodo();
+		if((enlaceActual->obtenerDestino() == posicionEnlace->obtenerDestino()) &&
+		(enlaceActual->obtenerOrigen() == posicionEnlace->obtenerOrigen()))
+				mePosicione = true;
+	}
 }
 
 Spot::~Spot()

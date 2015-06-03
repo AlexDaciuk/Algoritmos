@@ -97,7 +97,7 @@ Interno* Buscador::encontrarInternoEnLa(Central* central, int numeroDeInterno)
 void Buscador::definirEstePrecioYDistancia()
 {
 	this->rutaActual->iniciarCursorNodo();
-	if(this->rutaActual->avanzarCursorPorElFinal()) {
+	if(this->rutaActual->avanzarCursor()) {
 		this->precioDeLaLlamada = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
 		this->distanciaDeLaLlamada = this->rutaActual->obtenerCursorNodo()->obtenerDistanciaRecorrida();
 	} else {
@@ -311,13 +311,35 @@ void Buscador::resetDatos()
 	this->llamadaAnulada = false;
 }
 
+Enlace* Buscador::PosicionarEnUltimoEnlaceVisitadoDela(Lista<Enlace*>* enlacesDelSpot, Spot* spotActual)
+{
+	bool mePosicione = false;
+	Enlace* enlaceActual;
+	if(spotActual->obtenerEnlaceRecorrido() != NULL)
+	{
+        Enlace* posicionEnlace = spotActual->obtenerEnlaceRecorrido();
+        enlacesDelSpot->iniciarCursorNodo();
+        while((enlacesDelSpot->avanzarCursorNodo()) && (!mePosicione))
+        {
+			enlaceActual = enlacesDelSpot->obtenerCursorNodo();
+			if((enlaceActual->obtenerDestino() == posicionEnlace->obtenerDestino()) &&
+				(enlaceActual->obtenerOrigen() == posicionEnlace->obtenerOrigen()))
+        }
+	}
+	else
+	{
+		enlacesDelSpot->iniciarCursorNodo();
+		enlacesDelSpot->avanzarCursorNodo();
+		enlaceActual = enlacesDelSpot->obtenerCursorNodo();
+	}
+	return enlaceActual;
+}
 
 void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActual, int centralReceptora)
 {
 	bool llegue=false;
 	while(this->hayMasCaminos()) {
 		while((!spotActual->recorriTodosLosEnlaces()) && (!llegue)) {
-			
 			std::cout<<"la central de ahora es :"<<spotActual->obtenerPosicion()->obtenerNumero()<<"\n";
 			if(centralActual->obtenerNumero() != centralReceptora) {
 				int buscoMejorValor = spotActual->obtenerPrecioHastaSpot();
@@ -326,7 +348,8 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActua
 				if((precioActual > buscoMejorValor) || (precioActual == 0)) {
 					if((!spotActual->recorriTodosLosEnlaces()) && (spotActual->VerSiHayMasEnlaces())) 
 					{
-							spotActual = this->caminarPorPrecio(spotActual->obtenerEnlaceSiguiente(), spotActual);
+						this->PosicionarEnUltimoEnlaceVisitadoDela(spotActual->obtenerPosicion()->obtenerEnlaces(), spotActual);
+						spotActual = this->caminarPorPrecio(spotActual->obtenerEnlaceSiguiente(), spotActual);
 					}
 					if (spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora) {
 						std::cout<<"llegue\n";
@@ -342,6 +365,7 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActua
 
 		this->borrarUnSpot();//el cursor esta al final
 		Spot* spotActual = this->rutaActual->obtenerCursorNodo();
+
 		std::cout<<"la central de ahora es :"<<spotActual->obtenerPosicion()->obtenerNumero()<<"\n";
 	}
 	if(this->obtenerRuta() == NULL)
@@ -363,6 +387,7 @@ while(this->hayMasCaminos())
 			{
 				if((!spotActual->recorriTodosLosEnlaces()) && (spotActual->VerSiHayMasEnlaces()))
 				{
+					this->PosicionarEnUltimoEnlaceVisitadoDela(spotActual->obtenerPosicion()->obtenerEnlaces(), spotActual);
 					spotActual = this->caminarPorDistancia(spotActual->obtenerEnlaceSiguiente(), spotActual);
 				}
 				if (spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora) 
@@ -378,6 +403,7 @@ while(this->hayMasCaminos())
 	}
 	this->borrarUnSpot();//el cursor esta al final
 		Spot* spotActual = this->rutaActual->obtenerCursorNodo();
+
 		std::cout<<"la central de ahora es :"<<spotActual->obtenerPosicion()->obtenerNumero()<<"\n";
 }
 if(this->obtenerRuta() == NULL)

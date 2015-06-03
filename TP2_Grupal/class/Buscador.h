@@ -226,6 +226,6 @@ private:
 	void ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActual, int centralReceptora);
 	
 	void ProcesoIterativoPorDistancia(Central* centralActual, Spot* spotActual, int centralReceptora);
-	//void PosicionarEnUltimoEnlaceVisitadoDela(Lista<Enlace*>* enlacesDelSpot, Spot* spotActual);
+	Enlace* PosicionarEnUltimoEnlaceVisitadoDela(Lista<Enlace*>* enlacesDelSpot, Spot* spotActual);
 };
 #endif
