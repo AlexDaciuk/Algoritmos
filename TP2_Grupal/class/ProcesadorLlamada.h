@@ -45,6 +45,12 @@ public:
 	Lista<Central*>* obtenerCentrales();
 
 
+	/**
+	 * Destructor de la clase procesador llamada
+	 */
+	~ProcesadorLlamada();
+
+
 private:
 
 	/**
