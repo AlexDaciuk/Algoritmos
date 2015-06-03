@@ -487,7 +487,7 @@ void Interfaz::internoQueMasGastoPorCentralYGeneral()
 		int maximoGastoEnLaCentral = 0;
 
 		std::cout << "De la central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero()
-		          << " el interno que mas llamo fue:";
+		          << " el interno que mas gasto fue:";
 
 		internoQueMasGastoEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),
 		                               maximoGastoEnLaCentral,
