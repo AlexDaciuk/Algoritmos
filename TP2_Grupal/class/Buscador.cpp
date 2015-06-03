@@ -97,7 +97,7 @@ Interno* Buscador::encontrarInternoEnLa(Central* central, int numeroDeInterno)
 void Buscador::definirEstePrecioYDistancia()
 {
 	this->rutaActual->iniciarCursorNodo();
-	if(this->rutaActual->avanzarCursor()) {
+	if(this->rutaActual->avanzarCursorNodo()) {
 		this->precioDeLaLlamada = this->rutaActual->obtenerCursorNodo()->obtenerPrecioHastaSpot();
 		this->distanciaDeLaLlamada = this->rutaActual->obtenerCursorNodo()->obtenerDistanciaRecorrida();
 	} else {
