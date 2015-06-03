@@ -1,5 +1,5 @@
 #include "Llamada.h"
-
+#include <iostream>
 
 Llamada::Llamada (int receptorLlamadaTemporal)
 {
@@ -47,6 +47,8 @@ void Llamada::empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista
 void Llamada::cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal, int precioMinuto)
 {
 	if (this->horaInicioLlamadaEnCurso != 0) {
+		std::cout << "El receptor era : " << this->obtenerReceptorLlamada() << "\n";
+		std::cout << "El costo del minuto emisor fue " << precioMinuto << "\n";
 		this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
 		this->duracionLlamadasHechas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
 		this->horaInicioLlamadaEnCurso = 0;
@@ -57,6 +59,7 @@ void Llamada::cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal, int precioM
 void Llamada::cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal, int precioMinuto)
 {
 	if (this->horaInicioLlamadaEnCurso != 0) {
+		std::cout << "El costo del minuto receptor fue " << precioMinuto << "\n";
 		this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
 		this->duracionLlamadasRecibidas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
 		this->horaInicioLlamadaEnCurso = 0;
