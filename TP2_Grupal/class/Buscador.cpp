@@ -203,11 +203,12 @@ Spot* Buscador::caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual)
 void Buscador::definirEstaRuta(int primerCentral)
 {
 	this->rutaActual->iniciarCursorNodo();
-	while((this->rutaActual->avanzarCursorNodo()) &&
- (this->rutaActual->obtenerCursorNodo()->obtenerPosicion()->obtenerNumero() != primerCentral))
+	//salteo el spot de la central de llegada por como esta hecha la lista.
+	this->rutaActual->avanzarCursorNodo();
+	while(this->rutaActual->avanzarCursorNodo())
 	{
 		Spot* spotActual = this->rutaActual->obtenerCursorNodo();
-		std::cout<<"el spot actual tiene la central"<<spotActual->obtenerPosicion()->obtenerNumero()<<"\n";
+		std::cout<<"el spot actual tiene la central"<<spotActual->obtenerEnlaceRecorrido()->obtenerDestino()<<"\n";
 		this->mejorCamino->insertar(spotActual->obtenerEnlaceRecorrido());
 	}
 }
