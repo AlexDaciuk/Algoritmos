@@ -94,7 +94,6 @@ void ProcesadorLlamada::agregarCentral(int numeroCentral)
 	if (! encontro) {
 		Central* nuevaCentral= new Central(numeroCentral) ;
 		this->centrales->insertar(nuevaCentral);
-
 	}
 }
 
@@ -167,4 +166,11 @@ void ProcesadorLlamada::procesarLlamadas()
 
 		}
 	}
+}
+
+ProcesadorLlamada::~ProcesadorLlamada()
+{
+	delete(this->enlaces);
+	delete(this->centrales);
+	delete(this->recorridoTemporal);
 }
