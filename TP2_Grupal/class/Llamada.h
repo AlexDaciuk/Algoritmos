@@ -13,7 +13,8 @@ class Enlace;
 class Llamada
 {
 private:
-	int  cantidadLlamadasRecibidas, llamadasAnuladas, cantidadLlamadasHechas, duracionLlamadasHechas, duracionLlamadasRecibidas, cantidadOcupadosDados, cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas;
+	int  cantidadLlamadasRecibidas, llamadasAnuladas, cantidadLlamadasHechas, duracionLlamadasHechas, duracionLlamadasRecibidas, cantidadOcupadosDados,
+	     cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas, precioPorMinuto;
 	Lista<Enlace*>* recorridoLlamada;
 
 public:
@@ -29,16 +30,16 @@ public:
 	 * Guarda la hora de comienzo de la llamada y aumeta el numero de
 	 * llamadas en uno.
 	 */
-	void empezarLlamadaEmisor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada);
-	void empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada);
+	void empezarLlamadaEmisor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada,int precioPorMinuto );
+	void empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada,int precioPorMinuto);
 
 
 	/**
 	 * Calcula la duracion de la llamada y vuelve a poner el horario de inicio
 	 * en cero.
 	 */
-	void cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal, int precioMinuto);
-	void cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal, int precioMinuto);
+	void cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal);
+	void cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal);
 
 
 	/**

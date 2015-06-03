@@ -62,40 +62,40 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal)
 }
 
 
-void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada)
+void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto)
 {
 	// Me fijo si la llamada esta creada, sino, la creo
 	Llamada* llamadaTemporal = creaReceptorLlamada(receptorTemporal);
 
 	if (! this->internoOcupado() && ! fueAnulada ) {
-		llamadaTemporal->empezarLlamadaEmisor(horaTemporal, recorridoLlamadaTemporal, fueAnulada);
+		llamadaTemporal->empezarLlamadaEmisor(horaTemporal, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
 	} else if ( this->internoOcupado() || fueAnulada ) {
 		// Si recibio un ocupado o fue anulada, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
-		llamadaTemporal->empezarLlamadaEmisor(0, recorridoLlamadaTemporal, fueAnulada);
+		llamadaTemporal->empezarLlamadaEmisor(0, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
 		llamadaTemporal->agregarOcupadoRecibido();
 	}
 }
 
 
-void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal,  Lista<Enlace*>* recorridoLlamadaTemporal,  bool fueAnulada )
+void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal,  Lista<Enlace*>* recorridoLlamadaTemporal,  bool fueAnulada, int precioPorMinuto )
 {
 	// Me fijo si la llamada con el receptor esta creada, sino, la creo
 	Llamada* llamadaTemporal = creaReceptorLlamada(emisorTemporal);
 
 	if (! this->internoOcupado() && ! fueAnulada ) {
-		llamadaTemporal->empezarLlamadaReceptor(horaTemporal, recorridoLlamadaTemporal, fueAnulada);
+		llamadaTemporal->empezarLlamadaReceptor(horaTemporal, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
 		this->estaOcupado = true;
 	} else if ( this->internoOcupado() || fueAnulada ) {
 		// Si dio un ocupado o fue anulada, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
-		llamadaTemporal->empezarLlamadaReceptor(0, recorridoLlamadaTemporal, fueAnulada);
+		llamadaTemporal->empezarLlamadaReceptor(0, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
 		llamadaTemporal->agregarOcupadoDado();
 	}
 }
 
 
-void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int precioMinutoTemporal )
+void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal )
 {
 	this->llamadas->iniciarCursorNodo();
 	bool encontroLlamada = false;
@@ -106,13 +106,13 @@ void Interno::terminarLlamadaEmisor(int receptorTemporal, int horaTemporal, int 
 		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == receptorTemporal;
 	}
 
-	llamadaTemporal->cortarLlamadaEmisor(horaTemporal, precioMinutoTemporal);
+	llamadaTemporal->cortarLlamadaEmisor(horaTemporal);
 
 	this->estaOcupado = false;
 }
 
 
-void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int precioMinutoTemporal )
+void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal )
 {
 	this->llamadas->iniciarCursorNodo();
 	bool encontroLlamada = false;
@@ -123,7 +123,7 @@ void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal, int 
 		encontroLlamada = llamadaTemporal->obtenerReceptorLlamada() == emisorTemporal;
 	}
 
-	llamadaTemporal->cortarLlamadaReceptor(horaTemporal, precioMinutoTemporal);
+	llamadaTemporal->cortarLlamadaReceptor(horaTemporal);
 
 	this->estaOcupado = false;
 }

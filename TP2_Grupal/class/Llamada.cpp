@@ -14,16 +14,18 @@ Llamada::Llamada (int receptorLlamadaTemporal)
 		this->llamadasAnuladas = 0;
 		this->receptorLlamada = receptorLlamadaTemporal;
 		this->recorridoLlamada = new Lista<Enlace*>;
+		this->precioPorMinuto = 0;
 	}
 }
 
 
-void Llamada::empezarLlamadaEmisor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada)
+void Llamada::empezarLlamadaEmisor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto)
 {
 	if (! fueAnulada) {
 		this->cantidadLlamadasHechas++;
 		this->horaInicioLlamadaEnCurso = horaInicioLlamadaEnCursoTemporal;
 		this->recorridoLlamada = recorridoLlamadaTemporal;
+		this->precioPorMinuto = precioPorMinuto;
 	} else {
 		this->horaInicioLlamadaEnCurso=0;
 		this->llamadasAnuladas++;
@@ -31,12 +33,13 @@ void Llamada::empezarLlamadaEmisor(int horaInicioLlamadaEnCursoTemporal, Lista<E
 }
 
 
-void Llamada::empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada)
+void Llamada::empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto)
 {
 	if (! fueAnulada) {
 		this->cantidadLlamadasRecibidas++;
 		this->horaInicioLlamadaEnCurso = horaInicioLlamadaEnCursoTemporal;
 		this->recorridoLlamada = recorridoLlamadaTemporal;
+		this->precioPorMinuto = precioPorMinuto;
 	} else {
 		this->horaInicioLlamadaEnCurso = 0;
 		this->llamadasAnuladas++;
@@ -44,23 +47,19 @@ void Llamada::empezarLlamadaReceptor(int horaInicioLlamadaEnCursoTemporal, Lista
 }
 
 
-void Llamada::cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal, int precioMinuto)
+void Llamada::cortarLlamadaEmisor(int horaFinLlamadaEnCursoTemporal)
 {
 	if (this->horaInicioLlamadaEnCurso != 0) {
-		std::cout << "El receptor era : " << this->obtenerReceptorLlamada() << "\n";
-		std::cout << "El costo del minuto emisor fue " << precioMinuto << "\n";
-		this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
+		this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * this->precioPorMinuto;
 		this->duracionLlamadasHechas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
 		this->horaInicioLlamadaEnCurso = 0;
 	}
 }
 
 
-void Llamada::cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal, int precioMinuto)
+void Llamada::cortarLlamadaReceptor(int horaFinLlamadaEnCursoTemporal)
 {
 	if (this->horaInicioLlamadaEnCurso != 0) {
-		std::cout << "El costo del minuto receptor fue " << precioMinuto << "\n";
-		this->costoLlamadas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso) * precioMinuto;
 		this->duracionLlamadasRecibidas += (horaFinLlamadaEnCursoTemporal - this->horaInicioLlamadaEnCurso);
 		this->horaInicioLlamadaEnCurso = 0;
 	}

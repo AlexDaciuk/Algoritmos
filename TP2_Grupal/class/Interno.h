@@ -45,15 +45,15 @@ public:
 	 * ese nodo al principio y se suman
 	 * los datos directamente ahi, no se crea ningun nodo.
 	 */
-	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada);
-	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada);
+	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto);
+	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto);
 
 
 	/**
 	 * Termina la llamada del tipo de interno correspondiente
 	 */
-	void terminarLlamadaEmisor(int receptorTemporal,int horaTemporal, int precioMinutoTemporal);
-	void terminarLlamadaReceptor(int emisorTemporal,int horaTemporal, int precioMinutoTemporal);
+	void terminarLlamadaEmisor(int receptorTemporal,int horaTemporal);
+	void terminarLlamadaReceptor(int emisorTemporal,int horaTemporal);
 
 
 	/**

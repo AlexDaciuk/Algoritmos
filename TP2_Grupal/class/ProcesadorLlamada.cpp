@@ -41,17 +41,20 @@ void ProcesadorLlamada::iniciarLlamada()
 
 
 	//Agrego la llamada a cada interno
-	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(), this->recorridoTemporal->estaAnuladaLaLlamada() );
-	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(), this->recorridoTemporal->estaAnuladaLaLlamada() );
+	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(),
+	                             this->recorridoTemporal->estaAnuladaLaLlamada(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
+								 
+	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(),
+	                                 this->recorridoTemporal->estaAnuladaLaLlamada(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 
 	//Cambio la disponibilidad de los enlaces
 	//Cambio disponibilidad de enlaces
 	if(this->datosTemporal->obtenerOrigen() != this->datosTemporal->obtenerDestino()) {
 		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor() );
-		
-		
+
+
 		enlacesRecorridos->iniciarCursorNodo();
-			
+
 
 		while( enlacesRecorridos->avanzarCursorNodo() )	{
 			std::cout<<"El primer enlace de la ruta es :"<<enlacesRecorridos->obtenerCursorNodo()->obtenerDestino()<<"\n";
@@ -71,8 +74,10 @@ void ProcesadorLlamada::finalizarLlamada()
 	receptor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerDestino() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
 	// Termino la llamada en cada interno
-	emisor->terminarLlamadaEmisor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
-	receptor->terminarLlamadaReceptor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
+	emisor->terminarLlamadaEmisor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora() );
+	receptor->terminarLlamadaReceptor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora() );
+
+	std::cout << "El precio de la llamada al cortar es " << this->recorridoTemporal->obtenerPrecioDeLaLlamada() << "\n" ;
 
 	//Cambio disponibilidad de enlaces
 	if(this->datosTemporal->obtenerOrigen() != this->datosTemporal->obtenerDestino()) {
@@ -152,7 +157,7 @@ void ProcesadorLlamada::procesarLlamadas()
 		if ( this->datosTemporal->obtenerAccion() == "Inicio") {
 			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
 			this->agregarCentral(this->datosTemporal->obtenerDestino() );
-			
+
 			this->recorridoTemporal->resetDatos();
 			if (this->variableBusqueda == "Distancia") {
 				this->buscaCentralMenorDistancia();
