@@ -326,10 +326,10 @@ Lista<Spot*>* Buscador::obtenerRutaActual()
 
 void Buscador::resetDatos()
 {
-	delete (this->mejorCamino);
-	delete (this->rutaActual);
-	this->mejorCamino = new Lista<Enlace*>;
-	this->rutaActual = new Lista<Spot*>;
+	Lista<Enlace*>* nuevoMejorCamino = new Lista<Enlace*>;
+	Lista<Spot*>* nuevaRutaActual = new Lista<Spot*>;
+	this->mejorCamino = nuevoMejorCamino;
+	this->rutaActual = nuevaRutaActual;
 	this->precioDeLaLlamada = 0;
 	this->distanciaDeLaLlamada = 0;
 	this->tipoDeBusqueda = 0;
