@@ -48,9 +48,12 @@ void ProcesadorLlamada::iniciarLlamada()
 	//Cambio disponibilidad de enlaces
 	if(this->datosTemporal->obtenerOrigen() != this->datosTemporal->obtenerDestino()) {
 		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor() );
+		
+		
 		enlacesRecorridos->iniciarCursorNodo();
 
 		while( enlacesRecorridos->avanzarCursorNodo() )	{
+			std::cout<<"El primer enlace de la ruta es :"<<enlacesRecorridos->obtenerCursorNodo()->obtenerDestino()<<"\n";
 			enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
 		}
 	}
