@@ -166,18 +166,18 @@ private:
 	 * precio y la distancia del recorrido. Pero compara para ir por el
 	 * precio mas barato
 	 */
-	Spot* caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual, int& centralReceptora);
+	Spot* caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual);
 
 	/**
 	 * Avanza termina de usar un enlace para ir a la siguiente central acumulando el
 	 * precio y la distancia del recorrido. Pero compara para ir por la distancia mas corta.
 	 */
-	void caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual, int centralReceptora);
+	Spot* caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual);
 
 	/**
 	 * Define la lista de enlaces usados para llegar de una central a otra.
 	 */
-	void definirEstaRuta();
+	void definirEstaRuta(int centralReceptora);
 
 	/**
 	 * Indica si la busqueda es por precio o distancia.
@@ -223,7 +223,9 @@ private:
 
 	//void procesoPorDistancia(Central* centralActual, int centralReceptora);
 
-	void ProcesoIterativo(Central* centralActual, Spot* spotActual, int centralReceptora);
+	void ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActual, int centralReceptora);
+	
+	void ProcesoIterativoPorDistancia(Central* centralActual, Spot* spotActual, int centralReceptora);
 	//void PosicionarEnUltimoEnlaceVisitadoDela(Lista<Enlace*>* enlacesDelSpot, Spot* spotActual);
 };
 #endif
