@@ -138,7 +138,7 @@ int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
 		llamadasAnuladas += listaLlamadas->obtenerCursorNodo()->obtenerLlamadasAnuladas();
 	}
 
-	return(llamadasAnuladas);
+	return llamadasAnuladas;
 }
 
 Interno::~Interno()

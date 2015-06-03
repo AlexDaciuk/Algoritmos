@@ -73,10 +73,10 @@ int Central::obtenerNumero()
 int Central::obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos)
 {
 	int llamadasAnuladasPorInterno = 0;
-	this->internos->iniciarCursorNodo();
+	internos->iniciarCursorNodo();
 	
 	while(this->internos->avanzarCursorNodo()) {
-		llamadasAnuladasPorInterno=this->internos->obtenerCursorNodo()->contarLlamadasAnuladas(internos->obtenerCursorNodo()->obtenerLlamadas());
+		llamadasAnuladasPorInterno += internos->obtenerCursorNodo()->contarLlamadasAnuladas(internos->obtenerCursorNodo()->obtenerLlamadas());
 	}
 	
 	return llamadasAnuladasPorInterno;
