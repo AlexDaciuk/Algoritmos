@@ -51,9 +51,10 @@ void ProcesadorLlamada::iniciarLlamada()
 		
 		
 		enlacesRecorridos->iniciarCursorNodo();
-			std::cout<<"El primer enlace de la ruta es :"<<enlacesRecorridos->obtenerCursorNodo()->obtenerDestino()<<"\n";
+			
 
 		while( enlacesRecorridos->avanzarCursorNodo() )	{
+			std::cout<<"El primer enlace de la ruta es :"<<enlacesRecorridos->obtenerCursorNodo()->obtenerDestino()<<"\n";
 			enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
 		}
 	}
@@ -79,6 +80,7 @@ void ProcesadorLlamada::finalizarLlamada()
 		enlacesRecorridos->iniciarCursorNodo();
 
 		while( enlacesRecorridos->avanzarCursorNodo() )	{
+			std::cout<<"El primer enlace de finalizar es :"<<enlacesRecorridos->obtenerCursorNodo()->obtenerDestino()<<"\n";
 			enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
 		}
 	}
