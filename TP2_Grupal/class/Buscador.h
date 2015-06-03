@@ -18,7 +18,7 @@
  * Modo de uso: Luego de crear el buscador, lo primero que se debe hacer es buscar el
  * camino, ya sea por precio o distancia, antes de pedirle cualquiera de las operaciones.
  */
- 
+
 class Buscador
 {
 
@@ -55,7 +55,7 @@ private:
 	 * El buscador aprovecha este atributo para saber si buscar por distancia o por precio.
 	 */
 	int tipoDeBusqueda;
-	
+
 	/**
 	 * El buscador aprovecha este atributo para informar si la llamada no pudo llegar a destino
 	 * por saturacion delos enlaces.
@@ -97,9 +97,9 @@ public:
 	Interno* obtenerInternoEmisor(int emisor);
 
 	Interno* obtenerInternoReceptor(int receptor);
-	
+
 	bool estaAnuladaLaLlamada();
-	
+
 	/**
 	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
 	 */
@@ -114,7 +114,7 @@ public:
 	 * Post: hace el algoritmo de busqueda por mejor distancia
 	 */
 	void encontrarCaminoPordistancia(int centralEmisora, int centralReceptora);
-	
+
 	/**
 	 *restaura los valores iniciales en todos los atributos.
 	 */
@@ -153,20 +153,20 @@ private:
 	 * Desde una central inicia el algoritmo para moverse a otra. Si llego al final del camino guarda
 	 * la informacion y establece el mejor camino, precio y distancia.
 	 */
-	void avanzarBusquedaDesde(Central* centralActual, int buscoMejorValor, int precioActual, int centralReceptora);
+	//void avanzarBusquedaDesde(Central* centralActual, int buscoMejorValor, int precioActual, int centralReceptora);
 
 	/**
 	 * Realiza los pasos necesarios para ir de una central a otra.
 	 * En cada central se asegura de recorrer todos los enlaces posibles de recorrer.
 	 */
-	void caminarEnlace(Central* centralActual, int centralReceptora);
+	//void caminarEnlace(Central* centralActual, int centralReceptora);
 
 	/**
 	 * Avanza termina de usar un enlace para ir a la siguiente central acumulando el
 	 * precio y la distancia del recorrido. Pero compara para ir por el
 	 * precio mas barato
 	 */
-	void caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual, int centralReceptora);
+	Spot* caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual, int& centralReceptora);
 
 	/**
 	 * Avanza termina de usar un enlace para ir a la siguiente central acumulando el
@@ -200,23 +200,30 @@ private:
 	 * Post: devuelve un puntero a esa central.
 	 */
 	Central* encontrarLaCentral(int central);
-	
+
 	/**
 	 * Devuelve la ruta Actual de Spots.
 	 */
 	Lista<Spot*>* obtenerRutaActual();
-	
+
 	/**
 	 * Borra la ruta actual liberando la memoria.
 	 */
 	void borrarRutaActual();
-	
+
 	/**
 	 * Borra el ultimo spot de la ruta actual y deja el cursor en la ultima posicion.
 	 */
 	void borrarUnSpot();
-	
-	
+
+	/**
+	 * Realiza los procesos que refieren a las llamadas de distintas centrales.
+	 */
+	//void procesoPorPrecio(Central* centralActual, int centralReceptora);
+
+	//void procesoPorDistancia(Central* centralActual, int centralReceptora);
+
+	void ProcesoIterativo(Central* centralActual, Spot* spotActual, int centralReceptora);
+	//void PosicionarEnUltimoEnlaceVisitadoDela(Lista<Enlace*>* enlacesDelSpot, Spot* spotActual);
 };
 #endif
-
