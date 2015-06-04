@@ -1,5 +1,4 @@
 #include "ProcesadorLlamada.h"
-#include <iostream>
 
 ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std::string variableBusquedaTemporal)
 {
@@ -39,25 +38,20 @@ void ProcesadorLlamada::iniciarLlamada()
 	emisor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerOrigen() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerEmisor() );
 	receptor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerDestino() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerReceptor() );
 
-
 	//Agrego la llamada a cada interno
 	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(),
 	                             this->recorridoTemporal->estaAnuladaLaLlamada(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
-								 
+
 	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->recorridoTemporal->obtenerRuta(),
 	                                 this->recorridoTemporal->estaAnuladaLaLlamada(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 
 	//Cambio la disponibilidad de los enlaces
-	//Cambio disponibilidad de enlaces
 	if(this->datosTemporal->obtenerOrigen() != this->datosTemporal->obtenerDestino()) {
 		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor() );
 
-
 		enlacesRecorridos->iniciarCursorNodo();
 
-
 		while( enlacesRecorridos->avanzarCursorNodo() )	{
-			std::cout<<"El primer enlace de la ruta es :"<<enlacesRecorridos->obtenerCursorNodo()->obtenerDestino()<<"\n";
 			enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
 		}
 	}
@@ -77,21 +71,16 @@ void ProcesadorLlamada::finalizarLlamada()
 	emisor->terminarLlamadaEmisor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora() );
 	receptor->terminarLlamadaReceptor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora() );
 
-	std::cout << "El precio de la llamada al cortar es " << this->recorridoTemporal->obtenerPrecioDeLaLlamada() << "\n" ;
-
 	//Cambio disponibilidad de enlaces
 	if(this->datosTemporal->obtenerOrigen() != this->datosTemporal->obtenerDestino()) {
 		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor() );
 		enlacesRecorridos->iniciarCursorNodo();
 
 		while( enlacesRecorridos->avanzarCursorNodo() )	{
-			std::cout<<"El primer enlace de finalizar es :"<<enlacesRecorridos->obtenerCursorNodo()->obtenerDestino()<<"\n";
 			enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
 		}
 	}
 }
-
-
 
 
 void ProcesadorLlamada::agregarCentral(int numeroCentral)
@@ -106,6 +95,7 @@ void ProcesadorLlamada::agregarCentral(int numeroCentral)
 		this->centrales->insertar(nuevaCentral);
 	}
 }
+
 
 void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 {
@@ -139,15 +129,18 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 	}
 }
 
+
 Lista<Central*>* ProcesadorLlamada::obtenerCentrales()
 {
 	return (this->centrales);
 }
 
+
 Lista<Enlace*>* ProcesadorLlamada::obtenerEnlaces()
 {
 	return (this->enlaces);
 }
+
 
 void ProcesadorLlamada::procesarLlamadas()
 {
@@ -178,6 +171,7 @@ void ProcesadorLlamada::procesarLlamadas()
 		}
 	}
 }
+
 
 ProcesadorLlamada::~ProcesadorLlamada()
 {
