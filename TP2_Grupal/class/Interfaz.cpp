@@ -47,14 +47,11 @@ void Interfaz::mostrarMenu()
 int Interfaz::pedirOpcionMenu()
 {
 	int opcion;
-	std::cout << "Elija una opcion:";
-	std::cin >> opcion;
-	while (opcion < 1 || opcion > 17) {
-		std::cout << "La opcion no existe. \n";
+	do {
 		std::cout << "Elija una opcion:";
 		std::cin >> opcion;
 		std::cout << "\n \n";
-	}
+	} while (opcion < 1 || opcion > 17);
 
 	return opcion;
 }
@@ -62,9 +59,13 @@ int Interfaz::pedirOpcionMenu()
 int Interfaz::pedirInterno()
 {
 	int numeroInterno;
-	std::cout << "Ingrese el numero de interno:";
-	std::cin >> numeroInterno;
+	do {
+		std::cout << "Ingrese el numero de interno:";
+		std::cin >> numeroInterno;
+	} while (numeroInterno < 0 || numeroInterno > 9999);
+
 	return numeroInterno;
+
 }
 std::string Interfaz::pedirAlgoritmoDeBusqueda()
 {
@@ -152,20 +153,26 @@ void Interfaz::mostrarDetallesDeEnlaces()
 int Interfaz::pedirCentral()
 {
 	int numeroDeCentral;
-	std::cout << "Indique a que central pertenece:";
-	std::cin >> numeroDeCentral;
+	do {
+		std::cout << "Ingrese el numero de central:";
+		std::cin >> numeroDeCentral;
+	} while (numeroDeCentral < 0 || numeroDeCentral > 9999);
 	return numeroDeCentral;
 }
 void Interfaz::detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB()
 {
 	int primerInterno, centralPrimerInterno, segundoInterno, centralSegundoInterno;
-	std::cout << "Ingrese el numero del primer interno:";
-	std::cin >> primerInterno;
+	do {
+		std::cout << "Ingrese el numero del primer interno:";
+		std::cin >> primerInterno;
+	} while (primerInterno < 0 || primerInterno > 9999);
 	centralPrimerInterno = pedirCentral();
 	std::cout << "\n";
 
-	std::cout << "Ingese el numero del segundo interno:";
-	std::cin >> segundoInterno;
+	do {
+		std::cout << "Ingrese el numero del segundo interno:";
+		std::cin >> segundoInterno;
+	} while (segundoInterno < 0 || segundoInterno > 9999);
 	centralSegundoInterno = pedirCentral();
 	std::cout << "\n \n";
 
