@@ -14,7 +14,7 @@ class Central;
 /**
  * Clase que define cada enlace entre 2 centrales
  */
- 
+
 class Enlace
 {
 private:
