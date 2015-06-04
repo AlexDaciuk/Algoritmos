@@ -68,7 +68,7 @@ bool Spot::recorriTodosLosEnlaces()
 				losRecorri = false;
 		}
 	}
-	this->posicionarmeEnUltimoEnlace();
+	//this->posicionarmeEnUltimoEnlace();
 	return (losRecorri);
 }
 
