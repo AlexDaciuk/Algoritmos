@@ -37,11 +37,11 @@ Interno* Central::obtenerInterno(int numeroInterno)
 		internoTemporal = this->internos->obtenerCursorNodo();
 		encontro = (internoTemporal->obtenerNumero() == numeroInterno);
 	}
-	
+
 	if (encontro) {
 		internoDevolver=internoTemporal;
 	}
-	
+
 	return(internoDevolver);
 }
 
@@ -74,11 +74,11 @@ int Central::obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos)
 {
 	int llamadasAnuladasPorInterno = 0;
 	internos->iniciarCursorNodo();
-	
+
 	while(this->internos->avanzarCursorNodo()) {
 		llamadasAnuladasPorInterno += internos->obtenerCursorNodo()->contarLlamadasAnuladas(internos->obtenerCursorNodo()->obtenerLlamadas());
 	}
-	
+
 	return llamadasAnuladasPorInterno;
 }
 
