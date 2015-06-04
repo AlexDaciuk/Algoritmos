@@ -1,5 +1,4 @@
 #include "Llamada.h"
-#include <iostream>
 
 Llamada::Llamada (int receptorLlamadaTemporal)
 {
