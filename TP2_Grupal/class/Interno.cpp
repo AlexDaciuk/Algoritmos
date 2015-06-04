@@ -69,11 +69,15 @@ void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista
 
 	if (! this->internoOcupado() && ! fueAnulada ) {
 		llamadaTemporal->empezarLlamadaEmisor(horaTemporal, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
-	} else if ( this->internoOcupado() || fueAnulada ) {
+		this->estaOcupado = true;
+	} else if ( this->internoOcupado() ) {
 		// Si recibio un ocupado o fue anulada, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
 		llamadaTemporal->empezarLlamadaEmisor(0, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
 		llamadaTemporal->agregarOcupadoRecibido();
+	} else if ( fueAnulada ) {
+		//si fue Anulada la diferencio con el flag fueAnulada
+		llamadaTemporal->empezarLlamadaReceptor(0, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
 	}
 }
 
@@ -86,11 +90,14 @@ void Interno::agregarLlamadaReceptor(int emisorTemporal, int horaTemporal,  List
 	if (! this->internoOcupado() && ! fueAnulada ) {
 		llamadaTemporal->empezarLlamadaReceptor(horaTemporal, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
 		this->estaOcupado = true;
-	} else if ( this->internoOcupado() || fueAnulada ) {
-		// Si dio un ocupado o fue anulada, pongo la hora de inicio en 0, asi puedo diferenciar
+	} else if ( this->internoOcupado()) {
+		// Si dio un ocupado pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
 		llamadaTemporal->empezarLlamadaReceptor(0, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
 		llamadaTemporal->agregarOcupadoDado();
+	} else if ( fueAnulada ) {
+		//si fue Anulada la diferencio con el flag fueAnulada
+		llamadaTemporal->empezarLlamadaReceptor(0, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);
 	}
 }
 
