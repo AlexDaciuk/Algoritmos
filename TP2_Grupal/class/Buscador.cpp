@@ -339,7 +339,7 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActua
 		}
 
 		this->borrarUnSpot();//el cursor esta al final
-		Spot* spotActual = this->rutaActual->obtenerCursorNodo();
+
 	}
 	if(this->obtenerRuta() == NULL)
 		this->anularLlamada();
@@ -368,7 +368,7 @@ void Buscador::ProcesoIterativoPorDistancia(Central* centralActual, Spot* spotAc
 
 		}
 		this->borrarUnSpot();//el cursor esta al final
-		Spot* spotActual = this->rutaActual->obtenerCursorNodo();
+
 
 	}
 	if(this->obtenerRuta() == NULL)
