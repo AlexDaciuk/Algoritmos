@@ -136,7 +136,7 @@ Spot* Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual)
 				this->rutaActual->insertar(spotNuevo);
 
 				spotActual->anotarCaminoRecorrido(centralNueva, enlaceActual);
-				
+
 				spotDevolver = spotNuevo;
 			}
 		} else {
@@ -158,6 +158,7 @@ Spot* Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual)
 
 Spot* Buscador::caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual)
 {
+	Spot* spotDevolver = NULL;
 	if(enlaceActual->chequearDisponibilidadCanales()) {
 		if(enlaceActual->obtenerDestino()->obtenerNumero() != spotActual->obtenerPosicion()->obtenerNumero()) {
 			if(!this->YaPasePorLaCentral(enlaceActual->obtenerDestino())) {
@@ -167,7 +168,7 @@ Spot* Buscador::caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual)
 				Spot* spotNuevo = new Spot(centralNueva, nuevoPrecio, nuevaDistancia);
 				this->rutaActual->insertar(spotNuevo);
 				spotActual->anotarCaminoRecorrido(centralNueva, enlaceActual);
-				return spotNuevo;
+				spotDevolver = spotNuevo;
 			}
 		} else {
 			if(!this->YaPasePorLaCentral(enlaceActual->obtenerOrigen())) {
@@ -176,10 +177,11 @@ Spot* Buscador::caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual)
 				int nuevoPrecio = spotActual->obtenerPrecioHastaSpot() + enlaceActual->obtenerPrecio();
 				Spot* spotNuevo = new Spot(centralNueva, nuevoPrecio, nuevaDistancia);
 				this->rutaActual->insertar(spotNuevo);
-				return spotNuevo;
+				spotDevolver = spotNuevo;
 			}
 		}
 	}
+	return spotDevolver;
 }
 
 void Buscador::definirEstaRuta()
