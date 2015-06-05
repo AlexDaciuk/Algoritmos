@@ -125,6 +125,7 @@ bool Buscador::hayMasCaminos()
 
 Spot* Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual)
 {
+	Spot* spotDevolver = NULL;
 	if(enlaceActual->chequearDisponibilidadCanales()) {
 		if(enlaceActual->obtenerDestino()->obtenerNumero() != spotActual->obtenerPosicion()->obtenerNumero()) {
 			if(!this->YaPasePorLaCentral(enlaceActual->obtenerDestino())) {
@@ -135,7 +136,8 @@ Spot* Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual)
 				this->rutaActual->insertar(spotNuevo);
 
 				spotActual->anotarCaminoRecorrido(centralNueva, enlaceActual);
-				return spotNuevo;
+				
+				spotDevolver = spotNuevo;
 			}
 		} else {
 			if(!this->YaPasePorLaCentral(enlaceActual->obtenerOrigen())) {
@@ -147,10 +149,11 @@ Spot* Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual)
 
 				spotActual->anotarCaminoRecorrido(centralNueva, enlaceActual);
 
-				return spotNuevo;
+				spotDevolver = spotNuevo;
 			}
 		}
 	}
+	return spotDevolver;
 }
 
 Spot* Buscador::caminarPorDistancia(Enlace* enlaceActual, Spot* spotActual)
