@@ -146,7 +146,9 @@ void Interfaz::mostrarDetallesDeEnlaces()
 		std::cout << "Central origen: " << obtenerenlaces()->obtenerCursorNodo()->obtenerOrigen()->obtenerNumero() << "\n";
 		std::cout << "Central destino: " << obtenerenlaces()->obtenerCursorNodo()->obtenerDestino()->obtenerNumero()
 		          << "\n";
-		std::cout << "Numero de canales: " << obtenerenlaces()->obtenerCursorNodo()->obtenerNumeroDeCanales() << "\n \n";
+		std::cout << "Numero de canales: " << obtenerenlaces()->obtenerCursorNodo()->obtenerNumeroDeCanales() << "\n";
+    std::cout << "Distancia que recorre: " << obtenerenlaces()->obtenerCursorNodo()->obtenerDistancia() << " kilometros. \n";
+    std::cout << "Precio por kilometro: " << obtenerenlaces()->obtenerCursorNodo()->obtenerPrecio() << " centavos. \n\n";
 	}
 }
 
