@@ -151,23 +151,22 @@ void ProcesadorLlamada::procesarLlamadas()
 			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
 			this->agregarCentral(this->datosTemporal->obtenerDestino() );
 
-			this->recorridoTemporal->resetDatos();
 			if (this->variableBusqueda == "Distancia") {
 				this->buscaCentralMenorDistancia();
 			} else if (this->variableBusqueda == "Precio") {
 				this->buscaCentralMenorPrecio();
 			}
+			
 			this->iniciarLlamada();
 
 		} else if ( this->datosTemporal->obtenerAccion() == "Fin") {
 			this->finalizarLlamada();
 
 		} else if (this->datosTemporal->obtenerAccion() == "Enlace") {
-
 			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
 			this->agregarCentral(this->datosTemporal->obtenerEmisor() );
-			agregarEnlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
 
+			agregarEnlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
 		}
 	}
 }
