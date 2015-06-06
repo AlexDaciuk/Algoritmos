@@ -668,13 +668,14 @@ void Interfaz::DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
 
 void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
 {
-	int central = pedirCentral();
 	int interno = pedirInterno();
+	int central = pedirCentral();
+  std::cout<<"\n";
 	bool recibioLlamadas = false;
 	Interno* internoPedido =
 	    obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto()->obtenerInterno(interno);
 
-	std::cout << "Detalle de las llamadas recibidas por el interno " << interno << " de la central " << central << ".\n";
+	std::cout << "Detalle de las llamadas recibidas por el interno " << interno << " de la central " << central << ".\n \n";
 	internoPedido->obtenerLlamadas()->iniciarCursorNodo();
 
 	while (internoPedido->obtenerLlamadas()->avanzarCursorNodo()) {
@@ -691,11 +692,13 @@ void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
 			          << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas() << ".\n";
 			std::cout << "Cantidad de ocupados dados:"
 			          << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosDados() << ".\n";
+      std::cout << "\n";
 		}
 	}
 	if (!recibioLlamadas) {
-		std::cout << "Este interno no recibio llamadas. \n";
+		std::cout << "Este interno no recibio llamadas.\n";
 	}
+  std::cout<<"\n";
 }
 
 void Interfaz::DetalleDeLlamadasRealizadasPorXDeLaCentralAYRecibidasPorYDeLaCentralB()
