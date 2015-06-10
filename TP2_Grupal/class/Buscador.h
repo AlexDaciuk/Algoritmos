@@ -1,3 +1,4 @@
+
 #ifndef BUSCADOR_H_
 #define BUSCADOR_H_
 
@@ -223,7 +224,8 @@ private:
 
 	//void procesoPorDistancia(Central* centralActual, int centralReceptora);
 
-	void ProcesoIterativoPorPrecio(Central* centralActual, Spot* spotActual, int centralReceptora);
+	void ProcesoIterativoPorPrecio(Central* centralActual, int centralReceptora);
+	bool visitasteLaCentral(Central* centralActual);
 	
 	void ProcesoIterativoPorDistancia(Central* centralActual, Spot* spotActual, int centralReceptora);
 	Enlace* PosicionarEnUltimoEnlaceVisitadoDela(Lista<Enlace*>* enlacesDelSpot, Spot* spotActual);

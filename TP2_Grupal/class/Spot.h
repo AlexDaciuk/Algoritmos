@@ -67,7 +67,11 @@ public:
 	/**
 	    * Post: indica si ya visite desde esta central a la CentralAVisitar
 	    */
-	bool visitasteLacentral(Central* CentralAVisitar);
+	bool visitasteLaCentral(Central* CentralAVisitar);
+	
+	bool visiteLaCentral(Central* centralAVisitar);
+	
+	void resetListaEnlaces();
 
 	/**
 	* Post: indica el precio del recorrido hasta este spot
@@ -91,6 +95,8 @@ public:
 	bool VerSiHayMasEnlaces();
 	
 	Enlace* posicionarmeEnUltimoEnlace();
+	
+	Lista<Enlace*>* obtenerEnlacesARecorrer();
 	/**
 	 * Post: destruye toda la lista de caminos recorridos desde esta central
 	 */
