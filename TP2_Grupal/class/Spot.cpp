@@ -52,7 +52,7 @@ bool Spot::visiteLaCentral(Central* centralAVisitar)
 	this->centralesVisitadas->iniciarCursorNodo();
 	while((this->centralesVisitadas->avanzarCursorNodo()) && (!laEncontre)) {
 			Central* centralActual=this->centralesVisitadas->obtenerCursorNodo();
-			std::cout<<"La central comparacion de visiteLaCentral es"<<centralActual->obtenerNumero()<<"\n";
+			std::cout<<"La central comparacion en el spot "<<this->posicion->obtenerNumero()<<" de visiteLaCentral es: "<<centralActual->obtenerNumero()<<"\n";
 			if(centralActual->obtenerNumero() == centralAVisitar->obtenerNumero())
 				laEncontre=true;
 	}
@@ -125,21 +125,22 @@ Enlace* Spot::posicionarmeEnUltimoEnlace()
 		{
 			std::cout<<"I\n";
 			 enlaceActual = enlacesDelSpot->obtenerCursorNodo();
+			 mePosicione = true;
 			if((enlaceActual->obtenerDestino() == posicionEnlace->obtenerDestino()) &&
 			(enlaceActual->obtenerOrigen() == posicionEnlace->obtenerOrigen()))
 			{
-					mePosicione = true;
-					std::cout<<"si me posicione";
+					mePosicione = false;
+					std::cout<<"era el de antes \n";
 			}
 		}
-		if((mePosicione) && (enlacesDelSpot->avanzarCursorNodo()))
-			return enlacesDelSpot->obtenerCursorNodo();
+		//if((mePosicione) && (enlacesDelSpot->avanzarCursorNodo()))
+			//return enlacesDelSpot->obtenerCursorNodo();
 	}
 	else
 	{
 		enlacesDelSpot->iniciarCursorNodo();
 		enlacesDelSpot->avanzarCursorNodo();
-		std::cout<<"holaaaaaa";
+		std::cout<<"recorro el primer enlace\n";
 	}
 	
 	return enlacesDelSpot->obtenerCursorNodo();
@@ -149,4 +150,3 @@ Spot::~Spot()
 {
 	delete (this->centralesVisitadas);
 }
-

@@ -134,6 +134,7 @@ Spot* Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual)
 				this->rutaActual->insertar(spotNuevo);
 				std::cout<<"El nuevo spot tiene la central :"<<spotNuevo->obtenerPosicion()->obtenerNumero()<<"\n";
 				spotActual->anotarCaminoRecorrido(centralNueva, enlaceActual);
+				spotNuevo->anotarCaminoRecorrido(spotActual->obtenerPosicion(),enlaceActual);
 				spotDevolver = spotNuevo;
 			}
 		} else {
@@ -145,7 +146,7 @@ Spot* Buscador::caminarPorPrecio(Enlace* enlaceActual, Spot* spotActual)
 				this->rutaActual->insertar(spotNuevo);
 				std::cout<<"El nuevo spot tiene la central :"<<spotNuevo->obtenerPosicion()->obtenerNumero()<<"\n";
 				spotActual->anotarCaminoRecorrido(centralNueva, enlaceActual);
-
+				spotNuevo->anotarCaminoRecorrido(spotActual->obtenerPosicion(),enlaceActual);
 				spotDevolver = spotNuevo;
 			}
 		}
@@ -318,11 +319,11 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, int centralRece
 {
 	bool llegue=false;
 	Spot* spotActual;
-	std::cout<<"la central "<<centralActual->obtenerNumero()<<" tiene Enlaces :\n";
+	//std::cout<<"la central "<<centralActual->obtenerNumero()<<" tiene Enlaces :\n";
 			Lista<Enlace*>* enlaces = centralActual->obtenerEnlaces();
 			enlaces->iniciarCursorNodo();
 			while(enlaces->avanzarCursorNodo()){
-				std::cout<<"I\n";
+				//std::cout<<"I\n";
 			}
 	while(this->hayMasCaminos()) {
 	this->rutaActual->iniciarCursorNodo();
@@ -340,9 +341,10 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, int centralRece
 				int precioActual = this->obtenerPrecioDeLaLlamada();
 				if((precioActual > buscoMejorValor) || (precioActual == 0)) {
 			
-		std::cout<<"recorriTodosLosEnlaces dice :"<<spotActual->recorriTodosLosEnlaces()<<"\n";
+		//std::cout<<"recorriTodosLosEnlaces dice :"<<spotActual->recorriTodosLosEnlaces()<<"\n";
 		//std::cout<<"verSiHayMasEnlaces dice :"<<spotActual->VerSiHayMasEnlaces()<<"\n";
-					if(!spotActual->recorriTodosLosEnlaces()) {
+					if(!spotActual->recorriTodosLosEnlaces() && 
+					(spotActual->obtenerPosicion()->obtenerNumero() != centralReceptora)) {
 						//this->PosicionarEnUltimoEnlaceVisitadoDela(spotActual->obtenerPosicion()->obtenerEnlaces(), spotActual);
 						spotActual = this->caminarPorPrecio(spotActual->obtenerEnlaceSiguiente(), spotActual);
 					}
@@ -359,6 +361,7 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, int centralRece
 		std::cout<<"borrando\n";
 		this->borrarUnSpot();//el cursor esta al final
 		this->rutaActual->iniciarCursorNodo();
+		llegue = false;
 		std::cout<<"la centrales despues de borrar son :";
 		while(this->rutaActual->avanzarCursorNodo()){
 		spotActual = this->rutaActual->obtenerCursorNodo();
