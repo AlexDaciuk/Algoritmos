@@ -35,7 +35,7 @@ private:
 
 	Lista<Central*>* centralesVisitadas;
 
-	Enlace* enlaceRecorrido;
+	Lista<Enlace*>* enlacesRecorridos;
 
 	Lista<Enlace*>* enlacesARecorrer;
 

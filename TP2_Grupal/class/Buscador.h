@@ -99,7 +99,7 @@ public:
 
 	Interno* obtenerInternoReceptor(int receptor);
 
-	bool estaAnuladaLaLlamada();
+	bool noEstaAnuladaLaLlamada();
 
 	/**
 	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.

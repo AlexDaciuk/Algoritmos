@@ -13,7 +13,7 @@ Spot::Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpotTempora
 	this->centralesVisitadas= new Lista<Central*>;
 	this->enlacesARecorrer = posicion->obtenerEnlaces();
 	this->hayMasEnlaces = true;
-	this->enlaceRecorrido; //ojoooooooo;
+	this->enlacesRecorridos = new Lista<Enlace*>;
 }
 
 Central* Spot::obtenerPosicion()
@@ -29,7 +29,7 @@ Lista<Enlace*>* Spot::obtenerEnlacesARecorrer()
 void Spot::anotarCaminoRecorrido(Central* CentralAVisitar, Enlace* enlaceRecorrido)
 {
 	this->centralesVisitadas->insertar(CentralAVisitar);
-	this->enlaceRecorrido = enlaceRecorrido;
+	this->enlacesRecorridos->insertar(enlaceRecorrido);
 }
 
 bool Spot::visitasteLaCentral(Central* centralAVisitar)
@@ -92,7 +92,9 @@ bool Spot::recorriTodosLosEnlaces()
 
 Enlace* Spot::obtenerEnlaceRecorrido()
 {
-	return (this->enlaceRecorrido);
+	this->enlacesRecorridos->iniciarCursorNodo();
+	this->enlacesRecorridos->avanzarCursorNodo();
+	return (this->enlacesRecorridos->obtenerCursorNodo());
 }
 
 Enlace* Spot::obtenerEnlaceSiguiente()
@@ -116,33 +118,37 @@ Enlace* Spot::posicionarmeEnUltimoEnlace()
 	Enlace* posicionEnlace;
 	Enlace* enlaceActual;
 	Lista<Enlace*>* enlacesDelSpot = this->obtenerPosicion()->obtenerEnlaces();
-	if(this->obtenerEnlaceRecorrido() != NULL)
-	{
-		posicionEnlace = this->obtenerEnlaceRecorrido();
-		enlacesDelSpot->iniciarCursorNodo();
-		std::cout<<"entre a posicionarme :\n";
-		while((!mePosicione) && (enlacesDelSpot->avanzarCursorNodo()) )
-		{
-			std::cout<<"I\n";
-			 enlaceActual = enlacesDelSpot->obtenerCursorNodo();
-			 mePosicione = true;
-			if((enlaceActual->obtenerDestino() == posicionEnlace->obtenerDestino()) &&
-			(enlaceActual->obtenerOrigen() == posicionEnlace->obtenerOrigen()))
+	this->enlacesRecorridos->iniciarCursorNodo();
+	if(this->enlacesRecorridos->avanzarCursorNodo()){
+			enlacesDelSpot->iniciarCursorNodo();
+			std::cout<<"entre a posicionarme :\n";
+			while((!mePosicione) && (enlacesDelSpot->avanzarCursorNodo()) )
 			{
-					mePosicione = false;
-					std::cout<<"era el de antes \n";
+				std::cout<<"I\n";
+				 enlaceActual = enlacesDelSpot->obtenerCursorNodo();
+				 mePosicione = true;
+				 this->enlacesRecorridos->iniciarCursorNodo();
+				 while((mePosicione) && (this->enlacesRecorridos->avanzarCursorNodo())){
+					 posicionEnlace = this->enlacesRecorridos->obtenerCursorNodo();
+					if((enlaceActual->obtenerDestino() == posicionEnlace->obtenerDestino()) &&
+					(enlaceActual->obtenerOrigen() == posicionEnlace->obtenerOrigen()))
+					{
+							mePosicione = false;
+							std::cout<<"era el de antes \n";
+					}
+				}
 			}
-		}
-		//if((mePosicione) && (enlacesDelSpot->avanzarCursorNodo()))
-			//return enlacesDelSpot->obtenerCursorNodo();
+			//if((mePosicione) && (enlacesDelSpot->avanzarCursorNodo()))
+				//return enlacesDelSpot->obtenerCursorNodo();
 	}
-	else
+	else 
 	{
 		enlacesDelSpot->iniciarCursorNodo();
 		enlacesDelSpot->avanzarCursorNodo();
 		std::cout<<"recorro el primer enlace\n";
 	}
-	
+	std::cout<<"El destino del enlace es :"<<enlacesDelSpot->obtenerCursorNodo()->obtenerDestino()->obtenerNumero() <<"\n";
+	std::cout<<"El origen del enlace es :"<<enlacesDelSpot->obtenerCursorNodo()->obtenerOrigen()->obtenerNumero() <<"\n";
 	return enlacesDelSpot->obtenerCursorNodo();
 }
 
