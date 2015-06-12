@@ -8,6 +8,7 @@
 #include "Lista.h"
 #include "Enlace.h"
 #include "Central.h"
+
 /**
  * Clase que solo interactua con el buscador.
  * Tendra la central en donde uno esta posicionado,
@@ -22,15 +23,15 @@ class Spot
 
 private:
 
+
+	int precioHastaSpot;
+	int distanciaHastaSpot;
+
 	/**
 	 * La posicion es la central en donde estoy.
 	 * el precioHastaSpot es la distancia recorrida o el
 	 * precio acumulado.
-	 *
 	 */
-	int precioHastaSpot;
-	int distanciaHastaSpot;
-
 	Central* posicion;
 
 	Lista<Central*>* centralesVisitadas;
@@ -40,6 +41,7 @@ private:
 	Lista<Enlace*>* enlacesARecorrer;
 
 	bool hayMasEnlaces;
+
 public:
 	/**
 	 *Constructor de la clase Ruta.
@@ -67,13 +69,13 @@ public:
 		* Post: indica si ya visite desde esta central a la CentralAVisitar contando en la que estoy posicionado.
 		*/
 	bool visitasteLaCentral(Central* CentralAVisitar);
-	
+
 	/**
-	* Post: indica si ya visite desde esta central a la CentralAVisitar sin contar en la que estoy 
+	* Post: indica si ya visite desde esta central a la CentralAVisitar sin contar en la que estoy
 	* posicionado.
 	*/
 	bool visiteLaCentral(Central* centralAVisitar);
-	
+
 	/**
 	* Post: Asigno a NULL el cursor de la lista de enlaces
 	*/
@@ -103,17 +105,17 @@ public:
 	* Post: indica si hay mas enlaces por recorrer.
 	*/
 	Enlace* obtenerEnlaceSiguiente();
-	
+
 	/**
 	* Post: indica si hay mas enlaces por recorrer.
 	*/
 	bool VerSiHayMasEnlaces();
-	
+
 	/**
 	* Post: devuelve el siguiente enlace al ultimo que se recorrio.
 	*/
 	Enlace* posicionarmeEnUltimoEnlace();
-	
+
 	/**
 	* Post: obtenes la lista de los enlaces de la central posicion del Spot.
 	*/

@@ -156,7 +156,7 @@ void ProcesadorLlamada::procesarLlamadas()
 			} else if (this->variableBusqueda == "Precio") {
 				this->buscaCentralMenorPrecio();
 			}
-			
+
 			this->iniciarLlamada();
 
 		} else if ( this->datosTemporal->obtenerAccion() == "Fin") {

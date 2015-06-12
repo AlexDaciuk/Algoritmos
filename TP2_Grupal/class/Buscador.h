@@ -63,6 +63,7 @@ private:
 	 */
 	bool llamadaAnulada;
 
+
 public:
 
 	/**
@@ -98,7 +99,7 @@ public:
 	Interno* obtenerInternoEmisor(int emisor);
 
 	Interno* obtenerInternoReceptor(int receptor);
-	
+
 	/**
 	 * Post: Indica si la llamada fue anulada.
 	 */
@@ -135,7 +136,7 @@ private:
 	 * Post: indica si La llamada es entre dos numeros de la misma central.
 	 */
 	bool esLlamadaInterna(int centralEmisora, int centralReceptora);
-	
+
 	/**
 	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
 	 */
@@ -204,21 +205,22 @@ private:
 	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
 	 */
 	void anularLlamada();
-	
+
 	/**
 	 * Post: realiza el proceso para encontrar el camino por precio.
 	 */
 	void ProcesoIterativoPorPrecio(Central* centralActual, int centralReceptora);
-		
+
 	/**
 	 * Post: Realiza el proceso para encontrar el camino por distancia.
 	 */
 	void ProcesoIterativoPorDistancia(Central* centralActual, int centralReceptora);
-	
+
 	/**
 	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
 	 */
 	bool visitasteLaCentral(Central* centralActual);
 
 };
+
 #endif
