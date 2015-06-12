@@ -815,13 +815,15 @@ void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemen
 		int totalLlamadasAnuladas = 0;
 		totalCentrales++;
 		Central* centralActual = obtenercentrales()->obtenerCursorNodo();
+    std::cout<<"central actual "<<centralActual->obtenerNumero()<<"\n";
 
 		//cuento el total de llamadas anuladas por central
 		totalLlamadasAnuladas = centralActual->obtenerTotalDeLlamadasAnuladasDeInternos(centralActual->obtenerInternos());
-		Ordenar* nuevaCentral = new Ordenar(centralActual->obtenerNumero(), totalLlamadasAnuladas);
+		std::cout<<"total anuladas "<<totalLlamadasAnuladas<<"\n\n";
+    Ordenar* nuevaCentral = new Ordenar(centralActual->obtenerNumero(), totalLlamadasAnuladas);
 
 		ordenarCentrales->insertar(nuevaCentral);
-		delete nuevaCentral;
+		
 	}
 	ordenarCentrales->ordenarDecrecientemente(totalCentrales);
 	ordenarCentrales->iniciarCursorNodo();
@@ -833,7 +835,7 @@ void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemen
 		          << "\n \n";
 	}
 	delete ordenarCentrales;
-
+  std::cout<<"i="<<i<<"\n";
 }
 
 void Interfaz::tratarOpcion(int opcion)
