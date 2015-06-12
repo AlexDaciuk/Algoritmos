@@ -761,16 +761,16 @@ void Interfaz::DetalleDeLlamadasRealizadasPorXDeLaCentralAYRecibidasPorYDeLaCent
 
 void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB()
 {
-	std::cout << "Emisor. \n";
-	int emisor = pedirInterno();
-	std::cout << "Central del emisor.\n";
-	int numeroCentralEmisor = pedirCentral();
-	std::cout << "\n";
-
 	std::cout << "Receptor. \n";
 	int receptor = pedirInterno();
 	std::cout << "Central del receptor.\n";
 	int numeroCentralReceptor = pedirCentral();
+	std::cout << "\n";
+
+	std::cout << "Emisor. \n";
+	int emisor = pedirInterno();
+	std::cout << "Central del Emisor.\n";
+	int numeroCentralEmisor = pedirCentral();
 	std::cout << "\n";
 
 	std::cout << "Detalles de llamadas recibidas por " << receptor << " de la central " << numeroCentralReceptor;
@@ -782,6 +782,7 @@ void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCent
 	bool estaElReceptor = false;
 
 	while (!estaElReceptor && llamadasEmisor->avanzarCursorNodo()) {
+    
 		if (llamadasEmisor->obtenerCursorNodo()->obtenerReceptorLlamada() == receptor) {
 			estaElReceptor = true;
 		}
@@ -789,7 +790,7 @@ void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCent
 	// me aseguro de que, ademas de que exista un nodo con los datos de receptor, tenga datos de llamadas recibidas de el.
 	if (estaElReceptor && (llamadasEmisor->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas() > 0)) {
 
-		std::cout << "Llamadas realizadas:" << llamadasEmisor->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas()
+		std::cout << "Llamadas recibidas:" << llamadasEmisor->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas()
 		          << ".\n";
 		std::cout << "Duracion de las llamadas:" << llamadasEmisor->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas()
 		          << ".\n";
