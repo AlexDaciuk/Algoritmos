@@ -781,7 +781,7 @@ void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCent
 	llamadasEmisor->iniciarCursorNodo();
 	bool estaElReceptor = false;
 
-	while (llamadasEmisor->avanzarCursorNodo() && !estaElReceptor) {
+	while (!estaElReceptor && llamadasEmisor->avanzarCursorNodo()) {
 		if (llamadasEmisor->obtenerCursorNodo()->obtenerReceptorLlamada() == receptor) {
 			estaElReceptor = true;
 		}
