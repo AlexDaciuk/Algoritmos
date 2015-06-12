@@ -430,7 +430,7 @@ void Interfaz::internoQueMasLlamadasRecibioEnUnaCentral(Lista<Interno*>* listaIn
 		int llamadasRecibidasPorInterno = 0;
 		llamadasRecibidasPorInterno = sumaDeLlamadasRecibidas(listaInternos->obtenerCursorNodo()->obtenerLlamadas());
 
-		if (llamadasRecibidasPorInterno > maximoLlamadasRecibidasEnLaCentral) {
+		if (llamadasRecibidasPorInterno >= maximoLlamadasRecibidasEnLaCentral) {
 			internoQueMasLlamaronPorCentral = listaInternos->obtenerCursorNodo()->obtenerNumero();
 			maximoLlamadasRecibidasEnLaCentral = llamadasRecibidasPorInterno;
 		}
@@ -736,11 +736,11 @@ void Interfaz::DetalleDeLlamadasRealizadasPorXDeLaCentralAYRecibidasPorYDeLaCent
 	std::cout << " y recibidas por " << receptor << " de la central " << numeroCentralReceptor << ".\n";
 
 	Central* centralEmisor = obtenercentrales()->obtenerPunteroAlObjeto(numeroCentralEmisor)->obtenerObjeto();
-	Lista<Llamada*>* llamadasEmisor = centralEmisor->obtenerInterno(emisor)->obtenerLlamadas();
+  Lista<Llamada*>* llamadasEmisor = centralEmisor->obtenerInterno(emisor)->obtenerLlamadas();
 	llamadasEmisor->iniciarCursorNodo();
 	bool estaElReceptor = false;
 
-	while (llamadasEmisor->avanzarCursorNodo() && !estaElReceptor) {
+	while (!estaElReceptor && llamadasEmisor->avanzarCursorNodo()) {
 
 		if (llamadasEmisor->obtenerCursorNodo()->obtenerReceptorLlamada() == receptor) {
 			estaElReceptor = true;
