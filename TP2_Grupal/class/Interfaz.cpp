@@ -129,7 +129,7 @@ void Interfaz::mostrarDetallesDeCentrales()
 	this->obtenercentrales()->iniciarCursorNodo();
 
 	while (this->obtenercentrales()->avanzarCursorNodo()) {
-		std::cout << "Central numero:" << this->obtenercentrales()->obtenerCursorNodo()->obtenerNumero() << "\n";
+		std::cout << "\nCentral numero:" << this->obtenercentrales()->obtenerCursorNodo()->obtenerNumero() << "\n";
     std::cout << "Conectada con las siguiente/s central/es: \n";
     Lista<Enlace*>* enlacesCentral = obtenercentrales()->obtenerCursorNodo()->obtenerEnlaces();
     enlacesCentral->iniciarCursorNodo();
@@ -137,11 +137,11 @@ void Interfaz::mostrarDetallesDeCentrales()
     {
       if (enlacesCentral->obtenerCursorNodo()->obtenerDestino()->obtenerNumero() != obtenercentrales()->obtenerCursorNodo()->obtenerNumero())
       {
-        std::cout<<"_"<<enlacesCentral->obtenerCursorNodo()->obtenerDestino()->obtenerNumero() << "\n \n";
+        std::cout<<"_"<<enlacesCentral->obtenerCursorNodo()->obtenerDestino()->obtenerNumero() << "\n";
       }
       else 
       {
-        std::cout<<"_"<<enlacesCentral->obtenerCursorNodo()->obtenerOrigen()->obtenerNumero() << "\n \n";
+        std::cout<<"_"<<enlacesCentral->obtenerCursorNodo()->obtenerOrigen()->obtenerNumero() << "\n";
       }
         
     }
@@ -151,7 +151,7 @@ void Interfaz::mostrarDetallesDeCentrales()
 
 void Interfaz::mostrarDetallesDeEnlaces()
 {
-	std::cout << "A continuacion se indican los dettalles de los enlaces existentes: \n";
+	std::cout << "A continuacion se indican los dettalles de los enlaces existentes: \n \n";
 	this->obtenerenlaces()->iniciarCursorNodo();
 	int i = 0;
 
@@ -163,7 +163,7 @@ void Interfaz::mostrarDetallesDeEnlaces()
 		          << "\n";
 		std::cout << "Numero de canales: " << obtenerenlaces()->obtenerCursorNodo()->obtenerNumeroDeCanales() << "\n";
     std::cout << "Distancia que recorre: " << obtenerenlaces()->obtenerCursorNodo()->obtenerDistancia() << " kilometros. \n";
-    std::cout << "Precio por kilometro: " << obtenerenlaces()->obtenerCursorNodo()->obtenerPrecio() << " centavos. \n";
+    std::cout << "Precio por kilometro: " << obtenerenlaces()->obtenerCursorNodo()->obtenerPrecio() << " centavos. \n \nss";
 	}
 }
 
@@ -450,7 +450,7 @@ void Interfaz::internoAlQueMasLlamaronPorCentralYGeneral()
 		int maximoLlamadasRecibidasEnLaCentral = 0;
 
 		std::cout << "De la central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero()
-		          << " el interno que mas llamo fue:";
+		          << " el interno al que mas llamaron fue:";
 
 		internoQueMasLlamadasRecibioEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),
 		        maximoLlamadasRecibidasEnLaCentral,
@@ -967,7 +967,7 @@ void Interfaz::iniciarPrograma()
 	this->iniciarlizarPunteroACentrales(procesadorLlamada);
 	this->iniciarlizarPunteroAEnlaces(procesadorLlamada);
 
-	obtenercentrales()->iniciarCursorNodo();
+	/*obtenercentrales()->iniciarCursorNodo();
 	while (obtenercentrales()->avanzarCursorNodo()) {
 		std::cout << "central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero() << "\n";
 		Lista<Interno*>* Internos = obtenercentrales()->obtenerCursorNodo()->obtenerInternos();
@@ -987,7 +987,7 @@ void Interfaz::iniciarPrograma()
 				std::cout << "Costo de llamada: "<< Llamadas->obtenerCursorNodo()->obtenerCostoLlamadas() << "\n\n";
 			}
 		}
-	}
+	}*/
 	std::cout << "Bienvenido al sistema de informacion de la central telefonica.\n \n";
 	std::cout << "A continuacion de detalla el menu:\n\n";
 	mostrarMenu();
