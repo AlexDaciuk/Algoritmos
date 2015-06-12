@@ -340,16 +340,17 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, int centralRece
 	this->rutaActual->avanzarCursorNodo();
 	 spotActual = this->rutaActual->obtenerCursorNodo();
     std::cout<<"la central 1°paso es :"<<spotActual->obtenerPosicion()->obtenerNumero()<<"\n";
-		
-		while((!this->noEstaAnuladaLaLlamada())  &&
-			((!spotActual->recorriTodosLosEnlaces()) && (!llegue))) {
+		int precioActual = this->obtenerPrecioDeLaLlamada();
+		int buscoMejorValor = -1;
+		while(((!this->noEstaAnuladaLaLlamada())  && (precioActual > buscoMejorValor))	&&
+				((!spotActual->recorriTodosLosEnlaces()) && (!llegue))) {
 			if(centralActual->obtenerNumero() != centralReceptora) {
-				int buscoMejorValor = spotActual->obtenerPrecioHastaSpot();
+				buscoMejorValor = spotActual->obtenerPrecioHastaSpot();
 				
 			std::cout<<"la central de ahora es :"<<spotActual->obtenerPosicion()->obtenerNumero()<<"\n";
 			//int a;
 			//std::cin>>a;
-				int precioActual = this->obtenerPrecioDeLaLlamada();
+				
 				if((precioActual > buscoMejorValor) || (precioActual == 0)) {
 			
 		//std::cout<<"recorriTodosLosEnlaces dice :"<<spotActual->recorriTodosLosEnlaces()<<"\n";
