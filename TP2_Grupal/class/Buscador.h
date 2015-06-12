@@ -43,7 +43,7 @@ private:
 
 	/**
 	 * Pre: Debe ser mayor a 0 y entero porque es en centavos. Guardara el precio final
-	 * de la llamada
+	 * de la llamada.
 	 */
 	int precioDeLaLlamada;
 
@@ -79,7 +79,7 @@ public:
 	Lista<Enlace*>* obtenerRuta();
 
 	/**
-	 * Post: devuelve el precio de la llamada. De no haber hecho la busqueda devuelve 0
+	 * Post: devuelve el precio de la llamada. De no haber hecho la busqueda devuelve 0.
 	 */
 	int obtenerPrecioDeLaLlamada();
 
@@ -98,21 +98,19 @@ public:
 	Interno* obtenerInternoEmisor(int emisor);
 
 	Interno* obtenerInternoReceptor(int receptor);
-
+	
+	/**
+	 * Post: Indica si la llamada fue anulada.
+	 */
 	bool noEstaAnuladaLaLlamada();
 
 	/**
-	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
-	 */
-	void anularLlamada();
-
-	/**
-	 * Post: hace el algoritmo de busqueda por mejor precio
+	 * Post: hace el algoritmo de busqueda por mejor precio.
 	 */
 	void encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora);
 
 	/**
-	 * Post: hace el algoritmo de busqueda por mejor distancia
+	 * Post: hace el algoritmo de busqueda por mejor distancia.
 	 */
 	void encontrarCaminoPordistancia(int centralEmisora, int centralReceptora);
 
@@ -122,22 +120,25 @@ public:
 	void resetDatos();
 
 	/**
-	 * Post: libera la memoria de los spots usados y la lista del mejor camino
+	 * Post: libera la memoria de los spots usados y la lista del mejor camino.
 	 */
 	~Buscador();
 
 private:
 
 	/**
-	* Post: indica si ya visite a la central en el camino ya hecho
+	* Post: indica si ya visite a la central en el camino ya hecho.
 	*/
 	bool YaPasePorLaCentral(Central* central);
 
 	/**
-	 * Post: indica si La llamada es entre dos numeros de la misma central
+	 * Post: indica si La llamada es entre dos numeros de la misma central.
 	 */
 	bool esLlamadaInterna(int centralEmisora, int centralReceptora);
-
+	
+	/**
+	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
+	 */
 	Interno* encontrarInternoEnLa(Central* central, int numeroDeInterno);
 
 	/**
@@ -146,26 +147,14 @@ private:
 	void definirEstePrecioYDistancia();
 
 	/**
-	 * Si hay mas caminos devuelve true, sino devuelve false
+	 * Si hay mas caminos devuelve true, sino devuelve false.
 	 */
 	bool hayMasCaminos();
 
 	/**
-	 * Desde una central inicia el algoritmo para moverse a otra. Si llego al final del camino guarda
-	 * la informacion y establece el mejor camino, precio y distancia.
-	 */
-	//void avanzarBusquedaDesde(Central* centralActual, int buscoMejorValor, int precioActual, int centralReceptora);
-
-	/**
-	 * Realiza los pasos necesarios para ir de una central a otra.
-	 * En cada central se asegura de recorrer todos los enlaces posibles de recorrer.
-	 */
-	//void caminarEnlace(Central* centralActual, int centralReceptora);
-
-	/**
 	 * Avanza termina de usar un enlace para ir a la siguiente central acumulando el
 	 * precio y la distancia del recorrido. Pero compara para ir por el
-	 * precio mas barato
+	 * precio mas barato.
 	 */
 	Spot* caminar(Enlace* enlaceActual, Spot* spotActual);
 
@@ -212,16 +201,24 @@ private:
 	void borrarUnSpot();
 
 	/**
-	 * Realiza los procesos que refieren a las llamadas de distintas centrales.
+	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
 	 */
-	//void procesoPorPrecio(Central* centralActual, int centralReceptora);
-
-	//void procesoPorDistancia(Central* centralActual, int centralReceptora);
-
-	void ProcesoIterativoPorPrecio(Central* centralActual, int centralReceptora);
-	bool visitasteLaCentral(Central* centralActual);
+	void anularLlamada();
 	
+	/**
+	 * Post: realiza el proceso para encontrar el camino por precio.
+	 */
+	void ProcesoIterativoPorPrecio(Central* centralActual, int centralReceptora);
+		
+	/**
+	 * Post: Realiza el proceso para encontrar el camino por distancia.
+	 */
 	void ProcesoIterativoPorDistancia(Central* centralActual, int centralReceptora);
-	Enlace* PosicionarEnUltimoEnlaceVisitadoDela(Lista<Enlace*>* enlacesDelSpot, Spot* spotActual);
+	
+	/**
+	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
+	 */
+	bool visitasteLaCentral(Central* centralActual);
+
 };
 #endif

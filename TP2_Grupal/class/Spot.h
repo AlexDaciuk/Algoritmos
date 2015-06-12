@@ -51,8 +51,7 @@ public:
 	Spot(Central* posicion, int precioHastaSpot, int distanciaHastaSpotTemporal);
 
 	/**
-	 * @brief devuelve el puntero a la central del Spot
-	 * @return
+	 * devuelve el puntero a la central del Spot.
 	 */
 	Central* obtenerPosicion();
 
@@ -65,12 +64,19 @@ public:
 	void anotarCaminoRecorrido(Central* CentralAVisitar, Enlace* enlaceRecorrido);
 
 	/**
-	    * Post: indica si ya visite desde esta central a la CentralAVisitar
-	    */
+		* Post: indica si ya visite desde esta central a la CentralAVisitar contando en la que estoy posicionado.
+		*/
 	bool visitasteLaCentral(Central* CentralAVisitar);
 	
+	/**
+	* Post: indica si ya visite desde esta central a la CentralAVisitar sin contar en la que estoy 
+	* posicionado.
+	*/
 	bool visiteLaCentral(Central* centralAVisitar);
 	
+	/**
+	* Post: Asigno a NULL el cursor de la lista de enlaces
+	*/
 	void resetListaEnlaces();
 
 	/**
@@ -88,14 +94,29 @@ public:
 	*/
 	bool recorriTodosLosEnlaces();
 
+	/**
+	* Post: otorga el ultimo enlace que se recorrio.
+	*/
 	Enlace* obtenerEnlaceRecorrido();
 
+	/**
+	* Post: indica si hay mas enlaces por recorrer.
+	*/
 	Enlace* obtenerEnlaceSiguiente();
-
+	
+	/**
+	* Post: indica si hay mas enlaces por recorrer.
+	*/
 	bool VerSiHayMasEnlaces();
 	
+	/**
+	* Post: devuelve el siguiente enlace al ultimo que se recorrio.
+	*/
 	Enlace* posicionarmeEnUltimoEnlace();
 	
+	/**
+	* Post: obtenes la lista de los enlaces de la central posicion del Spot.
+	*/
 	Lista<Enlace*>* obtenerEnlacesARecorrer();
 	/**
 	 * Post: destruye toda la lista de caminos recorridos desde esta central
