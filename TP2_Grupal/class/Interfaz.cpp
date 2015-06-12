@@ -176,6 +176,8 @@ int Interfaz::pedirCentral()
 	} while (numeroDeCentral < 0 || numeroDeCentral > 9999);
 	return numeroDeCentral;
 }
+
+
 void Interfaz::detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB()
 {
 	int primerInterno, centralPrimerInterno, segundoInterno, centralSegundoInterno;
@@ -801,41 +803,46 @@ void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCent
 	}
 }
 
-void Interfaz::llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemente()
+void Interfaz::centralesOrdenadasPorLlamadasAnuladas()
 {
+	Lista<Central*>* centrales = obtenercentrales();
+	centrales->iniciarCursorNodo();
 	int totalCentrales = 0;
-	int i = 0;
-	//creo la lista que voy a usar para oredenar las centrales
-	Lista<Ordenar*>* ordenarCentrales = new Lista<Ordenar*>;
-
-	std::cout << "Lista de centrales ordenadas decrecientemente por numero de llamadas anuladas:\n \n";
-	obtenercentrales()->iniciarCursorNodo();
-
-	while (obtenercentrales()->avanzarCursorNodo()) {
-		int totalLlamadasAnuladas = 0;
+	int j = 0;
+	while (centrales->avanzarCursorNodo()) {
 		totalCentrales++;
-		Central* centralActual = obtenercentrales()->obtenerCursorNodo();
-    std::cout<<"central actual "<<centralActual->obtenerNumero()<<"\n";
-
-		//cuento el total de llamadas anuladas por central
-		totalLlamadasAnuladas = centralActual->obtenerTotalDeLlamadasAnuladasDeInternos(centralActual->obtenerInternos());
-		std::cout<<"total anuladas "<<totalLlamadasAnuladas<<"\n\n";
-    Ordenar* nuevaCentral = new Ordenar(centralActual->obtenerNumero(), totalLlamadasAnuladas);
-
-		ordenarCentrales->insertar(nuevaCentral);
+	}
+	Central** centralesOrdenadas = new Central* [totalCentrales];
+	centrales->iniciarCursorNodo();
+	while (centrales->avanzarCursorNodo()) {
+		centralesOrdenadas[j] = centrales->obtenerCursorNodo();
+		j++;
+	}
+	for (int i = 0; i < totalCentrales; i++)
+	{
+		std::cout<<centralesOrdenadas[i]->obtenerTotalDeLlamadasAnuladasDeInternos(centralesOrdenadas[i]->obtenerInternos())<<"\n";
+	}
 		
+	for (int i = 0; i < totalCentrales - 2; i++)
+	{
+		for (int j = i + 1; j < totalCentrales; j++)
+		{
+			if (centralesOrdenadas[i]->obtenerTotalDeLlamadasAnuladasDeInternos(centralesOrdenadas[i]->obtenerInternos()) < 
+			centralesOrdenadas[j]->obtenerTotalDeLlamadasAnuladasDeInternos(centralesOrdenadas[j]->obtenerInternos()))
+			{
+				 Central* centralTemporal = centralesOrdenadas[i];
+				centralesOrdenadas[i] = centralesOrdenadas[j];
+				centralesOrdenadas[j]= centralTemporal;
+			}
+		}
 	}
-	ordenarCentrales->ordenarDecrecientemente(totalCentrales);
-	ordenarCentrales->iniciarCursorNodo();
+	std::cout<<"Lista de centrales ordenadas decrecientemente por llamadas anuladas. \n\n";
+	for (int i = 0; i < totalCentrales; i++)
+	{
+		std::cout<<i<<") Central numero:"<<centralesOrdenadas[i]->obtenerNumero()<<"\n";
+		std::cout<<"   Total de llamadas anuladas:"<<centralesOrdenadas[i]->obtenerTotalDeLlamadasAnuladasDeInternos(centralesOrdenadas[i]->obtenerInternos())<<"\n\n";
+	}
 
-	while (ordenarCentrales->avanzarCursorNodo()) {
-		i++;
-		std::cout << i << ") Central numero:" << ordenarCentrales->obtenerCursorNodo()->obtenerNombreNumerico() << "\n";
-		std::cout << "   Numero de llamadas anuladas:" << ordenarCentrales->obtenerCursorNodo()->obtenerValorAOrdenar()
-		          << "\n \n";
-	}
-	delete ordenarCentrales;
-  std::cout<<"i="<<i<<"\n";
 }
 
 void Interfaz::tratarOpcion(int opcion)
@@ -924,7 +931,7 @@ void Interfaz::tratarOpcion(int opcion)
 			break;
 
 		case 16:
-			llamadasAnuladasPorFaltaDeEnlacesPorCentralOrdenadoDecrecientemente();
+			centralesOrdenadasPorLlamadasAnuladas();
 			realizarOtraConsulta(opcion, continuar);
 			break;
 

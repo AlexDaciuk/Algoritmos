@@ -31,11 +31,7 @@ template <class T> class Lista
    */
 
   void insertar(T objeto);
-  /**
-   * pre: hay que crear la a nodoOrdenar con la clave previamente.
-   * post: ordena la lista decrecientemeente segun una detarminada clave.
-   */
-  void ordenarDecrecientemente(int totalObjetos);
+
 
   /**
    * Devuelve el puntero a un objeto en especial dentro de la lista
@@ -184,51 +180,6 @@ template <class T> T Lista<T>::obtenerCursorNodo()
   return this->cursorNodo->obtenerObjeto();
 }
 
-template <class T> void Lista<T>::ordenarDecrecientemente(int totalObjetos)
-{
-  if (totalObjetos > 1) {
-    Nodo<T>* nodoOrdenar = primerNodo;
-    for (int i = 0; i < totalObjetos; i++) {
-      
-      while (nodoOrdenar->obtenerSiguiente() != NULL &&
-             (nodoOrdenar->obtenerObjeto()->obtenerValorAOrdenar() <
-              nodoOrdenar->obtenerSiguiente()->obtenerObjeto()->obtenerValorAOrdenar())) {
-
-        if (nodoOrdenar == this->primerNodo) {
-
-          this->primerNodo = nodoOrdenar->obtenerSiguiente();
-          nodoOrdenar->cambiarNodoSiguiente(this->primerNodo->obtenerSiguiente());
-          this->primerNodo->cambiarNodoAnterior(NULL);
-          this->primerNodo->cambiarNodoSiguiente(nodoOrdenar);
-          nodoOrdenar->cambiarNodoAnterior(this->primerNodo);
-          nodoOrdenar->obtenerSiguiente()->cambiarNodoAnterior(nodoOrdenar);
-        } else {
-          Nodo<T>* anteriorAOrdenar = nodoOrdenar->obtenerAnterior();
-          Nodo<T>* siguienteAOrdenar = nodoOrdenar->obtenerSiguiente();
-
-          if (siguienteAOrdenar != this->ultimoNodo) {
-            anteriorAOrdenar->cambiarNodoSiguiente(siguienteAOrdenar);
-            siguienteAOrdenar->cambiarNodoAnterior(anteriorAOrdenar);
-            siguienteAOrdenar->obtenerSiguiente()->cambiarNodoAnterior(nodoOrdenar);
-            nodoOrdenar->cambiarNodoSiguiente(siguienteAOrdenar->obtenerSiguiente());
-            siguienteAOrdenar->cambiarNodoSiguiente(nodoOrdenar);
-            nodoOrdenar->cambiarNodoAnterior(siguienteAOrdenar);
-
-          } else if (siguienteAOrdenar == this->ultimoNodo) {
-            nodoOrdenar->obtenerAnterior()->cambiarNodoSiguiente(this->ultimoNodo);
-            nodoOrdenar->cambiarNodoSiguiente(NULL);
-            nodoOrdenar->obtenerSiguiente()->cambiarNodoAnterior(nodoOrdenar->obtenerAnterior());
-            nodoOrdenar->cambiarNodoAnterior(this->ultimoNodo);
-            this->ultimoNodo->cambiarNodoSiguiente(nodoOrdenar);
-            this->ultimoNodo = nodoOrdenar;
-          }
-        }
-          nodoOrdenar = nodoOrdenar->obtenerSiguiente();
-      }
-    
-    }
-  }
-}
 
 template <class T> Lista<T>::~Lista()
 {
