@@ -12,7 +12,6 @@
 #include "Enlace.h"
 #include "Llamada.h"
 #include "Interno.h"
-#include "Ordenar.h"
 #include "Buscador.h"
 
 #ifndef NULL
@@ -22,8 +21,6 @@
 
 /**
  * Clase que maneja la interfaz e interaccion con el usuario
- *
- *
  */
 
 class Interfaz
@@ -78,18 +75,18 @@ public:
 	 * precondicion: la opcion a ingresar debe ser un numero entre 1 y 17 inclusive.
 	 */
 	int pedirOpcionMenu();
-	
+
 	/**
 	 * Metodo que va a pedir numero de central al usuario
 	 * precondicion: el numero de la central debe ser positivo y ser valido.
 	 */
 	int pedirCentral();
-	 /**
-   * Imprime una lista de centrales ordenadas decrecientemente segun su numero total
-   * de llamadas anuladas por falta de enlaces.
-   */
+	/**
+	* Imprime una lista de centrales ordenadas decrecientemente segun su numero total
+	* de llamadas anuladas por falta de enlaces.
+	*/
 	void centralesOrdenadasPorLlamadasAnuladas();
-	
+
 	/**
 	 * Metodo que pide la ruta donde esta hubicado el archivo de llamadas.
 	 * precondicion: la ruta debe ser valida.
@@ -242,7 +239,7 @@ public:
 	/**
 	* Devuelve el puntero a la clase que lee el archivo de llamadas.
 	*/
-	
+
 	LectorArchivos* obtenerPunteroALectorDeArchivos();
 	/**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.

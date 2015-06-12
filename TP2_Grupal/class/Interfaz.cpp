@@ -1003,27 +1003,6 @@ void Interfaz::iniciarPrograma()
 	this->iniciarlizarPunteroACentrales(procesadorLlamada);
 	this->iniciarlizarPunteroAEnlaces(procesadorLlamada);
 
-	/*obtenercentrales()->iniciarCursorNodo();
-	while (obtenercentrales()->avanzarCursorNodo()) {
-		std::cout << "central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero() << "\n";
-		Lista<Interno*>* Internos = obtenercentrales()->obtenerCursorNodo()->obtenerInternos();
-		Internos->iniciarCursorNodo();
-		while (Internos->avanzarCursorNodo()) {
-			std::cout << "interno " << Internos->obtenerCursorNodo()->obtenerNumero() << "\n";
-			Lista<Llamada*>* Llamadas = Internos->obtenerCursorNodo()->obtenerLlamadas();
-			while (Llamadas->avanzarCursorNodo()) {
-				std::cout << "receptor:" << Llamadas->obtenerCursorNodo()->obtenerReceptorLlamada() << "\n";
-				std::cout << "llamadas hechas:" << Llamadas->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() << "\n";
-				std::cout << "llamadas recibidas:" << Llamadas->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas() << "\n";
-				std::cout << "Ocupados:" << Llamadas->obtenerCursorNodo()->obtenerCantidadOcupadosDados() +
-				          Llamadas->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos() << "\n";
-				std::cout << "Duracion hechas:" << Llamadas->obtenerCursorNodo()->obtenerDuracionLlamadasHechas() << "\n";
-				std::cout << "Duracion recibidas:" << Llamadas->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas()
-				          << "\n";
-				std::cout << "Costo de llamada: "<< Llamadas->obtenerCursorNodo()->obtenerCostoLlamadas() << "\n\n";
-			}
-		}
-	}*/
 	std::cout << "Bienvenido al sistema de informacion de la central telefonica.\n \n";
 	std::cout << "A continuacion de detalla el menu:\n\n";
 	mostrarMenu();

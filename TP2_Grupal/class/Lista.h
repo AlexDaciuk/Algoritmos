@@ -6,7 +6,6 @@
 #endif
 
 #include "Nodo.h"
-#include "Ordenar.h"
 
 template <class T> class Lista
 {
