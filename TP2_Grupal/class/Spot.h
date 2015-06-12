@@ -81,7 +81,7 @@ public:
 	/**
 	* Post: indica la distancia recorrida hasta el spot
 	*/
-	int obtenerDistanciaRecorrida();
+	int obtenerDistanciaRecorridaHastaSpot();
 
 	/**
 	* Post: indica si desde la central del spot uso ya todos los enlaces

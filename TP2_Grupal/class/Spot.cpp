@@ -65,7 +65,7 @@ int Spot::obtenerPrecioHastaSpot()
 	return(this->precioHastaSpot);
 }
 
-int Spot::obtenerDistanciaRecorrida()
+int Spot::obtenerDistanciaRecorridaHastaSpot()
 {
 	return(this->distanciaHastaSpot);
 }
