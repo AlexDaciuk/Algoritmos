@@ -869,6 +869,7 @@ void Interfaz::centralesOrdenadasPorLlamadasAnuladas()
 		std::cout<<"   Total de llamadas anuladas:"<<centralesOrdenadas[i]->obtenerTotalDeLlamadasAnuladasDeInternos(centralesOrdenadas[i]->obtenerInternos())<<"\n\n";
 	}
 
+	delete centralesOrdenadas[] ;
 }
 
 void Interfaz::tratarOpcion(int opcion)
