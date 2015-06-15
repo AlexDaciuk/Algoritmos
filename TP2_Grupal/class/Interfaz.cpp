@@ -865,7 +865,7 @@ void Interfaz::centralesOrdenadasPorLlamadasAnuladas()
 	std::cout<<"Lista de centrales ordenadas decrecientemente por llamadas anuladas. \n\n";
 	for (int i = 0; i < totalCentrales; i++)
 	{
-		std::cout<<i<<") Central numero:"<<centralesOrdenadas[i]->obtenerNumero()<<"\n";
+		std::cout<<i+1<<") Central numero:"<<centralesOrdenadas[i]->obtenerNumero()<<"\n";
 		std::cout<<"   Total de llamadas anuladas:"<<centralesOrdenadas[i]->obtenerTotalDeLlamadasAnuladasDeInternos(centralesOrdenadas[i]->obtenerInternos())<<"\n\n";
 	}
 
