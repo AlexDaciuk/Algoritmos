@@ -24,7 +24,7 @@ std::string Interfaz::pedirRuta()
 
 void Interfaz::mostrarMenu()
 {
-	std::cout << "1)Imprimir detalle de internos, nombres y números.\n";
+	std::cout << "1)Imprimir detalle de numeros de los internos.\n";
 	std::cout << "2)Imprimir detalle de centrales con su numeración.\n";
 	std::cout << "3)Imprimir detalle de enlaces (origen, destino, canales). \n";
 	std::cout << "4)Detalle de llamadas entre el interno 'X' de la central 'A' al interno 'Y' de la central 'B'.\n";
