@@ -693,10 +693,12 @@ void Interfaz::DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
 
 		// me fijo si por lo menos realizo una llamada. Porque el nodo en la llamada puede estar creado solo con datos de
 		// llamadas recibidas.
-		if (internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() > 0) {
+		if (internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() > 0)
+		{
 			emitioLlamadas = true;
-			std::cout << "Llamadas realizadas al interno:"
-			          << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() << ":\n";
+			std::cout << "Llamadas realizadas al interno "
+			          << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() <<
+			          " de la central "<< internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerOtraCentral() << ".\n";
 			std::cout << "Cantidad de llamadas: "
 			          << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() << ".\n";
 			std::cout << "Duracion de las llamadas:"
@@ -721,15 +723,16 @@ void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
 
 	std::cout << "Detalle de las llamadas recibidas por el interno " << interno << " de la central " << central << ".\n \n";
 	internoPedido->obtenerLlamadas()->iniciarCursorNodo();
-
-	while (internoPedido->obtenerLlamadas()->avanzarCursorNodo()) {
-
+	
+	while (internoPedido->obtenerLlamadas()->avanzarCursorNodo())
+	{
 		// me fijo si por lo menos recibio una llamada. Porque el nodo en la llamada puede estar creado solo con datos de
 		// llamadas realizadas.
 		if (internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas() > 0) {
 			recibioLlamadas = true;
-			std::cout << "Llamadas recibidas del interno:"
-			          << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() << ":\n";
+			std::cout << "Llamadas recibidas del interno "
+			          << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() <<
+			          " de la central "<<internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerOtraCentral() << ".\n";
 			std::cout << "Cantidad de llamadas: "
 			          << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas() << ".\n";
 			std::cout << "Duracion de las llamadas:"
