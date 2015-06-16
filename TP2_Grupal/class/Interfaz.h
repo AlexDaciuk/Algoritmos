@@ -65,6 +65,13 @@ public:
 	 * de llamadas.
 	 * */
 	void iniciarlizarPunteroAEnlaces(ProcesadorLlamada* procesadorDeLlamadas);
+	
+	/**
+	 * Precondicion: Recibe un puntero a puntero a central y una variable entera que se va a usar como contador.
+	 * Post: Crea un vector que va a contener punteros a centrales y devuelve el totoal de centrales en la lista.
+	 * Este vector se va a usar para ordenar las centrales por numero de llamadas anuladas.
+	 */
+	void crearVectorDeOrdenamiento(Central** &centralesOrdenadas, int &totalCentrales);
 	/**
 	 * Metodo que va a mostrar el menu al usuario
 	 */

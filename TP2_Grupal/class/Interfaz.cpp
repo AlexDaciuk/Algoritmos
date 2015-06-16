@@ -827,22 +827,30 @@ void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCent
 		std::cout << "No existen llamadas entre estos internos.\n\n";
 	}
 }
-
-void Interfaz::centralesOrdenadasPorLlamadasAnuladas()
+void Interfaz::crearVectorDeOrdenamiento(Central** &centralesOrdenadas, int &totalCentrales)
 {
 	Lista<Central*>* centrales = obtenercentrales();
 	centrales->iniciarCursorNodo();
-	int totalCentrales = 0;
+	totalCentrales = 0;
 	int j = 0;
-	while (centrales->avanzarCursorNodo()) {
+	while (centrales->avanzarCursorNodo())
+	{
 		totalCentrales++;
 	}
-	Central** centralesOrdenadas = new Central* [totalCentrales];
-	centrales->iniciarCursorNodo();
-	while (centrales->avanzarCursorNodo()) {
+		centrales->iniciarCursorNodo();
+		centralesOrdenadas = new Central* [totalCentrales];
+		while (centrales->avanzarCursorNodo())
+	{
 		centralesOrdenadas[j] = centrales->obtenerCursorNodo();
 		j++;
 	}
+}
+void Interfaz::centralesOrdenadasPorLlamadasAnuladas()
+{
+	int totalCentrales;
+	Central** centralesOrdenadas;
+	crearVectorDeOrdenamiento(centralesOrdenadas, totalCentrales);
+	//Ordeno los punteros que inserte en el vector.
 	for (int i = 0; i < totalCentrales - 1; i++) {
 		for (int j = i + 1; j < totalCentrales ; j++) {
 			if (centralesOrdenadas[i]->obtenerTotalDeLlamadasAnuladasDeInternos(centralesOrdenadas[i]->obtenerInternos()) <
