@@ -132,13 +132,7 @@ public:
 	 * Si hay mas de un interno con la misma duracionde llamadas en una central se muestra el ultimo primero.
 	* */
 	void internoQueMasHabloPorCentralYGeneral();
-	/**
-	 * pre: debe existir la lista de punteros a internos.
-	 * post: devuleve el numero del interno con mayor duracion de llamadas totales (recibidas mas hechas).
-	 */
-	void internoQueMasHabloEnUnaCentral(Lista<Interno*>* listaInternos,
-	                                    int& maximaDuracionEnLaCentral,
-	                                    int& internoQueMasHabloPorCentral);
+
 
 
 	/**
@@ -153,13 +147,7 @@ public:
 	 * Si hay mas de un interno con la misma cantidad de llamadas en una central se muestra el primero.
 	*/
 	void internoQueMasLlamoPorCentralYEnGeneral();
-	/**
-	* pre: debe existir la lista de punteros a internos.
-	* post: devuleve el numero del interno con mayor numero de llamadas y ese numero de llamadas.
-	*/
-	void internoQueMasLlamoEnUnaCentral(Lista<Interno*>* listaInternos,
-	                                    int& maximoNumeroLLamadasEnLaCentral,
-	                                    int& internoQueMasLlamoPorCentral);
+
 
 	/**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.
@@ -168,13 +156,7 @@ public:
 	* Si hay mas de un interno con la misma cantidad de ocupados recibidos en una central se muestra el primero.
 	*/
 	void internoQueMasOcupadosRecibioPorCentralYGeneral();
-	/**
-	* pre: debe existir la lista de punteros a internos.
-	* post: devuleve el numero del interno con mayor numero de ocupados recibidos y ese numero de ocupados.
-	*/
-	void internoQueMasOcupadosRecibioEnUnaCentral(Lista<Interno*>* listaInternos,
-	        int& maximoNumeroOcupadosEnLaCentral,
-	        int& internoQueMasRecibioOcupadosPorCentral);
+
 
 	/**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.
@@ -183,12 +165,7 @@ public:
 	* Si hay mas de un interno con la misma cantidad de llamadas recibidas en una central se muestra el primero.
 	*/
 	void internoAlQueMasLlamaronPorCentralYGeneral();
-	/**
-	* pre: debe existir la lista de punteros a internos.
-	* post: devuleve el numero del interno con mayor numero de llamadas recibidas y ese numero de llamadas.
-	*/
-	void internoQueMasLlamadasRecibioEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoLlamadasRecibidasEnLaCentral,
-	        int& internoQueMasLlamaronPorCentral);
+
 
 	/**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.
@@ -197,12 +174,6 @@ public:
 	* Si hay mas de un interno con los mismos costos en una central se muestra el primero.
 	*/
 	void internoQueMasGastoPorCentralYGeneral();
-	/**
-	* pre: debe existir la lista de punteros a internos.
-	* post: devuleve el numero del interno con mayor costos por llamadas y ese numero de gastos.
-	*/
-	void internoQueMasGastoEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoGastoEnLaCentral,
-	                                    int& internoQueMasGastoPorCentral);
 
 	/**
 		* precondicion: Se tiene que haber leido un archivo de llamadas.
@@ -211,13 +182,6 @@ public:
 		* Si hay mas de un interno con la misma duracion total en una central se muestra el primero.
 	*/
 	void internoAlQueMasLeHablaronPorCentralYGeneral();
-	/**
-	* pre: debe existir la lista de punteros a internos.
-	* post: devuleve el numero del interno con mayor duracion total de llamadas recibidas y esa duracion.
-	*/
-	void internoQueMasLeHbalaronEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoInternoQueMasLeHablaronEnLaCentral,
-	        int& internoQueMasHablaronPorCentral);
-
 
 	/**
 	* Devuelve el puntero a la clase que lee el archivo de llamadas.
@@ -231,13 +195,6 @@ public:
 	* Si hay mas de un interno con la misma cantidad en una central se muestra el primero.
 	*/
 	void internoQueMasDioOcupadoPorCentralYGeneral();
-	/**
-	* pre: debe existir la lista de punteros a internos.
-	* post: devuleve el numero del interno con mayor numero de ocupados dados y ese numero,
-	* por central
-	*/
-	void internoQueMasDioOcuapadoEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoNumeroDeOcupadosDadosEnLaCentral,
-	        int& internoQueMasDioOcupadoPorCentral);
 
 	/**
 	 * precondicion: el numero de central e interno deben ser positivos y ser validos.
