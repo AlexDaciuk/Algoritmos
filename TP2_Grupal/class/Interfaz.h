@@ -139,11 +139,8 @@ public:
 	void internoQueMasHabloEnUnaCentral(Lista<Interno*>* listaInternos,
 	                                    int& maximaDuracionEnLaCentral,
 	                                    int& internoQueMasHabloPorCentral);
-	/**
-	 * Pre: debe esxistir la lista de punteros a llamadas.
-	 * post: devuelve la sumatoria de todas las duraciones de llamadas de cada llamada en la lista del interno.
-	 */
-	int sumaDeDuracionDeLlamadas(Lista<Llamada*>* listaLlamadas);
+
+
 	/**
 	 * pre: los internos y las centrales deben existir.
 	 * post: devuelve la cantidad de llamadas totales realizadas entre ellos el tiempo total de conversacion
@@ -163,11 +160,7 @@ public:
 	void internoQueMasLlamoEnUnaCentral(Lista<Interno*>* listaInternos,
 	                                    int& maximoNumeroLLamadasEnLaCentral,
 	                                    int& internoQueMasLlamoPorCentral);
-	/**
-	* Pre: debe esxistir la lista de punteros a llamadas.
-	* post: devuelve la sumatoria de las cantidades de llamadas del interno..
-	*/
-	int sumaDeLlamadasEmitidas(Lista<Llamada*>* listaLlamadas);
+
 	/**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.
 	* postcondicion: Devuelve el interno con mayor numero de ocupados recibidos de cada central y de todos en
@@ -182,11 +175,7 @@ public:
 	void internoQueMasOcupadosRecibioEnUnaCentral(Lista<Interno*>* listaInternos,
 	        int& maximoNumeroOcupadosEnLaCentral,
 	        int& internoQueMasRecibioOcupadosPorCentral);
-	/**
-	* Pre: debe esxistir la lista de punteros a llamadas.
-	* post: devuelve la sumatoria de las cantidades de ocupados recibidos del interno..
-	*/
-	int sumaDeOcupadosRecibidos(Lista<Llamada*>* listaLlamadas);
+
 	/**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.
 	* postcondicion: Devuelve el interno con mayor numero de llamadas recibidas de cada central y de todos en
@@ -200,11 +189,7 @@ public:
 	*/
 	void internoQueMasLlamadasRecibioEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoLlamadasRecibidasEnLaCentral,
 	        int& internoQueMasLlamaronPorCentral);
-	/**
-	* Pre: debe esxistir la lista de punteros a llamadas.
-	* post: devuelve la sumatoria de las cantidades dellamadas recibidas del interno..
-	*/
-	int sumaDeLlamadasRecibidas(Lista<Llamada*>* listaLlamadas);
+
 	/**
 	* precondicion: Se tiene que haber leido un archivo de llamadas.
 	* postcondicion: Devuelve el interno con mayor costos por llamadas de cada central y de todos en
@@ -218,11 +203,7 @@ public:
 	*/
 	void internoQueMasGastoEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoGastoEnLaCentral,
 	                                    int& internoQueMasGastoPorCentral);
-	/**
-	  * Pre: debe esxistir la lista de punteros a llamadas.
-	  * post: devuelve la sumatoria de los gastos por llamadas del interno..
-	  */
-	int sumaDeGastos(Lista<Llamada*>* listaLlamadas);
+
 	/**
 		* precondicion: Se tiene que haber leido un archivo de llamadas.
 		* postcondicion: Devuelve el interno con mayor duracion de llamadas recibidas de cada central y de todos en
@@ -236,11 +217,6 @@ public:
 	*/
 	void internoQueMasLeHbalaronEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoInternoQueMasLeHablaronEnLaCentral,
 	        int& internoQueMasHablaronPorCentral);
-	/**
-	 * Pre: debe esxistir la lista de punteros a llamadas.
-	 * post: devuelve la sumatoria de las duraciones de llamadas recibidas del interno.
-	 */
-	int sumaDuracionDeRecibidas(Lista<Llamada*>* listaLlamadas);
 
 
 	/**
@@ -262,11 +238,7 @@ public:
 	*/
 	void internoQueMasDioOcuapadoEnUnaCentral(Lista<Interno*>* listaInternos,int& maximoNumeroDeOcupadosDadosEnLaCentral,
 	        int& internoQueMasDioOcupadoPorCentral);
-	/**
-	  * Pre: debe esxistir la lista de punteros a llamadas.
-	  * post: devuelve la sumatoria de los ocupados dados de cada interno.
-	  */
-	int sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas);
+
 	/**
 	 * precondicion: el numero de central e interno deben ser positivos y ser validos.
 	 * postcondicion: se devuelve el detalle de las llamadas emitidas de ese interno

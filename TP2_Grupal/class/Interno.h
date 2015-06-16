@@ -83,6 +83,49 @@ public:
 	 * Contabiliza todas las llamadas aunladas de la lista de llamadas y devuelve el totoal.
 	 */
 	int contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas);
+	
+		/**
+	 * Pre: debe esxistir la lista de punteros a llamadas.
+	 * post: devuelve la sumatoria de todas las duraciones de llamadas de cada llamada en la lista del interno.
+	 */
+	int sumaDeDuracionDeLlamadas(Lista<Llamada*>* listaLlamadas);
+	
+		/**
+	  * Pre: debe esxistir la lista de punteros a llamadas.
+	  * post: devuelve la sumatoria de los gastos por llamadas del interno..
+	  */
+	int sumaDeGastos(Lista<Llamada*>* listaLlamadas);
+	
+		/**
+	* Pre: debe esxistir la lista de punteros a llamadas.
+	* post: devuelve la sumatoria de las cantidades de llamadas del interno..
+	*/
+	int sumaDeLlamadasEmitidas(Lista<Llamada*>* listaLlamadas);
+	
+		/**
+	* Pre: debe esxistir la lista de punteros a llamadas.
+	* post: devuelve la sumatoria de las cantidades dellamadas recibidas del interno..
+	*/
+	int sumaDeLlamadasRecibidas(Lista<Llamada*>* listaLlamadas);
+	
+		/**
+	  * Pre: debe esxistir la lista de punteros a llamadas.
+	  * post: devuelve la sumatoria de los ocupados dados de cada interno.
+	  */
+	int sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas);
+	
+		/**
+	* Pre: debe esxistir la lista de punteros a llamadas.
+	* post: devuelve la sumatoria de las cantidades de ocupados recibidos del interno..
+	*/
+	int sumaDeOcupadosRecibidos(Lista<Llamada*>* listaLlamadas);
+	
+		/**
+	 * Pre: debe esxistir la lista de punteros a llamadas.
+	 * post: devuelve la sumatoria de las duraciones de llamadas recibidas del interno.
+	 */
+	int sumaDuracionDeRecibidas(Lista<Llamada*>* listaLlamadas);
+
 
 
 	/**

@@ -135,6 +135,84 @@ void Interno::terminarLlamadaReceptor(int emisorTemporal, int horaTemporal )
 	this->estaOcupado = false;
 }
 
+int Interno::sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas)
+{
+	int ocupados = 0;
+	listaLlamadas->iniciarCursorNodo();
+
+	while (listaLlamadas->avanzarCursorNodo()) {
+		ocupados += listaLlamadas->obtenerCursorNodo()->obtenerCantidadOcupadosDados();
+	}
+	return ocupados;
+}
+
+int Interno::sumaDuracionDeRecibidas(Lista<Llamada*>* listaLlamadas)
+{
+	int duracionRecibidas = 0;
+	listaLlamadas->iniciarCursorNodo();
+
+	while (listaLlamadas->avanzarCursorNodo()) {
+		duracionRecibidas += listaLlamadas->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas();
+	}
+	return duracionRecibidas;
+}
+
+int Interno::sumaDeOcupadosRecibidos(Lista<Llamada*>* listaLlamadas)
+{
+	int ocupadosRecibidos = 0;
+	listaLlamadas->iniciarCursorNodo();
+
+	while (listaLlamadas->avanzarCursorNodo()) {
+		ocupadosRecibidos += listaLlamadas->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos();
+	}
+	return ocupadosRecibidos;
+}
+
+int Interno::sumaDeLlamadasRecibidas(Lista<Llamada*>* listaLlamadas)
+{
+	int llamadasRecibidas = 0;
+	listaLlamadas->iniciarCursorNodo();
+
+	while (listaLlamadas->avanzarCursorNodo()) {
+		llamadasRecibidas += listaLlamadas->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas();
+	}
+	return llamadasRecibidas;
+}
+
+int Interno::sumaDeLlamadasEmitidas(Lista<Llamada*>* listaLlamadas)
+{
+	int llamadas = 0;
+	listaLlamadas->iniciarCursorNodo();
+
+	while (listaLlamadas->avanzarCursorNodo()) {
+		llamadas += listaLlamadas->obtenerCursorNodo()->obtenerCantidadLlamadasHechas();
+	}
+	return llamadas;
+}
+
+int Interno::sumaDeGastos(Lista<Llamada*>* listaLlamadas)
+{
+	int gastos = 0;
+	listaLlamadas->iniciarCursorNodo();
+
+	while (listaLlamadas->avanzarCursorNodo()) {
+		gastos += listaLlamadas->obtenerCursorNodo()->obtenerCostoLlamadas();
+	}
+	return gastos;
+}
+
+int Interno::sumaDeDuracionDeLlamadas(Lista<Llamada*>* listaLlamadas)
+{
+	int duracionHechas = 0;
+	int duracionRecibidas = 0;
+	listaLlamadas->iniciarCursorNodo();
+
+	while (listaLlamadas->avanzarCursorNodo()) {
+		duracionHechas += listaLlamadas->obtenerCursorNodo()->obtenerDuracionLlamadasHechas();
+		duracionRecibidas += listaLlamadas->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas();
+	}
+	return (duracionHechas + duracionRecibidas);
+}
 
 int Interno::contarLlamadasAnuladas(Lista<Llamada*>* listaLlamadas)
 {
