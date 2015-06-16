@@ -14,7 +14,7 @@ class Llamada
 {
 private:
 	int  cantidadLlamadasRecibidas, llamadasAnuladas, cantidadLlamadasHechas, duracionLlamadasHechas, duracionLlamadasRecibidas, cantidadOcupadosDados,
-	     cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas, precioPorMinuto;
+	     cantidadOcupadosRecibidos, horaInicioLlamadaEnCurso, receptorLlamada, costoLlamadas, precioPorMinuto, otraCentral;
 	Lista<Enlace*>* recorridoLlamada;
 
 public:
@@ -23,7 +23,7 @@ public:
 	 * Post: La llamada queda registrada
 	 * Si el receptor no esta en el rango, no se hace nada
 	 */
-	Llamada(int receptorLlamadaTemporal);
+	Llamada(int receptorLlamadaTemporal, int centralReceptoraTemporal);
 
 
 	/**
@@ -60,6 +60,7 @@ public:
 	int obtenerCantidadLlamadasHechas();
 	int obtenerCantidadLlamadasRecibidas();
 	int obtenerCostoLlamadas();
+	int obtenerOtraCentral();
 
 
 	/**

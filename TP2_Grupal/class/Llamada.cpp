@@ -1,8 +1,10 @@
 #include "Llamada.h"
 
-Llamada::Llamada (int receptorLlamadaTemporal)
+Llamada::Llamada (int receptorLlamadaTemporal, int otraCentralTemporal)
 {
-	if ((receptorLlamadaTemporal > 0) && (receptorLlamadaTemporal <= 9999)) {
+	if ((receptorLlamadaTemporal > 0) && (receptorLlamadaTemporal <= 9999)
+	    &&
+	    (otraCentralTemporal > 0) && (otraCentralTemporal <= 9999)) {
 		this->cantidadLlamadasHechas = 0;
 		this->cantidadLlamadasRecibidas = 0;
 		this->duracionLlamadasHechas = 0;
@@ -12,6 +14,7 @@ Llamada::Llamada (int receptorLlamadaTemporal)
 		this->horaInicioLlamadaEnCurso =0;
 		this->llamadasAnuladas = 0;
 		this->receptorLlamada = receptorLlamadaTemporal;
+		this->otraCentral = otraCentralTemporal;
 		this->recorridoLlamada = new Lista<Enlace*>;
 		this->precioPorMinuto = 0;
 	}
@@ -116,6 +119,11 @@ int Llamada::obtenerCantidadLlamadasHechas()
 int Llamada::obtenerCostoLlamadas()
 {
 	return this->costoLlamadas;
+}
+
+int Llamada::obtenerOtraCentral()
+{
+	return this->otraCentral;
 }
 
 

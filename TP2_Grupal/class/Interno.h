@@ -45,8 +45,8 @@ public:
 	 * ese nodo al principio y se suman
 	 * los datos directamente ahi, no se crea ningun nodo.
 	 */
-	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto);
-	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto);
+	void agregarLlamadaEmisor(int receptorTemporal, int horaTemporal , int  centralReceptoraTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto);
+	void agregarLlamadaReceptor(int emisorTemporal, int horaTemporal, int centralEmisoraTemporal , Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto);
 
 
 	/**
@@ -68,7 +68,7 @@ public:
 	 * con datos pertenecientes a interacciones con el interno receptor. En ese caso de no
 	 * existir la llamada, la crea.
 	 */
-	Llamada* creaReceptorLlamada(int receptorLlamadaTemporal);
+	Llamada* creaReceptorLlamada(int receptorLlamadaTemporal, int centralReceptoraTemporal);
 
 
 	/**
