@@ -23,6 +23,7 @@ private:
 	int numeroCentral;
 	Lista<Interno*>* internos;
 	Lista<Enlace*>* enlaces;
+	Lista<Recorrido*>* mejoresCaminos;
 
 public:
 	/**
@@ -72,60 +73,66 @@ public:
 	 * Devuelve el total de llamadas anuladas de toda la lista de internos.
 	 */
 	int obtenerTotalDeLlamadasAnuladasDeInternos(Lista<Interno*>* internos);
-	
-		/**
+
+	/**
 	* pre: debe existir la lista de punteros a internos.
 	* post: devuleve el numero del interno con mayor duracion total de llamadas recibidas y esa duracion.
 	*/
 	void internoQueMasLeHablaronEnLaCentral(Lista<Interno*>* listaInternos,int& maximoInternoQueMasLeHablaronEnLaCentral,
-	        int& internoQueMasHablaronPorCentral);
-					
-		/**
+	                                        int& internoQueMasHablaronPorCentral);
+
+	/**
 	* pre: debe existir la lista de punteros a internos.
 	* post: devuleve el numero del interno con mayor numero de ocupados dados y ese numero,
 	* por central
 	*/
 	void internoQueMasDioOcuapadoEnLaCentral(Lista<Interno*>* listaInternos,int& maximoNumeroDeOcupadosDadosEnLaCentral,
 	        int& internoQueMasDioOcupadoPorCentral);
-	
-	
-		/**
+
+
+	/**
 	* pre: debe existir la lista de punteros a internos.
 	* post: devuleve el numero del interno con mayor costos por llamadas y ese numero de gastos.
 	*/
 	void internoQueMasGastoEnLaCentral(Lista<Interno*>* listaInternos,int& maximoGastoEnLaCentral,
-	                                    int& internoQueMasGastoPorCentral);
-																			
-		/**
-	 * pre: debe existir la lista de punteros a internos.
-	 * post: devuleve el numero del interno con mayor duracion de llamadas totales (recibidas mas hechas).
-	 */
+	                                   int& internoQueMasGastoPorCentral);
+
+	/**
+	* pre: debe existir la lista de punteros a internos.
+	* post: devuleve el numero del interno con mayor duracion de llamadas totales (recibidas mas hechas).
+	*/
 	void internoQueMasHabloEnLaCentral(Lista<Interno*>* listaInternos,
-	                                    int& maximaDuracionEnLaCentral,
-	                                    int& internoQueMasHabloPorCentral);
-																			
-		/**
+	                                   int& maximaDuracionEnLaCentral,
+	                                   int& internoQueMasHabloPorCentral);
+
+	/**
 	* pre: debe existir la lista de punteros a internos.
 	* post: devuleve el numero del interno con mayor numero de llamadas recibidas y ese numero de llamadas.
 	*/
 	void internoQueMasLlamadasRecibioEnLaCentral(Lista<Interno*>* listaInternos,int& maximoLlamadasRecibidasEnLaCentral,
 	        int& internoQueMasLlamaronPorCentral);
-					
-		/**
+
+	/**
 	* pre: debe existir la lista de punteros a internos.
 	* post: devuleve el numero del interno con mayor numero de llamadas y ese numero de llamadas.
 	*/
 	void internoQueMasLlamoEnLaCentral(Lista<Interno*>* listaInternos,
-	                                    int& maximoNumeroLLamadasEnLaCentral,
-	                                    int& internoQueMasLlamoPorCentral);
-																			
-		/**
+	                                   int& maximoNumeroLLamadasEnLaCentral,
+	                                   int& internoQueMasLlamoPorCentral);
+
+	/**
 	* pre: debe existir la lista de punteros a internos.
 	* post: devuleve el numero del interno con mayor numero de ocupados recibidos y ese numero de ocupados.
 	*/
 	void internoQueMasOcupadosRecibioEnLaCentral(Lista<Interno*>* listaInternos,
 	        int& maximoNumeroOcupadosEnLaCentral,
 	        int& internoQueMasRecibioOcupadosPorCentral);
+
+	/*
+	 * Metodo que agrega recorridos a la central 
+	 */
+	void agregarRecorrido(Recorrido* nuevoRecorrido);
+
 
 	/**
 	 * Destructor de Central, libera el espacio pedido para la lista de enlaces y de internos

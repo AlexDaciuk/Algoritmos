@@ -5,6 +5,7 @@ Central::Central(int numeroCentralTemporal)
 	this->numeroCentral= numeroCentralTemporal;
 	this->internos = new Lista<Interno*>;
 	this->enlaces = new Lista<Enlace*>;
+	this->mejoresCaminos = new Lista<Recorrido*>;
 }
 
 
@@ -212,6 +213,11 @@ void Central::internoQueMasOcupadosRecibioEnLaCentral(Lista<Interno*>* listaInte
 			maximoNumeroOcupadosEnLaCentral = ocupadosRecibidosPorInterno;
 		}
 	}
+}
+
+void Central::agregarRecorrido(Recorrido* nuevoRecorrido)
+{
+	this->mejoresCaminos->insertar(nuevoRecorrido);
 }
 
 Central::~Central()
