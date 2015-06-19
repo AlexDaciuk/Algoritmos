@@ -51,3 +51,5 @@ public:
 	Lista<Enlace*>* obtenerEnlacesRecorridos();
 
 }
+//Destrtructor. Libera la memoria de la lista de enlaces recorridos.
+~Recorrido();

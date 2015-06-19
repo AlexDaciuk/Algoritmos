@@ -44,3 +44,8 @@ Lista<Enlace*>* Recorrido::obtenerEnlacesRecorridos()
 {
 	return this->enlacesRecorridos;
 }
+
+Recorrido::~Recorrido()
+{
+	delete this->enlacesRecorridos;
+}
