@@ -14,12 +14,12 @@ class Recorrido
 
 	unsigned int precio, centralLlegada;
 
-	Lista<Enlace*>* enlacesRecorrido;
+	Lista<Enlace*>* enlacesRecorridos;
 
 
 public:
 	/*
-	 *  Constructor de la clase, inicializa los atributos de precio a 32768 (maximo int, reemplazo del infinito)
+	 *  Constructor de la clase, inicializa los atributos de precio a 32768 (reemplazo del infinito)
 	 *  centralLlegada a 0 y crea una lista de enlaces vacia
 	 */
 	Recorrido();
@@ -28,13 +28,13 @@ public:
 	/*
 	 * Metodo que define el precio del recorrido a algo mas bajo
 	 */
-	void definirPrecioRecorrido(unsigned int precioTemporal);
+	void definirPrecioRecorrido(unsigned int nuevoPrecio);
 
 
 	/*
 	 * Metodo que define la central de llegada del camino
 	 */
-	void definirCentralDeLlegada();
+	void definirCentralDeLlegada(unsigned int nuevaCentral);
 
 
 	/*
