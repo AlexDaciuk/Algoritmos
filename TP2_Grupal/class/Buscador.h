@@ -6,6 +6,10 @@
 #define NULL 0
 #endif
 
+#ifndef INFINITO
+#define INFINITO 99999 
+#endif
+
 #include "Lista.h"
 #include "Enlace.h"
 #include "Interno.h"
@@ -119,7 +123,12 @@ public:
 	 *restaura los valores iniciales en todos los atributos.
 	 */
 	void resetDatos();
-
+	
+	/**
+	 *Mejores caminos por dijkstra.
+	 */
+	void Dijkstra(Lista<Central*>* centrales);
+	
 	/**
 	 * Post: libera la memoria de los spots usados y la lista del mejor camino.
 	 */

@@ -368,6 +368,18 @@ bool Buscador::visitasteLaCentral(Central* centralActual)
 	return (laEncontre);
 }
 
+void Buscador::Dijkstra(Lista<Central*>* centrales)
+{
+	this->establecerBusquedaPorPrecio();
+	Central* centralActual;
+	centrales->iniciarCursorNodo();
+	while(centrales->avanzarCursorNodo())
+	{
+		
+	}
+}
+
+
 Buscador::~Buscador()
 {
 	this->borrarRutaActual();
