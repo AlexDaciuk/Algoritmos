@@ -16,7 +16,7 @@
 class ProcesadorLlamada
 {
 private:
-	DatosLlamada* datosTemporal;
+	DatosLlamada* datosLlamada;
 	Buscador* recorridoTemporal;
 	LectorArchivos* archivoLlamadas;
 	Lista<Enlace*>* enlaces;
@@ -80,6 +80,18 @@ private:
 	 * si ya existe la enlace no hace nada.
 	 * */
 	void agregarEnlace(int numeroOrigen, int numeroDestino);
+
+
+	/*
+	 * Metodos que crea un interno en la central indicada
+	 */
+	void crearInterno(int internoNuevo, int central);
+
+
+	/*
+	 * Metodo que obtiene el puntero a un interno de la central indicada
+	 */
+	Interno* obtenerInterno(int internoAObtener, int central);
 
 };
 

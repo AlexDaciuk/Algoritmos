@@ -8,6 +8,7 @@
 #include "Lista.h"
 #include "Enlace.h"
 #include "Interno.h"
+#include "Recorrido.h"
 
 class Interno;
 class Enlace;

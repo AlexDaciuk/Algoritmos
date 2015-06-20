@@ -7,7 +7,9 @@
 */
 
 #include "Lista.h"
+#include "Enlace.h"
 
+class Enlace;
 
 class Recorrido
 {
@@ -50,6 +52,13 @@ public:
 	int obtenerCentralDeLlegada();
 	Lista<Enlace*>* obtenerEnlacesRecorridos();
 
-}
-//Destrtructor. Libera la memoria de la lista de enlaces recorridos.
-~Recorrido();
+
+	/*
+	 * Destrtructor. Libera la memoria de la lista de enlaces recorridos.
+	*/
+	~Recorrido();
+
+};
+
+#endif
+

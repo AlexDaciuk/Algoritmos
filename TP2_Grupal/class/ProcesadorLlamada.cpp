@@ -2,7 +2,7 @@
 
 ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std::string variableBusquedaTemporal)
 {
-	this->datosTemporal= NULL;
+	this->datosLlamada= NULL;
 	this->centrales = new Lista<Central*>;
 	this->enlaces = new Lista<Enlace*>;
 	this->archivoLlamadas = lectorArchivosTemporal;
@@ -14,39 +14,48 @@ ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std
 void ProcesadorLlamada::buscaCentralMenorDistancia()
 {
 	this->recorridoTemporal->resetDatos();
-	this->recorridoTemporal->encontrarCaminoPordistancia(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerDestino());
+	this->recorridoTemporal->encontrarCaminoPordistancia(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino());
 }
 
 
 void ProcesadorLlamada::buscaCentralMenorPrecio()
 {
 	this->recorridoTemporal->resetDatos();
-	this->recorridoTemporal->encontrarCaminoPorPrecio(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerDestino());
+	this->recorridoTemporal->encontrarCaminoPorPrecio(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino());
 }
 
+void ProcesadorLlamada::crearInterno(int internoNuevo, int central)
+{
+	this->centrales->obtenerPunteroAlObjeto( central )->obtenerObjeto()->crearInterno( internoNuevo );
+}
+
+Interno* ProcesadorLlamada::obtenerInterno(int internoAObtener, int central)
+{
+	return this->centrales->obtenerPunteroAlObjeto( central )->obtenerObjeto()->obtenerInterno( internoAObtener );
+}
 
 void ProcesadorLlamada::iniciarLlamada()
 {
 	// Veo si los internos existen o sino, los crea
-	this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerOrigen())->obtenerObjeto()->crearInterno(this->datosTemporal->obtenerEmisor() );
-	this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerDestino())->obtenerObjeto()->crearInterno(this->datosTemporal->obtenerReceptor() );
+	this->crearInterno( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() ); 
+	this->crearInterno( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
 
 	//Obtengo punteros a cada interno
 	Interno* emisor;
 	Interno* receptor;
 
-	emisor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerOrigen() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerEmisor() );
-	receptor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerDestino() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerReceptor() );
+	emisor = this->obtenerInterno ( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() );
+	receptor = this->obtenerInterno ( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
 
 	//Agrego la llamada a cada interno
-	emisor->agregarLlamadaEmisor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora(), this->datosTemporal->obtenerDestino(), this->recorridoTemporal->obtenerRuta(),
+	emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoTemporal->obtenerRuta(),
 	                             this->recorridoTemporal->noEstaAnuladaLaLlamada(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 
-	receptor->agregarLlamadaReceptor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora(), this->datosTemporal->obtenerOrigen(), this->recorridoTemporal->obtenerRuta(),
+	receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), this->recorridoTemporal->obtenerRuta(),
 	                                 this->recorridoTemporal->noEstaAnuladaLaLlamada(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
 	//Cambio la disponibilidad de los enlaces
-	if(this->datosTemporal->obtenerOrigen() != this->datosTemporal->obtenerDestino()) {
-		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor() );
+	if(this->datosLlamada->obtenerOrigen() != this->datosLlamada->obtenerDestino()) {
+		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosLlamada->obtenerReceptor() );
 
 		enlacesRecorridos->iniciarCursorNodo();
 
@@ -63,16 +72,16 @@ void ProcesadorLlamada::finalizarLlamada()
 	Interno* emisor;
 	Interno* receptor;
 
-	emisor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerOrigen() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerEmisor() );
-	receptor = this->centrales->obtenerPunteroAlObjeto(this->datosTemporal->obtenerDestino() )->obtenerObjeto()->obtenerInterno(this->datosTemporal->obtenerReceptor() );
+	emisor = this->centrales->obtenerPunteroAlObjeto(this->datosLlamada->obtenerOrigen() )->obtenerObjeto()->obtenerInterno(this->datosLlamada->obtenerEmisor() );
+	receptor = this->centrales->obtenerPunteroAlObjeto(this->datosLlamada->obtenerDestino() )->obtenerObjeto()->obtenerInterno(this->datosLlamada->obtenerReceptor() );
 
 	// Termino la llamada en cada interno
-	emisor->terminarLlamadaEmisor(this->datosTemporal->obtenerEmisor(), this->datosTemporal->obtenerHora() );
-	receptor->terminarLlamadaReceptor(this->datosTemporal->obtenerReceptor(), this->datosTemporal->obtenerHora() );
+	emisor->terminarLlamadaEmisor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora() );
+	receptor->terminarLlamadaReceptor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora() );
 
 	//Cambio disponibilidad de enlaces
-	if(this->datosTemporal->obtenerOrigen() != this->datosTemporal->obtenerDestino()) {
-		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosTemporal->obtenerReceptor() );
+	if(this->datosLlamada->obtenerOrigen() != this->datosLlamada->obtenerDestino()) {
+		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosLlamada->obtenerReceptor() );
 		enlacesRecorridos->iniciarCursorNodo();
 
 		while( enlacesRecorridos->avanzarCursorNodo() )	{
@@ -106,11 +115,11 @@ void ProcesadorLlamada::agregarEnlace(int numeroOrigen, int numeroDestino)
 		          ( numeroDestino == this->enlaces->obtenerCursorNodo()->obtenerDestino()->obtenerNumero() ) ;
 	}
 	if (! encontro) {
-		// Aca tener en cuenta que los atributos de this->datosTemporal siguen con los nombres como si fuera
+		// Aca tener en cuenta que los atributos de this->datosLlamada siguen con los nombres como si fuera
 		// una llamada, pero realmente es para una enlace y estan ordenados
-		Enlace* nuevoEnlace = new Enlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor(),
-		                                 this->datosTemporal->obtenerDestino(), this->datosTemporal->obtenerReceptor(),
-		                                 this->datosTemporal->obtenerHora(), this->centrales);
+		Enlace* nuevoEnlace = new Enlace(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerEmisor(),
+		                                 this->datosLlamada->obtenerDestino(), this->datosLlamada->obtenerReceptor(),
+		                                 this->datosLlamada->obtenerHora(), this->centrales);
 
 		this->enlaces->insertar(nuevoEnlace);
 
@@ -143,12 +152,16 @@ Lista<Enlace*>* ProcesadorLlamada::obtenerEnlaces()
 
 void ProcesadorLlamada::procesarLlamadas()
 {
+	bool fueEnlaceLoAnterior = false;
 	while ( archivoLlamadas->chequearLlamadas() ) {
-		this->datosTemporal = archivoLlamadas->obtenerDatosLlamada();
+		this->datosLlamada = archivoLlamadas->obtenerDatosLlamada();
 
-		if ( this->datosTemporal->obtenerAccion() == "Inicio") {
-			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
-			this->agregarCentral(this->datosTemporal->obtenerDestino() );
+		if ( this->datosLlamada->obtenerAccion() == "Inicio") {
+			if (fueEnlaceLoAnterior){
+				
+			}
+			this->agregarCentral(this->datosLlamada->obtenerOrigen() );
+			this->agregarCentral(this->datosLlamada->obtenerDestino() );
 
 			if (this->variableBusqueda == "Distancia") {
 				this->buscaCentralMenorDistancia();
@@ -158,14 +171,15 @@ void ProcesadorLlamada::procesarLlamadas()
 
 			this->iniciarLlamada();
 
-		} else if ( this->datosTemporal->obtenerAccion() == "Fin") {
+		} else if ( this->datosLlamada->obtenerAccion() == "Fin") {
 			this->finalizarLlamada();
 
-		} else if (this->datosTemporal->obtenerAccion() == "Enlace") {
-			this->agregarCentral(this->datosTemporal->obtenerOrigen() );
-			this->agregarCentral(this->datosTemporal->obtenerEmisor() );
+		} else if (this->datosLlamada->obtenerAccion() == "Enlace") {
+			this->agregarCentral(this->datosLlamada->obtenerOrigen() );
+			this->agregarCentral(this->datosLlamada->obtenerEmisor() );
+			fueEnlaceLoAnterior = true;
 
-			agregarEnlace(this->datosTemporal->obtenerOrigen(), this->datosTemporal->obtenerEmisor());
+			agregarEnlace(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerEmisor());
 		}
 	}
 }
