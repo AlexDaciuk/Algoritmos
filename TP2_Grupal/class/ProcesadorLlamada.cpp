@@ -2,7 +2,7 @@
 
 ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std::string variableBusquedaTemporal)
 {
-	this->datosLlamada= NULL;
+	this->datosLlamada = NULL;
 	this->centrales = new Lista<Central*>;
 	this->enlaces = new Lista<Enlace*>;
 	this->archivoLlamadas = lectorArchivosTemporal;
@@ -33,6 +33,21 @@ Interno* ProcesadorLlamada::obtenerInterno(int internoAObtener, int central)
 {
 	return this->centrales->obtenerPunteroAlObjeto( central )->obtenerObjeto()->obtenerInterno( internoAObtener );
 }
+
+bool ProcesadorLlamada::chequearDisponibilidadRecorrido(Lista<Enlace*>* enlacesDelRecorrido)
+{
+	bool caminoDisponible = true;
+	enlacesDelRecorrido->iniciarCursorNodo();
+
+	while (enlacesDelRecorrido->avanzarCursorNodo() && caminoDisponible) {
+		Enlace* enlaceActual = enlacesDelRecorrido->obtenerCursorNodo();
+
+		caminoDisponible = enlaceActual->chequearDisponibilidadCanales();
+	}
+
+	return caminoDisponible;
+}
+
 
 void ProcesadorLlamada::iniciarLlamada()
 {
@@ -65,6 +80,42 @@ void ProcesadorLlamada::iniciarLlamada()
 	}
 }
 
+void ProcesadorLlamada::iniciarLlamadaDijkstra()
+{
+	// Veo si los internos existen o sino, los crea
+	this->crearInterno( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() );
+	this->crearInterno( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
+
+	//Obtengo punteros a cada interno
+	Interno* emisor;
+	Interno* receptor;
+
+	emisor = this->obtenerInterno ( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() );
+	receptor = this->obtenerInterno ( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
+
+	/* Busco el mejor camino de la central origen a la central destino y veo si estan disponibles los enlaces
+	 *  sii la llamada no es interna de la central
+	 */
+	if ( this->datosLlamada->obtenerOrigen() != this->datosLlamada->obtenerDestino() )
+		Lista<Enlace*>* mejorCamino = this->obtenerMejorCamino(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino() );
+
+	if ( this->chequearDisponibilidadRecorrido(mejorCamino) ) {
+		mejorCamino->iniciarCursorNodo();
+
+		while( mejorCamino->avanzarCursorNodo() )	{
+			mejorCamino->obtenerCursorNodo()->agregarLlamadaEnCurso();
+		}
+	}
+
+		//Agrego la llamada a cada interno
+		emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoLlamada->obtenerRuta(),
+		                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
+
+		receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), this->recorridoLlamada->obtenerRuta(),
+		                                 this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
+
+	}
+}
 
 void ProcesadorLlamada::finalizarLlamada()
 {
@@ -172,6 +223,8 @@ void ProcesadorLlamada::procesarLlamadas()
 				this->buscaCentralMenorDistancia();
 			else if (this->variableBusqueda == "Precio")
 				this->buscaCentralMenorPrecio();
+			else if (this->variableBusqueda == "Dijkstra")
+				this->iniciarLlamadaDijkstra();
 
 
 			this->iniciarLlamada();
