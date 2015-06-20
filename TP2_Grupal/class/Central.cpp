@@ -224,13 +224,13 @@ void Central::crearVectorDeEnlaces(Enlace** &enlacesOrdenadas, int &totalEnlaces
 {
 	Lista<Enlace*>* enlaces = this->obtenerEnlaces();
 	enlaces->iniciarCursorNodo();
-	totalCentrales = 0;
+	totalEnlaces = 0;
 	int j = 0;
 	while (enlaces->avanzarCursorNodo()) {
-		totalCentrales++;
+		totalEnlaces++;
 	}
 	enlaces->iniciarCursorNodo();
-	enlacesOrdenadas = new Enlace* [totalCentrales];
+	enlacesOrdenadas = new Enlace* [totalEnlaces];
 	while (enlaces->avanzarCursorNodo()) {
 		enlacesOrdenadas[j] = enlaces->obtenerCursorNodo();
 		j++;
@@ -242,13 +242,13 @@ void Central::ordenarEnlaces()
 {
 	int totalEnlaces;
 	Enlace** enlacesOrdenados;
-	crearVectorDeOrdenamiento(enlacesOrdenados, totalEnlaces);
+	crearVectorDeEnlaces(enlacesOrdenados, totalEnlaces);
 	//Ordeno los punteros que inserte en el vector.
 	for (int i = 0; i < totalEnlaces - 1; i++) {
 		for (int j = i + 1; j < totalEnlaces ; j++) {
 			if (enlacesOrdenados[i]->obtenerPrecio() < enlacesOrdenados[j]->obtenerPrecio()) {
 			    
-				Central* enlaceTemporal = enlacesOrdenados[i];
+				Enlace* enlaceTemporal = enlacesOrdenados[i];
 				enlacesOrdenados[i] = enlacesOrdenados[j];
 				enlacesOrdenados[j]= enlaceTemporal;
 			}

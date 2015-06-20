@@ -136,7 +136,7 @@ public:
 
 	void ordenarEnlaces();
 	
-	void Central::crearVectorDeEnlaces(Enlace** &enlacesOrdenadas, int &totalEnlaces);
+	void crearVectorDeEnlaces(Enlace** &enlacesOrdenadas, int &totalEnlaces);
 	/**
 	 * Destructor de Central, libera el espacio pedido para la lista de enlaces y de internos
 	 * */
