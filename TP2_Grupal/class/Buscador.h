@@ -6,10 +6,6 @@
 #define NULL 0
 #endif
 
-#ifndef INFINITO
-#define INFINITO 99999 
-#endif
-
 #include "Lista.h"
 #include "Enlace.h"
 #include "Interno.h"
