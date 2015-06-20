@@ -6,22 +6,22 @@ ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std
 	this->centrales = new Lista<Central*>;
 	this->enlaces = new Lista<Enlace*>;
 	this->archivoLlamadas = lectorArchivosTemporal;
-	this->recorridoTemporal= new Buscador(this->centrales);
+	this->recorridoLlamada = new Buscador(this->centrales);
 	this->variableBusqueda = variableBusquedaTemporal;
 }
 
 
 void ProcesadorLlamada::buscaCentralMenorDistancia()
 {
-	this->recorridoTemporal->resetDatos();
-	this->recorridoTemporal->encontrarCaminoPordistancia(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino());
+	this->recorridoLlamada->resetDatos();
+	this->recorridoLlamada->encontrarCaminoPordistancia(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino());
 }
 
 
 void ProcesadorLlamada::buscaCentralMenorPrecio()
 {
-	this->recorridoTemporal->resetDatos();
-	this->recorridoTemporal->encontrarCaminoPorPrecio(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino());
+	this->recorridoLlamada->resetDatos();
+	this->recorridoLlamada->encontrarCaminoPorPrecio(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino());
 }
 
 void ProcesadorLlamada::crearInterno(int internoNuevo, int central)
@@ -37,7 +37,7 @@ Interno* ProcesadorLlamada::obtenerInterno(int internoAObtener, int central)
 void ProcesadorLlamada::iniciarLlamada()
 {
 	// Veo si los internos existen o sino, los crea
-	this->crearInterno( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() ); 
+	this->crearInterno( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() );
 	this->crearInterno( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
 
 	//Obtengo punteros a cada interno
@@ -48,11 +48,11 @@ void ProcesadorLlamada::iniciarLlamada()
 	receptor = this->obtenerInterno ( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
 
 	//Agrego la llamada a cada interno
-	emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoTemporal->obtenerRuta(),
-	                             this->recorridoTemporal->noEstaAnuladaLaLlamada(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
+	emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoLlamada->obtenerRuta(),
+	                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
 
-	receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), this->recorridoTemporal->obtenerRuta(),
-	                                 this->recorridoTemporal->noEstaAnuladaLaLlamada(), this->recorridoTemporal->obtenerPrecioDeLaLlamada() );
+	receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), this->recorridoLlamada->obtenerRuta(),
+	                                 this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
 	//Cambio la disponibilidad de los enlaces
 	if(this->datosLlamada->obtenerOrigen() != this->datosLlamada->obtenerDestino()) {
 		Lista<Enlace*>* enlacesRecorridos = emisor->devolverRecorridoLlamada(this->datosLlamada->obtenerReceptor() );
@@ -149,6 +149,11 @@ Lista<Enlace*>* ProcesadorLlamada::obtenerEnlaces()
 	return (this->enlaces);
 }
 
+void ProcesadorLlamada::cargarCaminosEnCentrales()
+{
+	
+}
+
 
 void ProcesadorLlamada::procesarLlamadas()
 {
@@ -157,29 +162,31 @@ void ProcesadorLlamada::procesarLlamadas()
 		this->datosLlamada = archivoLlamadas->obtenerDatosLlamada();
 
 		if ( this->datosLlamada->obtenerAccion() == "Inicio") {
-			if (fueEnlaceLoAnterior){
-				
-			}
+			if (fueEnlaceLoAnterior)
+				this->cargarCaminosEnCentrales();
+
 			this->agregarCentral(this->datosLlamada->obtenerOrigen() );
 			this->agregarCentral(this->datosLlamada->obtenerDestino() );
 
-			if (this->variableBusqueda == "Distancia") {
+			if (this->variableBusqueda == "Distancia")
 				this->buscaCentralMenorDistancia();
-			} else if (this->variableBusqueda == "Precio") {
+			else if (this->variableBusqueda == "Precio")
 				this->buscaCentralMenorPrecio();
-			}
+
 
 			this->iniciarLlamada();
+			fueEnlaceLoAnterior = false;
 
 		} else if ( this->datosLlamada->obtenerAccion() == "Fin") {
 			this->finalizarLlamada();
-
+			fueEnlaceLoAnterior = false;
 		} else if (this->datosLlamada->obtenerAccion() == "Enlace") {
 			this->agregarCentral(this->datosLlamada->obtenerOrigen() );
 			this->agregarCentral(this->datosLlamada->obtenerEmisor() );
-			fueEnlaceLoAnterior = true;
 
 			agregarEnlace(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerEmisor());
+
+			fueEnlaceLoAnterior = true;
 		}
 	}
 }
@@ -189,5 +196,5 @@ ProcesadorLlamada::~ProcesadorLlamada()
 {
 	delete(this->enlaces);
 	delete(this->centrales);
-	delete(this->recorridoTemporal);
+	delete(this->recorridoLlamada);
 }

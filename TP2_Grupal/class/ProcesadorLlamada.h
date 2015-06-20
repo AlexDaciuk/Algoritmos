@@ -17,7 +17,7 @@ class ProcesadorLlamada
 {
 private:
 	DatosLlamada* datosLlamada;
-	Buscador* recorridoTemporal;
+	Buscador* recorridoLlamada;
 	LectorArchivos* archivoLlamadas;
 	Lista<Enlace*>* enlaces;
 	Lista<Central*>* centrales;
@@ -93,6 +93,11 @@ private:
 	 */
 	Interno* obtenerInterno(int internoAObtener, int central);
 
+
+	/*
+	 * Llama al buscador Dijkstra y carga los caminos en cada central
+	 */
+	void cargarCaminosEnCentrales();
 };
 
 #endif
