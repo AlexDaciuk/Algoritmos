@@ -11,6 +11,7 @@
 #include "Enlace.h"
 #include "LectorArchivos.h"
 #include "Buscador.h"
+#include "Recorrido.h"
 #include <string>
 
 class ProcesadorLlamada
@@ -57,6 +58,8 @@ private:
 	 * Metodos internos para iniciar y finalizar llamadas
 	 */
 	void iniciarLlamada();
+	void iniciarLlamadaDijkstra();
+
 	void finalizarLlamada();
 
 
@@ -98,6 +101,11 @@ private:
 	 * Llama al buscador Dijkstra y carga los caminos en cada central
 	 */
 	void cargarCaminosEnCentrales();
+
+
+	bool chequearDisponibilidadRecorrido(Recorrido* enlacesDelRecorrido);
+
+	Recorrido* obtenerMejorCamino(int centralOrigen, int centralDestino);
 };
 
 #endif

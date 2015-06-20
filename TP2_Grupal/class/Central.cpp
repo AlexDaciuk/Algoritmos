@@ -138,8 +138,8 @@ void Central::internoQueMasGastoEnLaCentral(Lista<Interno*>* listaInternos,
 }
 
 void Central::internoQueMasLlamadasRecibioEnLaCentral(Lista<Interno*>* listaInternos,
-    int& maximoLlamadasRecibidasEnLaCentral,
-    int& internoQueMasLlamaronPorCentral)
+        int& maximoLlamadasRecibidasEnLaCentral,
+        int& internoQueMasLlamaronPorCentral)
 {
 
 	listaInternos->iniciarCursorNodo();
@@ -158,8 +158,8 @@ void Central::internoQueMasLlamadasRecibioEnLaCentral(Lista<Interno*>* listaInte
 
 
 void Central::internoQueMasHabloEnLaCentral(Lista<Interno*>* listaInternos,
-    int& maximaDuracionEnLaCentral,
-    int& internoQueMasHabloPorCentral)
+        int& maximaDuracionEnLaCentral,
+        int& internoQueMasHabloPorCentral)
 {
 
 	listaInternos->iniciarCursorNodo();
@@ -177,8 +177,8 @@ void Central::internoQueMasHabloEnLaCentral(Lista<Interno*>* listaInternos,
 }
 
 void Central::internoQueMasLlamoEnLaCentral(Lista<Interno*>* listaInternos,
-    int& maximoNumeroLLamadasEnLaCentral,
-    int& internoQueMasLlamoPorCentral)
+        int& maximoNumeroLLamadasEnLaCentral,
+        int& internoQueMasLlamoPorCentral)
 {
 
 	listaInternos->iniciarCursorNodo();
@@ -197,8 +197,8 @@ void Central::internoQueMasLlamoEnLaCentral(Lista<Interno*>* listaInternos,
 
 
 void Central::internoQueMasOcupadosRecibioEnLaCentral(Lista<Interno*>* listaInternos,
-    int& maximoNumeroOcupadosEnLaCentral,
-    int& internoQueMasRecibioOcupadosPorCentral)
+        int& maximoNumeroOcupadosEnLaCentral,
+        int& internoQueMasRecibioOcupadosPorCentral)
 {
 
 	listaInternos->iniciarCursorNodo();
@@ -247,7 +247,7 @@ void Central::ordenarEnlaces()
 	for (int i = 0; i < totalEnlaces - 1; i++) {
 		for (int j = i + 1; j < totalEnlaces ; j++) {
 			if (enlacesOrdenados[i]->obtenerPrecio() < enlacesOrdenados[j]->obtenerPrecio()) {
-			    
+
 				Enlace* enlaceTemporal = enlacesOrdenados[i];
 				enlacesOrdenados[i] = enlacesOrdenados[j];
 				enlacesOrdenados[j]= enlaceTemporal;
@@ -256,15 +256,29 @@ void Central::ordenarEnlaces()
 	}
 	Lista<Enlace*>* enlaces = this->obtenerEnlaces();
 	enlaces->iniciarCursorNodo();
-	while(enlaces->avanzarCursorNodo())
-	{
+	while(enlaces->avanzarCursorNodo()) {
 		enlaces->remover();
 	}
-	for(int j=0;j < totalEnlaces; j++)
-	{
+	for(int j=0; j < totalEnlaces; j++) {
 		enlaces->insertar(enlacesOrdenados[j]);
 	}
 }
+
+Recorrido* Central::obtenerRecorridoACentral(int centralDestino)
+{
+	this->mejoresCaminos->iniciarCursorNodo();
+	bool encontreCamino = false;
+	Recorrido* recorridoActual = NULL;
+
+	while (this->mejoresCaminos->avanzarCursorNodo() && ! encontreCamino) {
+		Recorrido* recorridoActual = this->mejoresCaminos->obtenerCursorNodo();
+
+		encontreCamino = (recorridoActual->obtenerCentralDeLlegada() == centralDestino) ;
+	}
+
+	return recorridoActual;
+}
+
 
 Central::~Central()
 {

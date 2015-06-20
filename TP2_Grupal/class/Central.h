@@ -137,6 +137,9 @@ public:
 	void ordenarEnlaces();
 	
 	void crearVectorDeEnlaces(Enlace** &enlacesOrdenadas, int &totalEnlaces);
+	
+	Recorrido* obtenerRecorridoACentral(int centralDestino);
+	
 	/**
 	 * Destructor de Central, libera el espacio pedido para la lista de enlaces y de internos
 	 * */

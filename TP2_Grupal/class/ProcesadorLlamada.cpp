@@ -34,13 +34,14 @@ Interno* ProcesadorLlamada::obtenerInterno(int internoAObtener, int central)
 	return this->centrales->obtenerPunteroAlObjeto( central )->obtenerObjeto()->obtenerInterno( internoAObtener );
 }
 
-bool ProcesadorLlamada::chequearDisponibilidadRecorrido(Lista<Enlace*>* enlacesDelRecorrido)
+bool ProcesadorLlamada::chequearDisponibilidadRecorrido(Recorrido* enlacesDelRecorrido)
 {
 	bool caminoDisponible = true;
-	enlacesDelRecorrido->iniciarCursorNodo();
+	Lista<Enlace*>* enlacesLlamada = enlacesDelRecorrido->obtenerEnlacesRecorridos() ;
+	enlacesLlamada->iniciarCursorNodo();
 
-	while (enlacesDelRecorrido->avanzarCursorNodo() && caminoDisponible) {
-		Enlace* enlaceActual = enlacesDelRecorrido->obtenerCursorNodo();
+	while (enlacesLlamada->avanzarCursorNodo() && caminoDisponible) {
+		Enlace* enlaceActual = enlacesLlamada->obtenerCursorNodo();
 
 		caminoDisponible = enlaceActual->chequearDisponibilidadCanales();
 	}
@@ -48,6 +49,10 @@ bool ProcesadorLlamada::chequearDisponibilidadRecorrido(Lista<Enlace*>* enlacesD
 	return caminoDisponible;
 }
 
+Recorrido* ProcesadorLlamada::obtenerMejorCamino(int centralOrigen, int centralDestino)
+{
+	return this->centrales->obtenerPunteroAlObjeto(centralOrigen)->obtenerObjeto()->obtenerRecorridoACentral(centralDestino) ;
+}
 
 void ProcesadorLlamada::iniciarLlamada()
 {
@@ -96,28 +101,48 @@ void ProcesadorLlamada::iniciarLlamadaDijkstra()
 	/* Busco el mejor camino de la central origen a la central destino y veo si estan disponibles los enlaces
 	 *  sii la llamada no es interna de la central
 	 */
-	if ( this->datosLlamada->obtenerOrigen() != this->datosLlamada->obtenerDestino() )
-		Lista<Enlace*>* mejorCamino = this->obtenerMejorCamino(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino() );
+	if ( this->datosLlamada->obtenerOrigen() != this->datosLlamada->obtenerDestino() ) {
+		Recorrido* mejorCamino = this->obtenerMejorCamino(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino() );
 
-	if ( this->chequearDisponibilidadRecorrido(mejorCamino) ) {
-		mejorCamino->iniciarCursorNodo();
+		if ( this->chequearDisponibilidadRecorrido(mejorCamino) ) {
+			mejorCamino->obtenerEnlacesRecorridos()->iniciarCursorNodo();
 
-		while( mejorCamino->avanzarCursorNodo() )	{
-			mejorCamino->obtenerCursorNodo()->agregarLlamadaEnCurso();
+			while( mejorCamino->obtenerEnlacesRecorridos()->avanzarCursorNodo() )	{
+				mejorCamino->obtenerEnlacesRecorridos()->obtenerCursorNodo()->agregarLlamadaEnCurso();
+			}
+
+			emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), mejorCamino->obtenerEnlacesRecorridos(),
+			                             false, mejorCamino->obtenerPrecioRecorrido() );
+
+			receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), mejorCamino->obtenerEnlacesRecorridos(),
+			                                 false, mejorCamino->obtenerPrecioRecorrido() );
+		} else {
+			//Llamo al buscador nuestro, que encuentra un camino si existiese, sino, se anula
+			this->recorridoLlamada->resetDatos();
+			this->recorridoLlamada->encontrarCaminoPorPrecio(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino());
+
+
+			//Agrego la llamada a cada interno
+			emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoLlamada->obtenerRuta(),
+			                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
+
+			receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), this->recorridoLlamada->obtenerRuta(),
+			                                 this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada());
+
+
 		}
-	}
-
-		//Agrego la llamada a cada interno
+	} else {
 		emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoLlamada->obtenerRuta(),
 		                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
 
 		receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), this->recorridoLlamada->obtenerRuta(),
 		                                 this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
-
 	}
 }
 
-void ProcesadorLlamada::finalizarLlamada()
+
+
+                                 void ProcesadorLlamada::finalizarLlamada()
 {
 	//Obtengo punteros a cada interno
 	Interno* emisor;
@@ -136,7 +161,7 @@ void ProcesadorLlamada::finalizarLlamada()
 		enlacesRecorridos->iniciarCursorNodo();
 
 		while( enlacesRecorridos->avanzarCursorNodo() )	{
-			enlacesRecorridos->obtenerCursorNodo()->agregarLlamadaEnCurso();
+			enlacesRecorridos->obtenerCursorNodo()->eliminarLlamadaEnCurso();
 		}
 	}
 }
@@ -202,7 +227,7 @@ Lista<Enlace*>* ProcesadorLlamada::obtenerEnlaces()
 
 void ProcesadorLlamada::cargarCaminosEnCentrales()
 {
-
+	this->recorridoLlamada->Dijkstra(centrales);
 }
 
 
