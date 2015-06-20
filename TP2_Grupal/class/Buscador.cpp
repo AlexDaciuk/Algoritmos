@@ -375,7 +375,7 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 	this->establecerBusquedaPorPrecio();
 	Central* centralActual;
 	Central* centralSiguiente;
-	Recorrido* recorrido;
+	Recorrido* recorrido = new Recorrido;
 	int posicion = 0;
 	int totalCentrales = 0;
 	centrales->iniciarCursorNodo();
