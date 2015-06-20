@@ -72,8 +72,8 @@ void ProcesadorLlamada::finalizarLlamada()
 	Interno* emisor;
 	Interno* receptor;
 
-	emisor = this->centrales->obtenerPunteroAlObjeto(this->datosLlamada->obtenerOrigen() )->obtenerObjeto()->obtenerInterno(this->datosLlamada->obtenerEmisor() );
-	receptor = this->centrales->obtenerPunteroAlObjeto(this->datosLlamada->obtenerDestino() )->obtenerObjeto()->obtenerInterno(this->datosLlamada->obtenerReceptor() );
+	emisor = this->obtenerInterno ( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() );
+	receptor = this->obtenerInterno ( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
 
 	// Termino la llamada en cada interno
 	emisor->terminarLlamadaEmisor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora() );
@@ -151,7 +151,7 @@ Lista<Enlace*>* ProcesadorLlamada::obtenerEnlaces()
 
 void ProcesadorLlamada::cargarCaminosEnCentrales()
 {
-	
+
 }
 
 
