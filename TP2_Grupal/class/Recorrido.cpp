@@ -16,7 +16,7 @@ void Recorrido::definirPrecioRecorrido(unsigned int nuevoPrecio)
 
 void Recorrido::definirCentralDeLlegada(unsigned int nuevaCentral)
 {
-	if (nuevaCentral > 0 && nuevaCentral =< 9999) {
+	if (nuevaCentral > 0 && nuevaCentral <= 9999) {
 		this->centralLlegada = nuevaCentral;
 	}
 }
@@ -42,10 +42,10 @@ int Recorrido::obtenerCentralDeLlegada()
 
 Lista<Enlace*>* Recorrido::obtenerEnlacesRecorridos()
 {
-	return this->enlacesRecorridos;
+	return this->camino;
 }
 
 Recorrido::~Recorrido()
 {
-	delete this->enlacesRecorridos;
+	delete this->camino;
 }

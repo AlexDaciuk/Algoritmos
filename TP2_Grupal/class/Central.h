@@ -12,6 +12,7 @@
 
 class Interno;
 class Enlace;
+class Recorrido;
 
 /**
  * Clase que maneja cada central
