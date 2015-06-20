@@ -238,7 +238,7 @@ void ProcesadorLlamada::procesarLlamadas()
 		this->datosLlamada = archivoLlamadas->obtenerDatosLlamada();
 
 		if ( this->datosLlamada->obtenerAccion() == "Inicio") {
-			if (fueEnlaceLoAnterior)
+			if (fueEnlaceLoAnterior && this->variableBusqueda == "Dijkstra")
 				this->cargarCaminosEnCentrales();
 
 			this->agregarCentral(this->datosLlamada->obtenerOrigen() );
