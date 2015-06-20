@@ -86,6 +86,10 @@ std::string Interfaz::pedirAlgoritmoDeBusqueda()
 	case 2:
 		opcionAlgoritmo = "Distancia";
 		break;
+	
+	case 3:
+		opcionAlgoritmo = "Dijkstra";
+		break;
 	}
 	std::cout << "\n";
 	return opcionAlgoritmo;
