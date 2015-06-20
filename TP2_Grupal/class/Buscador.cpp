@@ -396,11 +396,11 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 			centralSiguiente = centrales->obtenerCursorNodo();
 			if(centralSiguiente->obtenerNumero() != vectorCentrales[j]->obtenerNumero()) {
 				encontrarCaminoPorPrecio(vectorCentrales[j]->obtenerNumero(), centralSiguiente->obtenerNumero());
+				recorrido->definirPrecioRecorrido(this->obtenerPrecioDeLaLlamada());
+				recorrido->definirCamino(this->obtenerRuta());
+				recorrido->definirCentralDeLlegada(centralSiguiente->obtenerNumero());
+				vectorCentrales[j]->agregarRecorrido(recorrido);
 			}
-			recorrido->definirPrecioRecorrido(this->obtenerPrecioDeLaLlamada());
-			recorrido->definirCamino(this->obtenerRuta());
-			recorrido->definirCentralDeLlegada(centralSiguiente->obtenerNumero());
-			vectorCentrales[j]->agregarRecorrido(recorrido);
 		}
 	}
 	delete []vectorCentrales;
