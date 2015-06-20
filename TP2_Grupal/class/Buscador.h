@@ -15,6 +15,7 @@
 #include "Interno.h"
 #include "Spot.h"
 #include "Central.h"
+#include "Recorrido.h"
 
 
 /**
