@@ -42,8 +42,8 @@ public:
 	/**
 	 * Metodo que carga datos a los atributos, si ya tuviera datos, los sobre escribe
 	 */
-	void cargarLlamada(std::string accionTemporal, std::string origenTemporal, std::string emisorTemporal,
-	                   std::string destinoTemporal, std::string receptorTemporal, std::string horaInicioTemporal);
+	void cargarLlamada(std::string accionActual, std::string origenActual, std::string emisorActual,
+	                   std::string destinoActual, std::string receptorActual, std::string horaInicioActual);
 
 };
 

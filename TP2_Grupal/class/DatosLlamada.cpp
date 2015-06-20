@@ -11,26 +11,26 @@ DatosLlamada::DatosLlamada()
 }
 
 
-void DatosLlamada::cargarLlamada(std::string accionTemporal, std::string origenTemporal, std::string emisorTemporal,
-                                 std::string destinoTemporal, std::string receptorTemporal, std::string horaTemporal)
+void DatosLlamada::cargarLlamada(std::string accionActual, std::string origenActual, std::string emisorActual,
+                                 std::string destinoActual, std::string receptorActual, std::string horaActual)
 {
-	if (! accionTemporal.empty()) {
-		this->accion = accionTemporal;
+	if (! accionActual.empty()) {
+		this->accion = accionActual;
 
-		std::stringstream origenStream(origenTemporal);
+		std::stringstream origenStream(origenActual);
 		origenStream >> this->origen;
 
-		std::stringstream emisorStream(emisorTemporal);
+		std::stringstream emisorStream(emisorActual);
 		emisorStream >> this->emisor;
 
-		std::stringstream destinoStream(destinoTemporal);
+		std::stringstream destinoStream(destinoActual);
 		destinoStream >> this->destino;
 
-		std::stringstream receptorStream(receptorTemporal);
+		std::stringstream receptorStream(receptorActual);
 		receptorStream >> this->receptor;
 
-		std::stringstream horaInicioStreamTemporal(horaTemporal);
-		horaInicioStreamTemporal >> this->hora;
+		std::stringstream horaInicioStreamActual(horaActual);
+		horaInicioStreamActual >> this->hora;
 
 	}
 }
