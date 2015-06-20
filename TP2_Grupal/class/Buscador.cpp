@@ -1,4 +1,5 @@
 #include "Buscador.h"
+#include <iostream> 
 
 Buscador::Buscador(Lista<Central*>* centrales)
 {
@@ -390,6 +391,18 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 		vectorCentrales[posicion] = centrales->obtenerCursorNodo();
 		posicion++;
 	}
+	std::cout<<totalCentrales;
+	for(int j = 0; j < totalCentrales; j++)
+	{
+		vectorCentrales[j]->obtenerEnlaces()->iniciarCursorNodo();
+		std::cout <<"central "<<vectorCentrales[j]->obtenerNumero()<<"\n";
+		while(vectorCentrales[j]->obtenerEnlaces()->avanzarCursorNodo())
+		{
+			std::cout<<"precio "<<vectorCentrales[j]->obtenerEnlaces()->obtenerCursorNodo()->obtenerPrecio()<<"\n";
+		}
+		std::cout<<"\n";
+	}
+	std::cout<<totalCentrales;
 	for(int j = 0; j < totalCentrales; j++) {
 		centrales->iniciarCursorNodo();
 		while(centrales->avanzarCursorNodo()) {

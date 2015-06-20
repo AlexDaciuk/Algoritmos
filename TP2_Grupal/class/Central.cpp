@@ -1,4 +1,5 @@
 #include "Central.h"
+#include <iostream>
 
 Central::Central(int numeroCentralTemporal)
 {
@@ -220,19 +221,19 @@ void Central::agregarRecorrido(Recorrido* nuevoRecorrido)
 	this->mejoresCaminos->insertar(nuevoRecorrido);
 }
 
-void Central::crearVectorDeEnlaces(Enlace** &enlacesOrdenadas, int &totalEnlaces)
+void Central::crearVectorDeEnlaces(Enlace** &enlacesOrdenados, int &totalEnlaces)
 {
-	Lista<Enlace*>* enlaces = this->obtenerEnlaces();
-	enlaces->iniciarCursorNodo();
+	Lista<Enlace*>* enlacesOrdenar = this->obtenerEnlaces();
+	enlacesOrdenar->iniciarCursorNodo();
 	totalEnlaces = 0;
 	int j = 0;
-	while (enlaces->avanzarCursorNodo()) {
+	while (enlacesOrdenar->avanzarCursorNodo()) {
 		totalEnlaces++;
 	}
-	enlaces->iniciarCursorNodo();
-	enlacesOrdenadas = new Enlace* [totalEnlaces];
-	while (enlaces->avanzarCursorNodo()) {
-		enlacesOrdenadas[j] = enlaces->obtenerCursorNodo();
+	enlacesOrdenar->iniciarCursorNodo();
+	enlacesOrdenados = new Enlace* [totalEnlaces];
+	while (enlacesOrdenar->avanzarCursorNodo()) {
+		enlacesOrdenados[j] = enlacesOrdenar->obtenerCursorNodo();
 		j++;
 	}
 }
@@ -247,21 +248,30 @@ void Central::ordenarEnlaces()
 	for (int i = 0; i < totalEnlaces - 1; i++) {
 		for (int j = i + 1; j < totalEnlaces ; j++) {
 			if (enlacesOrdenados[i]->obtenerPrecio() < enlacesOrdenados[j]->obtenerPrecio()) {
-
 				Enlace* enlaceTemporal = enlacesOrdenados[i];
 				enlacesOrdenados[i] = enlacesOrdenados[j];
 				enlacesOrdenados[j]= enlaceTemporal;
 			}
 		}
 	}
-	Lista<Enlace*>* enlaces = this->obtenerEnlaces();
-	enlaces->iniciarCursorNodo();
-	while(enlaces->avanzarCursorNodo()) {
-		enlaces->remover();
+	std::cout<<totalEnlaces<<"\n";
+	for (int i = 0; i < totalEnlaces ; i++)
+	{
+		std::cout<<enlacesOrdenados[i]->obtenerPrecio()<<"\n";
+	}
+	delete this->enlaces;
+	Lista<Enlace*>* nuevosEnlaces = new Lista<Enlace*>;
+	for (int i = 0; i < totalEnlaces ; i++){
+		nuevosEnlaces->insertar(enlacesOrdenados[i]);
+	}
+	this->enlaces = nuevosEnlaces;
+	/*this->obtenerEnlaces()->iniciarCursorNodo();
+	while(this->obtenerEnlaces()->avanzarCursorNodo()) {
+		this->obtenerEnlaces()->remover();
 	}
 	for(int j=0; j < totalEnlaces; j++) {
-		enlaces->insertar(enlacesOrdenados[j]);
-	}
+		this->obtenerEnlaces()->insertar(enlacesOrdenados[j]);
+	}*/
 }
 
 Recorrido* Central::obtenerRecorridoACentral(int centralDestino)
