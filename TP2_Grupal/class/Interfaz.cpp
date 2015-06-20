@@ -74,6 +74,7 @@ std::string Interfaz::pedirAlgoritmoDeBusqueda()
 	std::cout << "Quiere usar algoritmo de: \n";
 	std::cout << "1) Precio mas bajo \n";
 	std::cout << "2) Distancia mas corta \n";
+	std::cout << "3) Dijkstra (busqueda por precio) \n";
 	std::cout << "Opcion:";
 	std::cin >> opcion;
 

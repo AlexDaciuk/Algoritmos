@@ -3,7 +3,7 @@
 Recorrido::Recorrido()
 {
 	this->centralLlegada=0;
-	this->enlacesRecorridos = new Lista<Enlace*>;
+	this->camino = NULL;
 	this->precio=32768;
 }
 
@@ -22,9 +22,9 @@ void Recorrido::definirCentralDeLlegada(unsigned int nuevaCentral)
 }
 
 
-void Recorrido::agregarEnlaceRecorrido(Enlace* enlaceAAgregar)
+void Recorrido::definirCamino(Lista<Enlace*>* mejorCamino)
 {
-	this->enlacesRecorrido->insertar(enlaceAAgregar);
+	this->camino = mejorCamino;
 }
 
 

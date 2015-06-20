@@ -134,7 +134,9 @@ public:
 	 */
 	void agregarRecorrido(Recorrido* nuevoRecorrido);
 
-
+	void ordenarEnlaces();
+	
+	void Central::crearVectorDeEnlaces(Enlace** &enlacesOrdenadas, int &totalEnlaces);
 	/**
 	 * Destructor de Central, libera el espacio pedido para la lista de enlaces y de internos
 	 * */

@@ -16,7 +16,7 @@ class Recorrido
 
 	unsigned int precio, centralLlegada;
 
-	Lista<Enlace*>* enlacesRecorridos;
+	Lista<Enlace*>* camino;
 
 
 public:
@@ -40,9 +40,9 @@ public:
 
 
 	/*
-	 * Metodo que agrega un enlace a los enlaces recorridos en el camino
+	 * Metodo que agrega el mejor camino al la centrar receptora
 	 */
-	void agregarEnlaceRecorrido(Enlace* enlaceAAgregar);
+	void definirCamino(Lista<Enlace*>* mejorCamino);
 
 
 	/*
