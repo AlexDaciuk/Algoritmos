@@ -168,12 +168,15 @@ Spot* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual)
 
 void Buscador::definirEstaRuta()
 {
+	Lista<Enlace*>* nuevoMejorCamino = new Lista<Enlace*>;
 	this->rutaActual->iniciarCursorNodo();
 	this->rutaActual->avanzarCursorNodo();
+
 	while (this->rutaActual->avanzarCursorNodo()) {
 		Spot* spotActual = this->rutaActual->obtenerCursorNodo();
-		this->mejorCamino->insertar(spotActual->obtenerEnlaceRecorrido());
+		nuevoMejorCamino->insertar(spotActual->obtenerEnlaceRecorrido());
 	}
+	this->mejorCamino = nuevoMejorCamino;
 	this->llamadaAnulada = false;
 }
 
@@ -444,7 +447,11 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 				this->resetDatos();
 				encontrarCaminoPorPrecio(vectorCentrales[j]->obtenerNumero(), vectorCentrales[i]->obtenerNumero());
 				Recorrido* recorrido = new Recorrido(this->obtenerRuta());
-				//Lista<Enlace*>* enlaces = this->obtenerRuta();
+				Lista<Enlace*>* enlaces = this->obtenerRuta();
+				enlaces->iniciarCursorNodo();
+				while(enlaces->avanzarCursorNodo()){
+				std::cout<<"Central destino de enlace: "<<enlaces->obtenerCursorNodo()->obtenerDestino()->obtenerNumero()<<"\n";
+				}
 				recorrido->definirPrecioRecorrido(this->obtenerPrecioDeLaLlamada());
 				recorrido->definirCentralDeLlegada(vectorCentrales[i]->obtenerNumero());
 				vectorCentrales[j]->agregarRecorrido(recorrido);
