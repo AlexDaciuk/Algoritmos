@@ -409,7 +409,6 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 {
 	this->establecerBusquedaPorPrecio();
 	Central* centralActual;
-	Recorrido* recorrido = new Recorrido;
 	int posicion = 0;
 	int totalCentrales = 0;
 	centrales->iniciarCursorNodo();
@@ -437,17 +436,19 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 	}
 	for(int j = 0; j < totalCentrales; j++) {
 		std::cout<<"Central actual: "<<vectorCentrales[j]->obtenerNumero()<<"\n";
+		int a=0;
 		for(int i=0; i< totalCentrales; i++) {
 			std::cout<<"Central a buscar: "<<vectorCentrales[i]->obtenerNumero()<<"\n";
-			/*int c;
-			std::cin>> c;*/
+			
 			if(vectorCentrales[i]->obtenerNumero() != vectorCentrales[j]->obtenerNumero()) {
+				this->resetDatos();
 				encontrarCaminoPorPrecio(vectorCentrales[j]->obtenerNumero(), vectorCentrales[i]->obtenerNumero());
+				Recorrido* recorrido = new Recorrido(this->obtenerRuta());
+				//Lista<Enlace*>* enlaces = this->obtenerRuta();
 				recorrido->definirPrecioRecorrido(this->obtenerPrecioDeLaLlamada());
-				recorrido->definirCamino(this->obtenerRuta());
 				recorrido->definirCentralDeLlegada(vectorCentrales[i]->obtenerNumero());
 				vectorCentrales[j]->agregarRecorrido(recorrido);
-				i++;
+				a++;
 				std::cout<<"Cantidad de recorridos: "<<i<<"\n";
 			}
 		}

@@ -1,9 +1,9 @@
 #include "Recorrido.h"
 
-Recorrido::Recorrido()
+Recorrido::Recorrido(Lista<Enlace*>* camino)
 {
 	this->centralLlegada=0;
-	this->camino = NULL;
+	this->camino = camino;
 	this->precio=32768;
 }
 

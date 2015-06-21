@@ -24,7 +24,7 @@ public:
 	 *  Constructor de la clase, inicializa los atributos de precio a 32768 (reemplazo del infinito)
 	 *  centralLlegada a 0 y crea una lista de enlaces vacia
 	 */
-	Recorrido();
+	Recorrido(Lista<Enlace*>* camino);
 
 
 	/*
