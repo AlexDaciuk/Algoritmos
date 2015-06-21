@@ -1,4 +1,3 @@
-
 #ifndef BUSCADOR_H_
 #define BUSCADOR_H_
 
@@ -63,6 +62,10 @@ private:
 	 * por saturacion delos enlaces.
 	 */
 	bool llamadaAnulada;
+	
+	bool creoNuevoSpot;
+	
+	bool rutaDefinida;
 
 
 public:
@@ -126,6 +129,7 @@ public:
 	 */
 	void Dijkstra(Lista<Central*>* centrales);
 	
+
 	/**
 	 * Post: libera la memoria de los spots usados y la lista del mejor camino.
 	 */
@@ -226,7 +230,8 @@ private:
 	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
 	 */
 	bool visitasteLaCentral(Central* centralActual);
-
+	
+	bool laCentralPasoPorCaminosDe(Central* centralActual, Spot* spotActual);
 };
 
 #endif

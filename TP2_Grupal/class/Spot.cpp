@@ -37,7 +37,7 @@ bool Spot::visitasteLaCentral(Central* centralAVisitar)
 
 	while ((this->centralesVisitadas->avanzarCursorNodo()) && (!laEncontre)) {
 		Central* centralActual = this->centralesVisitadas->obtenerCursorNodo();
-		if ((centralActual->obtenerNumero() == centralAVisitar->obtenerNumero()) && (centralAVisitar == this->posicion))
+		if ((centralActual->obtenerNumero() == centralAVisitar->obtenerNumero()) || (centralAVisitar == this->posicion))
 			laEncontre = true;
 	}
 	return (laEncontre);
