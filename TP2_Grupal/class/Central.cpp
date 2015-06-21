@@ -261,7 +261,7 @@ void Central::ordenarEnlaces()
 	}*/
 	delete this->enlaces;
 	Lista<Enlace*>* nuevosEnlaces = new Lista<Enlace*>;
-	for (int i = 0; i < totalEnlaces ; i++){
+	for (int i = 0; i < totalEnlaces ; i++) {
 		nuevosEnlaces->insertar(enlacesOrdenados[i]);
 	}
 	this->enlaces = nuevosEnlaces;
@@ -276,17 +276,26 @@ void Central::ordenarEnlaces()
 
 Recorrido* Central::obtenerRecorridoACentral(int centralDestino)
 {
-	this->mejoresCaminos->iniciarCursorNodo();
-	bool encontreCamino = false;
-	Recorrido* recorridoActual = NULL;
 
-	while (this->mejoresCaminos->avanzarCursorNodo() && ! encontreCamino) {
+	bool encontreCamino = false;
+	Recorrido* recorridoActual ;
+
+	std::cout << "Entro a obtenerRecorridoACentral \n";
+
+	this->mejoresCaminos->iniciarCursorNodo();
+
+	while (! encontreCamino && this->mejoresCaminos->avanzarCursorNodo() ) {
 		Recorrido* recorridoActual = this->mejoresCaminos->obtenerCursorNodo();
 
 		encontreCamino = (recorridoActual->obtenerCentralDeLlegada() == centralDestino) ;
+		std::cout << "Encontre el camino a " << centralDestino << " es " << encontreCamino << "\n";
+		std::cout << "El recorrido que encontre es a " << recorridoActual->obtenerCentralDeLlegada() << " (afuera) \n";
+		if (encontreCamino)
+			return recorridoActual;
+
 	}
 
-	return recorridoActual;
+
 }
 
 
