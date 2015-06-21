@@ -193,7 +193,7 @@ void Interfaz::detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB(
 
 	Interno* DatosPrimerInterno = NULL;
 	DatosPrimerInterno =
-	    obtenercentrales()->obtenerPunteroAlObjeto(centralPrimerInterno)->obtenerObjeto()->obtenerInterno(primerInterno);
+	  obtenercentrales()->obtenerPunteroAlObjeto(centralPrimerInterno)->obtenerObjeto()->obtenerInterno(primerInterno);
 
 	std::cout << "Detalles de llamadas entre el interno " << primerInterno << " de la central " << centralPrimerInterno;
 	std::cout << " y " << segundoInterno << " de la central " << centralSegundoInterno << "\n";
@@ -213,8 +213,8 @@ void Interfaz::detallesLlamadasEntreInternoXDeLaCentralAYElInternoYDeLaCentralB(
 			numeroDeOcupados = DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosDados() +
 			                   DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadOcupadosRecibidos();
 			duracionDeLlamadas =
-			    DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasHechas() +
-			    DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas();
+			  DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasHechas() +
+			  DatosPrimerInterno->obtenerLlamadas()->obtenerCursorNodo()->obtenerDuracionLlamadasRecibidas();
 		}
 	}
 	std::cout << "Llamadas realizadas entre ambos:" << numeroDeLlamadas << "\n";
@@ -236,8 +236,8 @@ int Interfaz::sumaDeDuracionDeLlamadas(Lista<Llamada*>* listaLlamadas)
 }
 
 void Interfaz::internoQueMasHabloEnUnaCentral(Lista<Interno*>* listaInternos,
-        int& maximaDuracionEnLaCentral,
-        int& internoQueMasHabloPorCentral)
+    int& maximaDuracionEnLaCentral,
+    int& internoQueMasHabloPorCentral)
 {
 
 	listaInternos->iniciarCursorNodo();
@@ -273,7 +273,7 @@ void Interfaz::internoQueMasHabloPorCentralYGeneral()
 		                               maximaDuracionEnLaCentral,
 		                               internoQueMasHabloPorCentral);
 
-		if(internoQueMasHabloPorCentral == 0) {
+		if(maximaDuracionEnLaCentral == 0) {
 			std::cout << " ningun interno hablo.\n";
 		} else {
 			std::cout << " el interno que mas hablo fue:" << internoQueMasHabloPorCentral << ". Hablo " << maximaDuracionEnLaCentral << " minutos.\n";
@@ -301,8 +301,8 @@ int Interfaz::sumaDeLlamadasEmitidas(Lista<Llamada*>* listaLlamadas)
 }
 
 void Interfaz::internoQueMasLlamoEnUnaCentral(Lista<Interno*>* listaInternos,
-        int& maximoNumeroLLamadasEnLaCentral,
-        int& internoQueMasLlamoPorCentral)
+    int& maximoNumeroLLamadasEnLaCentral,
+    int& internoQueMasLlamoPorCentral)
 {
 
 	listaInternos->iniciarCursorNodo();
@@ -336,7 +336,7 @@ void Interfaz::internoQueMasLlamoPorCentralYEnGeneral()
 		internoQueMasLlamoEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),
 		                               maximoNumeroLLamadasEnLaCentral,
 		                               internoQueMasLlamoPorCentral);
-		if(internoQueMasLlamoPorCentral == 0) {
+		if(maximoNumeroLLamadasEnLaCentral == 0) {
 			std::cout << " ningun interno llamo.\n";
 		} else {
 			std::cout << " el interno que mas llamo fue:"<< internoQueMasLlamoPorCentral << ". Llamo "
@@ -370,8 +370,8 @@ int Interfaz::sumaDeOcupadosRecibidos(Lista<Llamada*>* listaLlamadas)
 }
 
 void Interfaz::internoQueMasOcupadosRecibioEnUnaCentral(Lista<Interno*>* listaInternos,
-        int& maximoNumeroOcupadosEnLaCentral,
-        int& internoQueMasRecibioOcupadosPorCentral)
+    int& maximoNumeroOcupadosEnLaCentral,
+    int& internoQueMasRecibioOcupadosPorCentral)
 {
 
 	listaInternos->iniciarCursorNodo();
@@ -402,9 +402,9 @@ void Interfaz::internoQueMasOcupadosRecibioPorCentralYGeneral()
 		std::cout << "De la central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero();
 
 		internoQueMasOcupadosRecibioEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),
-		        maximoNumeroOcupadosEnLaCentral,
-		        internoQueMasRecibioOcupadosPorCentral);
-		if (internoQueMasRecibioOcupadosPorCentral==0) {
+		    maximoNumeroOcupadosEnLaCentral,
+		    internoQueMasRecibioOcupadosPorCentral);
+		if (maximoNumeroOcupadosEnLaCentral==0) {
 			std::cout<<" ningun interno recibio ocupados.\n";
 		} else {
 			std::cout <<" el interno que mas ocupados recibio fue:" << internoQueMasRecibioOcupadosPorCentral << ". Recibio " << maximoNumeroOcupadosEnLaCentral
@@ -416,6 +416,10 @@ void Interfaz::internoQueMasOcupadosRecibioPorCentralYGeneral()
 				maximoNumeroDeOcupadosGeneral = maximoNumeroOcupadosEnLaCentral;
 			}
 		}
+	}
+	if (maximoNumeroDeOcupadosGeneral==0)
+	{
+		std::cout<<"\nNingun interno recibio ocupados.\n\n";
 	}
 	std::cout << "\nEl interno que mas ocupados recibio de todos fue el interno " << internoQueMasRecibioOcupadosGeneral
 	          << " de la central " << centralQueMasRecibioOcupados << ". Recibio " << maximoNumeroDeOcupadosGeneral
@@ -434,8 +438,8 @@ int Interfaz::sumaDeLlamadasRecibidas(Lista<Llamada*>* listaLlamadas)
 }
 
 void Interfaz::internoQueMasLlamadasRecibioEnUnaCentral(Lista<Interno*>* listaInternos,
-        int& maximoLlamadasRecibidasEnLaCentral,
-        int& internoQueMasLlamaronPorCentral)
+    int& maximoLlamadasRecibidasEnLaCentral,
+    int& internoQueMasLlamaronPorCentral)
 {
 
 	listaInternos->iniciarCursorNodo();
@@ -464,16 +468,15 @@ void Interfaz::internoAlQueMasLlamaronPorCentralYGeneral()
 		int maximoLlamadasRecibidasEnLaCentral = 0;
 		internoQueMasLlamaronPorCentral = 0;
 
-		std::cout << "De la central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero()
-		          << " el interno al que mas llamaron fue:";
+		std::cout << "De la central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero();
 
 		internoQueMasLlamadasRecibioEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),
-		        maximoLlamadasRecibidasEnLaCentral,
-		        internoQueMasLlamaronPorCentral);
-		if (internoQueMasLlamaronPorCentral==0) {
+		    maximoLlamadasRecibidasEnLaCentral,
+		    internoQueMasLlamaronPorCentral);
+		if (maximoLlamadasRecibidasEnLaCentral==0) {
 			std::cout<<" ningun interno recibio llamadas.\n";
 		} else {
-			std::cout << internoQueMasLlamaronPorCentral << ". Recibio " << maximoLlamadasRecibidasEnLaCentral
+			std::cout << " el interno al que mas llamaron fue:"<< internoQueMasLlamaronPorCentral << ". Recibio " << maximoLlamadasRecibidasEnLaCentral
 			          << " llamada/s.\n";
 
 			if (maximoLlamadasRecibidasEnLaCentral > maximoNumeroLlamadasRecibidasGeneral) {
@@ -500,8 +503,8 @@ int Interfaz::sumaDeGastos(Lista<Llamada*>* listaLlamadas)
 }
 
 void Interfaz::internoQueMasGastoEnUnaCentral(Lista<Interno*>* listaInternos,
-        int& maximoGastoEnLaCentral,
-        int& internoQueMasGastoPorCentral)
+    int& maximoGastoEnLaCentral,
+    int& internoQueMasGastoPorCentral)
 {
 	listaInternos->iniciarCursorNodo();
 
@@ -534,7 +537,7 @@ void Interfaz::internoQueMasGastoPorCentralYGeneral()
 		internoQueMasGastoEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),
 		                               maximoGastoEnLaCentral,
 		                               internoQueMasGastoPorCentral);
-		if (internoQueMasGastoPorCentral==0) {
+		if (maximoGastoEnLaCentral==0) {
 			std::cout<<" ningun interno gasto dinero.\n";
 		} else {
 			std::cout << " el interno que mas gasto fue:" << internoQueMasGastoPorCentral << ". Gasto " << maximoGastoEnLaCentral << " centavo/s.\n";
@@ -562,8 +565,8 @@ int Interfaz::sumaDuracionDeRecibidas(Lista<Llamada*>* listaLlamadas)
 }
 
 void Interfaz::internoQueMasLeHbalaronEnUnaCentral(Lista<Interno*>* listaInternos,
-        int& maximoInternoQueMasLeHablaronEnLaCentral,
-        int& internoQueMasHablaronPorCentral)
+    int& maximoInternoQueMasLeHablaronEnLaCentral,
+    int& internoQueMasHablaronPorCentral)
 {
 
 	listaInternos->iniciarCursorNodo();
@@ -595,7 +598,7 @@ void Interfaz::internoAlQueMasLeHablaronPorCentralYGeneral()
 		internoQueMasLeHbalaronEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),
 		                                    maximoInternoQueMasLeHablaronEnLaCentral,
 		                                    internoQueMasHablaronPorCentral);
-		if (internoQueMasHablaronPorCentral==0) {
+		if (maximoInternoQueMasLeHablaronEnLaCentral==0) {
 			std::cout<<" ningun interno recibio llamadas. \n";
 		} else {
 			std::cout << " el interno que mas llamo fue:" << internoQueMasHablaronPorCentral << ". Le hablaro " << maximoInternoQueMasLeHablaronEnLaCentral
@@ -625,8 +628,8 @@ int Interfaz::sumaDeOcupadosDados(Lista<Llamada*>* listaLlamadas)
 }
 
 void Interfaz::internoQueMasDioOcuapadoEnUnaCentral(Lista<Interno*>* listaInternos,
-        int& maximoNumeroDeOcupadosDadosEnLaCentral,
-        int& internoQueMasDioOcupadoPorCentral)
+    int& maximoNumeroDeOcupadosDadosEnLaCentral,
+    int& internoQueMasDioOcupadoPorCentral)
 {
 	listaInternos->iniciarCursorNodo();
 
@@ -653,15 +656,15 @@ void Interfaz::internoQueMasDioOcupadoPorCentralYGeneral()
 		int maximoNumeroDeOcupadosDadosEnLaCentral = 0;
 		internoQueMasDioOcupadoPorCentral = 0;
 
-		std::cout << "De la central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero()
-		          << " el interno que mas ocupados dio fue:";
+		std::cout << "De la central " << obtenercentrales()->obtenerCursorNodo()->obtenerNumero();
+		          
 		internoQueMasDioOcuapadoEnUnaCentral(obtenercentrales()->obtenerCursorNodo()->obtenerInternos(),
 		                                     maximoNumeroDeOcupadosDadosEnLaCentral,
 		                                     internoQueMasDioOcupadoPorCentral);
-		if (internoQueMasDioOcupadoPorCentral==0) {
+		if (maximoNumeroDeOcupadosDadosEnLaCentral==0) {
 			std::cout<<" ningun interno dio ocupados. \n";
 		} else {
-			std::cout << internoQueMasDioOcupadoPorCentral << ". Dio " << maximoNumeroDeOcupadosDadosEnLaCentral
+			std::cout << " el interno que mas ocupados dio fue:"<< internoQueMasDioOcupadoPorCentral << ". Dio " << maximoNumeroDeOcupadosDadosEnLaCentral
 			          << " ocupado/s. \n";
 
 			if (maximoNumeroDeOcupadosDadosEnLaCentral >= maximoNumeroDeOcupadosDadosEnGeneral) {
@@ -683,7 +686,7 @@ void Interfaz::DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
 	int central = pedirCentral();
 	bool emitioLlamadas = false;
 	Interno* internoPedido =
-	    obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto()->obtenerInterno(interno);
+	  obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto()->obtenerInterno(interno);
 
 	std::cout << "\nDetalle de las llamadas emitidas por el interno " << interno << " de la central " << central
 	          << ".\n\n";
@@ -693,8 +696,7 @@ void Interfaz::DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
 
 		// me fijo si por lo menos realizo una llamada. Porque el nodo en la llamada puede estar creado solo con datos de
 		// llamadas recibidas.
-		if (internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() > 0)
-		{
+		if (internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasHechas() > 0) {
 			emitioLlamadas = true;
 			std::cout << "Llamadas realizadas al interno "
 			          << internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerReceptorLlamada() <<
@@ -719,13 +721,12 @@ void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
 	std::cout<<"\n";
 	bool recibioLlamadas = false;
 	Interno* internoPedido =
-	    obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto()->obtenerInterno(interno);
+	  obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto()->obtenerInterno(interno);
 
 	std::cout << "Detalle de las llamadas recibidas por el interno " << interno << " de la central " << central << ".\n \n";
 	internoPedido->obtenerLlamadas()->iniciarCursorNodo();
-	
-	while (internoPedido->obtenerLlamadas()->avanzarCursorNodo())
-	{
+
+	while (internoPedido->obtenerLlamadas()->avanzarCursorNodo()) {
 		// me fijo si por lo menos recibio una llamada. Porque el nodo en la llamada puede estar creado solo con datos de
 		// llamadas realizadas.
 		if (internoPedido->obtenerLlamadas()->obtenerCursorNodo()->obtenerCantidadLlamadasRecibidas() > 0) {
@@ -836,14 +837,12 @@ void Interfaz::crearVectorDeOrdenamiento(Central** &centralesOrdenadas, int &tot
 	centrales->iniciarCursorNodo();
 	totalCentrales = 0;
 	int j = 0;
-	while (centrales->avanzarCursorNodo())
-	{
+	while (centrales->avanzarCursorNodo()) {
 		totalCentrales++;
 	}
-		centrales->iniciarCursorNodo();
-		centralesOrdenadas = new Central* [totalCentrales];
-		while (centrales->avanzarCursorNodo())
-	{
+	centrales->iniciarCursorNodo();
+	centralesOrdenadas = new Central* [totalCentrales];
+	while (centrales->avanzarCursorNodo()) {
 		centralesOrdenadas[j] = centrales->obtenerCursorNodo();
 		j++;
 	}
