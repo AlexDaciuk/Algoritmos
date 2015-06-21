@@ -41,7 +41,6 @@ void Buscador::encontrarCaminoPorPrecio(int centralEmisora, int centralReceptora
 		this->rutaActual->insertar(nuevoSpot);
 
 		this->ProcesoIterativoPorPrecio(centralActual, centralReceptora);
-		std::cout<<"fin llamada\n";	
 	}
 }
 
@@ -283,7 +282,6 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, int centralRece
 	bool llegue = false;
 	Spot* spotActual;
 	int buscoMejorValor = -1;
-	std::cout<<"nueva llamada\n\n ";
 	while ((!this->noEstaAnuladaLaLlamada()) && (this->hayMasCaminos())) {
 		this->rutaActual->iniciarCursorNodo();
 		this->rutaActual->avanzarCursorNodo();
@@ -411,7 +409,6 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 {
 	this->establecerBusquedaPorPrecio();
 	Central* centralActual;
-	Central* centralSiguiente;
 	Recorrido* recorrido = new Recorrido;
 	int posicion = 0;
 	int totalCentrales = 0;
@@ -423,11 +420,11 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 	}
 	Central** vectorCentrales = new Central* [totalCentrales];
 	centrales->iniciarCursorNodo();
+	
 	while(centrales->avanzarCursorNodo()) {
 		vectorCentrales[posicion] = centrales->obtenerCursorNodo();
 		posicion++;
 	}
-	std::cout<<totalCentrales;
 	for(int j = 0; j < totalCentrales; j++)
 	{
 		vectorCentrales[j]->obtenerEnlaces()->iniciarCursorNodo();
@@ -438,17 +435,20 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 		}
 		std::cout<<"\n";
 	}
-	std::cout<<totalCentrales;
 	for(int j = 0; j < totalCentrales; j++) {
-		centrales->iniciarCursorNodo();
-		while(centrales->avanzarCursorNodo()) {
-			centralSiguiente = centrales->obtenerCursorNodo();
-			if(centralSiguiente->obtenerNumero() != vectorCentrales[j]->obtenerNumero()) {
-				encontrarCaminoPorPrecio(vectorCentrales[j]->obtenerNumero(), centralSiguiente->obtenerNumero());
+		std::cout<<"Central actual: "<<vectorCentrales[j]->obtenerNumero()<<"\n";
+		for(int i=0; i< totalCentrales; i++) {
+			std::cout<<"Central a buscar: "<<vectorCentrales[i]->obtenerNumero()<<"\n";
+			/*int c;
+			std::cin>> c;*/
+			if(vectorCentrales[i]->obtenerNumero() != vectorCentrales[j]->obtenerNumero()) {
+				encontrarCaminoPorPrecio(vectorCentrales[j]->obtenerNumero(), vectorCentrales[i]->obtenerNumero());
 				recorrido->definirPrecioRecorrido(this->obtenerPrecioDeLaLlamada());
 				recorrido->definirCamino(this->obtenerRuta());
-				recorrido->definirCentralDeLlegada(centralSiguiente->obtenerNumero());
+				recorrido->definirCentralDeLlegada(vectorCentrales[i]->obtenerNumero());
 				vectorCentrales[j]->agregarRecorrido(recorrido);
+				i++;
+				std::cout<<"Cantidad de recorridos: "<<i<<"\n";
 			}
 		}
 	}

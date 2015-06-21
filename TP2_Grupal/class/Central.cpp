@@ -254,11 +254,11 @@ void Central::ordenarEnlaces()
 			}
 		}
 	}
-	std::cout<<totalEnlaces<<"\n";
+	/*std::cout<<totalEnlaces<<"\n";
 	for (int i = 0; i < totalEnlaces ; i++)
 	{
 		std::cout<<enlacesOrdenados[i]->obtenerPrecio()<<"\n";
-	}
+	}*/
 	delete this->enlaces;
 	Lista<Enlace*>* nuevosEnlaces = new Lista<Enlace*>;
 	for (int i = 0; i < totalEnlaces ; i++){
