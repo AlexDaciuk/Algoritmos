@@ -51,7 +51,7 @@ bool ProcesadorLlamada::chequearDisponibilidadRecorrido(Recorrido* enlacesDelRec
 
 Recorrido* ProcesadorLlamada::obtenerMejorCamino(int centralOrigen, int centralDestino)
 {
-	return this->centrales->obtenerPunteroAlObjeto(centralOrigen)->obtenerObjeto()->obtenerRecorridoACentral(centralDestino) ;
+	return this->centrales->obtenerPunteroAlObjeto( centralOrigen )->obtenerObjeto()->obtenerRecorridoACentral( centralDestino ) ;
 }
 
 void ProcesadorLlamada::iniciarLlamada()
