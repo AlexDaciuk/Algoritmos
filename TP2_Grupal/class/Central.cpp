@@ -285,16 +285,13 @@ Recorrido* Central::obtenerRecorridoACentral(int centralDestino)
 	this->mejoresCaminos->iniciarCursorNodo();
 
 	while (! encontreCamino && this->mejoresCaminos->avanzarCursorNodo() ) {
-		Recorrido* recorridoActual = this->mejoresCaminos->obtenerCursorNodo();
+		recorridoActual = this->mejoresCaminos->obtenerCursorNodo();
 
 		encontreCamino = (recorridoActual->obtenerCentralDeLlegada() == centralDestino) ;
 		std::cout << "Encontre el camino a " << centralDestino << " es " << encontreCamino << "\n";
 		std::cout << "El recorrido que encontre es a " << recorridoActual->obtenerCentralDeLlegada() << " (afuera) \n";
-		if (encontreCamino)
-			return recorridoActual;
-
 	}
-
+	return recorridoActual;
 
 }
 
