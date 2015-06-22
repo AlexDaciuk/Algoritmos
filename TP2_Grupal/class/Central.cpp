@@ -206,7 +206,7 @@ void Central::internoQueMasOcupadosRecibioEnLaCentral(Lista<Interno*>* listaInte
 	while (listaInternos->avanzarCursorNodo()) {
 		Interno* internoActual = listaInternos->obtenerCursorNodo();
 		int ocupadosRecibidosPorInterno = 0;
-		ocupadosRecibidosPorInterno = internoActual->sumaDeLlamadasRecibidas(internoActual->obtenerLlamadas());
+		ocupadosRecibidosPorInterno = internoActual->sumaDeOcupadosRecibidos(internoActual->obtenerLlamadas());
 
 		if (ocupadosRecibidosPorInterno >= maximoNumeroOcupadosEnLaCentral) {
 			internoQueMasRecibioOcupadosPorCentral = listaInternos->obtenerCursorNodo()->obtenerNumero();
