@@ -421,18 +421,11 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 	}
 	for(int j = 0; j < totalCentrales; j++) {
 		vectorCentrales[j]->obtenerEnlaces()->iniciarCursorNodo();
-		std::cout <<"central "<<vectorCentrales[j]->obtenerNumero()<<"\n";
 		while(vectorCentrales[j]->obtenerEnlaces()->avanzarCursorNodo()) {
-			std::cout<<"precio "<<vectorCentrales[j]->obtenerEnlaces()->obtenerCursorNodo()->obtenerPrecio()<<"\n";
 		}
-		std::cout<<"\n";
 	}
 	for(int j = 0; j < totalCentrales; j++) {
-		std::cout<<"Central actual: "<<vectorCentrales[j]->obtenerNumero()<<"\n";
-		int a=0;
 		for(int i=0; i< totalCentrales; i++) {
-			std::cout<<"Central a buscar: "<<vectorCentrales[i]->obtenerNumero()<<"\n";
-
 			if(vectorCentrales[i]->obtenerNumero() != vectorCentrales[j]->obtenerNumero()) {
 				this->resetDatos();
 				encontrarCaminoPorPrecio(vectorCentrales[j]->obtenerNumero(), vectorCentrales[i]->obtenerNumero());
@@ -440,13 +433,10 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 				Lista<Enlace*>* enlaces = this->obtenerRuta();
 				enlaces->iniciarCursorNodo();
 				while(enlaces->avanzarCursorNodo()) {
-					std::cout<<"Central destino de enlace: "<<enlaces->obtenerCursorNodo()->obtenerDestino()->obtenerNumero()<<"\n";
 				}
 				recorrido->definirPrecioRecorrido(this->obtenerPrecioDeLaLlamada());
 				recorrido->definirCentralDeLlegada(vectorCentrales[i]->obtenerNumero());
 				vectorCentrales[j]->agregarRecorrido(recorrido);
-				a++;
-				std::cout<<"Cantidad de recorridos: "<<i<<"\n";
 			}
 		}
 	}
