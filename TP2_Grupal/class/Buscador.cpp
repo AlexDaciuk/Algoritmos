@@ -104,7 +104,7 @@ void Buscador::definirEstePrecioYDistancia()
 		this->precioDeLaLlamada = 0;
 		this->distanciaDeLaLlamada = 0;
 	}
-	
+
 	this->rutaDefinida = true;
 }
 
@@ -130,7 +130,7 @@ Spot* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual)
 {
 	Spot* spotDevolver = NULL;
 	if (enlaceActual->chequearDisponibilidadCanales()) {
-	
+
 		if (enlaceActual->obtenerDestino()->obtenerNumero() != spotActual->obtenerPosicion()->obtenerNumero()) {
 
 			if (!this->laCentralPasoPorCaminosDe(enlaceActual->obtenerDestino(), spotActual)) {
@@ -158,8 +158,7 @@ Spot* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual)
 		}
 	}
 
-	if (spotDevolver == NULL)
-	{
+	if (spotDevolver == NULL) {
 		this->creoNuevoSpot = false;
 		spotDevolver = spotActual;
 	}
@@ -293,15 +292,14 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, int centralRece
 		while (((this->creoNuevoSpot) && ((this->precioDeLaLlamada > buscoMejorValor) || (this->precioDeLaLlamada == 0))) &&
 		       ((!spotActual->recorriTodosLosEnlaces()) && (!llegue))) {
 			if (centralActual->obtenerNumero() != centralReceptora) {
-				if ((this->precioDeLaLlamada > buscoMejorValor) || (this->precioDeLaLlamada == 0)) 
-					{
+				if ((this->precioDeLaLlamada > buscoMejorValor) || (this->precioDeLaLlamada == 0)) {
 					if (!spotActual->recorriTodosLosEnlaces() &&
 					    (spotActual->obtenerPosicion()->obtenerNumero() != centralReceptora)) {
 						spotActual = this->caminar(spotActual->obtenerEnlaceSiguiente(), spotActual);
 						buscoMejorValor = spotActual->obtenerPrecioHastaSpot();
 					}
 					if ((spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora) &&
-					((this->precioDeLaLlamada > buscoMejorValor) || (this->precioDeLaLlamada == 0))) {
+					    ((this->precioDeLaLlamada > buscoMejorValor) || (this->precioDeLaLlamada == 0))) {
 						this->definirEstePrecioYDistancia();
 						this->definirEstaRuta();
 						llegue = true;
@@ -317,10 +315,9 @@ void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, int centralRece
 		this->rutaActual->iniciarCursorNodo();
 		this->rutaActual->avanzarCursorPorElFinal();
 		Spot* ultimoSpot = this->rutaActual->obtenerCursorNodo();
-	
+
 		if((primerSpot->obtenerPosicion()->obtenerNumero() == ultimoSpot->obtenerPosicion()->obtenerNumero())
-			&& (!this->rutaDefinida))
-		{
+		   && (!this->rutaDefinida)) {
 			this->anularLlamada();
 		}
 		if (!this->noEstaAnuladaLaLlamada()) {
@@ -342,17 +339,16 @@ void Buscador::ProcesoIterativoPorDistancia(Central* centralActual, int centralR
 		spotActual = this->rutaActual->obtenerCursorNodo();
 		buscoMejorValor = spotActual->obtenerDistanciaRecorridaHastaSpot();
 		while (((this->creoNuevoSpot) && ((this->distanciaDeLaLlamada > buscoMejorValor) || (this->distanciaDeLaLlamada == 0)))
-				&& ((!spotActual->recorriTodosLosEnlaces()) && (!llegue))) {
+		       && ((!spotActual->recorriTodosLosEnlaces()) && (!llegue))) {
 			if (centralActual->obtenerNumero() != centralReceptora) {
-				if ((this->distanciaDeLaLlamada > buscoMejorValor) || (this->distanciaDeLaLlamada == 0)) 
-					{
+				if ((this->distanciaDeLaLlamada > buscoMejorValor) || (this->distanciaDeLaLlamada == 0)) {
 					if (!spotActual->recorriTodosLosEnlaces() &&
 					    (spotActual->obtenerPosicion()->obtenerNumero() != centralReceptora)) {
 						spotActual = this->caminar(spotActual->obtenerEnlaceSiguiente(), spotActual);
 						buscoMejorValor = spotActual->obtenerDistanciaRecorridaHastaSpot();
 					}
 					if ((spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora) &&
-					((this->distanciaDeLaLlamada > buscoMejorValor) || (this->distanciaDeLaLlamada == 0))) {
+					    ((this->distanciaDeLaLlamada > buscoMejorValor) || (this->distanciaDeLaLlamada == 0))) {
 						this->definirEstePrecioYDistancia();
 						this->definirEstaRuta();
 						llegue = true;
@@ -368,10 +364,9 @@ void Buscador::ProcesoIterativoPorDistancia(Central* centralActual, int centralR
 		this->rutaActual->iniciarCursorNodo();
 		this->rutaActual->avanzarCursorPorElFinal();
 		Spot* ultimoSpot = this->rutaActual->obtenerCursorNodo();
-	
+
 		if((primerSpot->obtenerPosicion()->obtenerNumero() == ultimoSpot->obtenerPosicion()->obtenerNumero())
-			&& (!this->rutaDefinida))
-		{
+		   && (!this->rutaDefinida)) {
 			this->anularLlamada();
 		}
 		if (!this->noEstaAnuladaLaLlamada()) {
@@ -397,15 +392,12 @@ bool Buscador::visitasteLaCentral(Central* centralActual)
 bool Buscador::laCentralPasoPorCaminosDe(Central* centralComparacion, Spot* spotActual)
 {
 	bool paso = false;
-	if (this->precioDeLaLlamada == 0)
-	{
+	if (this->precioDeLaLlamada == 0) {
 		paso = this->YaPasePorLaCentral(centralComparacion);
-	}
-	else
-	{
+	} else {
 		paso = spotActual->visitasteLaCentral(centralComparacion);
 	}
-		return (paso);
+	return (paso);
 }
 
 void Buscador::Dijkstra(Lista<Central*>* centrales)
@@ -422,17 +414,15 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 	}
 	Central** vectorCentrales = new Central* [totalCentrales];
 	centrales->iniciarCursorNodo();
-	
+
 	while(centrales->avanzarCursorNodo()) {
 		vectorCentrales[posicion] = centrales->obtenerCursorNodo();
 		posicion++;
 	}
-	for(int j = 0; j < totalCentrales; j++)
-	{
+	for(int j = 0; j < totalCentrales; j++) {
 		vectorCentrales[j]->obtenerEnlaces()->iniciarCursorNodo();
 		std::cout <<"central "<<vectorCentrales[j]->obtenerNumero()<<"\n";
-		while(vectorCentrales[j]->obtenerEnlaces()->avanzarCursorNodo())
-		{
+		while(vectorCentrales[j]->obtenerEnlaces()->avanzarCursorNodo()) {
 			std::cout<<"precio "<<vectorCentrales[j]->obtenerEnlaces()->obtenerCursorNodo()->obtenerPrecio()<<"\n";
 		}
 		std::cout<<"\n";
@@ -442,15 +432,15 @@ void Buscador::Dijkstra(Lista<Central*>* centrales)
 		int a=0;
 		for(int i=0; i< totalCentrales; i++) {
 			std::cout<<"Central a buscar: "<<vectorCentrales[i]->obtenerNumero()<<"\n";
-			
+
 			if(vectorCentrales[i]->obtenerNumero() != vectorCentrales[j]->obtenerNumero()) {
 				this->resetDatos();
 				encontrarCaminoPorPrecio(vectorCentrales[j]->obtenerNumero(), vectorCentrales[i]->obtenerNumero());
 				Recorrido* recorrido = new Recorrido(this->obtenerRuta());
 				Lista<Enlace*>* enlaces = this->obtenerRuta();
 				enlaces->iniciarCursorNodo();
-				while(enlaces->avanzarCursorNodo()){
-				std::cout<<"Central destino de enlace: "<<enlaces->obtenerCursorNodo()->obtenerDestino()->obtenerNumero()<<"\n";
+				while(enlaces->avanzarCursorNodo()) {
+					std::cout<<"Central destino de enlace: "<<enlaces->obtenerCursorNodo()->obtenerDestino()->obtenerNumero()<<"\n";
 				}
 				recorrido->definirPrecioRecorrido(this->obtenerPrecioDeLaLlamada());
 				recorrido->definirCentralDeLlegada(vectorCentrales[i]->obtenerNumero());

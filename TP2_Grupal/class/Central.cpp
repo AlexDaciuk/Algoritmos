@@ -1,5 +1,4 @@
 #include "Central.h"
-#include <iostream>
 
 Central::Central(int numeroCentralTemporal)
 {
@@ -254,24 +253,12 @@ void Central::ordenarEnlaces()
 			}
 		}
 	}
-	/*std::cout<<totalEnlaces<<"\n";
-	for (int i = 0; i < totalEnlaces ; i++)
-	{
-		std::cout<<enlacesOrdenados[i]->obtenerPrecio()<<"\n";
-	}*/
 	delete this->enlaces;
 	Lista<Enlace*>* nuevosEnlaces = new Lista<Enlace*>;
 	for (int i = 0; i < totalEnlaces ; i++) {
 		nuevosEnlaces->insertar(enlacesOrdenados[i]);
 	}
 	this->enlaces = nuevosEnlaces;
-	/*this->obtenerEnlaces()->iniciarCursorNodo();
-	while(this->obtenerEnlaces()->avanzarCursorNodo()) {
-		this->obtenerEnlaces()->remover();
-	}
-	for(int j=0; j < totalEnlaces; j++) {
-		this->obtenerEnlaces()->insertar(enlacesOrdenados[j]);
-	}*/
 }
 
 Recorrido* Central::obtenerRecorridoACentral(int centralDestino)
@@ -280,16 +267,12 @@ Recorrido* Central::obtenerRecorridoACentral(int centralDestino)
 	bool encontreCamino = false;
 	Recorrido* recorridoActual ;
 
-	std::cout << "Entro a obtenerRecorridoACentral \n";
-
 	this->mejoresCaminos->iniciarCursorNodo();
 
 	while (! encontreCamino && this->mejoresCaminos->avanzarCursorNodo() ) {
 		recorridoActual = this->mejoresCaminos->obtenerCursorNodo();
 
 		encontreCamino = (recorridoActual->obtenerCentralDeLlegada() == centralDestino) ;
-		std::cout << "Encontre el camino a " << centralDestino << " es " << encontreCamino << "\n";
-		std::cout << "El recorrido que encontre es a " << recorridoActual->obtenerCentralDeLlegada() << " (afuera) \n";
 	}
 	return recorridoActual;
 

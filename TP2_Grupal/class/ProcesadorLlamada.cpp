@@ -1,5 +1,4 @@
 #include "ProcesadorLlamada.h"
-#include <iostream>
 
 ProcesadorLlamada::ProcesadorLlamada(LectorArchivos* lectorArchivosTemporal, std::string variableBusquedaTemporal)
 {
@@ -111,9 +110,6 @@ void ProcesadorLlamada::iniciarLlamadaDijkstra()
 			while( mejorCamino->obtenerEnlacesRecorridos()->avanzarCursorNodo() )	{
 				mejorCamino->obtenerEnlacesRecorridos()->obtenerCursorNodo()->agregarLlamadaEnCurso();
 			}
-			std::cout << "Entre a la llamada por dijkstra entre " <<  this->datosLlamada->obtenerEmisor() << " y " << this -> datosLlamada->obtenerReceptor() << " \n";
-			std::cout << " y el precio por minuto es : " << mejorCamino->obtenerPrecioRecorrido() << "\n";
-			std::cout << " la hora de inicio de la llamada es :" << this->datosLlamada->obtenerHora() << "\n";
 			emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), mejorCamino->obtenerEnlacesRecorridos(),
 			                             false, mejorCamino->obtenerPrecioRecorrido() );
 
@@ -123,7 +119,6 @@ void ProcesadorLlamada::iniciarLlamadaDijkstra()
 			//Llamo al buscador nuestro, que encuentra un camino si existiese, sino, se anula
 			this->recorridoLlamada->resetDatos();
 			this->recorridoLlamada->encontrarCaminoPorPrecio(this->datosLlamada->obtenerOrigen(), this->datosLlamada->obtenerDestino());
-			std::cout << "Entre al else de dijnstra \n";
 
 			//Agrego la llamada a cada interno
 			emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoLlamada->obtenerRuta(),
@@ -135,7 +130,6 @@ void ProcesadorLlamada::iniciarLlamadaDijkstra()
 
 		}
 	} else {
-		std::cout << "Entro en el else de llamada interna \n";
 		emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoLlamada->obtenerRuta(),
 		                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
 
@@ -151,7 +145,7 @@ void ProcesadorLlamada::finalizarLlamada()
 	//Obtengo punteros a cada interno
 	Interno* emisor;
 	Interno* receptor;
-	std::cout << "Finalizo una llamada entre " << this->datosLlamada->obtenerOrigen() << " y " << this->datosLlamada->obtenerDestino() << "\n"; ;  
+
 	emisor = this->obtenerInterno ( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() );
 	receptor = this->obtenerInterno ( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
 
@@ -248,17 +242,17 @@ void ProcesadorLlamada::procesarLlamadas()
 			this->agregarCentral(this->datosLlamada->obtenerOrigen() );
 			this->agregarCentral(this->datosLlamada->obtenerDestino() );
 
-			if (this->variableBusqueda == "Distancia")
+			if (this->variableBusqueda == "Distancia") {
 				this->buscaCentralMenorDistancia();
-			else if (this->variableBusqueda == "Precio")
+				this->iniciarLlamada();
+			} else if (this->variableBusqueda == "Precio") {
 				this->buscaCentralMenorPrecio();
-			else if (this->variableBusqueda == "Dijkstra")
+				this->iniciarLlamada();
+			} else if (this->variableBusqueda == "Dijkstra") {
 				this->iniciarLlamadaDijkstra();
+			}
 
-
-			this->iniciarLlamada();
 			fueEnlaceLoAnterior = false;
-
 		} else if ( this->datosLlamada->obtenerAccion() == "Fin") {
 			this->finalizarLlamada();
 			fueEnlaceLoAnterior = false;
