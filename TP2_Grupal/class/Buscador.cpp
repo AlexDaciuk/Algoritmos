@@ -1,4 +1,5 @@
 #include "Buscador.h"
+#include <iostream>
 
 Buscador::Buscador(Lista<Central*>* centrales)
 {
@@ -9,6 +10,9 @@ Buscador::Buscador(Lista<Central*>* centrales)
 	this->distanciaDeLaLlamada = 0;
 	this->tipoDeBusqueda = 0;
 	this->llamadaAnulada = false;
+	this->creoNuevoSpot= true;
+	this->rutaDefinida= false;
+
 }
 
 Lista<Enlace*>* Buscador::obtenerRuta()
@@ -70,16 +74,14 @@ Central* Buscador::encontrarLaCentral(int central)
 
 bool Buscador::YaPasePorLaCentral(Central* central)
 {
-	bool noLaEncontre = true;
+	bool laEncontre = false;
 	this->rutaActual->iniciarCursorNodo();
-
-	while ((this->rutaActual->avanzarCursorNodo()) && (noLaEncontre)) {
+	while ((this->rutaActual->avanzarCursorNodo()) && (!laEncontre)) {
 
 		if (this->rutaActual->obtenerCursorNodo()->visitasteLaCentral(central))
-			return (noLaEncontre);
+			laEncontre = true;
 	}
-
-	return (!noLaEncontre);
+	return (laEncontre);
 }
 
 bool Buscador::esLlamadaInterna(int centralEmisora, int centralReceptora)
@@ -103,6 +105,8 @@ void Buscador::definirEstePrecioYDistancia()
 		this->precioDeLaLlamada = 0;
 		this->distanciaDeLaLlamada = 0;
 	}
+	
+	this->rutaDefinida = true;
 }
 
 bool Buscador::hayMasCaminos()
@@ -127,10 +131,10 @@ Spot* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual)
 {
 	Spot* spotDevolver = NULL;
 	if (enlaceActual->chequearDisponibilidadCanales()) {
-
+	
 		if (enlaceActual->obtenerDestino()->obtenerNumero() != spotActual->obtenerPosicion()->obtenerNumero()) {
 
-			if (!this->YaPasePorLaCentral(enlaceActual->obtenerDestino())) {
+			if (!this->laCentralPasoPorCaminosDe(enlaceActual->obtenerDestino(), spotActual)) {
 				Central* centralNueva = enlaceActual->obtenerDestino();
 				int nuevaDistancia = spotActual->obtenerDistanciaRecorridaHastaSpot() + enlaceActual->obtenerDistancia();
 				int nuevoPrecio = spotActual->obtenerPrecioHastaSpot() + enlaceActual->obtenerPrecio();
@@ -142,7 +146,7 @@ Spot* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual)
 			}
 		} else {
 
-			if (!this->YaPasePorLaCentral(enlaceActual->obtenerOrigen())) {
+			if (!this->laCentralPasoPorCaminosDe(enlaceActual->obtenerOrigen(), spotActual)) {
 				Central* centralNueva = enlaceActual->obtenerOrigen();
 				int nuevaDistancia = spotActual->obtenerDistanciaRecorridaHastaSpot() + enlaceActual->obtenerDistancia();
 				int nuevoPrecio = spotActual->obtenerPrecioHastaSpot() + enlaceActual->obtenerPrecio();
@@ -156,15 +160,16 @@ Spot* Buscador::caminar(Enlace* enlaceActual, Spot* spotActual)
 	}
 
 	if (spotDevolver == NULL)
-		this->anularLlamada();
-
+	{
+		this->creoNuevoSpot = false;
+		spotDevolver = spotActual;
+	}
 	return spotDevolver;
 }
 
 void Buscador::definirEstaRuta()
 {
 	this->rutaActual->iniciarCursorNodo();
-	// salteo el spot de la central de llegada por como esta hecha la lista.
 	this->rutaActual->avanzarCursorNodo();
 	while (this->rutaActual->avanzarCursorNodo()) {
 		Spot* spotActual = this->rutaActual->obtenerCursorNodo();
@@ -270,51 +275,57 @@ void Buscador::resetDatos()
 	this->distanciaDeLaLlamada = 0;
 	this->tipoDeBusqueda = 0;
 	this->llamadaAnulada = false;
+	this->rutaDefinida = false;
 }
 
 void Buscador::ProcesoIterativoPorPrecio(Central* centralActual, int centralReceptora)
 {
 	bool llegue = false;
 	Spot* spotActual;
-
+	int buscoMejorValor = -1;
 	while ((!this->noEstaAnuladaLaLlamada()) && (this->hayMasCaminos())) {
 		this->rutaActual->iniciarCursorNodo();
 		this->rutaActual->avanzarCursorNodo();
 		spotActual = this->rutaActual->obtenerCursorNodo();
-		int precioActual = this->obtenerPrecioDeLaLlamada();
-		int buscoMejorValor = -1;
-
-		while (((!this->noEstaAnuladaLaLlamada()) && (precioActual > buscoMejorValor)) &&
+		buscoMejorValor = spotActual->obtenerPrecioHastaSpot();
+		while (((this->creoNuevoSpot) && ((this->precioDeLaLlamada > buscoMejorValor) || (this->precioDeLaLlamada == 0))) &&
 		       ((!spotActual->recorriTodosLosEnlaces()) && (!llegue))) {
-
 			if (centralActual->obtenerNumero() != centralReceptora) {
-				buscoMejorValor = spotActual->obtenerPrecioHastaSpot();
-
-				if ((precioActual > buscoMejorValor) || (precioActual == 0)) {
-
+				if ((this->precioDeLaLlamada > buscoMejorValor) || (this->precioDeLaLlamada == 0)) 
+					{
 					if (!spotActual->recorriTodosLosEnlaces() &&
 					    (spotActual->obtenerPosicion()->obtenerNumero() != centralReceptora)) {
 						spotActual = this->caminar(spotActual->obtenerEnlaceSiguiente(), spotActual);
+						buscoMejorValor = spotActual->obtenerPrecioHastaSpot();
 					}
-
-					if ((!this->noEstaAnuladaLaLlamada()) &&
-					    (spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora)) {
+					if ((spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora) &&
+					((this->precioDeLaLlamada > buscoMejorValor) || (this->precioDeLaLlamada == 0))) {
 						this->definirEstePrecioYDistancia();
 						this->definirEstaRuta();
 						llegue = true;
+						this->creoNuevoSpot = true;
 					}
 				}
 			}
 		}
+		this->rutaActual->iniciarCursorNodo();
+		this->rutaActual->avanzarCursorNodo();
+		Spot* primerSpot = this->rutaActual->obtenerCursorNodo();
 
+		this->rutaActual->iniciarCursorNodo();
+		this->rutaActual->avanzarCursorPorElFinal();
+		Spot* ultimoSpot = this->rutaActual->obtenerCursorNodo();
+	
+		if((primerSpot->obtenerPosicion()->obtenerNumero() == ultimoSpot->obtenerPosicion()->obtenerNumero())
+			&& (!this->rutaDefinida))
+		{
+			this->anularLlamada();
+		}
 		if (!this->noEstaAnuladaLaLlamada()) {
 			this->borrarUnSpot(); // el cursor esta al final
 			llegue = false;
+			this->creoNuevoSpot = true;
 		}
-	}
-
-	if (this->noEstaAnuladaLaLlamada()) {
-		this->anularLlamada();
 	}
 }
 
@@ -322,37 +333,50 @@ void Buscador::ProcesoIterativoPorDistancia(Central* centralActual, int centralR
 {
 	bool llegue = false;
 	Spot* spotActual;
+	int buscoMejorValor = -1;
 	while ((!this->noEstaAnuladaLaLlamada()) && (this->hayMasCaminos())) {
 		this->rutaActual->iniciarCursorNodo();
 		this->rutaActual->avanzarCursorNodo();
 		spotActual = this->rutaActual->obtenerCursorNodo();
-		int distanciaActual = this->obtenerDistanciaDeLaLlamada();
-		int buscoMejorValor = -1;
-		while (((!this->noEstaAnuladaLaLlamada()) && (distanciaActual > buscoMejorValor)) &&
-		       ((!spotActual->recorriTodosLosEnlaces()) && (!llegue))) {
+		buscoMejorValor = spotActual->obtenerDistanciaRecorridaHastaSpot();
+		while (((this->creoNuevoSpot) && ((this->distanciaDeLaLlamada > buscoMejorValor) || (this->distanciaDeLaLlamada == 0)))
+				&& ((!spotActual->recorriTodosLosEnlaces()) && (!llegue))) {
 			if (centralActual->obtenerNumero() != centralReceptora) {
-				buscoMejorValor = spotActual->obtenerDistanciaRecorridaHastaSpot();
-				if ((distanciaActual > buscoMejorValor) || (distanciaActual == 0)) {
+				if ((this->distanciaDeLaLlamada > buscoMejorValor) || (this->distanciaDeLaLlamada == 0)) 
+					{
 					if (!spotActual->recorriTodosLosEnlaces() &&
 					    (spotActual->obtenerPosicion()->obtenerNumero() != centralReceptora)) {
 						spotActual = this->caminar(spotActual->obtenerEnlaceSiguiente(), spotActual);
+						buscoMejorValor = spotActual->obtenerDistanciaRecorridaHastaSpot();
 					}
-					if ((!this->noEstaAnuladaLaLlamada()) &&
-					    (spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora)) {
+					if ((spotActual->obtenerPosicion()->obtenerNumero() == centralReceptora) &&
+					((this->distanciaDeLaLlamada > buscoMejorValor) || (this->distanciaDeLaLlamada == 0))) {
 						this->definirEstePrecioYDistancia();
 						this->definirEstaRuta();
 						llegue = true;
+						this->creoNuevoSpot = true;
 					}
 				}
 			}
 		}
+		this->rutaActual->iniciarCursorNodo();
+		this->rutaActual->avanzarCursorNodo();
+		Spot* primerSpot = this->rutaActual->obtenerCursorNodo();
+
+		this->rutaActual->iniciarCursorNodo();
+		this->rutaActual->avanzarCursorPorElFinal();
+		Spot* ultimoSpot = this->rutaActual->obtenerCursorNodo();
+	
+		if((primerSpot->obtenerPosicion()->obtenerNumero() == ultimoSpot->obtenerPosicion()->obtenerNumero())
+			&& (!this->rutaDefinida))
+		{
+			this->anularLlamada();
+		}
 		if (!this->noEstaAnuladaLaLlamada()) {
 			this->borrarUnSpot(); // el cursor esta al final
 			llegue = false;
+			this->creoNuevoSpot = true;
 		}
-	}
-	if (this->noEstaAnuladaLaLlamada()) {
-		this->anularLlamada();
 	}
 }
 
@@ -366,6 +390,20 @@ bool Buscador::visitasteLaCentral(Central* centralActual)
 			laEncontre = true;
 	}
 	return (laEncontre);
+}
+
+bool Buscador::laCentralPasoPorCaminosDe(Central* centralComparacion, Spot* spotActual)
+{
+	bool paso = false;
+	if (this->precioDeLaLlamada == 0)
+	{
+		paso = this->YaPasePorLaCentral(centralComparacion);
+	}
+	else
+	{
+		paso = spotActual->visitasteLaCentral(centralComparacion);
+	}
+		return (paso);
 }
 
 Buscador::~Buscador()

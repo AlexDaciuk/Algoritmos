@@ -62,6 +62,10 @@ private:
 	 * por saturacion delos enlaces.
 	 */
 	bool llamadaAnulada;
+	
+	bool creoNuevoSpot;
+	
+	bool rutaDefinida;
 
 
 public:
@@ -220,7 +224,8 @@ private:
 	 * Post: Marca que la llamada fue anulada por saturacion de enlaces.
 	 */
 	bool visitasteLaCentral(Central* centralActual);
-
+	
+	bool laCentralPasoPorCaminosDe(Central* centralActual, Spot* spotActual);
 };
 
 #endif
