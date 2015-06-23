@@ -60,6 +60,13 @@ public:
 	 * Metodo que agrega un enlace a la lista de enlaces de la central
 	 */
 	void agregarEnlace(Enlace* enlaceTemporal);
+  
+  /**
+   * Precondicion: recibe un entero positivo.
+   * postcondicion: devuelve verdadero si numero pasado pertenece a un interno
+   * de la lista de internos.
+   */
+  bool existeElInterno(int numeroInterno);
 
 
 	/**

@@ -63,6 +63,17 @@ void Central::agregarEnlace(Enlace* enlaceTemporal)
 	this->enlaces->insertar(enlaceTemporal);
 }
 
+bool Central::existeElInterno(int numeroInterno)
+{
+  bool estaElInterno = false;
+  this->obtenerInternos()->iniciarCursorNodo();
+  while (this->obtenerInternos()->avanzarCursorNodo() && ! estaElInterno)
+  {
+    Interno* internoActual = this->obtenerInternos()->obtenerCursorNodo();
+    estaElInterno = (numeroInterno == internoActual->obtenerNumero());
+  }
+  return estaElInterno;
+}
 
 int Central::obtenerNumero()
 {

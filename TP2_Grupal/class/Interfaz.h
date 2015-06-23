@@ -241,6 +241,13 @@ public:
 	 * post: devuelve la sumatoria de las duraciones de llamadas recibidas del interno.
 	 */
 	int sumaDuracionDeRecibidas(Lista<Llamada*>* listaLlamadas);
+  
+  /**
+   * Precondicion: recibe un numero entero positivo.
+   * Postcondicion: devuelve verdadero si ese numero pertece a una central
+   * ubicado en la lista de centrales. De lo contrario devuelve falso.
+   */
+  bool existeLaCentral(int numeroCentral);
 
 
 	/**
