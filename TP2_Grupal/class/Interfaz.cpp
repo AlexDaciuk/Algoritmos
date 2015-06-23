@@ -1011,4 +1011,12 @@ void Interfaz::iniciarPrograma()
 	tratarOpcion(opcion);
 	delete procesadorLlamada;
 	delete lectorArchivos;
+
+}
+
+Interfaz::~Interfaz()
+{
+	delete this->lectorDeArchivos;
+	delete this->procesadorLlamada;
+
 }
