@@ -237,6 +237,17 @@ void Central::crearVectorDeEnlaces(Enlace** &enlacesOrdenados, int &totalEnlaces
 	}
 }
 
+bool Central::existeElInterno(int numeroInterno)
+{
+  bool estaElInterno = false;
+  this->obtenerInternos()->iniciarCursorNodo();
+  while (this->obtenerInternos()->avanzarCursorNodo() && ! estaElInterno)
+  {
+    Interno* internoActual = this->obtenerInternos()->obtenerCursorNodo();
+    estaElInterno = (numeroInterno == internoActual->obtenerNumero());
+  }
+  return estaElInterno;
+}
 
 void Central::ordenarEnlaces()
 {

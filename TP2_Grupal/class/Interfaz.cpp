@@ -347,6 +347,17 @@ void Interfaz::internoQueMasOcupadosRecibioPorCentralYGeneral()
 	}
 }
 
+bool Interfaz::existeLaCentral(int numeroCentral)
+{
+  obtenercentrales()->iniciarCursorNodo();
+  bool estaLaCentral = false;
+  while (obtenercentrales()->avanzarCursorNodo() && ! estaLaCentral)
+  {
+    Central* centralActual = obtenercentrales()->obtenerCursorNodo();
+    estaLaCentral = (numeroCentral == centralActual->obtenerNumero());
+  }
+  return estaLaCentral;
+}
 
 void Interfaz::internoAlQueMasLlamaronPorCentralYGeneral()
 {
@@ -506,16 +517,27 @@ void Interfaz::internoQueMasDioOcupadoPorCentralYGeneral()
 void Interfaz::DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
 {
 	std::cout << "\n";
-	int interno = pedirInterno();
 	int central = pedirCentral();
+  while (!existeLaCentral(central))
+  {
+    std::cout << "La central no existe.\n\n";
+    central = pedirCentral();
+  }
+  std::cout << "\n";
+  Central* centralActual = obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto();
+	int interno = pedirInterno();
+  while (! centralActual->existeElInterno(interno))
+  {
+    std::cout << "El interno no existe en la central especificada.\n\n";
+    interno = pedirInterno();
+  }
 	bool emitioLlamadas = false;
-	Interno* internoPedido =
-	  obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto()->obtenerInterno(interno);
-
+	Interno* internoPedido = centralActual->obtenerInterno(interno);
+  
 	std::cout << "\nDetalle de las llamadas emitidas por el interno " << interno << " de la central " << central
 	          << ".\n\n";
 	internoPedido->obtenerLlamadas()->iniciarCursorNodo();
-
+  
 	while (internoPedido->obtenerLlamadas()->avanzarCursorNodo()) {
 
 		// me fijo si por lo menos realizo una llamada. Porque el nodo en la llamada puede estar creado solo con datos de
@@ -540,13 +562,24 @@ void Interfaz::DetallesLlamadasEmitidasPorElInternoXDeLaCentralA()
 
 void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
 {
-	int interno = pedirInterno();
+	std::cout << "\n";
 	int central = pedirCentral();
-	std::cout<<"\n";
+  while (!existeLaCentral(central))
+  {
+    std::cout << "La central no existe.\n\n";
+    central = pedirCentral();
+  }
+  std::cout << "\n";
+  Central* centralActual = obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto();
+	int interno = pedirInterno();
+  while (! centralActual->existeElInterno(interno))
+  {
+    std::cout << "El interno no existe en la central especificada.\n\n";
+    interno = pedirInterno();
+  }
 	bool recibioLlamadas = false;
-	Interno* internoPedido =
-	  obtenercentrales()->obtenerPunteroAlObjeto(central)->obtenerObjeto()->obtenerInterno(interno);
-
+	Interno* internoPedido = centralActual->obtenerInterno(interno);
+  
 	std::cout << "Detalle de las llamadas recibidas por el interno " << interno << " de la central " << central << ".\n \n";
 	internoPedido->obtenerLlamadas()->iniciarCursorNodo();
 
@@ -576,21 +609,44 @@ void Interfaz::DetallesLlamadasRecibidasPorElInternoXDeLaCentralA()
 void Interfaz::DetalleDeLlamadasRealizadasPorXDeLaCentralAYRecibidasPorYDeLaCentralB()
 {
 	std::cout << "Emisor. \n";
-	int emisor = pedirInterno();
-	std::cout << "Central del emisor.\n";
+  std::cout << "Central del emisor.\n";
 	int numeroCentralEmisor = pedirCentral();
-	std::cout << "\n";
+  while (!this->existeLaCentral(numeroCentralEmisor))
+  {
+    std::cout << "La central no existe.\n\n";
+    numeroCentralEmisor = pedirCentral();
+  }
+  	Central* centralEmisor = obtenercentrales()->obtenerPunteroAlObjeto(numeroCentralEmisor)->obtenerObjeto();
 
-	std::cout << "Receptor. \n";
-	int receptor = pedirInterno();
-	std::cout << "Central del receptor.\n";
+  std::cout << "\nNumero del emisor.\n";
+	int emisor = pedirInterno();
+  while (!centralEmisor->existeElInterno(emisor))
+  {
+    std::cout << "El interno no existe en la central especificada.\n\n";
+    emisor = pedirInterno();
+  }
+  	std::cout << "\n";
+  std::cout << "Receptor. \n";
+  std::cout << "Central del receptor.\n";
 	int numeroCentralReceptor = pedirCentral();
+  while (!this->existeLaCentral(numeroCentralReceptor))
+  {
+    std::cout << "La central no existe.\n\n";
+    numeroCentralReceptor = pedirCentral();
+  }
+  Central* centralReceptor = this->obtenercentrales()->obtenerPunteroAlObjeto(numeroCentralReceptor)->obtenerObjeto();
+  std::cout <<"\nNumero del receptor. \n";
+  int receptor = pedirInterno();
+  while (!centralReceptor->existeElInterno(receptor))
+  {
+    std::cout << "El interno no existe en la central especificada.\n\n";
+    receptor = pedirInterno();
+  }
 	std::cout << "\n";
-
-	std::cout << "Detalles de llamadas realizadas por " << emisor << " de la central " << numeroCentralEmisor;
+  
+  std::cout << "Detalles de llamadas realizadas por " << emisor << " de la central " << numeroCentralEmisor;
 	std::cout << " y recibidas por " << receptor << " de la central " << numeroCentralReceptor << ".\n";
 
-	Central* centralEmisor = obtenercentrales()->obtenerPunteroAlObjeto(numeroCentralEmisor)->obtenerObjeto();
 	Lista<Llamada*>* llamadasEmisor = centralEmisor->obtenerInterno(emisor)->obtenerLlamadas();
 	llamadasEmisor->iniciarCursorNodo();
 	bool estaElReceptor = false;
@@ -617,21 +673,44 @@ void Interfaz::DetalleDeLlamadasRealizadasPorXDeLaCentralAYRecibidasPorYDeLaCent
 void Interfaz::DetalleDeLlamadasRecibidasPorXDeLaCentralAYRealizadasPorYDeLaCentralB()
 {
 	std::cout << "Receptor. \n";
-	int receptor = pedirInterno();
-	std::cout << "Central del receptor.\n";
+  std::cout << "Central del receptor.\n";
 	int numeroCentralReceptor = pedirCentral();
+  while (!this->existeLaCentral(numeroCentralReceptor))
+  {
+    std::cout << "La central no existe.\n\n";
+    numeroCentralReceptor = pedirCentral();
+  }
+  Central* centralReceptor = this->obtenercentrales()->obtenerPunteroAlObjeto(numeroCentralReceptor)->obtenerObjeto();
+  std::cout <<"\nNumero del receptor. \n";
+  int receptor = pedirInterno();
+  while (!centralReceptor->existeElInterno(receptor))
+  {
+    std::cout << "El interno no existe en la central especificada.\n\n";
+    receptor = pedirInterno();
+  }
 	std::cout << "\n";
-
+  
 	std::cout << "Emisor. \n";
-	int emisor = pedirInterno();
-	std::cout << "Central del Emisor.\n";
+  	std::cout << "Central del emisor.\n";
 	int numeroCentralEmisor = pedirCentral();
-	std::cout << "\n";
+  while (!this->existeLaCentral(numeroCentralEmisor))
+  {
+    std::cout << "La central no existe.\n\n";
+    numeroCentralEmisor = pedirCentral();
+  }
+  	Central* centralEmisor = obtenercentrales()->obtenerPunteroAlObjeto(numeroCentralEmisor)->obtenerObjeto();
 
+  std::cout << "\nNumero del emisor.\n";
+	int emisor = pedirInterno();
+  while (!centralEmisor->existeElInterno(emisor))
+  {
+    std::cout << "El interno no existe en la central especificada.\n\n";
+    emisor = pedirInterno();
+  }
+	std::cout << "\n";
 	std::cout << "Detalles de llamadas recibidas por " << receptor << " de la central " << numeroCentralReceptor;
 	std::cout << " y realizadas por " << emisor << " de la central " << numeroCentralEmisor << ".\n";
 
-	Central* centralEmisor = obtenercentrales()->obtenerPunteroAlObjeto(numeroCentralEmisor)->obtenerObjeto();
 	Lista<Llamada*>* llamadasEmisor = centralEmisor->obtenerInterno(emisor)->obtenerLlamadas();
 	llamadasEmisor->iniciarCursorNodo();
 	bool estaElReceptor = false;

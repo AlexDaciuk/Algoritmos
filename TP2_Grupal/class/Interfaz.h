@@ -133,7 +133,12 @@ public:
 	* */
 	void internoQueMasHabloPorCentralYGeneral();
 
-
+  /**
+   * Precondicion: recibe un numero entero positivo.
+   * Postcondicion: devuelve verdadero si ese numero pertece a una central
+   * ubicado en la lista de centrales. De lo contrario devuelve falso.
+   */
+  bool existeLaCentral(int numeroCentral);
 
 	/**
 	 * pre: los internos y las centrales deben existir.

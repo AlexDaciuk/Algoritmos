@@ -140,6 +140,13 @@ public:
 	void crearVectorDeEnlaces(Enlace** &enlacesOrdenadas, int &totalEnlaces);
 	
 	Recorrido* obtenerRecorridoACentral(int centralDestino);
+  
+    /**
+   * Precondicion: recibe un entero positivo.
+   * postcondicion: devuelve verdadero si numero pasado pertenece a un interno
+   * de la lista de internos.
+   */
+  bool existeElInterno(int numeroInterno);
 	
 	/**
 	 * Destructor de Central, libera el espacio pedido para la lista de enlaces y de internos
