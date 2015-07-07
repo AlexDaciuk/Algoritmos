@@ -62,12 +62,12 @@ Llamada* Interno::creaReceptorLlamada(int receptorLlamadaTemporal, int centralRe
 }
 
 
-void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, int centralReceptoraTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto)
+void Interno::agregarLlamadaEmisor(int receptorTemporal, int horaTemporal, int centralReceptoraTemporal, Lista<Enlace*>* recorridoLlamadaTemporal, bool fueAnulada, int precioPorMinuto, bool receptorOcupado)
 {
 	// Me fijo si la llamada esta creada, sino, la creo
 	Llamada* llamadaTemporal = creaReceptorLlamada(receptorTemporal, centralReceptoraTemporal);
 
-	if ( this->internoOcupado()  ) {
+	if ( receptorOcupado ) {
 		// Si recibio un ocupado o fue anulada, pongo la hora de inicio en 0, asi puedo diferenciar
 		// ocupados en el metodo de terminar llamadas
 		llamadaTemporal->empezarLlamadaEmisor(0, recorridoLlamadaTemporal, fueAnulada, precioPorMinuto);

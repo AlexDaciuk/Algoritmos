@@ -63,13 +63,15 @@ void ProcesadorLlamada::iniciarLlamada()
 	//Obtengo punteros a cada interno
 	Interno* emisor;
 	Interno* receptor;
+	bool receptorOcupado;
 
 	emisor = this->obtenerInterno ( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() );
 	receptor = this->obtenerInterno ( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
-
+	
+	receptorOcupado = receptor->internoOcupado();
 	//Agrego la llamada a cada interno
 	emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoLlamada->obtenerRuta(),
-	                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
+	                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada(), receptorOcupado );
 
 	receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), this->recorridoLlamada->obtenerRuta(),
 	                                 this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
@@ -94,10 +96,12 @@ void ProcesadorLlamada::iniciarLlamadaDijkstra()
 	//Obtengo punteros a cada interno
 	Interno* emisor;
 	Interno* receptor;
-
+	bool receptorOcupado;
+	
 	emisor = this->obtenerInterno ( this->datosLlamada->obtenerEmisor() , this->datosLlamada->obtenerOrigen() );
 	receptor = this->obtenerInterno ( this->datosLlamada->obtenerReceptor() , this->datosLlamada->obtenerDestino() );
-
+	
+	receptorOcupado = receptor->internoOcupado();
 	/* Busco el mejor camino de la central origen a la central destino y veo si estan disponibles los enlaces
 	 *  sii la llamada no es interna de la central
 	 */
@@ -110,8 +114,9 @@ void ProcesadorLlamada::iniciarLlamadaDijkstra()
 			while( mejorCamino->obtenerEnlacesRecorridos()->avanzarCursorNodo() )	{
 				mejorCamino->obtenerEnlacesRecorridos()->obtenerCursorNodo()->agregarLlamadaEnCurso();
 			}
+			
 			emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), mejorCamino->obtenerEnlacesRecorridos(),
-			                             false, mejorCamino->obtenerPrecioRecorrido() );
+			                             false, mejorCamino->obtenerPrecioRecorrido(), receptorOcupado);
 
 			receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), mejorCamino->obtenerEnlacesRecorridos(),
 			                                 false, mejorCamino->obtenerPrecioRecorrido() );
@@ -122,7 +127,7 @@ void ProcesadorLlamada::iniciarLlamadaDijkstra()
 
 			//Agrego la llamada a cada interno
 			emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoLlamada->obtenerRuta(),
-			                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
+			                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada(), receptorOcupado );
 
 			receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), this->recorridoLlamada->obtenerRuta(),
 			                                 this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada());
@@ -131,7 +136,7 @@ void ProcesadorLlamada::iniciarLlamadaDijkstra()
 		}
 	} else {
 		emisor->agregarLlamadaEmisor(this->datosLlamada->obtenerReceptor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerDestino(), this->recorridoLlamada->obtenerRuta(),
-		                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
+		                             this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada(), receptorOcupado );
 
 		receptor->agregarLlamadaReceptor(this->datosLlamada->obtenerEmisor(), this->datosLlamada->obtenerHora(), this->datosLlamada->obtenerOrigen(), this->recorridoLlamada->obtenerRuta(),
 		                                 this->recorridoLlamada->noEstaAnuladaLaLlamada(), this->recorridoLlamada->obtenerPrecioDeLaLlamada() );
